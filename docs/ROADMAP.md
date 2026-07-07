@@ -122,9 +122,14 @@ citas de datos, y las respuestas pasan la eval (ampliada con casos explain-place
 
 ### L3 — Evals de modelos + primer benchmark publicable (dic 2026 – ene 2027)
 
-1. Harness `packages/evals`: corre el corpus L1+L2 contra 3–4 modelos abiertos
-   (Qwen, Mistral, DeepSeek, Gemma — API u Ollama) midiendo precisión, latencia
-   y coste por 1k consultas.
+1. Harness (ya existe en `evals/`): corre el corpus L1+L2 contra modelos
+   midiendo precisión, latencia y coste por 1k consultas. Alineación
+   OSS/EU-first (principio de emap, fijado 2026-07-07): solo **modelos
+   abiertos** (Qwen, DeepSeek, Gemma, **Latxa** para euskera) y como única
+   referencia comercial **Mistral (UE)**. Nada de dependencias US-cerradas
+   (Anthropic/OpenAI/Google) en el producto — como mucho una columna
+   informativa en el benchmark publicado, nunca en el camino de ejecución.
+   Inferencia: Ollama en el VPS (Hetzner, UE) o APIs con residencia UE.
 2. Elegir el modelo por datos y **publicar los resultados** (post/README):
    "benchmarks de inteligencia geográfica en euskera y español" — nadie más tiene
    esto y da credibilidad ante ayuntamientos e inversores.

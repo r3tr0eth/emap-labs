@@ -82,8 +82,11 @@ popup, verificado CDP claro/oscuro); release v0.1 etiquetado en git ✅
 
 El corazón de Labs. Un solo flujo, de punta a punta:
 
-1. pgvector en el Hetzner; tabla de documentos (POIs, barrios, UrbanSignals
-   agregados por barrio) con embeddings multilingües (ES/EU importa).
+1. ~~pgvector en el Hetzner~~ → DECISIÓN 2026-07-07: a la escala de L1 no
+   hace falta base vectorial (la arquitectura híbrida solo embebe 13 textos
+   de categoría + la query). El servicio corre en memoria en el VPS actual
+   (service/, systemd emap-semantic, ~700 MB). pgvector pasa a L2, cuando
+   haya documentos de verdad (explain-place).
 2. `POST /api/semantic-search`: "cafetería tranquila con enchufes cerca de Moyúa",
    "parque con sombra para ir con niños". Híbrido: filtro geo (packages/geo ya
    lo hace) + ranking vectorial.

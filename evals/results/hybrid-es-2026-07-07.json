@@ -1,13 +1,17 @@
 {
-  "retriever": "baseline-keywords-geo",
-  "lang": "eu",
+  "retriever": "hybrid-keywords-then-semantic",
+  "lang": "es",
   "k": 5,
-  "config": {},
+  "config": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.45,
+    "tie_window": 0.08
+  },
   "n_corpus_cases": 63,
   "date": "2026-07-07",
   "corpus": 0,
   "total": {
-    "pass": 45,
+    "pass": 51,
     "cases": 60
   },
   "by_intent": {
@@ -16,7 +20,7 @@
       "cases": 18
     },
     "attribute": {
-      "pass": 7,
+      "pass": 8,
       "cases": 8
     },
     "transit": {
@@ -24,7 +28,7 @@
       "cases": 11
     },
     "semantic": {
-      "pass": 11,
+      "pass": 16,
       "cases": 23
     }
   },
@@ -176,10 +180,10 @@
     {
       "id": "ev-fast-bilbao",
       "intent": "attribute",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Elkano"
     },
     {
       "id": "ev-plazas-abando",
@@ -302,16 +306,16 @@
     {
       "id": "asp-barrio-tranquilo",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aparcabicis"
     },
     {
       "id": "asp-parque-sombra-ninos",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
     },
     {
       "id": "asp-plan-lluvia",
@@ -351,9 +355,9 @@
     {
       "id": "asp-similar-dona-casilda",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
     },
     {
       "id": "robust-typo-fuente",
@@ -406,18 +410,18 @@
     {
       "id": "par-sed",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
     },
     {
       "id": "par-bebe",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
     },
     {
       "id": "par-servicio",
@@ -430,34 +434,34 @@
     {
       "id": "par-patinete",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
     },
     {
       "id": "par-enchufar",
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
     },
     {
       "id": "par-dejar-coche",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Karmelo"
     },
     {
       "id": "par-estacionar",
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "reason": "categoria_equivocada (metro)",
+      "detail": "top1=Portugalete ✗ categoria_equivocada (metro)"
     },
     {
       "id": "par-candar-bici",
@@ -470,34 +474,34 @@
     {
       "id": "par-emergencia-cardiaca",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Alliance Healthcare España"
     },
     {
       "id": "par-chapuzon",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=El Sitio"
     },
     {
       "id": "par-arena",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plentzia"
     },
     {
       "id": "par-carretera-ahora",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plza. Moy&#250;a"
     }
   ],
   "known_gaps": [

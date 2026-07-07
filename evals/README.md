@@ -25,25 +25,35 @@ en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expecte
   caso, no parte de la respuesta).
 - `run.py` — el harness.
 
-## Resultados (la cifra a batir)
+## Resultados (corpus 63 casos: 60 puntuables + 3 known_gap)
 
-| Retriever | ES | EU | Fecha |
+| Retriever | ES | EU | Nota |
 |---|---|---|---|
-| baseline-keywords-geo | **45/47 (95%)** | 44/47 (93%) | 2026-07-07 |
+| baseline-keywords-geo | 46/60 (76%) | 45/60 (75%) | falla las paráfrasis sin keyword (sección F), como debe |
+| semantic-minilm-2stage | 38/60 (63%) | — | gana en paráfrasis (17/23 vs 11/23) pero pierde en transporte fino |
+| **hybrid-keywords-then-semantic** | **51/60 (85%)** | 43/60 (71%) | keywords primero, embeddings de fallback — candidato a producción en ES |
 
-Fallos restantes del baseline: los casos que exigen entender intención sin
-palabra-clave (`metro-hasta-playa`, `ultima-estacion-l1`) — exactamente el
-margen que el retriever semántico de L1 debe cerrar.
+(2026-07-07, MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config
+completa versionada en cada JSON de `results/`.)
+
+Lecciones del primer día de harness:
+
+1. **Embeder POIs con su nombre = 13/60.** El nombre ahoga la señal de
+   categoría. La arquitectura buena es dos etapas: clasificación semántica de
+   categoría (con la cláusula de ubicación recortada) + búsqueda estructurada
+   geo/atributos. Es la misma arquitectura que tendrá `/nearby` con pgvector.
+2. **El euskera de MiniLM multilingüe es flojo**: el fallback semántico
+   EMPEORA al baseline en EU (71% vs 75%). Cuantificar esto por modelo es
+   exactamente el benchmark de L3 — nadie lo tiene para euskera.
+3. Los umbrales (τ, tie-window) están **calibrados sobre este mismo corpus**:
+   el resultado es optimista por construcción. La ampliación a 75–100 casos
+   debe reservar un split held-out que no se use para afinar nada.
+4. Las descripciones de categoría y las paráfrasis las escribió la misma
+   persona; la validación real llegará con consultas de usuarios.
 
 Huecos de datos detectados (v0): cargadores EV fuera de Bilbao (falta fuente
 OCM/IBIL), tags `fee=no` de aparcamiento escasos en OSM fuera de Bilbao.
 
-## Advertencia honesta sobre el 95%
-
-El corpus v0 es **amable con keywords**: las consultas contienen la palabra de
-la categoría ("fuente", "aseo"…) porque se redactaron mirando los datasets. Un
-baseline léxico brilla ahí. La ampliación a 75–100 casos debe añadir
-**paráfrasis sin palabra-clave** ("dónde relleno el bidón", "me urge un sitio
-donde cambiar al bebé", "cargar el patinete") — ahí es donde los embeddings
-tienen que ganarse el puesto, y donde el baseline debería caer con estrépito.
-Si el semántico no supera claramente al baseline en esas, no se despliega.
+Criterio de despliegue: el semántico/híbrido solo entra en producción si
+supera claramente al baseline en el corpus ampliado con held-out — en ambos
+idiomas, no solo en español.

@@ -114,24 +114,47 @@ def result_ok(r: dict, exp: dict, anchor: dict | None) -> bool:
     return True
 
 
+def failure_reason(r: dict, exp: dict, anchor: dict | None) -> str:
+    """Por qué falla el top-1 — para análisis por categoría de fallo, no
+    solo pasa/no-pasa (un evaluador vago sabotea el loop de mejora)."""
+    if r.get("layer") not in exp["layers"]:
+        return f"categoria_equivocada ({r.get('layer')})"
+    if "within_m" in exp and anchor:
+        d = haversine_m(anchor["lat"], anchor["lon"], r["lat"], r["lon"])
+        if d > exp["within_m"]:
+            return f"fuera_de_radio ({d:.0f}m > {exp['within_m']}m)"
+    tags = r.get("tags", {})
+    if any(tags.get(k) != v for k, v in exp.get("tags", {}).items()):
+        return "atributo_incumplido"
+    if any(tags.get(k) is None or tags.get(k) == v
+           for k, v in exp.get("tags_not", {}).items()):
+        return "atributo_incumplido"
+    return "nombre_o_lineas"
+
+
 def score_case(case, results, anchor) -> dict:
     if case.get("answerable") is False:
         ok = len(results) == 0
-        return {"pass": ok, "detail": "abstiene" if ok else
+        return {"pass": ok, "reason": None if ok else "inventa",
+                "detail": "abstiene" if ok else
                 f"inventa: {results[0]['name'].get('es')}"}
     exp = case["expected"]
     need = exp.get("min_results", 1)
     hits = [r for r in results if result_ok(r, exp, anchor)]
     hit1 = bool(results) and result_ok(results[0], exp, anchor)
     ok = hit1 and len(hits) >= need
+    reason = None if ok else (
+        "abstencion_indebida" if not results
+        else failure_reason(results[0], exp, anchor))
     top = results[0]["name"].get("es") if results else "∅"
-    return {"pass": ok, "hit_at_k": len(hits) >= need,
-            "detail": f"top1={top}" + ("" if ok else " ✗")}
+    return {"pass": ok, "hit_at_k": len(hits) >= need, "reason": reason,
+            "detail": f"top1={top}" + ("" if ok else f" ✗ {reason}")}
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--retriever", default="baseline", choices=["baseline"])
+    ap.add_argument("--retriever", default="baseline",
+                    choices=["baseline", "semantic", "hybrid"])
     ap.add_argument("--lang", default="es", choices=["es", "eu"])
     ap.add_argument("-k", type=int, default=5)
     args = ap.parse_args()
@@ -139,11 +162,22 @@ def main() -> int:
     corpus = yaml.safe_load((LABS / "evals/semantic-golden-v0.yaml").read_text())
     landmarks = yaml.safe_load((LABS / "evals/landmarks.yaml").read_text())
     datasets = load_datasets()
-    retriever = BaselineRetriever(datasets)
+    if args.retriever == "semantic":
+        from semantic_local import SemanticRetriever  # requiere .venv de labs
+        retriever = SemanticRetriever(datasets)
+    elif args.retriever == "hybrid":
+        from semantic_local import HybridRetriever
+        retriever = HybridRetriever(datasets)
+    else:
+        retriever = BaselineRetriever(datasets)
 
     rows, by_intent, gaps = [], {}, []
     for case in corpus["cases"]:
         anchor = resolve_anchor(case, datasets, landmarks)
+        if hasattr(retriever, "set_anchor_names"):
+            a = case.get("anchor") or {}
+            retriever.set_anchor_names(
+                [a.get("name", ""), a.get("fallback_name", ""), a.get("landmark", "")])
         results = retriever.retrieve(case["q"][args.lang], anchor, k=args.k)
         s = score_case(case, results, anchor)
         row = {"id": case["id"], "intent": case["intent"], **s}
@@ -173,8 +207,14 @@ def main() -> int:
     out_dir = LABS / "evals/results"
     out_dir.mkdir(exist_ok=True)
     out = out_dir / f"{args.retriever}-{args.lang}-{date.today().isoformat()}.json"
+    config = {}
+    if args.retriever in ("semantic", "hybrid"):
+        import semantic_local as sl
+        config = {"model": sl.MODEL, "sim_threshold": sl.SIM_THRESHOLD,
+                  "tie_window": sl.TIE_WINDOW}
     out.write_text(json.dumps({
         "retriever": retriever.name, "lang": args.lang, "k": args.k,
+        "config": config, "n_corpus_cases": len(corpus["cases"]),
         "date": date.today().isoformat(), "corpus": corpus["version"],
         "total": {"pass": total, "cases": len(rows)},
         "by_intent": {i: {"pass": p, "cases": n} for i, (p, n) in by_intent.items()},

@@ -340,3 +340,87 @@ cases:
     anchor: {layer: metro, name: "Casco Viejo", fallback_name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [fountains], within_m: 500}
     notes: "Consulta de una palabra: el retriever debe pedir/asumir contexto de ubicación."
+
+  # ── F. Paráfrasis sin palabra-clave (semantic, respondibles) ────────
+  # La consulta NO contiene la palabra de la categoría: aquí un baseline
+  # léxico debe fallar y un retriever semántico debe acertar. Es la
+  # sección que decide si los embeddings se ganan el puesto.
+
+  - id: par-bidon
+    q: {es: "dónde relleno el bidón", eu: "non bete dezaket bidoia"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [fountains], within_m: 400}
+
+  - id: par-sed
+    q: {es: "tengo sed", eu: "egarri naiz"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [fountains], within_m: 500}
+
+  - id: par-bebe
+    q: {es: "sitio para cambiar al bebé cerca de Abando", eu: "haurra aldatzeko tokia Abando ondoan"}
+    intent: semantic
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [toilets], within_m: 800}
+
+  - id: par-servicio
+    q: {es: "necesito ir al servicio urgentemente", eu: "non egin dezaket txiza"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [toilets], within_m: 500}
+
+  - id: par-patinete
+    q: {es: "dónde cargo el patinete eléctrico", eu: "non kargatu dezaket patinete elektrikoa"}
+    intent: semantic
+    anchor: {layer: metro, name: "Indautxu"}
+    expected: {layers: [ev], within_m: 800}
+
+  - id: par-enchufar
+    q: {es: "un sitio para enchufar el coche", eu: "autoa entxufatzeko lekua"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [ev], within_m: 1000}
+
+  - id: par-dejar-coche
+    q: {es: "dónde puedo dejar el coche", eu: "non utzi dezaket autoa"}
+    intent: semantic
+    anchor: {layer: metro, name: "Santutxu"}
+    expected: {layers: [parking], within_m: 500}
+
+  - id: par-estacionar
+    q: {es: "estacionar cerca de Portugalete", eu: "autoa uzteko lekua Portugaleten"}
+    intent: semantic
+    anchor: {layer: metro, name: "Portugalete"}
+    expected: {layers: [parking], within_m: 700}
+
+  - id: par-candar-bici
+    q: {es: "un sitio donde candar la bici en Deusto", eu: "bizikleta lotzeko tokia Deustun"}
+    intent: semantic
+    anchor: {layer: metro, name: "Deustu"}
+    expected: {layers: [bikepark], within_m: 500}
+    notes: "En eu 'bizikleta' sí es keyword: el baseline puede acertar esa mitad."
+
+  - id: par-emergencia-cardiaca
+    q: {es: "emergencia cardiaca, qué tengo cerca", eu: "bihotz-geldialdia, zer daukat gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Basauri"}
+    expected: {layers: [defib], within_m: 600}
+
+  - id: par-chapuzon
+    q: {es: "darme un chapuzón cerca de Sopela", eu: "uretara sartu Sopela inguruan"}
+    intent: semantic
+    anchor: {layer: metro, name: "Sopela"}
+    expected: {layers: [beaches], within_m: 2000}
+
+  - id: par-arena
+    q: {es: "tumbarme en la arena al sol", eu: "hondarretan etzatea eguzkitan"}
+    intent: semantic
+    anchor: {layer: metro, name: "Plentzia"}
+    expected: {layers: [beaches], within_m: 2000}
+
+  - id: par-carretera-ahora
+    q: {es: "cómo está la carretera ahora mismo en el centro", eu: "nola dago errepidea orain erdigunean"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [cameras], within_m: 1000}

@@ -9,3 +9,4 @@ datasets/**/cache/
 
 # Artefactos de release (se publican como assets de GitHub Release)
 dist/
+evals/cache/

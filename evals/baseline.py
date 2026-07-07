@@ -60,17 +60,21 @@ class BaselineRetriever:
     def __init__(self, datasets: dict[str, list[dict]]):
         self.datasets = datasets  # layer → [poi]; poi: {id,name,lat,lon,tags}
 
-    def retrieve(self, query: str, anchor: dict | None, k: int = 5) -> list[dict]:
+    def detect_layers(self, query: str) -> list[str]:
+        """Etapa 1: qué categorías pide la consulta (aquí, por keywords)."""
         q = norm(query)
         # frontera izquierda de palabra: "aseo" no debe casar dentro de "paseo";
         # la derecha queda libre para plurales/declinaciones (fuente→fuentes)
+        for keywords, layer_ids in KEYWORD_LAYERS:
+            if any(re.search(rf"(?<![a-zà-ÿ]){re.escape(kw)}", q) for kw in keywords):
+                return [l for l in layer_ids if l in self.datasets]
+        return []
+
+    def retrieve(self, query: str, anchor: dict | None, k: int = 5) -> list[dict]:
+        q = norm(query)
         hit = lambda kw: re.search(rf"(?<![a-zà-ÿ]){re.escape(kw)}", q)  # noqa: E731
 
-        layers: list[str] = []
-        for keywords, layer_ids in KEYWORD_LAYERS:
-            if any(hit(kw) for kw in keywords):
-                layers = [l for l in layer_ids if l in self.datasets]
-                break
+        layers = self.detect_layers(query)
         if not layers:
             return []  # no sé qué me pides: abstención
 

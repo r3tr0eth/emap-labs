@@ -73,8 +73,10 @@ Formalizar el catálogo y cerrar el dataset que falta.
 
 *Hecho cuando:* `manifest.json` valida quality/coverage ✅; capa de barrios
 visible en el mapa ✅ (2026-07-07: grupo TERRITORIO en el panel, límites +
-popup, verificado CDP claro/oscuro); release v0.1 etiquetado en git ← ÚLTIMO
-PASO PENDIENTE de L0.
+popup, verificado CDP claro/oscuro); release v0.1 etiquetado en git ✅
+(2026-07-07: tag `v0.1` + GitHub Release, 7 datasets / 12.732 registros con los
+6 metadatos — `releases/v0.1/manifest.json`, build reproducible en
+`releases/build_release.py`). **L0 CERRADO.**
 
 ### L1 — Corte vertical semántico (agosto–septiembre 2026)
 

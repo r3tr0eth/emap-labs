@@ -6,3 +6,6 @@ __pycache__/
 .env
 datasets/**/out/
 datasets/**/cache/
+
+# Artefactos de release (se publican como assets de GitHub Release)
+dist/

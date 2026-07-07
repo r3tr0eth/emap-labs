@@ -1,0 +1,166 @@
+{
+  "release": "v0.1",
+  "project": "EMAP Labs — datasets",
+  "generatedAt": "2026-07-07",
+  "territory": "euskadi",
+  "datasets": [
+    {
+      "id": "dea-euskadi",
+      "title": "Desfibriladores (DEA) de Euskadi",
+      "file": "data/dea-euskadi.json",
+      "format": "JSON (pois[])",
+      "source": "Registro Vasco de DEA — Dpto. de Salud, Gobierno Vasco",
+      "license": "Open Data Euskadi (CC BY 4.0)",
+      "updated": "2026-07-06",
+      "sizeBytes": 912541,
+      "checksum": {
+        "algo": "sha256",
+        "value": "32a5ea6666d64949393f6a0dff0eed0a756c48ac839ab36fd79eab3fe264d3f0"
+      },
+      "coverage": {
+        "territory": "euskadi",
+        "notes": "Registro oficial; cobertura autonómica."
+      },
+      "quality": {
+        "records": 3321,
+        "emptyFieldsPct": 0.0
+      }
+    },
+    {
+      "id": "pois-euskadi-fountains",
+      "title": "Fuentes de agua potable (Euskadi)",
+      "file": "data/pois-euskadi-fountains.json",
+      "format": "JSON (pois[])",
+      "source": "OpenStreetMap (Overpass, amenity=drinking_water)",
+      "license": "ODbL 1.0 © OpenStreetMap contributors",
+      "updated": "2026-07-06",
+      "sizeBytes": 1346823,
+      "checksum": {
+        "algo": "sha256",
+        "value": "c90407b41138bb6b10cf5357e2cc682a46d4a92d72067c6217ee961399f45c19"
+      },
+      "coverage": {
+        "territory": "euskadi",
+        "notes": "Cobertura según densidad de mapeo en OSM."
+      },
+      "quality": {
+        "records": 6278,
+        "emptyFieldsPct": 8.93
+      }
+    },
+    {
+      "id": "pois-euskadi-toilets",
+      "title": "Aseos públicos (Euskadi)",
+      "file": "data/pois-euskadi-toilets.json",
+      "format": "JSON (pois[])",
+      "source": "OpenStreetMap (Overpass, amenity=toilets)",
+      "license": "ODbL 1.0 © OpenStreetMap contributors",
+      "updated": "2026-07-06",
+      "sizeBytes": 180060,
+      "checksum": {
+        "algo": "sha256",
+        "value": "c5915e8d9044c4d1f6e988266f0807c7010ccb5e92980a3c73390bb13b6591d1"
+      },
+      "coverage": {
+        "territory": "euskadi",
+        "notes": "Cobertura según densidad de mapeo en OSM."
+      },
+      "quality": {
+        "records": 696,
+        "emptyFieldsPct": 3.5
+      }
+    },
+    {
+      "id": "pois-euskadi-parking",
+      "title": "Aparcamientos (Euskadi)",
+      "file": "data/pois-euskadi-parking.json",
+      "format": "JSON (pois[])",
+      "source": "OpenStreetMap (Overpass, amenity=parking)",
+      "license": "ODbL 1.0 © OpenStreetMap contributors",
+      "updated": "2026-07-06",
+      "sizeBytes": 151953,
+      "checksum": {
+        "algo": "sha256",
+        "value": "2f83e6a30d61bb9f562041289f40d1df363c98eb74c4495c78ee48e523a599a6"
+      },
+      "coverage": {
+        "territory": "euskadi",
+        "notes": "Cobertura según densidad de mapeo en OSM."
+      },
+      "quality": {
+        "records": 641,
+        "emptyFieldsPct": 5.18
+      }
+    },
+    {
+      "id": "pois-euskadi-bikepark",
+      "title": "Aparcabicis (Euskadi)",
+      "file": "data/pois-euskadi-bikepark.json",
+      "format": "JSON (pois[])",
+      "source": "OpenStreetMap (Overpass, amenity=bicycle_parking)",
+      "license": "ODbL 1.0 © OpenStreetMap contributors",
+      "updated": "2026-07-06",
+      "sizeBytes": 200523,
+      "checksum": {
+        "algo": "sha256",
+        "value": "a2f3c8c99257ad39bb7990ec2c9f52b8c21068aaf1ad8b3d4acf4080bd33861f"
+      },
+      "coverage": {
+        "territory": "euskadi",
+        "notes": "Cobertura según densidad de mapeo en OSM."
+      },
+      "quality": {
+        "records": 1432,
+        "emptyFieldsPct": 3.84
+      }
+    },
+    {
+      "id": "pois-euskadi-beaches",
+      "title": "Playas (Euskadi)",
+      "file": "data/pois-euskadi-beaches.json",
+      "format": "JSON (pois[])",
+      "source": "OpenStreetMap + Open Data Bizkaia (DFB)",
+      "license": "ODbL 1.0 / CC BY 4.0",
+      "updated": "2026-07-06",
+      "sizeBytes": 33893,
+      "checksum": {
+        "algo": "sha256",
+        "value": "61a4c3d8f76e8ecf975dec6e30a579b0993e16d829b3a1362cb06e808e818041"
+      },
+      "coverage": {
+        "territory": "euskadi",
+        "notes": "Costa de Bizkaia y Gipuzkoa."
+      },
+      "quality": {
+        "records": 217,
+        "emptyFieldsPct": 7.93
+      }
+    },
+    {
+      "id": "neighborhoods-bizkaia",
+      "title": "Límites administrativos de Bizkaia (municipios, distritos, barrios)",
+      "file": "data/neighborhoods-bizkaia.json",
+      "format": "GeoJSON",
+      "source": "OpenStreetMap (Overpass)",
+      "license": "ODbL 1.0 © OpenStreetMap contributors",
+      "updated": "2026-07-07",
+      "sizeBytes": 1166705,
+      "checksum": {
+        "algo": "sha256",
+        "value": "ca482babb1cf45d6d1001dd83949bab9365dbc653c4e4a92e80e574741c395e0"
+      },
+      "coverage": {
+        "territory": "bizkaia",
+        "notes": "113 municipios y 8 distritos completos; 26/~34 barrios de Bilbao."
+      },
+      "quality": {
+        "records": 147,
+        "emptyFieldsPct": 0.0
+      }
+    }
+  ],
+  "totals": {
+    "datasets": 7,
+    "records": 12732
+  }
+}

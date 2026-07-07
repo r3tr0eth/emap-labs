@@ -1,0 +1,262 @@
+{
+  "retriever": "baseline-keywords-geo",
+  "lang": "eu",
+  "k": 5,
+  "config": {},
+  "n_corpus_cases": 29,
+  "date": "2026-07-07",
+  "corpus": 0,
+  "total": {
+    "pass": 18,
+    "cases": 29
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 3,
+      "cases": 3
+    },
+    "semantic": {
+      "pass": 9,
+      "cases": 17
+    },
+    "transit": {
+      "pass": 4,
+      "cases": 5
+    },
+    "attribute": {
+      "pass": 2,
+      "cases": 4
+    }
+  },
+  "cases": [
+    {
+      "id": "ho-eu-iturria-santurtzi",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho-eu-komuna-algorta",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho-eu-kargatu-deustu",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-eu-hondartza-neguri",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Playa de la Bola"
+    },
+    {
+      "id": "ho-eu-bizikleta-areeta",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho-eu-dea-sopela",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Metro Bilbao S. A."
+    },
+    {
+      "id": "ho-eu-aparkaleku-etxebarri",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-eu-tranbia-guggenheim",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Guggenheim"
+    },
+    {
+      "id": "ho-cantimplora",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-bano-nino",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho-enchufe-coche",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-guardar-coche",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-atar-bici-guggenheim",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho-infarto-moyua",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-nadar-larrabasterra",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-trafico-sanmames",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-agua-perro",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho-linea-plentzia",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plentzia"
+    },
+    {
+      "id": "ho-metro-getxo",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": true,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Abando ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho-tren-bermeo",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Bermeo"
+    },
+    {
+      "id": "ho-cercanias-muskiz",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Muskiz"
+    },
+    {
+      "id": "ho-parking-gratis-centro",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "atributo_incumplido",
+      "detail": "top1=Aparcamiento ✗ atributo_incumplido"
+    },
+    {
+      "id": "ho-aseo-adaptado-sanmames",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho-bikepark-cubierto-abando",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho-carga-rapida-deustu",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-farmacia-guardia",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho-hotel-barato",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho-menu-del-dia",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho-wifi-gratis",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    }
+  ],
+  "known_gaps": []
+}

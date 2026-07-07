@@ -424,3 +424,211 @@ cases:
     intent: semantic
     anchor: {layer: metro, name: "Moyua"}
     expected: {layers: [cameras], within_m: 1000}
+
+  # ── H. HELD-OUT (prefijo ho-) — NO usar para calibrar nada ──────────
+  # Escritos el 2026-07-07 DESPUÉS de fijar umbrales y keywords. El runner
+  # los excluye por defecto (--split heldout para correrlos). Si un cambio
+  # del retriever se afina mirando estos casos, dejan de valer: se
+  # promocionan a dev y se escriben held-out nuevos.
+
+  - id: ho-eu-iturria-santurtzi
+    split: heldout
+    q: {es: "una fuente en Santurtzi por favor", eu: "iturri bat Santurtzin, mesedez"}
+    intent: nearest
+    anchor: {layer: metro, name: "Santurtzi"}
+    expected: {layers: [fountains], within_m: 600}
+
+  - id: ho-eu-komuna-algorta
+    split: heldout
+    q: {es: "necesito un baño público en Algorta", eu: "komun publiko bat behar dut Algortan"}
+    intent: nearest
+    anchor: {layer: metro, name: "Algorta"}
+    expected: {layers: [toilets], within_m: 800}
+
+  - id: ho-eu-kargatu-deustu
+    split: heldout
+    q: {es: "dónde cargar el coche en Deusto", eu: "non kargatu autoa Deustun"}
+    intent: semantic
+    anchor: {layer: metro, name: "Deustu"}
+    expected: {layers: [ev], within_m: 1500}
+
+  - id: ho-eu-hondartza-neguri
+    split: heldout
+    q: {es: "quiero ir a la playa desde Neguri", eu: "hondartzara joan nahi dut Neguritik"}
+    intent: nearest
+    anchor: {layer: metro, name: "Neguri"}
+    expected: {layers: [beaches], within_m: 3000}
+
+  - id: ho-eu-bizikleta-areeta
+    split: heldout
+    q: {es: "dónde atar la bici en Las Arenas", eu: "bizikleta non lotu Areetan"}
+    intent: semantic
+    anchor: {layer: metro, name: "Areeta"}
+    expected: {layers: [bikepark], within_m: 500}
+
+  - id: ho-eu-dea-sopela
+    split: heldout
+    q: {es: "le ha dado algo al corazón a uno en Sopela, necesito un DEA", eu: "bihotzeko bat eman dio bati Sopelan, DEA bat behar dut"}
+    intent: semantic
+    anchor: {layer: metro, name: "Sopela"}
+    expected: {layers: [defib], within_m: 900}
+
+  - id: ho-eu-aparkaleku-etxebarri
+    split: heldout
+    q: {es: "sitio para el coche en Etxebarri", eu: "autoarentzat lekua Etxebarrin"}
+    intent: semantic
+    anchor: {layer: metro, name: "Etxebarri"}
+    expected: {layers: [parking], within_m: 1100}
+    notes: "El aparcamiento real más cercano está a 989 m (OSM 2026-07)."
+
+  - id: ho-eu-tranbia-guggenheim
+    split: heldout
+    q: {es: "parada del tranvía junto al Guggenheim", eu: "tranbia geltokia Guggenheim ondoan"}
+    intent: transit
+    anchor: {landmark: "Museo Guggenheim Bilbao"}
+    expected: {layers: [euskotren], name_in: ["Guggenheim"], within_m: 500}
+
+  - id: ho-cantimplora
+    split: heldout
+    q: {es: "dónde lleno la cantimplora", eu: "non bete dezaket kantinplora"}
+    intent: semantic
+    anchor: {layer: metro, name: "San Ignazio"}
+    expected: {layers: [fountains], within_m: 600}
+
+  - id: ho-bano-nino
+    split: heldout
+    q: {es: "un baño para el niño, ya", eu: "komun bat umearentzat, oraintxe"}
+    intent: semantic
+    anchor: {layer: metro, name: "Indautxu"}
+    expected: {layers: [toilets], within_m: 700}
+
+  - id: ho-enchufe-coche
+    split: heldout
+    q: {es: "necesito un enchufe para el coche", eu: "entxufe bat behar dut autoarentzat"}
+    intent: semantic
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [ev], within_m: 1000}
+
+  - id: ho-guardar-coche
+    split: heldout
+    q: {es: "dónde guardo el coche esta noche", eu: "non gorde autoa gauean"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [parking], within_m: 700}
+
+  - id: ho-atar-bici-guggenheim
+    split: heldout
+    q: {es: "voy en bici, dónde la dejo junto al Guggenheim", eu: "bizikletaz noa, non utzi Guggenheim ondoan"}
+    intent: semantic
+    anchor: {landmark: "Museo Guggenheim Bilbao"}
+    expected: {layers: [bikepark], within_m: 500}
+
+  - id: ho-infarto-moyua
+    split: heldout
+    q: {es: "creo que le está dando un infarto", eu: "bihotzekoak ematen ari zaiola uste dut"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [defib], within_m: 500}
+
+  - id: ho-nadar-larrabasterra
+    split: heldout
+    q: {es: "quiero nadar en el mar", eu: "itsasoan igeri egin nahi dut"}
+    intent: semantic
+    anchor: {layer: metro, name: "Larrabasterra"}
+    expected: {layers: [beaches], within_m: 1500}
+
+  - id: ho-trafico-sanmames
+    split: heldout
+    q: {es: "ver el tráfico en directo por la zona de San Mamés", eu: "trafikoa zuzenean ikusi San Mames inguruan"}
+    intent: semantic
+    anchor: {layer: metro, name: "Santimami/San Mamés"}
+    expected: {layers: [cameras], within_m: 1200}
+
+  - id: ho-agua-perro
+    split: heldout
+    q: {es: "agua para el perro", eu: "ura txakurrarentzat"}
+    intent: semantic
+    anchor: {layer: metro, name: "Santutxu"}
+    expected: {layers: [fountains], within_m: 600}
+
+  - id: ho-linea-plentzia
+    split: heldout
+    q: {es: "qué línea va a Plentzia", eu: "zein lineak eramaten du Plentziara"}
+    intent: transit
+    expected: {layers: [metro], name: "Plentzia", answer_tags_min: {lines: ["L1"]}}
+
+  - id: ho-metro-getxo
+    split: heldout
+    q: {es: "estación de metro en Getxo", eu: "metro geltokia Getxon"}
+    intent: transit
+    expected: {layers: [metro], name_in: ["Areeta", "Gobela", "Neguri", "Aiboa", "Algorta", "Bidezabal", "Ibarbengoa"], min_results: 1}
+    notes: "Duro a propósito: exige saber qué estaciones caen en Getxo (join con neighborhoods, futuro)."
+
+  - id: ho-tren-bermeo
+    split: heldout
+    q: {es: "el tren a Bermeo", eu: "Bermeorako trena"}
+    intent: transit
+    expected: {layers: [euskotren], name_contains: "Bermeo"}
+
+  - id: ho-cercanias-muskiz
+    split: heldout
+    q: {es: "cercanías hasta Muskiz", eu: "aldiriko trena Muskizeraino"}
+    intent: transit
+    expected: {layers: [cercanias], name_contains: "Muskiz"}
+
+  - id: ho-parking-gratis-centro
+    split: heldout
+    q: {es: "aparcar gratis por el centro de Bilbao", eu: "doan aparkatu Bilboko erdigunean"}
+    intent: attribute
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [parking], within_m: 1500, tags: {fee: "no"}}
+
+  - id: ho-aseo-adaptado-sanmames
+    split: heldout
+    q: {es: "baño adaptado cerca de San Mamés", eu: "komun egokitua San Mames ondoan"}
+    intent: attribute
+    anchor: {layer: metro, name: "Santimami/San Mamés"}
+    expected: {layers: [toilets], within_m: 900, tags: {wheelchair: "yes"}}
+
+  - id: ho-bikepark-cubierto-abando
+    split: heldout
+    q: {es: "aparcabicis techado cerca de Abando", eu: "bizikleta-aparkaleku estalia Abando ondoan"}
+    intent: attribute
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [bikepark], within_m: 2000, tags: {covered: "yes"}}
+    notes: "El cubierto más cercano real está a 1.786 m (OSM 2026-07); mismo criterio ciclista que Sarriko."
+
+  - id: ho-carga-rapida-deustu
+    split: heldout
+    q: {es: "punto de carga rápida por Deusto", eu: "karga azkarreko puntua Deustu aldean"}
+    intent: attribute
+    anchor: {layer: metro, name: "Deustu"}
+    expected: {layers: [ev], within_m: 1500, tags_not: {TipoCarga: "Lenta (3-7 kW)"}}
+
+  - id: ho-farmacia-guardia
+    split: heldout
+    q: {es: "farmacia de guardia cerca de Abando", eu: "guardiako farmazia Abandotik gertu"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho-hotel-barato
+    split: heldout
+    q: {es: "hotel barato para esta noche en Bilbao", eu: "hotel merkea gaur gauerako Bilbon"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho-menu-del-dia
+    split: heldout
+    q: {es: "dónde comer un menú del día por 12 euros", eu: "non jan eguneko menua 12 eurotan"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho-wifi-gratis
+    split: heldout
+    q: {es: "wifi gratis cerca de mí", eu: "doako wifia nire ondoan"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full

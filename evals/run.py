@@ -157,9 +157,15 @@ def main() -> int:
                     choices=["baseline", "semantic", "hybrid"])
     ap.add_argument("--lang", default="es", choices=["es", "eu"])
     ap.add_argument("-k", type=int, default=5)
+    ap.add_argument("--split", default="dev", choices=["dev", "heldout", "all"],
+                    help="dev: casos de desarrollo (default). heldout: solo los "
+                         "reservados — NO calibrar nada mirándolos.")
     args = ap.parse_args()
 
     corpus = yaml.safe_load((LABS / "evals/semantic-golden-v0.yaml").read_text())
+    if args.split != "all":
+        corpus["cases"] = [c for c in corpus["cases"]
+                           if c.get("split", "dev") == args.split]
     landmarks = yaml.safe_load((LABS / "evals/landmarks.yaml").read_text())
     datasets = load_datasets()
     if args.retriever == "semantic":
@@ -206,7 +212,7 @@ def main() -> int:
 
     out_dir = LABS / "evals/results"
     out_dir.mkdir(exist_ok=True)
-    out = out_dir / f"{args.retriever}-{args.lang}-{date.today().isoformat()}.json"
+    out = out_dir / f"{args.retriever}-{args.lang}-{args.split}-{date.today().isoformat()}.json"
     config = {}
     if args.retriever in ("semantic", "hybrid"):
         import semantic_local as sl

@@ -25,16 +25,27 @@ en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expecte
   caso, no parte de la respuesta).
 - `run.py` — el harness.
 
-## Resultados (corpus 63 casos: 60 puntuables + 3 known_gap)
+## Resultados
 
-| Retriever | ES | EU | Nota |
-|---|---|---|---|
-| baseline-keywords-geo | 46/60 (76%) | 45/60 (75%) | falla las paráfrasis sin keyword (sección F), como debe |
-| semantic-minilm-2stage | 38/60 (63%) | — | gana en paráfrasis (17/23 vs 11/23) pero pierde en transporte fino |
-| **hybrid-keywords-then-semantic** | **51/60 (85%)** | 43/60 (71%) | keywords primero, embeddings de fallback — candidato a producción en ES |
+Corpus 92 casos: **dev** 63 (60 puntuables + 3 known_gap, usados para calibrar)
+y **held-out** 29 (sección H, prefijo `ho-`, escritos tras fijar umbrales y
+keywords; el runner los excluye por defecto — `--split heldout` para correrlos,
+y NUNCA se calibra mirándolos).
+
+| Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
+|---|---|---|---|---|
+| baseline-keywords-geo | 76% | 65% | 75% | 62% |
+| semantic-minilm-2stage | 63% | 48% | — | 34% |
+| **hybrid-keywords-then-semantic** | **85%** | **79%** | 71% | **72%** |
 
 (2026-07-07, MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config
 completa versionada en cada JSON de `results/`.)
+
+**El híbrido cumple el criterio de despliegue**: bate al baseline en held-out
+en ambos idiomas (+14 pts ES, +10 pts EU). La caída dev→held-out del híbrido
+(85→79 en ES) cuantifica el optimismo del tuning: ~6 puntos. En EU el dato es
+ruidoso (n=29) pero consistente: la semántica solo como fallback no rompe nada
+y rescata paráfrasis.
 
 Lecciones del primer día de harness:
 

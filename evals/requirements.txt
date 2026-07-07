@@ -1,0 +1,6 @@
+# Dependencias del harness de evals (CI y local).
+# El retriever baseline solo necesita pyyaml; numpy+fastembed son para
+# semantic/hybrid (modelo ONNX local, sin GPU).
+pyyaml>=6
+numpy>=1.26
+fastembed>=0.7

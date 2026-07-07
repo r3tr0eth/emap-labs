@@ -16,6 +16,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: evals/requirements.txt
       - run: pip install pyyaml
       # umbrales = resultado actual − margen de ruido; si bajan, algo se rompió
       - run: python evals/run.py --retriever baseline --lang es --min-pass 73
@@ -32,12 +33,13 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: evals/requirements.txt
       - name: Caché del modelo de embeddings
         uses: actions/cache@v4
         with:
           path: ~/.cache/fastembed
           key: fastembed-minilm-multilingual-v1
-      - run: pip install pyyaml numpy fastembed
+      - run: pip install -r evals/requirements.txt
       # criterio de despliegue del README: batir al baseline en held-out en ambos idiomas
       - run: python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 72
       - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 65

@@ -76,6 +76,7 @@ cases:
     intent: nearest
     anchor: {layer: metro, name: "Barakaldo"}
     expected: {layers: [ev], within_m: 1200}
+    known_gap: "El dataset EV es el registro municipal de Bilbao (60 puntos): no hay cargadores de Barakaldo. Se resuelve con fuente OCM/IBIL más amplia."
 
   - id: bikepark-sanmames
     q: {es: "dónde dejar la bici cerca de San Mamés", eu: "non utzi bizikleta San Mames inguruan"}
@@ -138,18 +139,21 @@ cases:
     intent: attribute
     anchor: {layer: metro, name: "Etxebarri"}
     expected: {layers: [parking], within_m: 1000, tags: {fee: "no"}}
+    known_gap: "OSM apenas tiene fee=no tagueado fuera de Bilbao; ningún retriever puede acertar. Mejorable mapeando en OSM."
 
   - id: parking-free-leioa
     q: {es: "parking gratuito cerca de Leioa", eu: "doako parkinga Leioatik gertu"}
     intent: attribute
     anchor: {layer: metro, name: "Leioa"}
     expected: {layers: [parking], within_m: 1200, tags: {fee: "no"}}
+    known_gap: "Mismo hueco de tags fee=no en OSM que Etxebarri."
 
   - id: bikepark-covered-sarriko
     q: {es: "aparcabicis cubierto cerca de Sarriko", eu: "estalitako bizikleta-aparkalekua Sarrikotik gertu"}
     intent: attribute
     anchor: {layer: metro, name: "Sarriko"}
-    expected: {layers: [bikepark], within_m: 800, tags: {covered: "yes"}}
+    expected: {layers: [bikepark], within_m: 1800, tags: {covered: "yes"}}
+    notes: "El cubierto más cercano real está a 1.575 m (OSM 2026-07); 1,8 km es razonable en bici."
 
   - id: bikepark-covered-algorta
     q: {es: "sitio cubierto para dejar la bici en Algorta", eu: "bizikleta uzteko toki estalia Algortan"}
@@ -191,7 +195,8 @@ cases:
   - id: lines-basauri
     q: {es: "qué línea llega a Basauri", eu: "zein lineak iristen dira Basaurira"}
     intent: transit
-    expected: {layers: [metro], name: "Basauri", answer_tags: {lines: ["L2"]}}
+    expected: {layers: [metro], name: "Basauri", answer_tags: {lines: ["L1", "L2"]}}
+    notes: "El GTFS oficial confirma que L1 y L2 llegan a Basauri (tronco común)."
 
   - id: nearest-metro-guggenheim
     q: {es: "estación de metro más cercana al Guggenheim", eu: "Guggenheimetik hurbilen dagoen metro geltokia"}
@@ -326,7 +331,8 @@ cases:
     q: {es: "estacion mas cercana al guggenheim", eu: "geltokirik hurbilena guggenheimera"}
     intent: transit
     anchor: {landmark: "Museo Guggenheim Bilbao"}
-    expected: {layers: [metro], name_in: ["Moyua", "San Ignazio", "Deustu"], within_m: 1200}
+    expected: {layers: [metro, euskotren], name_in: ["Guggenheim", "Moyua", "San Ignazio", "Deustu"], within_m: 1200}
+    notes: "Sin 'de metro' en la query, la parada del tranvía Guggenheim (euskotren) es respuesta válida — y la más cercana de verdad."
 
   - id: robust-generico-agua
     q: {es: "agua", eu: "ura"}

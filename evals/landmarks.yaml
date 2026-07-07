@@ -1,0 +1,4 @@
+# Anclas tipo landmark del corpus → coordenadas fijas (fixtures).
+# Son entrada del caso (dónde está el usuario), no parte de la respuesta:
+# fijarlas aquí no contamina la eval. Verificadas contra OSM 2026-07.
+Museo Guggenheim Bilbao: {lat: 43.26873, lon: -2.93390}

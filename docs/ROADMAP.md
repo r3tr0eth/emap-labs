@@ -61,10 +61,13 @@ Formalizar el catálogo y cerrar el dataset que falta.
    `quality` calculado por el nuevo CLI `python -m data_catalog quality`
    (registros, % campos vacíos, frescura vs `maxAgeDays`). 34/37 medibles,
    19.119 registros, 0 issues; paridad legacy intacta; 7 tests nuevos.
-2. **Dataset de barrios**: límites de barrios de Bilbao + municipios de Bizkaia
-   (opendata Euskadi / OSM admin boundaries) → `data/processed/neighborhoods/`.
-   Es la unidad de agregación de todo lo que viene después ("qué barrio es más
-   tranquilo" necesita saber qué es un barrio).
+2. ✅ (2026-07-07) **Dataset de barrios**: `datasets/neighborhoods/build.py`
+   (OSM/Overpass, ODbL) → `emap-next/data/processed/neighborhoods/` — 113
+   municipios (INE 48xxx, foráneos filtrados), 8 distritos y 26 barrios de
+   Bilbao con nombres oficiales ES/EU, parent por point-in-polygon y
+   geometría simplificada (1,1 MB). Registrado en el manifest (38 datasets,
+   quality OK). Cobertura honesta: barrios 26/~34 — upgrade pendiente con
+   cartografía oficial.
 3. Primer **release versionado** de un dataset (POIs Euskadi + DEA + barrios,
    con los 6 metadatos) como artefacto descargable. Primer activo publicable.
 

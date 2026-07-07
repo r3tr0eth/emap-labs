@@ -10,7 +10,10 @@ from __future__ import annotations
 import re
 import unicodedata
 
-from emap_geo.distance import haversine_m
+try:
+    from emap_geo.distance import haversine_m
+except ImportError:  # CI / entorno sin emap-next: fallback vendorizado
+    from _geo import haversine_m
 
 
 def norm(text: str) -> str:

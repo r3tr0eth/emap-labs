@@ -1,0 +1,1512 @@
+{
+ "version": 1,
+ "territory": "bizkaia",
+ "layer_id": "ev",
+ "source_id": "ev_ocm",
+ "derived_from": "ev-chargers",
+ "source_updated": null,
+ "count": 60,
+ "dropped": 0,
+ "pois": [
+  {
+   "id": "ev:77",
+   "name": {
+    "es": "Parking instituto Unamuno"
+   },
+   "lat": 43.2599543,
+   "lon": -2.9324627,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "77",
+    "IdPerVertPPElectrolinera": "37",
+    "NombreDireccion": "Parking instituto Unamuno",
+    "TV_NOMBRE": "URQUIJO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "8",
+    "NumeroMangeras": "8",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:26",
+   "name": {
+    "es": "Elkano"
+   },
+   "lat": 43.2623934,
+   "lon": -2.9345489,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "26",
+    "IdPerVertPPElectrolinera": "26",
+    "NombreDireccion": "Elkano",
+    "TV_NOMBRE": "ELCANO (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:277",
+   "name": {
+    "es": "Hotel Carlton"
+   },
+   "lat": 43.26242,
+   "lon": -2.9349172,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "277",
+    "IdPerVertPPElectrolinera": "277",
+    "NombreDireccion": "Hotel Carlton",
+    "TV_NOMBRE": "ELCANO (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:190",
+   "name": {
+    "es": "Parking del Ensanche"
+   },
+   "lat": 43.2633049,
+   "lon": -2.9305697,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "190",
+    "IdPerVertPPElectrolinera": "190",
+    "NombreDireccion": "Parking del Ensanche",
+    "TV_NOMBRE": "COLON DE LARREATEGUI (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "6",
+    "NumeroMangeras": "6",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:155",
+   "name": {
+    "es": "Parking El Corte Ingles  (Don Diego L&#243;pez Haroko Kale Nagusia, 11)"
+   },
+   "lat": 43.2612993,
+   "lon": -2.9292902,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "155",
+    "IdPerVertPPElectrolinera": "155",
+    "NombreDireccion": "Parking El Corte Ingles  (Don Diego L&#243;pez Haroko Kale Nagusia, 11)",
+    "TV_NOMBRE": "AYALA CANCILLER (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "3",
+    "NumeroMangeras": "3",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:156",
+   "name": {
+    "es": "Parking Sercotel (Urkixo Zumarkalea, 10)"
+   },
+   "lat": 43.2604112,
+   "lon": -2.9307591,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "156",
+    "IdPerVertPPElectrolinera": "156",
+    "NombreDireccion": "Parking Sercotel (Urkixo Zumarkalea, 10)",
+    "TV_NOMBRE": "URQUIJO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:169",
+   "name": {
+    "es": "Parking Palacio Euskalduna 0"
+   },
+   "lat": 43.2667254,
+   "lon": -2.9447237,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "169",
+    "IdPerVertPPElectrolinera": "169",
+    "NombreDireccion": "Parking Palacio Euskalduna 0",
+    "TV_NOMBRE": "ABANDOIBARRA (AV)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:157",
+   "name": {
+    "es": "Parking - La Alh&#243;ndiga (Alameda de Urquijo, 43)"
+   },
+   "lat": 43.2601456,
+   "lon": -2.9369252,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "157",
+    "IdPerVertPPElectrolinera": "157",
+    "NombreDireccion": "Parking - La Alh&#243;ndiga (Alameda de Urquijo, 43)",
+    "TV_NOMBRE": "URQUIJO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "4",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:197",
+   "name": {
+    "es": "Parking Ilunion (Rodriguez Arias 66)"
+   },
+   "lat": 43.2640141,
+   "lon": -2.9445795,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "197",
+    "IdPerVertPPElectrolinera": "197",
+    "NombreDireccion": "Parking Ilunion (Rodriguez Arias 66)",
+    "TV_NOMBRE": "RODRIGUEZ ARIAS (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:278",
+   "name": {
+    "es": "Hotel Catalonia"
+   },
+   "lat": 43.264224,
+   "lon": -2.9420744,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "278",
+    "IdPerVertPPElectrolinera": "278",
+    "NombreDireccion": "Hotel Catalonia",
+    "TV_NOMBRE": "LOPEZ DE HARO D. DIEGO (GV)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:279",
+   "name": {
+    "es": "Hotel NH"
+   },
+   "lat": 43.2648354,
+   "lon": -2.9442684,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "279",
+    "IdPerVertPPElectrolinera": "279",
+    "NombreDireccion": "Hotel NH",
+    "TV_NOMBRE": "LOPEZ DE HARO D. DIEGO (GV)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:25",
+   "name": {
+    "es": "Bombero Etxaniz"
+   },
+   "lat": 43.2586556,
+   "lon": -2.9398639,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "25",
+    "IdPerVertPPElectrolinera": "25",
+    "NombreDireccion": "Bombero Etxaniz",
+    "TV_NOMBRE": "GORDONIZ (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:212",
+   "name": {
+    "es": "Hotel Silken Indautxu (P&#233;rez Gald&#243;s Kalea, 1)"
+   },
+   "lat": 43.2586695,
+   "lon": -2.9396514,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "212",
+    "IdPerVertPPElectrolinera": "212",
+    "NombreDireccion": "Hotel Silken Indautxu (P&#233;rez Gald&#243;s Kalea, 1)",
+    "TV_NOMBRE": "PEREZ GALDOS (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:346",
+   "name": {
+    "es": "Hotel Silken Indautxu"
+   },
+   "lat": 43.2586253,
+   "lon": -2.9396445,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "346",
+    "IdPerVertPPElectrolinera": "346",
+    "NombreDireccion": "Hotel Silken Indautxu",
+    "TV_NOMBRE": "EGA&#209;A (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:319",
+   "name": {
+    "es": "Lehendakari Leizaola 29"
+   },
+   "lat": 43.2675112,
+   "lon": -2.9419191,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "319",
+    "IdPerVertPPElectrolinera": "319",
+    "NombreDireccion": "Lehendakari Leizaola 29",
+    "TV_NOMBRE": "ABANDOIBARRA (AV)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:280",
+   "name": {
+    "es": "Concesionario VW Auvol"
+   },
+   "lat": 43.2626589,
+   "lon": -2.9448848,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "280",
+    "IdPerVertPPElectrolinera": "280",
+    "NombreDireccion": "Concesionario VW Auvol",
+    "TV_NOMBRE": "ESCUZA JOSE MARIA (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:312",
+   "name": {
+    "es": "Jon Arrospide 20"
+   },
+   "lat": 43.2686301,
+   "lon": -2.9502392,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "312",
+    "IdPerVertPPElectrolinera": "312",
+    "NombreDireccion": "Jon Arrospide 20",
+    "TV_NOMBRE": "ARROSPIDE JON (CL)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "104 SAN PEDRO DE DEUSTU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:264",
+   "name": {
+    "es": "BM Sarriko"
+   },
+   "lat": 43.2743183,
+   "lon": -2.9574972,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "264",
+    "IdPerVertPPElectrolinera": "264",
+    "NombreDireccion": "BM Sarriko",
+    "TV_NOMBRE": "BENIDORM (CL)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "103 IBARREKOLANDA",
+    "NumeroPlazas": "4",
+    "NumeroMangeras": "4",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:335",
+   "name": {
+    "es": "BM Sarriko"
+   },
+   "lat": 43.2742561,
+   "lon": -2.9575932,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "335",
+    "IdPerVertPPElectrolinera": "335",
+    "NombreDireccion": "BM Sarriko",
+    "TV_NOMBRE": "BENIDORM (CL)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "103 IBARREKOLANDA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:331",
+   "name": {
+    "es": "Hotel Barcel&#243; Nervi&#243;n"
+   },
+   "lat": 43.2651047,
+   "lon": -2.9250677,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "331",
+    "IdPerVertPPElectrolinera": "331",
+    "NombreDireccion": "Hotel Barcel&#243; Nervi&#243;n",
+    "TV_NOMBRE": "CAMPO VOLANTIN (PS)",
+    "TDIS_DES_NOMBRE": "2 URIBARRI",
+    "TBAR_DES_NOMBRE": "201 CASTA&#209;OS",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:329",
+   "name": {
+    "es": "Hotel Hesperia Bilbao"
+   },
+   "lat": 43.2679085,
+   "lon": -2.9281192,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "329",
+    "IdPerVertPPElectrolinera": "329",
+    "NombreDireccion": "Hotel Hesperia Bilbao",
+    "TV_NOMBRE": "FONTECHA Y SALAZAR (CL)",
+    "TDIS_DES_NOMBRE": "2 URIBARRI",
+    "TBAR_DES_NOMBRE": "201 CASTA&#209;OS",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:78",
+   "name": {
+    "es": "Parking Confersa ADIF"
+   },
+   "lat": 43.2581074,
+   "lon": -2.9285771,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "78",
+    "IdPerVertPPElectrolinera": "38",
+    "NombreDireccion": "Parking Confersa ADIF",
+    "TV_NOMBRE": "BAILEN (CL)",
+    "TDIS_DES_NOMBRE": "5 IBAIONDO",
+    "TBAR_DES_NOMBRE": "507 SAN FRANCISCO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:276",
+   "name": {
+    "es": "Parking Arenal"
+   },
+   "lat": 43.2620215,
+   "lon": -2.922858,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "276",
+    "IdPerVertPPElectrolinera": "276",
+    "NombreDireccion": "Parking Arenal",
+    "TV_NOMBRE": "EPALZA VIUDA DE (CL)",
+    "TDIS_DES_NOMBRE": "5 IBAIONDO",
+    "TBAR_DES_NOMBRE": "501 CASCO VIEJO",
+    "NumeroPlazas": "27",
+    "NumeroMangeras": "27",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:275",
+   "name": {
+    "es": "Funeraria Bilbaina"
+   },
+   "lat": 43.2643014,
+   "lon": -2.9218267,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "275",
+    "IdPerVertPPElectrolinera": "275",
+    "NombreDireccion": "Funeraria Bilbaina",
+    "TV_NOMBRE": "ZUMALCARREGUI (AV)",
+    "TDIS_DES_NOMBRE": "2 URIBARRI",
+    "TBAR_DES_NOMBRE": "204 URIBARRI",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:357",
+   "name": {
+    "es": "Parking Municipal Plaza Euskadi (Calle Ram&#243;n Rubial)"
+   },
+   "lat": 43.2675707,
+   "lon": -2.9377168,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "357",
+    "IdPerVertPPElectrolinera": "357",
+    "NombreDireccion": "Parking Municipal Plaza Euskadi (Calle Ram&#243;n Rubial)",
+    "TV_NOMBRE": "RUBIAL RAMON                                       (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "16",
+    "NumeroMangeras": "16",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:341",
+   "name": {
+    "es": "Hotel Vincci Consulado de Bilbao"
+   },
+   "lat": 43.2678036,
+   "lon": -2.9311842,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "341",
+    "IdPerVertPPElectrolinera": "341",
+    "NombreDireccion": "Hotel Vincci Consulado de Bilbao",
+    "TV_NOMBRE": "MAZARREDO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "4",
+    "NumeroMangeras": "4",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:179",
+   "name": {
+    "es": "Hotel Occidental Bilbao Tesla DC (Zumalac&#225;rregui Etorb., 40)"
+   },
+   "lat": 43.2575808,
+   "lon": -2.9132525,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "179",
+    "IdPerVertPPElectrolinera": "179",
+    "NombreDireccion": "Hotel Occidental Bilbao Tesla DC (Zumalac&#225;rregui Etorb., 40)",
+    "TV_NOMBRE": "MASUSTEGI (CL)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "401 BEGO&#209;A",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:58",
+   "name": {
+    "es": "Lehendakari Leizaola"
+   },
+   "lat": 43.2671466,
+   "lon": -2.9396285,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "58",
+    "IdPerVertPPElectrolinera": "31",
+    "NombreDireccion": "Lehendakari Leizaola",
+    "TV_NOMBRE": "LEIZAOLA LEHENDAKARI (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:316",
+   "name": {
+    "es": "Lehendakari Leizaola 2"
+   },
+   "lat": 43.2679021,
+   "lon": -2.9415413,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "316",
+    "IdPerVertPPElectrolinera": "316",
+    "NombreDireccion": "Lehendakari Leizaola 2",
+    "TV_NOMBRE": "ABANDOIBARRA (AV)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "18",
+    "NumeroMangeras": "18",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:383",
+   "name": {
+    "es": "Parking - La Alh&#243;ndiga (Alameda de Urquijo, 43)"
+   },
+   "lat": 43.2600849,
+   "lon": -2.9365727,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "383",
+    "IdPerVertPPElectrolinera": "383",
+    "NombreDireccion": "Parking - La Alh&#243;ndiga (Alameda de Urquijo, 43)",
+    "TV_NOMBRE": "URQUIJO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "4",
+    "NumeroMangeras": "4",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:270",
+   "name": {
+    "es": "Hotel Gran Bilbao"
+   },
+   "lat": 43.2491343,
+   "lon": -2.9197303,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "270",
+    "IdPerVertPPElectrolinera": "270",
+    "NombreDireccion": "Hotel Gran Bilbao",
+    "TV_NOMBRE": "ORTUTXUETA (CL)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "402 SANTUTXU",
+    "NumeroPlazas": "8",
+    "NumeroMangeras": "8",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:268",
+   "name": {
+    "es": "Lidl Bolueta"
+   },
+   "lat": 43.2470341,
+   "lon": -2.9045463,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "268",
+    "IdPerVertPPElectrolinera": "268",
+    "NombreDireccion": "Lidl Bolueta",
+    "TV_NOMBRE": "TELLERIA (CL)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "403 BOLUETA",
+    "NumeroPlazas": "4",
+    "NumeroMangeras": "4",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:171",
+   "name": {
+    "es": "Parking Zabalburu"
+   },
+   "lat": 43.2570023,
+   "lon": -2.933745,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "171",
+    "IdPerVertPPElectrolinera": "171",
+    "NombreDireccion": "Parking Zabalburu",
+    "TV_NOMBRE": "JUAN DE GARAY (CL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "6",
+    "NumeroMangeras": "6",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:281",
+   "name": {
+    "es": "Mercadona Urquijo"
+   },
+   "lat": 43.262405,
+   "lon": -2.9475536,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "281",
+    "IdPerVertPPElectrolinera": "281",
+    "NombreDireccion": "Mercadona Urquijo",
+    "TV_NOMBRE": "URQUIJO (AL)",
+    "TDIS_DES_NOMBRE": "8 BASURTU-ZORROTZA",
+    "TBAR_DES_NOMBRE": "801 BASURTU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:28",
+   "name": {
+    "es": "Sabino Arana 53"
+   },
+   "lat": 43.2587302,
+   "lon": -2.9477418,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "28",
+    "IdPerVertPPElectrolinera": "28",
+    "NombreDireccion": "Sabino Arana 53",
+    "TV_NOMBRE": "ARANA SABINO                                       (AV)",
+    "TDIS_DES_NOMBRE": "8 BASURTU-ZORROTZA",
+    "TBAR_DES_NOMBRE": "801 BASURTU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:210",
+   "name": {
+    "es": "Asador Arraiz(Arraiz Bidea, 116)"
+   },
+   "lat": 43.2416932,
+   "lon": -2.9603222,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "210",
+    "IdPerVertPPElectrolinera": "210",
+    "NombreDireccion": "Asador Arraiz(Arraiz Bidea, 116)",
+    "TV_NOMBRE": "ARRAIZBIDEA (CM)",
+    "TDIS_DES_NOMBRE": "7 ERREKALDE",
+    "TBAR_DES_NOMBRE": "707 DISEMINADO",
+    "NumeroPlazas": "3",
+    "NumeroMangeras": "3",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:193",
+   "name": {
+    "es": "Parking Intermodal Bilbao (privado)"
+   },
+   "lat": 43.2616878,
+   "lon": -2.9504414,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "193",
+    "IdPerVertPPElectrolinera": "193",
+    "NombreDireccion": "Parking Intermodal Bilbao (privado)",
+    "TV_NOMBRE": "GURTUBAY (CL)",
+    "TDIS_DES_NOMBRE": "8 BASURTU-ZORROTZA",
+    "TBAR_DES_NOMBRE": "801 BASURTU",
+    "NumeroPlazas": "16",
+    "NumeroMangeras": "16",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:269",
+   "name": {
+    "es": "Mercadona Bolueta"
+   },
+   "lat": 43.2475675,
+   "lon": -2.9080788,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "269",
+    "IdPerVertPPElectrolinera": "269",
+    "NombreDireccion": "Mercadona Bolueta",
+    "TV_NOMBRE": "BILBAO-GALDAKAO (CR)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "403 BOLUETA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:274",
+   "name": {
+    "es": "Centro Comercial Miribilla"
+   },
+   "lat": 43.2501773,
+   "lon": -2.9308289,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "274",
+    "IdPerVertPPElectrolinera": "274",
+    "NombreDireccion": "Centro Comercial Miribilla",
+    "TV_NOMBRE": "SANTIAGO DE COMPOSTELA                             (CL)",
+    "TDIS_DES_NOMBRE": "5 IBAIONDO",
+    "TBAR_DES_NOMBRE": "511 MIRIBILLA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:79",
+   "name": {
+    "es": "Parking Eroski Bolueta"
+   },
+   "lat": 43.2482759,
+   "lon": -2.9048894,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "79",
+    "IdPerVertPPElectrolinera": "39",
+    "NombreDireccion": "Parking Eroski Bolueta",
+    "TV_NOMBRE": "BILBAO-GALDAKAO (CR)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "403 BOLUETA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:266",
+   "name": {
+    "es": "McDonalds Bolueta"
+   },
+   "lat": 43.2484359,
+   "lon": -2.9039972,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "266",
+    "IdPerVertPPElectrolinera": "266",
+    "NombreDireccion": "McDonalds Bolueta",
+    "TV_NOMBRE": "BILBAO-GALDAKAO (CR)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "403 BOLUETA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "3",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:267",
+   "name": {
+    "es": "Concesionario Alzaga Bolueta"
+   },
+   "lat": 43.2486078,
+   "lon": -2.9031147,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "267",
+    "IdPerVertPPElectrolinera": "267",
+    "NombreDireccion": "Concesionario Alzaga Bolueta",
+    "TV_NOMBRE": "BILBAO-GALDAKAO                                    (CR)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "403 BOLUETA",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "2",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:158",
+   "name": {
+    "es": "Parking Indautxu( Plaza Indautxu, 2)"
+   },
+   "lat": 43.2607452,
+   "lon": -2.9409528,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "158",
+    "IdPerVertPPElectrolinera": "158",
+    "NombreDireccion": "Parking Indautxu( Plaza Indautxu, 2)",
+    "TV_NOMBRE": "URQUIJO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "602 INDAUTXU",
+    "NumeroPlazas": "3",
+    "NumeroMangeras": "3",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:325",
+   "name": {
+    "es": "Hotel Livensa Living Studios, Madariaga Etorbidea 58"
+   },
+   "lat": 43.2710423,
+   "lon": -2.9574042,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "325",
+    "IdPerVertPPElectrolinera": "325",
+    "NombreDireccion": "Hotel Livensa Living Studios, Madariaga Etorbidea 58",
+    "TV_NOMBRE": "MADARIAGA                                          (AV)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "104 SAN PEDRO DE DEUSTU",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:23",
+   "name": {
+    "es": "Plaza Ugarteko"
+   },
+   "lat": 43.273574,
+   "lon": -2.9547815,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "23",
+    "IdPerVertPPElectrolinera": "23",
+    "NombreDireccion": "Plaza Ugarteko",
+    "TV_NOMBRE": "UGARTEKO (PL)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "103 IBARREKOLANDA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:315",
+   "name": {
+    "es": "Avenida Abandoibarra"
+   },
+   "lat": 43.2681244,
+   "lon": -2.9329247,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "315",
+    "IdPerVertPPElectrolinera": "315",
+    "NombreDireccion": "Avenida Abandoibarra",
+    "TV_NOMBRE": "ABANDOIBARRA (AV)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:24",
+   "name": {
+    "es": "Virgen de Bego&#241;a Kalea, 43"
+   },
+   "lat": 43.2590845,
+   "lon": -2.9143674,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "24",
+    "IdPerVertPPElectrolinera": "24",
+    "NombreDireccion": "Virgen de Bego&#241;a Kalea, 43",
+    "TV_NOMBRE": "VIRGEN DE BEGO&#209;A (CL)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "401 BEGO&#209;A",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:272",
+   "name": {
+    "es": "Gasolinera Repsol Bizkaia"
+   },
+   "lat": 43.2485831,
+   "lon": -2.9248798,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "272",
+    "IdPerVertPPElectrolinera": "272",
+    "NombreDireccion": "Gasolinera Repsol Bizkaia",
+    "TV_NOMBRE": "MIRAFLORES-LARREAGABURU                            (VC)",
+    "TDIS_DES_NOMBRE": "5 IBAIONDO",
+    "TBAR_DES_NOMBRE": "505 LA PE&#209;A",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:271",
+   "name": {
+    "es": "Gasolinera Repsol Miribilla"
+   },
+   "lat": 43.2476376,
+   "lon": -2.9241663,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "271",
+    "IdPerVertPPElectrolinera": "271",
+    "NombreDireccion": "Gasolinera Repsol Miribilla",
+    "TV_NOMBRE": "MIRAFLORES-LARREAGABURU                            (VC)",
+    "TDIS_DES_NOMBRE": "5 IBAIONDO",
+    "TBAR_DES_NOMBRE": "505 LA PE&#209;A",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:30",
+   "name": {
+    "es": "Gernika Lorategia 25"
+   },
+   "lat": 43.2490388,
+   "lon": -2.9265544,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "30",
+    "IdPerVertPPElectrolinera": "30",
+    "NombreDireccion": "Gernika Lorategia 25",
+    "TV_NOMBRE": "GERNIKA (JS)",
+    "TDIS_DES_NOMBRE": "5 IBAIONDO",
+    "TBAR_DES_NOMBRE": "511 MIRIBILLA",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:177",
+   "name": {
+    "es": "Parking El Karmelo Bilbao(Karmelo Kalea, 15)"
+   },
+   "lat": 43.2541677,
+   "lon": -2.911544,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "177",
+    "IdPerVertPPElectrolinera": "177",
+    "NombreDireccion": "Parking El Karmelo Bilbao(Karmelo Kalea, 15)",
+    "TV_NOMBRE": "KARMELO (CL)",
+    "TDIS_DES_NOMBRE": "4 BEGO&#209;A",
+    "TBAR_DES_NOMBRE": "402 SANTUTXU",
+    "NumeroPlazas": "6",
+    "NumeroMangeras": "6",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Parking municipal en concesi&#243;n"
+   }
+  },
+  {
+   "id": "ev:265",
+   "name": {
+    "es": "Zurbarambarri"
+   },
+   "lat": 43.2652277,
+   "lon": -2.9108686,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "265",
+    "IdPerVertPPElectrolinera": "265",
+    "NombreDireccion": "Zurbarambarri",
+    "TV_NOMBRE": "ZURBARANBARRI (BO)",
+    "TDIS_DES_NOMBRE": "2 URIBARRI",
+    "TBAR_DES_NOMBRE": "205 ZURBARAN",
+    "NumeroPlazas": "1",
+    "NumeroMangeras": "1",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:309",
+   "name": {
+    "es": "Heliodoro de la Torre"
+   },
+   "lat": 43.2707928,
+   "lon": -2.9440299,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "309",
+    "IdPerVertPPElectrolinera": "309",
+    "NombreDireccion": "Heliodoro de la Torre",
+    "TV_NOMBRE": "TORRE HELIODORO DE LA (CL)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "104 SAN PEDRO DE DEUSTU",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:261",
+   "name": {
+    "es": "Escuela Superior de Hosteler&#237;a"
+   },
+   "lat": 43.2795773,
+   "lon": -2.9408537,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "261",
+    "IdPerVertPPElectrolinera": "261",
+    "NombreDireccion": "Escuela Superior de Hosteler&#237;a",
+    "TV_NOMBRE": "ENEKURI-ARTXANDA                                   (CR)",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "107 DISEMINADO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:262",
+   "name": {
+    "es": "Hotel Artetxe"
+   },
+   "lat": 43.2791814,
+   "lon": -2.9459948,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "262",
+    "IdPerVertPPElectrolinera": "262",
+    "NombreDireccion": "Hotel Artetxe",
+    "TV_NOMBRE": "",
+    "TDIS_DES_NOMBRE": "1 DEUSTU",
+    "TBAR_DES_NOMBRE": "107 DISEMINADO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "R&#225;pida (43-50 kW)",
+    "TipoC": "2",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:161",
+   "name": {
+    "es": "Gran Hotel Domine (Tesla DC)"
+   },
+   "lat": 43.2675394,
+   "lon": -2.9338018,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "161",
+    "IdPerVertPPElectrolinera": "161",
+    "NombreDireccion": "Gran Hotel Domine (Tesla DC)",
+    "TV_NOMBRE": "MAZARREDO (AL)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  },
+  {
+   "id": "ev:339",
+   "name": {
+    "es": "Isozaki Dorreak"
+   },
+   "lat": 43.2656487,
+   "lon": -2.9290218,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "339",
+    "IdPerVertPPElectrolinera": "339",
+    "NombreDireccion": "Isozaki Dorreak",
+    "TV_NOMBRE": "",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "6",
+    "NumeroMangeras": "6",
+    "TipoCarga": "Lenta (3-7 kW)",
+    "TipoC": "0",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:340",
+   "name": {
+    "es": "Isozaki Dorreak"
+   },
+   "lat": 43.2656489,
+   "lon": -2.9290274,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "340",
+    "IdPerVertPPElectrolinera": "340",
+    "NombreDireccion": "Isozaki Dorreak",
+    "TV_NOMBRE": "",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": "Privado"
+   }
+  },
+  {
+   "id": "ev:27",
+   "name": {
+    "es": "Paseo Uribitarte"
+   },
+   "lat": 43.2647955,
+   "lon": -2.927091,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "27",
+    "IdPerVertPPElectrolinera": "27",
+    "NombreDireccion": "Paseo Uribitarte",
+    "TV_NOMBRE": "URIBITARTE (PS)",
+    "TDIS_DES_NOMBRE": "6 ABANDO",
+    "TBAR_DES_NOMBRE": "601 ABANDO",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Ultrar&#225;pida (80-120-160kW)",
+    "TipoC": "3",
+    "Origen": "Concesi&#243;n demanial uso espacio p&#250;blico"
+   }
+  },
+  {
+   "id": "ev:160",
+   "name": {
+    "es": "Hotel Hesperia Bilbao, Plaza Euskadi (Tesla DC)(c/Ram&#243;n Rubial y por Avda. Mazarredo)"
+   },
+   "lat": 43.2671244,
+   "lon": -2.9386422,
+   "category": "ev_charger",
+   "layer_id": "ev",
+   "source_id": "ev_ocm",
+   "territory": "bizkaia",
+   "tags": {
+    "IdVrtPPElectrolinera": "160",
+    "IdPerVertPPElectrolinera": "160",
+    "NombreDireccion": "Hotel Hesperia Bilbao, Plaza Euskadi (Tesla DC)(c/Ram&#243;n Rubial y por Avda. Mazarredo)",
+    "TV_NOMBRE": "",
+    "TDIS_DES_NOMBRE": "",
+    "TBAR_DES_NOMBRE": "",
+    "NumeroPlazas": "2",
+    "NumeroMangeras": "2",
+    "TipoCarga": "Semir&#225;pida (11-22 kW)",
+    "TipoC": "1",
+    "Origen": ""
+   }
+  }
+ ]
+}

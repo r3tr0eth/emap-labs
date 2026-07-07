@@ -1,0 +1,44 @@
+name: evals
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  baseline:
+    name: baseline (gate rápido, sin modelo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pyyaml
+      # umbrales = resultado actual − margen de ruido; si bajan, algo se rompió
+      - run: python evals/run.py --retriever baseline --lang es --min-pass 73
+      - run: python evals/run.py --retriever baseline --lang eu --min-pass 72
+      - run: python evals/run.py --retriever baseline --lang es --split heldout --min-pass 60
+      - run: python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 57
+
+  hybrid:
+    name: hybrid (semántico, con caché de modelo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Caché del modelo de embeddings
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/fastembed
+          key: fastembed-minilm-multilingual-v1
+      - run: pip install pyyaml numpy fastembed
+      # criterio de despliegue del README: batir al baseline en held-out en ambos idiomas
+      - run: python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 72
+      - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 65
+      - run: python evals/run.py --retriever hybrid --lang es --min-pass 80

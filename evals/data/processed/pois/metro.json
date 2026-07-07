@@ -1,0 +1,835 @@
+{
+ "version": 1,
+ "territory": "bizkaia",
+ "layer_id": "metro",
+ "source_id": "metro_bilbao_gtfs",
+ "derived_from": "metro-stations",
+ "source_updated": "2026-06-23",
+ "count": 42,
+ "dropped": 0,
+ "pois": [
+  {
+   "id": "metro:7",
+   "name": {
+    "es": "Abando",
+    "eu": "Abando"
+   },
+   "lat": 43.2614,
+   "lon": -2.92761,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "7"
+  },
+  {
+   "id": "metro:38",
+   "name": {
+    "es": "Abatxolo",
+    "eu": "Abatxolo"
+   },
+   "lat": 43.31436,
+   "lon": -3.01357,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "38"
+  },
+  {
+   "id": "metro:22",
+   "name": {
+    "es": "Aiboa",
+    "eu": "Aiboa"
+   },
+   "lat": 43.34414,
+   "lon": -3.00267,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "22"
+  },
+  {
+   "id": "metro:23",
+   "name": {
+    "es": "Algorta",
+    "eu": "Algorta"
+   },
+   "lat": 43.35045,
+   "lon": -3.00935,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "23"
+  },
+  {
+   "id": "metro:33",
+   "name": {
+    "es": "Ansio",
+    "eu": "Ansio"
+   },
+   "lat": 43.28919,
+   "lon": -2.98716,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "33"
+  },
+  {
+   "id": "metro:19",
+   "name": {
+    "es": "Areeta",
+    "eu": "Areeta"
+   },
+   "lat": 43.32595,
+   "lon": -3.00961,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "19"
+  },
+  {
+   "id": "metro:1",
+   "name": {
+    "es": "Ariz",
+    "eu": "Ariz"
+   },
+   "lat": 43.23801,
+   "lon": -2.88203,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "1"
+  },
+  {
+   "id": "metro:16",
+   "name": {
+    "es": "Astrabudua",
+    "eu": "Astrabudua"
+   },
+   "lat": 43.31463,
+   "lon": -2.98681,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "16"
+  },
+  {
+   "id": "metro:35",
+   "name": {
+    "es": "Bagatza",
+    "eu": "Bagatza"
+   },
+   "lat": 43.29885,
+   "lon": -2.99268,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "35"
+  },
+  {
+   "id": "metro:34",
+   "name": {
+    "es": "Barakaldo",
+    "eu": "Barakaldo"
+   },
+   "lat": 43.29563,
+   "lon": -2.98936,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "34"
+  },
+  {
+   "id": "metro:4",
+   "name": {
+    "es": "Basarrate",
+    "eu": "Basarrate"
+   },
+   "lat": 43.25116,
+   "lon": -2.91082,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "4"
+  },
+  {
+   "id": "metro:51",
+   "name": {
+    "es": "Basauri",
+    "eu": "Basauri"
+   },
+   "lat": 43.23624,
+   "lon": -2.8934,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "51"
+  },
+  {
+   "id": "metro:26",
+   "name": {
+    "es": "Berango",
+    "eu": "Berango"
+   },
+   "lat": 43.36704,
+   "lon": -2.99949,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "26"
+  },
+  {
+   "id": "metro:24",
+   "name": {
+    "es": "Bidezabal",
+    "eu": "Bidezabal"
+   },
+   "lat": 43.35644,
+   "lon": -3.01127,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "24"
+  },
+  {
+   "id": "metro:3",
+   "name": {
+    "es": "Bolueta",
+    "eu": "Bolueta"
+   },
+   "lat": 43.247,
+   "lon": -2.90573,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "3"
+  },
+  {
+   "id": "metro:11",
+   "name": {
+    "es": "Deustu",
+    "eu": "Deustu"
+   },
+   "lat": 43.27145,
+   "lon": -2.94954,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "11"
+  },
+  {
+   "id": "metro:15",
+   "name": {
+    "es": "Erandio",
+    "eu": "Erandio"
+   },
+   "lat": 43.30338,
+   "lon": -2.97437,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "15"
+  },
+  {
+   "id": "metro:2",
+   "name": {
+    "es": "Etxebarri",
+    "eu": "Etxebarri"
+   },
+   "lat": 43.24386,
+   "lon": -2.89771,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "2"
+  },
+  {
+   "id": "metro:20",
+   "name": {
+    "es": "Gobela",
+    "eu": "Gobela"
+   },
+   "lat": 43.33308,
+   "lon": -3.00735,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "20"
+  },
+  {
+   "id": "metro:32",
+   "name": {
+    "es": "Gurutzeta/Cruces",
+    "eu": "Gurutzeta/Cruces"
+   },
+   "lat": 43.28301,
+   "lon": -2.98245,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "32"
+  },
+  {
+   "id": "metro:25",
+   "name": {
+    "es": "Ibarbengoa",
+    "eu": "Ibarbengoa"
+   },
+   "lat": 43.3632,
+   "lon": -3.00699,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "25"
+  },
+  {
+   "id": "metro:9",
+   "name": {
+    "es": "Indautxu",
+    "eu": "Indautxu"
+   },
+   "lat": 43.26127,
+   "lon": -2.94179,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "9"
+  },
+  {
+   "id": "metro:42",
+   "name": {
+    "es": "Kabiezes",
+    "eu": "Kabiezes"
+   },
+   "lat": 43.32238,
+   "lon": -3.03777,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "42"
+  },
+  {
+   "id": "metro:18",
+   "name": {
+    "es": "Lamiako",
+    "eu": "Lamiako"
+   },
+   "lat": 43.32133,
+   "lon": -3.00102,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "18"
+  },
+  {
+   "id": "metro:27",
+   "name": {
+    "es": "Larrabasterra",
+    "eu": "Larrabasterra"
+   },
+   "lat": 43.37573,
+   "lon": -2.99147,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "27"
+  },
+  {
+   "id": "metro:17",
+   "name": {
+    "es": "Leioa",
+    "eu": "Leioa"
+   },
+   "lat": 43.31788,
+   "lon": -2.99168,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "17"
+  },
+  {
+   "id": "metro:14",
+   "name": {
+    "es": "Lutxana",
+    "eu": "Lutxana"
+   },
+   "lat": 43.29098,
+   "lon": -2.96992,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "14"
+  },
+  {
+   "id": "metro:8",
+   "name": {
+    "es": "Moyua",
+    "eu": "Moyua"
+   },
+   "lat": 43.26259,
+   "lon": -2.93308,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "8"
+  },
+  {
+   "id": "metro:21",
+   "name": {
+    "es": "Neguri",
+    "eu": "Neguri"
+   },
+   "lat": 43.34024,
+   "lon": -3.00562,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "21"
+  },
+  {
+   "id": "metro:40",
+   "name": {
+    "es": "Peñota",
+    "eu": "Peñota"
+   },
+   "lat": 43.32198,
+   "lon": -3.0254,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "40"
+  },
+  {
+   "id": "metro:30",
+   "name": {
+    "es": "Plentzia",
+    "eu": "Plentzia"
+   },
+   "lat": 43.40134,
+   "lon": -2.94636,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "30"
+  },
+  {
+   "id": "metro:39",
+   "name": {
+    "es": "Portugalete",
+    "eu": "Portugalete"
+   },
+   "lat": 43.31777,
+   "lon": -3.02076,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "39"
+  },
+  {
+   "id": "metro:13",
+   "name": {
+    "es": "San Ignazio",
+    "eu": "San Ignazio"
+   },
+   "lat": 43.28068,
+   "lon": -2.96239,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "13"
+  },
+  {
+   "id": "metro:10",
+   "name": {
+    "es": "Santimami/San Mamés",
+    "eu": "Santimami/San Mamés"
+   },
+   "lat": 43.26252,
+   "lon": -2.94751,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "10"
+  },
+  {
+   "id": "metro:41",
+   "name": {
+    "es": "Santurtzi",
+    "eu": "Santurtzi"
+   },
+   "lat": 43.32895,
+   "lon": -3.03421,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "41"
+  },
+  {
+   "id": "metro:5",
+   "name": {
+    "es": "Santutxu",
+    "eu": "Santutxu"
+   },
+   "lat": 43.2543,
+   "lon": -2.91335,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "5"
+  },
+  {
+   "id": "metro:12",
+   "name": {
+    "es": "Sarriko",
+    "eu": "Sarriko"
+   },
+   "lat": 43.27495,
+   "lon": -2.95874,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "12"
+  },
+  {
+   "id": "metro:37",
+   "name": {
+    "es": "Sestao",
+    "eu": "Sestao"
+   },
+   "lat": 43.30912,
+   "lon": -3.00567,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "37"
+  },
+  {
+   "id": "metro:28",
+   "name": {
+    "es": "Sopela",
+    "eu": "Sopela"
+   },
+   "lat": 43.38021,
+   "lon": -2.97899,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "28"
+  },
+  {
+   "id": "metro:36",
+   "name": {
+    "es": "Urbinaga",
+    "eu": "Urbinaga"
+   },
+   "lat": 43.3057,
+   "lon": -2.9926,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "36"
+  },
+  {
+   "id": "metro:29",
+   "name": {
+    "es": "Urduliz",
+    "eu": "Urduliz"
+   },
+   "lat": 43.379,
+   "lon": -2.95811,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1"
+    ]
+   },
+   "realtime_key": "29"
+  },
+  {
+   "id": "metro:6",
+   "name": {
+    "es": "Zazpikaleak/Casco Viejo",
+    "eu": "Zazpikaleak/Casco Viejo"
+   },
+   "lat": 43.25968,
+   "lon": -2.92071,
+   "category": "stop_metro",
+   "layer_id": "metro",
+   "source_id": "metro_bilbao_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "L1",
+     "L2"
+    ]
+   },
+   "realtime_key": "6"
+  }
+ ]
+}

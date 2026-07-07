@@ -1,0 +1,2630 @@
+{
+ "version": 1,
+ "territory": "bizkaia",
+ "layer_id": "cameras",
+ "source_id": "cameras_bilbao",
+ "derived_from": "traffic-cameras",
+ "source_updated": null,
+ "count": 119,
+ "dropped": 0,
+ "pois": [
+  {
+   "id": "cameras:3872",
+   "name": {
+    "es": "BERNAOLA ASC TER-2"
+   },
+   "lat": 43.27079623790335,
+   "lon": -2.955970967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "3872",
+    "Camid": "168",
+    "Nombre": "BERNAOLA ASC TER-2",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "3872",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "BERNAOLA ASC TER-2",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0168/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:3873",
+   "name": {
+    "es": "BERNAOLA ASC TER-1"
+   },
+   "lat": 43.26982173790335,
+   "lon": -2.956003167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "3873",
+    "Camid": "167",
+    "Nombre": "BERNAOLA ASC TER-1",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "3873",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "BERNAOLA ASC TER-1",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0167/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:3886",
+   "name": {
+    "es": "BERNAOLA ASC TER-3"
+   },
+   "lat": 43.27268863790335,
+   "lon": -2.955568567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "3886",
+    "Camid": "169",
+    "Nombre": "BERNAOLA ASC TER-3",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "3886",
+    "Rotacion_SPA": "20.695450695242787",
+    "Texto_SPA": "BERNAOLA ASC TER-3",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0169/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:3960",
+   "name": {
+    "es": "Av. Miraflores/Pintor Losada"
+   },
+   "lat": 43.24674953790335,
+   "lon": -2.912330267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "3960",
+    "Camid": "47",
+    "Nombre": "Av. Miraflores/Pintor Losada",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "3960",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Av. Miraflores/Pintor Losada",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0047/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4061",
+   "name": {
+    "es": "PC15_ITURRIBIDE_ENT"
+   },
+   "lat": 43.25767843790335,
+   "lon": -2.918402967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4061",
+    "Camid": "129",
+    "Nombre": "PC15_ITURRIBIDE_ENT",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4061",
+    "Rotacion_SPA": "-46.080924122056594",
+    "Texto_SPA": "PC15_ITURRIBIDE_ENT",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0129/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4062",
+   "name": {
+    "es": "PC26_ITURRIBIDE_SAL"
+   },
+   "lat": 43.25686073790335,
+   "lon": -2.916243967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4062",
+    "Camid": "140",
+    "Nombre": "PC26_ITURRIBIDE_SAL",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4062",
+    "Rotacion_SPA": "43.542343232687685",
+    "Texto_SPA": "PC26_ITURRIBIDE_SAL",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0140/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4066",
+   "name": {
+    "es": "PC21_ESTUFA_SAL"
+   },
+   "lat": 43.26059683790335,
+   "lon": -2.922647467775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4066",
+    "Camid": "135",
+    "Nombre": "PC21_ESTUFA_SAL",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4066",
+    "Rotacion_SPA": "167.80106035788884",
+    "Texto_SPA": "PC21_ESTUFA_SAL",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0135/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4073",
+   "name": {
+    "es": "PC22_ESPERANZA_SAL"
+   },
+   "lat": 43.26209353790335,
+   "lon": -2.922683867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4073",
+    "Camid": "136",
+    "Nombre": "PC22_ESPERANZA_SAL",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4073",
+    "Rotacion_SPA": "-2.7263109995910186",
+    "Texto_SPA": "PC22_ESPERANZA_SAL",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0136/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4074",
+   "name": {
+    "es": "Iparraguirre/Alda. Urquijo"
+   },
+   "lat": 43.26041793790335,
+   "lon": -2.9375139677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4074",
+    "Camid": "26",
+    "Nombre": "Iparraguirre/Alda. Urquijo",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4074",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Iparraguirre/Alda. Urquijo",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0026/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4075",
+   "name": {
+    "es": "Autonom&#237;a/Gord&#243;niz"
+   },
+   "lat": 43.25750273790335,
+   "lon": -2.941314167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4075",
+    "Camid": "4",
+    "Nombre": "Autonom&#237;a/Gord&#243;niz",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4075",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Autonom&#237;a/Gord&#243;niz",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0004/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4076",
+   "name": {
+    "es": "Sabino Arana/Av. Ferrocarril"
+   },
+   "lat": 43.26054943790335,
+   "lon": -2.946875667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4076",
+    "Camid": "2",
+    "Nombre": "Sabino Arana/Av. Ferrocarril",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4076",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Sabino Arana/Av. Ferrocarril",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0002/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4077",
+   "name": {
+    "es": "M. D&#237;az de Haro/Sim&#243;n Bol&#237;var"
+   },
+   "lat": 43.26065663790335,
+   "lon": -2.9445240677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4077",
+    "Camid": "1",
+    "Nombre": "M. D&#237;az de Haro/Sim&#243;n Bol&#237;var",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4077",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "M. D&#237;az de Haro/Sim&#243;n Bol&#237;var",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0001/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4079",
+   "name": {
+    "es": "Gord&#243;niz/Ja&#233;n"
+   },
+   "lat": 43.25465973790335,
+   "lon": -2.944539867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4079",
+    "Camid": "31",
+    "Nombre": "Gord&#243;niz/Ja&#233;n",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4079",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Gord&#243;niz/Ja&#233;n",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0031/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4080",
+   "name": {
+    "es": "Rguez.Arias/Alda. Rekalde"
+   },
+   "lat": 43.26188243790335,
+   "lon": -2.935533667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4080",
+    "Camid": "41",
+    "Nombre": "Rguez.Arias/Alda. Rekalde",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4080",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Rguez.Arias/Alda. Rekalde",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0041/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4081",
+   "name": {
+    "es": "Plza. Museo"
+   },
+   "lat": 43.26640123790335,
+   "lon": -2.9383852677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4081",
+    "Camid": "5",
+    "Nombre": "Plza. Museo",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4081",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Museo",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0005/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4082",
+   "name": {
+    "es": "Jardines Albia"
+   },
+   "lat": 43.26284973790335,
+   "lon": -2.929037367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4082",
+    "Camid": "9",
+    "Nombre": "Jardines Albia",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4082",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Jardines Albia",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0009/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4083",
+   "name": {
+    "es": "Plza. P&#237;o X"
+   },
+   "lat": 43.27135973790335,
+   "lon": -2.941474267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4083",
+    "Camid": "6",
+    "Nombre": "Plza. P&#237;o X",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4083",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. P&#237;o X",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0006/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4084",
+   "name": {
+    "es": "Elorrieta/Avda. Zarandoa"
+   },
+   "lat": 43.28362883790335,
+   "lon": -2.966955867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4084",
+    "Camid": "78",
+    "Nombre": "Elorrieta/Avda. Zarandoa",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4084",
+    "Rotacion_SPA": "-131.4",
+    "Texto_SPA": "Elorrieta/Avda. Zarandoa",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0078/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4085",
+   "name": {
+    "es": "Dr. Areilza/Alda. Urquijo"
+   },
+   "lat": 43.26135093790335,
+   "lon": -2.942427767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4085",
+    "Camid": "7",
+    "Nombre": "Dr. Areilza/Alda. Urquijo",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4085",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Dr. Areilza/Alda. Urquijo",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0007/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4093",
+   "name": {
+    "es": "General Concha/Alda. Urquijo"
+   },
+   "lat": 43.25964283790335,
+   "lon": -2.934670167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4093",
+    "Camid": "12",
+    "Nombre": "General Concha/Alda. Urquijo",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4093",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "General Concha/Alda. Urquijo",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0012/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4094",
+   "name": {
+    "es": "Indalecio Prieto/Santutxu"
+   },
+   "lat": 43.25018863790335,
+   "lon": -2.917024667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4094",
+    "Camid": "43",
+    "Nombre": "Indalecio Prieto/Santutxu",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4094",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Indalecio Prieto/Santutxu",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0043/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4095",
+   "name": {
+    "es": "Juan de Garay/Ramal autopista"
+   },
+   "lat": 43.25038263790335,
+   "lon": -2.935062167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4095",
+    "Camid": "28",
+    "Nombre": "Juan de Garay/Ramal autopista",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4095",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Juan de Garay/Ramal autopista",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0028/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4096",
+   "name": {
+    "es": "Paseo Uribitarte (Rotonda)"
+   },
+   "lat": 43.26827963790335,
+   "lon": -2.930955767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4096",
+    "Camid": "37",
+    "Nombre": "Paseo Uribitarte (Rotonda)",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4096",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Paseo Uribitarte (Rotonda)",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0037/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4097",
+   "name": {
+    "es": "Sdo. Coraz&#243;n Norte (Parque)"
+   },
+   "lat": 43.26524783790335,
+   "lon": -2.945200867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4097",
+    "Camid": "35",
+    "Nombre": "Sdo. Coraz&#243;n Norte (Parque)",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4097",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Sdo. Coraz&#243;n Norte (Parque)",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0035/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4098",
+   "name": {
+    "es": "Sdo. Coraz&#243;n Sur (Sabino Arana)"
+   },
+   "lat": 43.26522433790335,
+   "lon": -2.945207767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4098",
+    "Camid": "33",
+    "Nombre": "Sdo. Coraz&#243;n Sur (Sabino Arana)",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4098",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Sdo. Coraz&#243;n Sur (Sabino Arana)",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0033/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4099",
+   "name": {
+    "es": "Sdo. Coraz&#243;n Este (Gran V&#237;a)"
+   },
+   "lat": 43.26523283790335,
+   "lon": -2.945184867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4099",
+    "Camid": "34",
+    "Nombre": "Sdo. Coraz&#243;n Este (Gran V&#237;a)",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4099",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Sdo. Coraz&#243;n Este (Gran V&#237;a)",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0034/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4100",
+   "name": {
+    "es": "Henao/Heros"
+   },
+   "lat": 43.26468883790335,
+   "lon": -2.932552067775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4100",
+    "Camid": "42",
+    "Nombre": "Henao/Heros",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4100",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Henao/Heros",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0042/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4101",
+   "name": {
+    "es": "Sdo. Coraz&#243;n Oeste (Olabeaga)"
+   },
+   "lat": 43.26523233790335,
+   "lon": -2.9452184677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4101",
+    "Camid": "32",
+    "Nombre": "Sdo. Coraz&#243;n Oeste (Olabeaga)",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4101",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Sdo. Coraz&#243;n Oeste (Olabeaga)",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0032/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4104",
+   "name": {
+    "es": "Artalandio/Juli&#225;n Gaiarre"
+   },
+   "lat": 43.25520183790335,
+   "lon": -2.901190667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4104",
+    "Camid": "40",
+    "Nombre": "Artalandio/Juli&#225;n Gaiarre",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4104",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Artalandio/Juli&#225;n Gaiarre",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0040/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4105",
+   "name": {
+    "es": "Jardines Gernika/Gortazar"
+   },
+   "lat": 43.248447637903354,
+   "lon": -2.926206967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4105",
+    "Camid": "38",
+    "Nombre": "Jardines Gernika/Gortazar",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4105",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Jardines Gernika/Gortazar",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0038/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4107",
+   "name": {
+    "es": "Avda. Txomin Garat"
+   },
+   "lat": 43.25735873790335,
+   "lon": -2.910064467775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4107",
+    "Camid": "21",
+    "Nombre": "Avda. Txomin Garat",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4107",
+    "Rotacion_SPA": "-74.74",
+    "Texto_SPA": "Avda. Txomin Garat",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0021/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4108",
+   "name": {
+    "es": "Avda. Leizaola/Abandoibarra"
+   },
+   "lat": 43.26781393790335,
+   "lon": -2.942291167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4108",
+    "Camid": "36",
+    "Nombre": "Avda. Leizaola/Abandoibarra",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4108",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Avda. Leizaola/Abandoibarra",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0036/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4110",
+   "name": {
+    "es": "Hurtado de Am&#233;zaga"
+   },
+   "lat": 43.25937393790335,
+   "lon": -2.930554367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4110",
+    "Camid": "19",
+    "Nombre": "Hurtado de Am&#233;zaga",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4110",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Hurtado de Am&#233;zaga",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0019/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4111",
+   "name": {
+    "es": "Lehendakari Aguirre/Avda. Enekuri"
+   },
+   "lat": 43.27207213790335,
+   "lon": -2.947412467775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4111",
+    "Camid": "16",
+    "Nombre": "Lehendakari Aguirre/Avda. Enekuri",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4111",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Lehendakari Aguirre/Avda. Enekuri",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0016/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4113",
+   "name": {
+    "es": "Sabino Arana/Autonomia"
+   },
+   "lat": 43.25804513790335,
+   "lon": -2.9480646677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4113",
+    "Camid": "68",
+    "Nombre": "Sabino Arana/Autonomia",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4113",
+    "Rotacion_SPA": "3.16",
+    "Texto_SPA": "Sabino Arana/Autonomia",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0068/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4115",
+   "name": {
+    "es": "Avda. Zumalacarregui/San Isidro"
+   },
+   "lat": 43.26155923790335,
+   "lon": -2.915597567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4115",
+    "Camid": "57",
+    "Nombre": "Avda. Zumalacarregui/San Isidro",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4115",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Avda. Zumalacarregui/San Isidro",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0057/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4118",
+   "name": {
+    "es": "Plza. Birjinetxe"
+   },
+   "lat": 43.256403637903354,
+   "lon": -2.904321567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4118",
+    "Camid": "66",
+    "Nombre": "Plza. Birjinetxe",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4118",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Birjinetxe",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0066/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4119",
+   "name": {
+    "es": "Gurtubay/General Eguia"
+   },
+   "lat": 43.26091953790335,
+   "lon": -2.951069567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4119",
+    "Camid": "61",
+    "Nombre": "Gurtubay/General Eguia",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4119",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Gurtubay/General Eguia",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0061/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4120",
+   "name": {
+    "es": "Zabalbide/Arabella"
+   },
+   "lat": 43.26094713790335,
+   "lon": -2.911473367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4120",
+    "Camid": "80",
+    "Nombre": "Zabalbide/Arabella",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4120",
+    "Rotacion_SPA": "21.530442772026827",
+    "Texto_SPA": "Zabalbide/Arabella",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0080/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4121",
+   "name": {
+    "es": "Zabalbide/Tenor Fagoaga"
+   },
+   "lat": 43.254571637903354,
+   "lon": -2.914711267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4121",
+    "Camid": "71",
+    "Nombre": "Zabalbide/Tenor Fagoaga",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4121",
+    "Rotacion_SPA": "-260.54",
+    "Texto_SPA": "Zabalbide/Tenor Fagoaga",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0071/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4122",
+   "name": {
+    "es": "Plza. Euskadi"
+   },
+   "lat": 43.26656533790335,
+   "lon": -2.937462367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4122",
+    "Camid": "44",
+    "Nombre": "Plza. Euskadi",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4122",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Euskadi",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0044/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4123",
+   "name": {
+    "es": "Carmelo Bernaola/Morgan"
+   },
+   "lat": 43.26900703790335,
+   "lon": -2.956182967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4123",
+    "Camid": "73",
+    "Nombre": "Carmelo Bernaola/Morgan",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4123",
+    "Rotacion_SPA": "-1.5675252557655746",
+    "Texto_SPA": "Carmelo Bernaola/Morgan",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0073/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4124",
+   "name": {
+    "es": "Pte. Frank Gehry/Ballets de Olaeta"
+   },
+   "lat": 43.26797433790335,
+   "lon": -2.953946267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4124",
+    "Camid": "74",
+    "Nombre": "Pte. Frank Gehry/Ballets de Olaeta",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4124",
+    "Rotacion_SPA": "37.67470815044054",
+    "Texto_SPA": "Pte. Frank Gehry/Ballets de Olaeta",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0074/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4126",
+   "name": {
+    "es": "M&#170; Diaz de Haro/Rguez .Arias"
+   },
+   "lat": 43.26365953790335,
+   "lon": -2.943595667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4126",
+    "Camid": "72",
+    "Nombre": "M&#170; Diaz de Haro/Rguez .Arias",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4126",
+    "Rotacion_SPA": "6.2",
+    "Texto_SPA": "M&#170; Diaz de Haro/Rguez .Arias",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0072/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4127",
+   "name": {
+    "es": "Luis Bri&#241;as/Zunzunegi"
+   },
+   "lat": 43.26176893790335,
+   "lon": -2.948522867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4127",
+    "Camid": "59",
+    "Nombre": "Luis Bri&#241;as/Zunzunegi",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4127",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Luis Bri&#241;as/Zunzunegi",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0059/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4132",
+   "name": {
+    "es": "Torres Quevedo"
+   },
+   "lat": 43.26278703790335,
+   "lon": -2.949985767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4132",
+    "Camid": "60",
+    "Nombre": "Torres Quevedo",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4132",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Torres Quevedo",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0060/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4135",
+   "name": {
+    "es": "Avda.Montevideo/Cuesta de Olabeaga"
+   },
+   "lat": 43.26075203790335,
+   "lon": -2.954687767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4135",
+    "Camid": "81",
+    "Nombre": "Avda.Montevideo/Cuesta de Olabeaga",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4135",
+    "Rotacion_SPA": "35.21759152382948",
+    "Texto_SPA": "Avda.Montevideo/Cuesta de Olabeaga",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0081/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4136",
+   "name": {
+    "es": "Pte. Cantalojas/San Francisco"
+   },
+   "lat": 43.25705583790335,
+   "lon": -2.9321414677756747,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4136",
+    "Camid": "84",
+    "Nombre": "Pte. Cantalojas/San Francisco",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4136",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Pte. Cantalojas/San Francisco",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0084/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4137",
+   "name": {
+    "es": "Rtda. Leceaga"
+   },
+   "lat": 43.26025313790335,
+   "lon": -2.954629467775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4137",
+    "Camid": "82",
+    "Nombre": "Rtda. Leceaga",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4137",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Rtda. Leceaga",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0082/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4138",
+   "name": {
+    "es": "Avda.Montevideo/Gurtubay"
+   },
+   "lat": 43.25899783790335,
+   "lon": -2.9518174677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4138",
+    "Camid": "83",
+    "Nombre": "Avda.Montevideo/Gurtubay",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4138",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Avda.Montevideo/Gurtubay",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0083/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4139",
+   "name": {
+    "es": "Plza. Eskurtze"
+   },
+   "lat": 43.25172033790335,
+   "lon": -2.937940867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4139",
+    "Camid": "76",
+    "Nombre": "Plza. Eskurtze",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4139",
+    "Rotacion_SPA": "-80.54",
+    "Texto_SPA": "Plza. Eskurtze",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0076/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4140",
+   "name": {
+    "es": "Santa Ana de Bolueta/Camino del Pont&#243;n"
+   },
+   "lat": 43.24664893790335,
+   "lon": -2.908738867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4140",
+    "Camid": "70",
+    "Nombre": "Santa Ana de Bolueta/Camino del Pont&#243;n",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4140",
+    "Rotacion_SPA": "-9.94",
+    "Texto_SPA": "Santa Ana de Bolueta/Camino del Pont&#243;n",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0070/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4142",
+   "name": {
+    "es": "Lehendakari Aguirre/Baleares"
+   },
+   "lat": 43.27798903790335,
+   "lon": -2.961034667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4142",
+    "Camid": "75",
+    "Nombre": "Lehendakari Aguirre/Baleares",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4142",
+    "Rotacion_SPA": "-71.57",
+    "Texto_SPA": "Lehendakari Aguirre/Baleares",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0075/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4144",
+   "name": {
+    "es": "Aita Donosti"
+   },
+   "lat": 43.25794263790335,
+   "lon": -2.949912167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4144",
+    "Camid": "3",
+    "Nombre": "Aita Donosti",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4144",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Aita Donosti",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0003/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4145",
+   "name": {
+    "es": "Avda. Montevideo frente a Hospital"
+   },
+   "lat": 43.26002803790335,
+   "lon": -2.9532819677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4145",
+    "Camid": "67",
+    "Nombre": "Avda. Montevideo frente a Hospital",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4145",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Avda. Montevideo frente a Hospital",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0067/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4147",
+   "name": {
+    "es": "Campo Volant&#237;n/M&#250;gica y Butr&#243;n"
+   },
+   "lat": 43.26726803790335,
+   "lon": -2.927788567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4147",
+    "Camid": "53",
+    "Nombre": "Campo Volant&#237;n/M&#250;gica y Butr&#243;n",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4147",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Campo Volant&#237;n/M&#250;gica y Butr&#243;n",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0053/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4148",
+   "name": {
+    "es": "Semit&#250;nel 1"
+   },
+   "lat": 43.26283403790335,
+   "lon": -2.950792267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4148",
+    "Camid": "62",
+    "Nombre": "Semit&#250;nel 1",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4148",
+    "Rotacion_SPA": "-145.26",
+    "Texto_SPA": "Semit&#250;nel 1",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0062/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4149",
+   "name": {
+    "es": "Semit&#250;nel 2"
+   },
+   "lat": 43.26358123790335,
+   "lon": -2.953473667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4149",
+    "Camid": "63",
+    "Nombre": "Semit&#250;nel 2",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4149",
+    "Rotacion_SPA": "-201.53",
+    "Texto_SPA": "Semit&#250;nel 2",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0063/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4152",
+   "name": {
+    "es": "Plza. Moy&#250;a"
+   },
+   "lat": 43.26287443790335,
+   "lon": -2.9344563677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4152",
+    "Camid": "8",
+    "Nombre": "Plza. Moy&#250;a",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4152",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Moy&#250;a",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0008/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4153",
+   "name": {
+    "es": "Zumalakarregi/Maurice Ravel"
+   },
+   "lat": 43.264671537903354,
+   "lon": -2.917238567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4153",
+    "Camid": "29",
+    "Nombre": "Zumalakarregi/Maurice Ravel",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4153",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Zumalakarregi/Maurice Ravel",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0029/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4160",
+   "name": {
+    "es": "Santa Clara"
+   },
+   "lat": 43.25420193790335,
+   "lon": -2.9111352677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4160",
+    "Camid": "23",
+    "Nombre": "Santa Clara",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4160",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Santa Clara",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0023/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4161",
+   "name": {
+    "es": "Marqu&#233;s de Laurenc&#237;n"
+   },
+   "lat": 43.25044033790335,
+   "lon": -2.908811767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4161",
+    "Camid": "24",
+    "Nombre": "Marqu&#233;s de Laurenc&#237;n",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4161",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Marqu&#233;s de Laurenc&#237;n",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0024/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4162",
+   "name": {
+    "es": "Av. Miraflores/Carretera Galdakao"
+   },
+   "lat": 43.24692503790335,
+   "lon": -2.910418867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4162",
+    "Camid": "46",
+    "Nombre": "Av. Miraflores/Carretera Galdakao",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4162",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Av. Miraflores/Carretera Galdakao",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0046/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4163",
+   "name": {
+    "es": "Autonom&#237;a/Avda. Ferrocarril"
+   },
+   "lat": 43.257722437903354,
+   "lon": -2.945921967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4163",
+    "Camid": "65",
+    "Nombre": "Autonom&#237;a/Avda. Ferrocarril",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4163",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Autonom&#237;a/Avda. Ferrocarril",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0065/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4164",
+   "name": {
+    "es": "Abusu/Zamakola"
+   },
+   "lat": 43.24491473790335,
+   "lon": -2.924167367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4164",
+    "Camid": "55",
+    "Nombre": "Abusu/Zamakola",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4164",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Abusu/Zamakola",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0055/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4165",
+   "name": {
+    "es": "Zamakola/Ctra. Buia"
+   },
+   "lat": 43.24089053790335,
+   "lon": -2.920844767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4165",
+    "Camid": "54",
+    "Nombre": "Zamakola/Ctra. Buia",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4165",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Zamakola/Ctra. Buia",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0054/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4166",
+   "name": {
+    "es": "Santutxu/Karmelo"
+   },
+   "lat": 43.25366103790335,
+   "lon": -2.915809067775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4166",
+    "Camid": "22",
+    "Nombre": "Santutxu/Karmelo",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4166",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Santutxu/Karmelo",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0022/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4167",
+   "name": {
+    "es": "Zabalbide/Avda. Zumalacarregui"
+   },
+   "lat": 43.25626963790335,
+   "lon": -2.911125067775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4167",
+    "Camid": "51",
+    "Nombre": "Zabalbide/Avda. Zumalacarregui",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4167",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Zabalbide/Avda. Zumalacarregui",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0051/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4168",
+   "name": {
+    "es": "Plza. Zab&#225;lburu"
+   },
+   "lat": 43.25714143790335,
+   "lon": -2.934032167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4168",
+    "Camid": "10",
+    "Nombre": "Plza. Zab&#225;lburu",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4168",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Zab&#225;lburu",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0010/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4169",
+   "name": {
+    "es": "Circo Amateur/Carretera Galdakao"
+   },
+   "lat": 43.24820573790335,
+   "lon": -2.906828167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4169",
+    "Camid": "45",
+    "Nombre": "Circo Amateur/Carretera Galdakao",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4169",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Circo Amateur/Carretera Galdakao",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0045/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4170",
+   "name": {
+    "es": "Avda. Miraflores/Indalecio Prieto"
+   },
+   "lat": 43.24860973790335,
+   "lon": -2.919913167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4170",
+    "Camid": "58",
+    "Nombre": "Avda. Miraflores/Indalecio Prieto",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4170",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Avda. Miraflores/Indalecio Prieto",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0058/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4171",
+   "name": {
+    "es": "Gordoniz/Ciudadela"
+   },
+   "lat": 43.25269653790335,
+   "lon": -2.946180267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4171",
+    "Camid": "56",
+    "Nombre": "Gordoniz/Ciudadela",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4171",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Gordoniz/Ciudadela",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0056/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4172",
+   "name": {
+    "es": "Pte. La Merced"
+   },
+   "lat": 43.25751383790335,
+   "lon": -2.927325967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4172",
+    "Camid": "25",
+    "Nombre": "Pte. La Merced",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4172",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Pte. La Merced",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0025/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4173",
+   "name": {
+    "es": "Ribera Elorrieta"
+   },
+   "lat": 43.28784423790335,
+   "lon": -2.968813467775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4173",
+    "Camid": "79",
+    "Nombre": "Ribera Elorrieta",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4173",
+    "Rotacion_SPA": "53.99",
+    "Texto_SPA": "Ribera Elorrieta",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0079/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4175",
+   "name": {
+    "es": "Av. Ferrocarril/Autonom&#237;a"
+   },
+   "lat": 43.25761683790335,
+   "lon": -2.946140867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4175",
+    "Camid": "30",
+    "Nombre": "Av. Ferrocarril/Autonom&#237;a",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4175",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Av. Ferrocarril/Autonom&#237;a",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0030/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4176",
+   "name": {
+    "es": "Plza. Emilio Campuzano"
+   },
+   "lat": 43.26316903790335,
+   "lon": -2.939549867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4176",
+    "Camid": "27",
+    "Nombre": "Plza. Emilio Campuzano",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4176",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Emilio Campuzano",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0027/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4200",
+   "name": {
+    "es": "Bernaola Ext.IN Lado Bilbao"
+   },
+   "lat": 43.26880603790335,
+   "lon": -2.955219567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4200",
+    "Camid": "150",
+    "Nombre": "Bernaola Ext.IN Lado Bilbao",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4200",
+    "Rotacion_SPA": "-67.31151847255238",
+    "Texto_SPA": "Bernaola Ext.IN Lado Bilbao",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0150/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4201",
+   "name": {
+    "es": "Bernaola Exterior Lado As&#250;a"
+   },
+   "lat": 43.27438053790335,
+   "lon": -2.954400567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4201",
+    "Camid": "151",
+    "Nombre": "Bernaola Exterior Lado As&#250;a",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4201",
+    "Rotacion_SPA": "-169.45143438599735",
+    "Texto_SPA": "Bernaola Exterior Lado As&#250;a",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0151/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4202",
+   "name": {
+    "es": "Bernaola Puerta C.T&#233;cnico"
+   },
+   "lat": 43.27123543790335,
+   "lon": -2.9557154677756747,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4202",
+    "Camid": "153",
+    "Nombre": "Bernaola Puerta C.T&#233;cnico",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4202",
+    "Rotacion_SPA": "177.9932858124712",
+    "Texto_SPA": "Bernaola Puerta C.T&#233;cnico",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0153/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4203",
+   "name": {
+    "es": "Bernaola Ext.OUTLado Bilbao"
+   },
+   "lat": 43.26958093790335,
+   "lon": -2.956166567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4203",
+    "Camid": "152",
+    "Nombre": "Bernaola Ext.OUTLado Bilbao",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4203",
+    "Rotacion_SPA": "177.01573645697152",
+    "Texto_SPA": "Bernaola Ext.OUTLado Bilbao",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0152/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4204",
+   "name": {
+    "es": "Bernaola/Avda.Enekuri"
+   },
+   "lat": 43.27798583790335,
+   "lon": -2.9551629677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4204",
+    "Camid": "154",
+    "Nombre": "Bernaola/Avda.Enekuri",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4204",
+    "Rotacion_SPA": "-17.10272897253224",
+    "Texto_SPA": "Bernaola/Avda.Enekuri",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0154/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4205",
+   "name": {
+    "es": "BERNAOLA DES TER-2"
+   },
+   "lat": 43.27277653790335,
+   "lon": -2.956006767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4205",
+    "Camid": "171",
+    "Nombre": "BERNAOLA DES TER-2",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4205",
+    "Rotacion_SPA": "-142.5946430812012",
+    "Texto_SPA": "BERNAOLA DES TER-2",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0171/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4206",
+   "name": {
+    "es": "BERNAOLA ASC DAI-6"
+   },
+   "lat": 43.27389933790335,
+   "lon": -2.955182767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4206",
+    "Camid": "160",
+    "Nombre": "BERNAOLA ASC DAI-6",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4206",
+    "Rotacion_SPA": "-156.9672710726049",
+    "Texto_SPA": "BERNAOLA ASC DAI-6",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0160/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4207",
+   "name": {
+    "es": "BERNAOLA ASC DAI-5"
+   },
+   "lat": 43.27381893790335,
+   "lon": -2.954895867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4207",
+    "Camid": "159",
+    "Nombre": "BERNAOLA ASC DAI-5",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4207",
+    "Rotacion_SPA": "36.90735501928106",
+    "Texto_SPA": "BERNAOLA ASC DAI-5",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0159/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4208",
+   "name": {
+    "es": "BERNAOLA DES DAI-1"
+   },
+   "lat": 43.27306563790335,
+   "lon": -2.955728567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4208",
+    "Camid": "161",
+    "Nombre": "BERNAOLA DES DAI-1",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4208",
+    "Rotacion_SPA": "-155.97682803767634",
+    "Texto_SPA": "BERNAOLA DES DAI-1",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0161/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4209",
+   "name": {
+    "es": "BERNAOLA ASC DAI-2"
+   },
+   "lat": 43.271475337903354,
+   "lon": -2.955956667775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4209",
+    "Camid": "156",
+    "Nombre": "BERNAOLA ASC DAI-2",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4209",
+    "Rotacion_SPA": "11.10505708197942",
+    "Texto_SPA": "BERNAOLA ASC DAI-2",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0156/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4210",
+   "name": {
+    "es": "BERNAOLA ASC DAI-3"
+   },
+   "lat": 43.27224393790335,
+   "lon": -2.955765367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4210",
+    "Camid": "157",
+    "Nombre": "BERNAOLA ASC DAI-3",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4210",
+    "Rotacion_SPA": "-88.8599105367953",
+    "Texto_SPA": "BERNAOLA ASC DAI-3",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0157/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4211",
+   "name": {
+    "es": "BERNAOLA ASC DAI-1"
+   },
+   "lat": 43.27006523790335,
+   "lon": -2.956022167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4211",
+    "Camid": "155",
+    "Nombre": "BERNAOLA ASC DAI-1",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4211",
+    "Rotacion_SPA": "-0.5351489652309797",
+    "Texto_SPA": "BERNAOLA ASC DAI-1",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0155/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4212",
+   "name": {
+    "es": "BERNAOLA DES TER-3"
+   },
+   "lat": 43.27122003790335,
+   "lon": -2.956315267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4212",
+    "Camid": "172",
+    "Nombre": "BERNAOLA DES TER-3",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4212",
+    "Rotacion_SPA": "-179.47436553820677",
+    "Texto_SPA": "BERNAOLA DES TER-3",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0172/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4213",
+   "name": {
+    "es": "BERNAOLA DES DAI-4"
+   },
+   "lat": 43.27006693790335,
+   "lon": -2.956224867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4213",
+    "Camid": "164",
+    "Nombre": "BERNAOLA DES DAI-4",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4213",
+    "Rotacion_SPA": "177.93148382900523",
+    "Texto_SPA": "BERNAOLA DES DAI-4",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0164/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4214",
+   "name": {
+    "es": "BERNAOLA DES DAI-3"
+   },
+   "lat": 43.27148233790335,
+   "lon": -2.956290867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4214",
+    "Camid": "163",
+    "Nombre": "BERNAOLA DES DAI-3",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4214",
+    "Rotacion_SPA": "-177.86870932124162",
+    "Texto_SPA": "BERNAOLA DES DAI-3",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0163/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4215",
+   "name": {
+    "es": "BERNAOLA DES DAI-2"
+   },
+   "lat": 43.27230613790335,
+   "lon": -2.956136267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4215",
+    "Camid": "162",
+    "Nombre": "BERNAOLA DES DAI-2",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4215",
+    "Rotacion_SPA": "-169.42083194470638",
+    "Texto_SPA": "BERNAOLA DES DAI-2",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0162/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4216",
+   "name": {
+    "es": "BERNAOLA DES DAI-6"
+   },
+   "lat": 43.27201923790335,
+   "lon": -2.9561585677756748,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4216",
+    "Camid": "166",
+    "Nombre": "BERNAOLA DES DAI-6",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4216",
+    "Rotacion_SPA": "-167.38067778522276",
+    "Texto_SPA": "BERNAOLA DES DAI-6",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0166/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4217",
+   "name": {
+    "es": "BERNAOLA DES TER-1"
+   },
+   "lat": 43.27386023790335,
+   "lon": -2.955205967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4217",
+    "Camid": "170",
+    "Nombre": "BERNAOLA DES TER-1",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4217",
+    "Rotacion_SPA": "-157.2855875156091",
+    "Texto_SPA": "BERNAOLA DES TER-1",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0170/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4218",
+   "name": {
+    "es": "BERNAOLA ASC DAI-4"
+   },
+   "lat": 43.27294283790335,
+   "lon": -2.955400767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4218",
+    "Camid": "158",
+    "Nombre": "BERNAOLA ASC DAI-4",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4218",
+    "Rotacion_SPA": "30.50068371800947",
+    "Texto_SPA": "BERNAOLA ASC DAI-4",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0158/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4219",
+   "name": {
+    "es": "BERNAOLA DES DAI-5"
+   },
+   "lat": 43.27340773790335,
+   "lon": -2.955494767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4219",
+    "Camid": "165",
+    "Nombre": "BERNAOLA DES DAI-5",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4219",
+    "Rotacion_SPA": "-155.3812805389031",
+    "Texto_SPA": "BERNAOLA DES DAI-5",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0165/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4220",
+   "name": {
+    "es": "Sabino Arana/Gral. Eguia"
+   },
+   "lat": 43.25949433790335,
+   "lon": -2.947436267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4220",
+    "Camid": "69",
+    "Nombre": "Sabino Arana/Gral. Eguia",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4220",
+    "Rotacion_SPA": "-160.04592500273074",
+    "Texto_SPA": "Sabino Arana/Gral. Eguia",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0069/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4222",
+   "name": {
+    "es": "Plza. Biribila"
+   },
+   "lat": 43.26129133790335,
+   "lon": -2.927611967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4222",
+    "Camid": "64",
+    "Nombre": "Plza. Biribila",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4222",
+    "Rotacion_SPA": "10.784298399460937",
+    "Texto_SPA": "Plza. Biribila",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0064/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4228",
+   "name": {
+    "es": "Zarandoa/Islas Baleares"
+   },
+   "lat": 43.27728263790335,
+   "lon": -2.963350867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4228",
+    "Camid": "86",
+    "Nombre": "Zarandoa/Islas Baleares",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4228",
+    "Rotacion_SPA": "68.47150997703277",
+    "Texto_SPA": "Zarandoa/Islas Baleares",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0086/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4230",
+   "name": {
+    "es": "Pte. Euskalduna/Botica Vieja"
+   },
+   "lat": 43.26798733790335,
+   "lon": -2.949242867775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4230",
+    "Camid": "39",
+    "Nombre": "Pte. Euskalduna/Botica Vieja",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4230",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Pte. Euskalduna/Botica Vieja",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0039/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4233",
+   "name": {
+    "es": "Pte. La Salve"
+   },
+   "lat": 43.26787623790335,
+   "lon": -2.933092167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4233",
+    "Camid": "17",
+    "Nombre": "Pte. La Salve",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4233",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Pte. La Salve",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0017/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4241",
+   "name": {
+    "es": "Ldo. Poza/Ercilla"
+   },
+   "lat": 43.26146703790335,
+   "lon": -2.938501767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4241",
+    "Camid": "11",
+    "Nombre": "Ldo. Poza/Ercilla",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4241",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Ldo. Poza/Ercilla",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0011/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4243",
+   "name": {
+    "es": "Benidorm"
+   },
+   "lat": 43.27419773790335,
+   "lon": -2.958231067775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4243",
+    "Camid": "20",
+    "Nombre": "Benidorm",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4243",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Benidorm",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0020/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4244",
+   "name": {
+    "es": "Fray Juan/Clara Campoamor"
+   },
+   "lat": 43.27711333790335,
+   "lon": -2.973839167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4244",
+    "Camid": "48",
+    "Nombre": "Fray Juan/Clara Campoamor",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4244",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Fray Juan/Clara Campoamor",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0048/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4245",
+   "name": {
+    "es": "Fray Juan/Ctra. Zorrotza Kastrexana"
+   },
+   "lat": 43.27629903790335,
+   "lon": -2.970672367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4245",
+    "Camid": "49",
+    "Nombre": "Fray Juan/Ctra. Zorrotza Kastrexana",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4245",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Fray Juan/Ctra. Zorrotza Kastrexana",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0049/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4246",
+   "name": {
+    "es": "Sda. Familia/Lehendakari Aguirre"
+   },
+   "lat": 43.27214663790335,
+   "lon": -2.952478067775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4246",
+    "Camid": "18",
+    "Nombre": "Sda. Familia/Lehendakari Aguirre",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4246",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Sda. Familia/Lehendakari Aguirre",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0018/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4247",
+   "name": {
+    "es": "Ballets Olaeta/Gral. Eraso"
+   },
+   "lat": 43.26733703790335,
+   "lon": -2.951517567775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4247",
+    "Camid": "85",
+    "Nombre": "Ballets Olaeta/Gral. Eraso",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4247",
+    "Rotacion_SPA": "5.527539475269913",
+    "Texto_SPA": "Ballets Olaeta/Gral. Eraso",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0085/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4248",
+   "name": {
+    "es": "Frank Ghery/Avda. Galleteras"
+   },
+   "lat": 43.26655753790335,
+   "lon": -2.954797967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4248",
+    "Camid": "89",
+    "Nombre": "Frank Ghery/Avda. Galleteras",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4248",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Frank Ghery/Avda. Galleteras",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0089/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4249",
+   "name": {
+    "es": "Rotonda de Nogaro"
+   },
+   "lat": 43.27615153790335,
+   "lon": -2.924748967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4249",
+    "Camid": "88",
+    "Nombre": "Rotonda de Nogaro",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4249",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Rotonda de Nogaro",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0088/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4250",
+   "name": {
+    "es": "Rotonda de Trueba"
+   },
+   "lat": 43.27257483790335,
+   "lon": -2.915662367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4250",
+    "Camid": "87",
+    "Nombre": "Rotonda de Trueba",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4250",
+    "Rotacion_SPA": "-3.122130417260148",
+    "Texto_SPA": "Rotonda de Trueba",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0087/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4251",
+   "name": {
+    "es": "Avda. Galleteras/Sabina de la Cruz"
+   },
+   "lat": 43.27697713790335,
+   "lon": -2.966332167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4251",
+    "Camid": "90",
+    "Nombre": "Avda. Galleteras/Sabina de la Cruz",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4251",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Avda. Galleteras/Sabina de la Cruz",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0090/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4252",
+   "name": {
+    "es": "Ercilla/Ldo. Poza"
+   },
+   "lat": 43.26149823790335,
+   "lon": -2.938060967775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4252",
+    "Camid": "146",
+    "Nombre": "Ercilla/Ldo. Poza",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4252",
+    "Rotacion_SPA": "-163.97970747285592",
+    "Texto_SPA": "Ercilla/Ldo. Poza",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0146/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4253",
+   "name": {
+    "es": "Indautxu"
+   },
+   "lat": 43.26139493790335,
+   "lon": -2.940265067775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4253",
+    "Camid": "145",
+    "Nombre": "Indautxu",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4253",
+    "Rotacion_SPA": "110.92450122312455",
+    "Texto_SPA": "Indautxu",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0145/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4254",
+   "name": {
+    "es": "Ercilla/Moyua"
+   },
+   "lat": 43.26269243790335,
+   "lon": -2.935501367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4254",
+    "Camid": "147",
+    "Nombre": "Ercilla/Moyua",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4254",
+    "Rotacion_SPA": "46.59113994157505",
+    "Texto_SPA": "Ercilla/Moyua",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0147/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4255",
+   "name": {
+    "es": "Zunzunegui"
+   },
+   "lat": 43.26262323790335,
+   "lon": -2.950462267775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4255",
+    "Camid": "148",
+    "Nombre": "Zunzunegui",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4255",
+    "Rotacion_SPA": "39.28940700737969",
+    "Texto_SPA": "Zunzunegui",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0148/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4256",
+   "name": {
+    "es": "Camino Morgan"
+   },
+   "lat": 43.26854183790335,
+   "lon": -2.954037767775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4256",
+    "Camid": "149",
+    "Nombre": "Camino Morgan",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4256",
+    "Rotacion_SPA": "21.03751098881358",
+    "Texto_SPA": "Camino Morgan",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0149/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4257",
+   "name": {
+    "es": "Plza. Erkoreka"
+   },
+   "lat": 43.26340123790335,
+   "lon": -2.9233496677756747,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4257",
+    "Camid": "15",
+    "Nombre": "Plza. Erkoreka",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4257",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. Erkoreka",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0015/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4258",
+   "name": {
+    "es": "Plza. V&#237;ctor Ch&#225;varri"
+   },
+   "lat": 43.26230323790335,
+   "lon": -2.946296367775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4258",
+    "Camid": "52",
+    "Nombre": "Plza. V&#237;ctor Ch&#225;varri",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4258",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Plza. V&#237;ctor Ch&#225;varri",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0052/snap_c1.jpg"
+   }
+  },
+  {
+   "id": "cameras:4259",
+   "name": {
+    "es": "Ciudad Jardin/Avda. Maurice Ravel"
+   },
+   "lat": 43.26991523790335,
+   "lon": -2.923202167775675,
+   "category": "camera",
+   "layer_id": "cameras",
+   "source_id": "cameras_bilbao",
+   "territory": "bizkaia",
+   "tags": {
+    "ID": "4259",
+    "Camid": "50",
+    "Nombre": "Ciudad Jardin/Avda. Maurice Ravel",
+    "Tipo": "Ayto",
+    "IdItsPPCamara": "4259",
+    "Rotacion_SPA": "0.0",
+    "Texto_SPA": "Ciudad Jardin/Avda. Maurice Ravel",
+    "URL": "https://www.bilbao.eus/camarastrafico/codec0050/snap_c1.jpg"
+   }
+  }
+ ]
+}

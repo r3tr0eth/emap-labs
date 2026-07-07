@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import unicodedata
 from datetime import date
@@ -25,33 +26,49 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from baseline import BaselineRetriever  # noqa: E402
 
-from emap_geo.distance import haversine_m  # noqa: E402
+try:
+    from emap_geo.distance import haversine_m  # noqa: E402
+except ImportError:  # CI / entorno sin emap-next: fallback vendorizado
+    from _geo import haversine_m  # noqa: E402
 
 LABS = Path(__file__).resolve().parents[1]
-EMAP_NEXT = (LABS / ".." / "emap-next").resolve()
 
-# capa del corpus → fichero de datos en emap-next (todo pois[])
+
+def _data_root() -> Path:
+    """EMAP_EVAL_DATA > snapshot local (evals/data, CI) > ../emap-next/data."""
+    env = os.environ.get("EMAP_EVAL_DATA")
+    if env:
+        return Path(env)
+    snapshot = LABS / "evals" / "data"
+    if snapshot.is_dir():
+        return snapshot
+    return (LABS / ".." / "emap-next" / "data").resolve()
+
+
+DATA_ROOT = _data_root()
+
+# capa del corpus → fichero (layout = emap-next/data)
 LAYER_FILES = {
-    "fountains": "data/pois-euskadi/fountains.json",
-    "toilets": "data/pois-euskadi/toilets.json",
-    "parking": "data/pois-euskadi/parking.json",
-    "bikepark": "data/pois-euskadi/bikepark.json",
-    "defib": "data/pois-euskadi/defib.json",
-    "beaches": "data/pois-euskadi/beaches.json",
-    "ev": "data/processed/pois/ev.json",
-    "cameras": "data/processed/pois/cameras.json",
-    "metro": "data/processed/pois/metro.json",
-    "euskotren": "data/processed/pois/euskotren.json",
-    "cercanias": "data/processed/pois/cercanias.json",
-    "bilbobus": "data/processed/pois/bilbobus.json",
-    "bizkaibus": "data/processed/pois/bizkaibus.json",
+    "fountains": "pois-euskadi/fountains.json",
+    "toilets": "pois-euskadi/toilets.json",
+    "parking": "pois-euskadi/parking.json",
+    "bikepark": "pois-euskadi/bikepark.json",
+    "defib": "pois-euskadi/defib.json",
+    "beaches": "pois-euskadi/beaches.json",
+    "ev": "processed/pois/ev.json",
+    "cameras": "processed/pois/cameras.json",
+    "metro": "processed/pois/metro.json",
+    "euskotren": "processed/pois/euskotren.json",
+    "cercanias": "processed/pois/cercanias.json",
+    "bilbobus": "processed/pois/bilbobus.json",
+    "bizkaibus": "processed/pois/bizkaibus.json",
 }
 
 
 def load_datasets() -> dict[str, list[dict]]:
     out = {}
     for layer, rel in LAYER_FILES.items():
-        path = EMAP_NEXT / rel
+        path = DATA_ROOT / rel
         if not path.is_file():
             print(f"  aviso: falta {rel} — capa {layer} fuera", file=sys.stderr)
             continue
@@ -157,6 +174,8 @@ def main() -> int:
                     choices=["baseline", "semantic", "hybrid"])
     ap.add_argument("--lang", default="es", choices=["es", "eu"])
     ap.add_argument("-k", type=int, default=5)
+    ap.add_argument("--min-pass", type=float, default=None,
+                    help="%% mínimo de aciertos; por debajo, exit 1 (gate de CI)")
     ap.add_argument("--split", default="dev", choices=["dev", "heldout", "all"],
                     help="dev: casos de desarrollo (default). heldout: solo los "
                          "reservados — NO calibrar nada mirándolos.")
@@ -228,6 +247,10 @@ def main() -> int:
         "known_gaps": gaps,
     }, ensure_ascii=False, indent=2) + "\n")
     print(f"  → {out.relative_to(LABS)}")
+    pct = 100 * total / len(rows) if rows else 0
+    if args.min_pass is not None and pct < args.min_pass:
+        print(f"GATE: {pct:.0f}% < mínimo exigido {args.min_pass:.0f}%")
+        return 1
     return 0
 
 

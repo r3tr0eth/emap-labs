@@ -1,0 +1,1428 @@
+{
+ "version": 1,
+ "territory": "bizkaia",
+ "layer_id": "euskotren",
+ "source_id": "euskotren_gtfs",
+ "derived_from": "euskotren-stations",
+ "source_updated": "2026-06-23",
+ "count": 73,
+ "dropped": 0,
+ "pois": [
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1471:",
+   "name": {
+    "es": "Abando",
+    "eu": "Abando"
+   },
+   "lat": 43.261052,
+   "lon": -2.926658,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1471:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1475:",
+   "name": {
+    "es": "Abandoibarra",
+    "eu": "Abandoibarra"
+   },
+   "lat": 43.268585,
+   "lon": -2.9407,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1475:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2673:",
+   "name": {
+    "es": "Abusu",
+    "eu": "Abusu"
+   },
+   "lat": 43.245503,
+   "lon": -2.915783,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2673:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2626:",
+   "name": {
+    "es": "Altzola-Elgoibar",
+    "eu": "Altzola-Elgoibar"
+   },
+   "lat": 43.235874,
+   "lon": -2.399523,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2626:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2635:",
+   "name": {
+    "es": "Amaña-Eibar",
+    "eu": "Amaña-Eibar"
+   },
+   "lat": 43.184398,
+   "lon": -2.480569,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2635:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2637:",
+   "name": {
+    "es": "Amorebieta Geltokia",
+    "eu": "Amorebieta Geltokia"
+   },
+   "lat": 43.216878,
+   "lon": -2.736627,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2637:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2586:",
+   "name": {
+    "es": "Amorebieta Geralekua",
+    "eu": "Amorebieta Geralekua"
+   },
+   "lat": 43.22182,
+   "lon": -2.734876,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2586:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2656:",
+   "name": {
+    "es": "Ardantza-Eibar",
+    "eu": "Ardantza-Eibar"
+   },
+   "lat": 43.184641,
+   "lon": -2.473832,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2656:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2646:",
+   "name": {
+    "es": "Ariz-Basauri",
+    "eu": "Ariz-Basauri"
+   },
+   "lat": 43.240313,
+   "lon": -2.879282,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2646:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1480:",
+   "name": {
+    "es": "Arriaga",
+    "eu": "Arriaga"
+   },
+   "lat": 43.25907,
+   "lon": -2.925938,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1480:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1468:",
+   "name": {
+    "es": "Atxuri",
+    "eu": "Atxuri"
+   },
+   "lat": 43.254113,
+   "lon": -2.921513,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1468:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2615:",
+   "name": {
+    "es": "Axpe-Busturia",
+    "eu": "Axpe-Busturia"
+   },
+   "lat": 43.380106,
+   "lon": -2.693181,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2615:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2640:",
+   "name": {
+    "es": "Azitain-Eibar",
+    "eu": "Azitain-Eibar"
+   },
+   "lat": 43.190407,
+   "lon": -2.45419,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2640:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1481:",
+   "name": {
+    "es": "Basurto",
+    "eu": "Basurto"
+   },
+   "lat": 43.257993,
+   "lon": -2.949072,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1481:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2620:",
+   "name": {
+    "es": "Bedia",
+    "eu": "Bedia"
+   },
+   "lat": 43.206171,
+   "lon": -2.79803,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2620:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2579:",
+   "name": {
+    "es": "Bermeo",
+    "eu": "Bermeo"
+   },
+   "lat": 43.417771,
+   "lon": -2.723233,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2579:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2600:",
+   "name": {
+    "es": "Berriz",
+    "eu": "Berriz"
+   },
+   "lat": 43.168405,
+   "lon": -2.574515,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2600:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2674:",
+   "name": {
+    "es": "Bolueta",
+    "eu": "Bolueta"
+   },
+   "lat": 43.247252,
+   "lon": -2.904919,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2674:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2633:",
+   "name": {
+    "es": "Deba",
+    "eu": "Deba"
+   },
+   "lat": 43.293616,
+   "lon": -2.355378,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2633:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2614:",
+   "name": {
+    "es": "Derio",
+    "eu": "Derio"
+   },
+   "lat": 43.290827,
+   "lon": -2.887276,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2614:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2618:",
+   "name": {
+    "es": "Durango",
+    "eu": "Durango"
+   },
+   "lat": 43.169457,
+   "lon": -2.634787,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2618:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2619:",
+   "name": {
+    "es": "Eibar",
+    "eu": "Eibar"
+   },
+   "lat": 43.186939,
+   "lon": -2.465641,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2619:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2622:",
+   "name": {
+    "es": "Elgoibar",
+    "eu": "Elgoibar"
+   },
+   "lat": 43.213608,
+   "lon": -2.415941,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2622:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2629:",
+   "name": {
+    "es": "Elotxelerri-Loiu",
+    "eu": "Elotxelerri-Loiu"
+   },
+   "lat": 43.294479,
+   "lon": -2.905664,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2629:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2666:",
+   "name": {
+    "es": "Ermua",
+    "eu": "Ermua"
+   },
+   "lat": 43.185235,
+   "lon": -2.501026,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2666:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2602:",
+   "name": {
+    "es": "Errotabarri-Ermua",
+    "eu": "Errotabarri-Ermua"
+   },
+   "lat": 43.18314,
+   "lon": -2.498927,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2602:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2591:",
+   "name": {
+    "es": "Etxebarri",
+    "eu": "Etxebarri"
+   },
+   "lat": 43.245623,
+   "lon": -2.891068,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2591:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2606:",
+   "name": {
+    "es": "Euba-Amorebieta",
+    "eu": "Euba-Amorebieta"
+   },
+   "lat": 43.194827,
+   "lon": -2.69674,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2606:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1479:",
+   "name": {
+    "es": "Euskalduna",
+    "eu": "Euskalduna"
+   },
+   "lat": 43.266261,
+   "lon": -2.943894,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1479:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2643:",
+   "name": {
+    "es": "Forua",
+    "eu": "Forua"
+   },
+   "lat": 43.332384,
+   "lon": -2.673426,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2643:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2645:",
+   "name": {
+    "es": "Gernika",
+    "eu": "Gernika"
+   },
+   "lat": 43.314559,
+   "lon": -2.676106,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2645:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1476:",
+   "name": {
+    "es": "Guggenheim",
+    "eu": "Guggenheim"
+   },
+   "lat": 43.2687,
+   "lon": -2.936763,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1476:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1472:",
+   "name": {
+    "es": "Hospital/Ospitalea",
+    "eu": "Hospital/Ospitalea"
+   },
+   "lat": 43.259796,
+   "lon": -2.951244,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1472:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2593:",
+   "name": {
+    "es": "Institutoa-Gernika",
+    "eu": "Institutoa-Gernika"
+   },
+   "lat": 43.319882,
+   "lon": -2.676842,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2593:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2599:",
+   "name": {
+    "es": "Itsasbegi-Busturia",
+    "eu": "Itsasbegi-Busturia"
+   },
+   "lat": 43.3911,
+   "lon": -2.693867,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2599:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2639:",
+   "name": {
+    "es": "Kukullaga-Etxebarri",
+    "eu": "Kukullaga-Etxebarri"
+   },
+   "lat": 43.251142,
+   "lon": -2.889764,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2639:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2638:",
+   "name": {
+    "es": "Kurtzea-Lezama",
+    "eu": "Kurtzea-Lezama"
+   },
+   "lat": 43.276579,
+   "lon": -2.846344,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2638:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1477:",
+   "name": {
+    "es": "La Casilla",
+    "eu": "La Casilla"
+   },
+   "lat": 43.257767,
+   "lon": -2.944349,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1477:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1580:",
+   "name": {
+    "es": "La Escontrilla",
+    "eu": "La Escontrilla"
+   },
+   "lat": 43.301233,
+   "lon": -3.04203,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "FE"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1580:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1581:",
+   "name": {
+    "es": "Larreineta",
+    "eu": "Larreineta"
+   },
+   "lat": 43.292442,
+   "lon": -3.049087,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "FE"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1581:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2601:",
+   "name": {
+    "es": "Larrondo-Loiu",
+    "eu": "Larrondo-Loiu"
+   },
+   "lat": 43.294299,
+   "lon": -2.915778,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2601:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2652:",
+   "name": {
+    "es": "Lekunbiz-Zamudio",
+    "eu": "Lekunbiz-Zamudio"
+   },
+   "lat": 43.286699,
+   "lon": -2.874526,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2652:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2587:",
+   "name": {
+    "es": "Lemoa",
+    "eu": "Lemoa"
+   },
+   "lat": 43.207092,
+   "lon": -2.775247,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2587:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2607:",
+   "name": {
+    "es": "Lezama",
+    "eu": "Lezama"
+   },
+   "lat": 43.273257,
+   "lon": -2.835634,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2607:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2588:",
+   "name": {
+    "es": "Lurgorri-Gernika",
+    "eu": "Lurgorri-Gernika"
+   },
+   "lat": 43.306722,
+   "lon": -2.680315,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2588:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2576:",
+   "name": {
+    "es": "Lutxana-Erandio",
+    "eu": "Lutxana-Erandio"
+   },
+   "lat": 43.291318,
+   "lon": -2.969768,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3a"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2576:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2597:",
+   "name": {
+    "es": "Matiko-Bilbao",
+    "eu": "Matiko-Bilbao"
+   },
+   "lat": 43.268919,
+   "lon": -2.925007,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2597:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2650:",
+   "name": {
+    "es": "Mendaro",
+    "eu": "Mendaro"
+   },
+   "lat": 43.252152,
+   "lon": -2.387913,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2650:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2616:",
+   "name": {
+    "es": "Mundaka",
+    "eu": "Mundaka"
+   },
+   "lat": 43.40887,
+   "lon": -2.700911,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2616:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2596:",
+   "name": {
+    "es": "Muxika",
+    "eu": "Muxika"
+   },
+   "lat": 43.286788,
+   "lon": -2.689493,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2596:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2585:",
+   "name": {
+    "es": "Ola-Sondika",
+    "eu": "Ola-Sondika"
+   },
+   "lat": 43.291849,
+   "lon": -2.925227,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2585:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2663:",
+   "name": {
+    "es": "Otxarkoaga-Bilbao",
+    "eu": "Otxarkoaga-Bilbao"
+   },
+   "lat": 43.259503,
+   "lon": -2.900123,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2663:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1478:",
+   "name": {
+    "es": "Pio Baroja",
+    "eu": "Pio Baroja"
+   },
+   "lat": 43.264483,
+   "lon": -2.926262,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1478:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1473:",
+   "name": {
+    "es": "Ribera",
+    "eu": "Ribera"
+   },
+   "lat": 43.255795,
+   "lon": -2.924369,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1473:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1474:",
+   "name": {
+    "es": "Sabino Arana",
+    "eu": "Sabino Arana"
+   },
+   "lat": 43.263192,
+   "lon": -2.946222,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1474:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2660:",
+   "name": {
+    "es": "San Kristobal-Busturia",
+    "eu": "San Kristobal-Busturia"
+   },
+   "lat": 43.367813,
+   "lon": -2.690337,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2660:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2627:",
+   "name": {
+    "es": "San Lorentzo-Ermua",
+    "eu": "San Lorentzo-Ermua"
+   },
+   "lat": 43.179425,
+   "lon": -2.495861,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2627:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1470:",
+   "name": {
+    "es": "San Mames",
+    "eu": "San Mames"
+   },
+   "lat": 43.261742,
+   "lon": -2.948939,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1470:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2595:",
+   "name": {
+    "es": "Sondika",
+    "eu": "Sondika"
+   },
+   "lat": 43.298293,
+   "lon": -2.927764,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3",
+     "E3a"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2595:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2658:",
+   "name": {
+    "es": "Toletxegain-Elgoibar",
+    "eu": "Toletxegain-Elgoibar"
+   },
+   "lat": 43.217481,
+   "lon": -2.409036,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2658:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2603:",
+   "name": {
+    "es": "Traña-Abadiño",
+    "eu": "Traña-Abadiño"
+   },
+   "lat": 43.165337,
+   "lon": -2.612701,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2603:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2609:",
+   "name": {
+    "es": "Txurdinaga-Bilbao",
+    "eu": "Txurdinaga-Bilbao"
+   },
+   "lat": 43.258051,
+   "lon": -2.906729,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2609:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2594:",
+   "name": {
+    "es": "Unibertsitatea-Eibar",
+    "eu": "Unibertsitatea-Eibar"
+   },
+   "lat": 43.180662,
+   "lon": -2.487442,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2594:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2641:",
+   "name": {
+    "es": "Uribarri-Bilbao",
+    "eu": "Uribarri-Bilbao"
+   },
+   "lat": 43.267102,
+   "lon": -2.921277,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2641:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:1469:",
+   "name": {
+    "es": "Uribitarte",
+    "eu": "Uribitarte"
+   },
+   "lat": 43.266303,
+   "lon": -2.928733,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "TR"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:1469:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2661:",
+   "name": {
+    "es": "Usansolo",
+    "eu": "Usansolo"
+   },
+   "lat": 43.217819,
+   "lon": -2.821656,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2661:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2655:",
+   "name": {
+    "es": "Zaldibar",
+    "eu": "Zaldibar"
+   },
+   "lat": 43.171641,
+   "lon": -2.547899,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2655:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2642:",
+   "name": {
+    "es": "Zamudio",
+    "eu": "Zamudio"
+   },
+   "lat": 43.284342,
+   "lon": -2.864839,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2642:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2611:",
+   "name": {
+    "es": "Zangroiz-Sondika",
+    "eu": "Zangroiz-Sondika"
+   },
+   "lat": 43.300349,
+   "lon": -2.940859,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E3a"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2611:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2577:",
+   "name": {
+    "es": "Zazpikaleak/Casco Viejo-Bilbao",
+    "eu": "Zazpikaleak/Casco Viejo-Bilbao"
+   },
+   "lat": 43.259983,
+   "lon": -2.922197,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2577:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2657:",
+   "name": {
+    "es": "Zugaztieta-Muxika",
+    "eu": "Zugaztieta-Muxika"
+   },
+   "lat": 43.252154,
+   "lon": -2.692748,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2657:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2598:",
+   "name": {
+    "es": "Zuhatzu-Galdakao",
+    "eu": "Zuhatzu-Galdakao"
+   },
+   "lat": 43.228896,
+   "lon": -2.853572,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E4"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2598:"
+  },
+  {
+   "id": "euskotren:ES:Euskotren:StopPlace:2617:",
+   "name": {
+    "es": "Zurbaranbarri-Bilbao",
+    "eu": "Zurbaranbarri-Bilbao"
+   },
+   "lat": 43.264911,
+   "lon": -2.914977,
+   "category": "stop_rail",
+   "layer_id": "euskotren",
+   "source_id": "euskotren_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "E1",
+     "E3",
+     "E4",
+     "L3"
+    ]
+   },
+   "realtime_key": "ES:Euskotren:StopPlace:2617:"
+  }
+ ]
+}

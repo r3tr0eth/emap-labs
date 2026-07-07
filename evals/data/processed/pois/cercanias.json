@@ -1,0 +1,1237 @@
+{
+ "version": 1,
+ "territory": "bizkaia",
+ "layer_id": "cercanias",
+ "source_id": "cercanias_gtfs",
+ "derived_from": "cercanias-stations",
+ "source_updated": "2026-06-23",
+ "count": 67,
+ "dropped": 0,
+ "pois": [
+  {
+   "id": "cercanias:13118",
+   "name": {
+    "es": "Abaroa-San Miguel"
+   },
+   "lat": 43.225648,
+   "lon": -2.8871139,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13118"
+  },
+  {
+   "id": "cercanias:13206",
+   "name": {
+    "es": "Ametzola"
+   },
+   "lat": 43.2547065,
+   "lon": -2.9436598,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2",
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "13206"
+  },
+  {
+   "id": "cercanias:13101",
+   "name": {
+    "es": "Amurrio"
+   },
+   "lat": 43.049051,
+   "lon": -3.0020176,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13101"
+  },
+  {
+   "id": "cercanias:13121",
+   "name": {
+    "es": "Amurrio Iparralde"
+   },
+   "lat": 43.0578453,
+   "lon": -2.9960659,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13121"
+  },
+  {
+   "id": "cercanias:13117",
+   "name": {
+    "es": "Arakaldo"
+   },
+   "lat": 43.1535592,
+   "lon": -2.9382027,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13117"
+  },
+  {
+   "id": "cercanias:05473",
+   "name": {
+    "es": "Aranguren"
+   },
+   "lat": 43.2104561,
+   "lon": -3.108399,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05473"
+  },
+  {
+   "id": "cercanias:05474",
+   "name": {
+    "es": "Aranguren-Apeadero"
+   },
+   "lat": 43.2103517,
+   "lon": -3.1140505,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05474"
+  },
+  {
+   "id": "cercanias:13108",
+   "name": {
+    "es": "Arbide"
+   },
+   "lat": 43.1632587,
+   "lon": -2.9278362,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13108"
+  },
+  {
+   "id": "cercanias:13107",
+   "name": {
+    "es": "Areta"
+   },
+   "lat": 43.1451273,
+   "lon": -2.9433913,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13107"
+  },
+  {
+   "id": "cercanias:05721",
+   "name": {
+    "es": "Arla Berrón"
+   },
+   "lat": 43.166699,
+   "lon": -3.227589,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05721"
+  },
+  {
+   "id": "cercanias:13109",
+   "name": {
+    "es": "Arrankudiaga"
+   },
+   "lat": 43.1694994,
+   "lon": -2.9184485,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13109"
+  },
+  {
+   "id": "cercanias:13111",
+   "name": {
+    "es": "Arrigorriaga"
+   },
+   "lat": 43.2100868,
+   "lon": -2.8885723,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13111"
+  },
+  {
+   "id": "cercanias:05469",
+   "name": {
+    "es": "Artxube"
+   },
+   "lat": 43.200993,
+   "lon": -3.0715031,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05469"
+  },
+  {
+   "id": "cercanias:05489",
+   "name": {
+    "es": "Artzentales"
+   },
+   "lat": 43.2355083,
+   "lon": -3.2133583,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C5"
+    ]
+   },
+   "realtime_key": "05489"
+  },
+  {
+   "id": "cercanias:13207",
+   "name": {
+    "es": "Autonomía"
+   },
+   "lat": 43.2581339,
+   "lon": -2.9460321,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13207"
+  },
+  {
+   "id": "cercanias:13115",
+   "name": {
+    "es": "Bakiola"
+   },
+   "lat": 43.1769858,
+   "lon": -2.90907,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13115"
+  },
+  {
+   "id": "cercanias:05483",
+   "name": {
+    "es": "Balmaseda"
+   },
+   "lat": 43.1963551,
+   "lon": -3.1899562,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05483"
+  },
+  {
+   "id": "cercanias:13112",
+   "name": {
+    "es": "Basauri"
+   },
+   "lat": 43.2235298,
+   "lon": -2.8823858,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13112"
+  },
+  {
+   "id": "cercanias:05455",
+   "name": {
+    "es": "Basurto Hospital"
+   },
+   "lat": 43.2597699,
+   "lon": -2.9538267,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05455"
+  },
+  {
+   "id": "cercanias:13113",
+   "name": {
+    "es": "Bidebieta-Basauri"
+   },
+   "lat": 43.237057,
+   "lon": -2.8894856,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13113"
+  },
+  {
+   "id": "cercanias:05451",
+   "name": {
+    "es": "Bilbao la Concordia"
+   },
+   "lat": 43.2601901,
+   "lon": -2.9263839,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05451"
+  },
+  {
+   "id": "cercanias:13200",
+   "name": {
+    "es": "Bilbao-Intermod. Abando Indalecio Prieto"
+   },
+   "lat": 43.2601304,
+   "lon": -2.9285592,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2",
+     "C3"
+    ]
+   },
+   "realtime_key": "13200"
+  },
+  {
+   "id": "cercanias:05477",
+   "name": {
+    "es": "Colegio"
+   },
+   "lat": 43.2112674,
+   "lon": -3.1381409,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05477"
+  },
+  {
+   "id": "cercanias:13400",
+   "name": {
+    "es": "Desertu-Barakaldo"
+   },
+   "lat": 43.3000264,
+   "lon": -2.984409,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13400"
+  },
+  {
+   "id": "cercanias:13501",
+   "name": {
+    "es": "Galindo"
+   },
+   "lat": 43.3041349,
+   "lon": -3.0101966,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13501"
+  },
+  {
+   "id": "cercanias:13508",
+   "name": {
+    "es": "Gallarta"
+   },
+   "lat": 43.3193319,
+   "lon": -3.0674521,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13508"
+  },
+  {
+   "id": "cercanias:05471",
+   "name": {
+    "es": "Güeñes"
+   },
+   "lat": 43.2090276,
+   "lon": -3.0952113,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05471"
+  },
+  {
+   "id": "cercanias:05479",
+   "name": {
+    "es": "Ibarra"
+   },
+   "lat": 43.203959,
+   "lon": -3.1448388,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05479"
+  },
+  {
+   "id": "cercanias:05461",
+   "name": {
+    "es": "Irauregui"
+   },
+   "lat": 43.248418,
+   "lon": -2.9900734,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05461"
+  },
+  {
+   "id": "cercanias:13116",
+   "name": {
+    "es": "Iñarratxu"
+   },
+   "lat": 43.0358243,
+   "lon": -3.0038794,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13116"
+  },
+  {
+   "id": "cercanias:05460",
+   "name": {
+    "es": "Kastrexana"
+   },
+   "lat": 43.2554758,
+   "lon": -2.9721445,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05460"
+  },
+  {
+   "id": "cercanias:05485",
+   "name": {
+    "es": "La Calzada"
+   },
+   "lat": 43.1901154,
+   "lon": -3.1974062,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05485"
+  },
+  {
+   "id": "cercanias:05481",
+   "name": {
+    "es": "La Herrera"
+   },
+   "lat": 43.2034521,
+   "lon": -3.1705687,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05481"
+  },
+  {
+   "id": "cercanias:13402",
+   "name": {
+    "es": "La Iberia"
+   },
+   "lat": 43.3127031,
+   "lon": -3.0044959,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1"
+    ]
+   },
+   "realtime_key": "13402"
+  },
+  {
+   "id": "cercanias:13119",
+   "name": {
+    "es": "La Peña de Bilbao"
+   },
+   "lat": 43.2401669,
+   "lon": -2.9240429,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13119"
+  },
+  {
+   "id": "cercanias:05465",
+   "name": {
+    "es": "La Quadra"
+   },
+   "lat": 43.222723,
+   "lon": -3.0249848,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05465"
+  },
+  {
+   "id": "cercanias:05470",
+   "name": {
+    "es": "Lambarri"
+   },
+   "lat": 43.2060733,
+   "lon": -3.0825107,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05470"
+  },
+  {
+   "id": "cercanias:13106",
+   "name": {
+    "es": "Llodio"
+   },
+   "lat": 43.1423514,
+   "lon": -2.9606511,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13106"
+  },
+  {
+   "id": "cercanias:13103",
+   "name": {
+    "es": "Luiaondo"
+   },
+   "lat": 43.0935926,
+   "lon": -2.9996644,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13103"
+  },
+  {
+   "id": "cercanias:13305",
+   "name": {
+    "es": "Lutxana-Barakaldo"
+   },
+   "lat": 43.2878137,
+   "lon": -2.9754132,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13305"
+  },
+  {
+   "id": "cercanias:05484",
+   "name": {
+    "es": "Mimetiz"
+   },
+   "lat": 43.2158138,
+   "lon": -3.1312555,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C5"
+    ]
+   },
+   "realtime_key": "05484"
+  },
+  {
+   "id": "cercanias:13120",
+   "name": {
+    "es": "Miribilla"
+   },
+   "lat": 43.250429,
+   "lon": -2.9305155,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13120"
+  },
+  {
+   "id": "cercanias:13506",
+   "name": {
+    "es": "Muskiz"
+   },
+   "lat": 43.3215111,
+   "lon": -3.1123207,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13506"
+  },
+  {
+   "id": "cercanias:13303",
+   "name": {
+    "es": "Olabeaga"
+   },
+   "lat": 43.2643804,
+   "lon": -2.9553272,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13303"
+  },
+  {
+   "id": "cercanias:13114",
+   "name": {
+    "es": "Ollargan"
+   },
+   "lat": 43.2424974,
+   "lon": -2.9164564,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13114"
+  },
+  {
+   "id": "cercanias:13504",
+   "name": {
+    "es": "Ortuella"
+   },
+   "lat": 43.3115122,
+   "lon": -3.0603549,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13504"
+  },
+  {
+   "id": "cercanias:13404",
+   "name": {
+    "es": "Peñota"
+   },
+   "lat": 43.3263563,
+   "lon": -3.0234574,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1"
+    ]
+   },
+   "realtime_key": "13404"
+  },
+  {
+   "id": "cercanias:13403",
+   "name": {
+    "es": "Portugalete"
+   },
+   "lat": 43.318676,
+   "lon": -3.0152296,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1"
+    ]
+   },
+   "realtime_key": "13403"
+  },
+  {
+   "id": "cercanias:13505",
+   "name": {
+    "es": "Putxeta"
+   },
+   "lat": 43.3156801,
+   "lon": -3.0911356,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13505"
+  },
+  {
+   "id": "cercanias:13509",
+   "name": {
+    "es": "Sagrada Familia"
+   },
+   "lat": 43.3082365,
+   "lon": -3.0528979,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13509"
+  },
+  {
+   "id": "cercanias:13102",
+   "name": {
+    "es": "Salbio"
+   },
+   "lat": 43.074172,
+   "lon": -2.9993953,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13102"
+  },
+  {
+   "id": "cercanias:13208",
+   "name": {
+    "es": "San Mamés"
+   },
+   "lat": 43.2615306,
+   "lon": -2.9488341,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13208"
+  },
+  {
+   "id": "cercanias:13104",
+   "name": {
+    "es": "Santa Cruz de Llodio"
+   },
+   "lat": 43.132863,
+   "lon": -2.9698375,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13104"
+  },
+  {
+   "id": "cercanias:05459",
+   "name": {
+    "es": "Santa Águeda"
+   },
+   "lat": 43.261857,
+   "lon": -2.9730218,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05459"
+  },
+  {
+   "id": "cercanias:13405",
+   "name": {
+    "es": "Santurtzi"
+   },
+   "lat": 43.3286605,
+   "lon": -3.0295685,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1"
+    ]
+   },
+   "realtime_key": "13405"
+  },
+  {
+   "id": "cercanias:13401",
+   "name": {
+    "es": "Sestao"
+   },
+   "lat": 43.3085201,
+   "lon": -2.9940107,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1"
+    ]
+   },
+   "realtime_key": "13401"
+  },
+  {
+   "id": "cercanias:05467",
+   "name": {
+    "es": "Sodupe"
+   },
+   "lat": 43.2020301,
+   "lon": -3.050517,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05467"
+  },
+  {
+   "id": "cercanias:05487",
+   "name": {
+    "es": "Traslaviña"
+   },
+   "lat": 43.23329,
+   "lon": -3.198304,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C5"
+    ]
+   },
+   "realtime_key": "05487"
+  },
+  {
+   "id": "cercanias:13502",
+   "name": {
+    "es": "Trápaga"
+   },
+   "lat": 43.3030265,
+   "lon": -3.0169907,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13502"
+  },
+  {
+   "id": "cercanias:13110",
+   "name": {
+    "es": "Ugao-Miraballes"
+   },
+   "lat": 43.1790833,
+   "lon": -2.902696,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C3"
+    ]
+   },
+   "realtime_key": "13110"
+  },
+  {
+   "id": "cercanias:13507",
+   "name": {
+    "es": "Urioste"
+   },
+   "lat": 43.3075315,
+   "lon": -3.041072,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13507"
+  },
+  {
+   "id": "cercanias:13503",
+   "name": {
+    "es": "Valle de Trápaga/Trapagaran"
+   },
+   "lat": 43.3014842,
+   "lon": -3.0287951,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C2"
+    ]
+   },
+   "realtime_key": "13503"
+  },
+  {
+   "id": "cercanias:13205",
+   "name": {
+    "es": "Zabalburu"
+   },
+   "lat": 43.2567911,
+   "lon": -2.9322841,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13205"
+  },
+  {
+   "id": "cercanias:05475",
+   "name": {
+    "es": "Zalla"
+   },
+   "lat": 43.2129096,
+   "lon": -3.1333368,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4"
+    ]
+   },
+   "realtime_key": "05475"
+  },
+  {
+   "id": "cercanias:05463",
+   "name": {
+    "es": "Zaramillo"
+   },
+   "lat": 43.2332894,
+   "lon": -3.015904,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05463"
+  },
+  {
+   "id": "cercanias:13304",
+   "name": {
+    "es": "Zorrotza"
+   },
+   "lat": 43.2778039,
+   "lon": -2.9721188,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C1",
+     "C2"
+    ]
+   },
+   "realtime_key": "13304"
+  },
+  {
+   "id": "cercanias:05457",
+   "name": {
+    "es": "Zorrotza Zorrozgoiti"
+   },
+   "lat": 43.2740398,
+   "lon": -2.9740116,
+   "category": "stop_rail",
+   "layer_id": "cercanias",
+   "source_id": "cercanias_gtfs",
+   "territory": "bizkaia",
+   "tags": {
+    "lines": [
+     "C4",
+     "C5"
+    ]
+   },
+   "realtime_key": "05457"
+  }
+ ]
+}

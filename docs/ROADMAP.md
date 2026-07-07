@@ -71,8 +71,10 @@ Formalizar el catálogo y cerrar el dataset que falta.
 3. Primer **release versionado** de un dataset (POIs Euskadi + DEA + barrios,
    con los 6 metadatos) como artefacto descargable. Primer activo publicable.
 
-*Hecho cuando:* `manifest.json` valida quality/coverage; capa de barrios visible
-en el mapa; release v0.1 etiquetado en git.
+*Hecho cuando:* `manifest.json` valida quality/coverage ✅; capa de barrios
+visible en el mapa ✅ (2026-07-07: grupo TERRITORIO en el panel, límites +
+popup, verificado CDP claro/oscuro); release v0.1 etiquetado en git ← ÚLTIMO
+PASO PENDIENTE de L0.
 
 ### L1 — Corte vertical semántico (agosto–septiembre 2026)
 

@@ -9,11 +9,13 @@ compite con barrios, un municipio con municipios:
   services  fuentes + aseos + DEA por km²
   mobility  paradas de transporte por km² (ferroviario ×3, bus ×1)
   cycling   km de bidegorri por km² + aparcabicis por km²
-  calm      inverso de incidencias de tráfico históricas por km²
+  traffic   inverso de incidencias de tráfico históricas por km²
             (PROXY de tráfico, no ruido medido — no se finge)
 
-score = media de componentes. Los conteos crudos se incluyen siempre:
-el número manda, el score solo ordena.
+coverage_index = media de componentes. Es un índice de COBERTURA DE
+INFRAESTRUCTURA para uso analítico/institucional (déficits de servicio),
+NO una nota del barrio — ver docs/ETICA-DATOS.md. Los conteos crudos se
+incluyen siempre: el índice ordena, el número manda.
 
 Ejecutar con el venv de emap-next:
     ../emap-next/.venv/bin/python datasets/neighborhood-scores/build.py
@@ -146,19 +148,20 @@ def main() -> None:
                                         + sum(u["counts"][l] for l in BUS))),
             "cycling": percentile(dens(lambda u: u["bike_km"]
                                        + 0.1 * u["counts"]["bikepark"])),
-            "calm": percentile([-x for x in dens(lambda u: u["traffic"])]),
+            "traffic": percentile([-x for x in dens(lambda u: u["traffic"])]),
         }
         for i, u in enumerate(group):
             u["components"] = {k: v[i] for k, v in comp.items()}
-            u["score"] = round(sum(u["components"].values()) / len(comp), 1)
+            u["coverage_index"] = round(sum(u["components"].values()) / len(comp), 1)
 
     out = {
         "meta": {
             "generated": date.today().isoformat(),
             "generator": "emap-labs/datasets/neighborhood-scores/build.py",
             "method": "componentes = percentil de densidad por km² dentro de su kind; "
-                      "score = media. calm es proxy de incidencias de tráfico "
-                      "históricas, no ruido medido.",
+                      "coverage_index = media (índice de cobertura de infraestructura, "
+                      "uso analítico — ver ETICA-DATOS.md). traffic es proxy de "
+                      "incidencias históricas, no ruido medido.",
             "sources": "OSM (ODbL), GTFS oficiales, incidencias tráfico Euskadi (harvest propio)",
         },
         "scores": [{
@@ -169,16 +172,16 @@ def main() -> None:
             "bike_km": round(u["bike_km"], 2),
             "traffic_incidents": u["traffic"],
             "components": u["components"],
-            "score": u["score"],
+            "coverage_index": u["coverage_index"],
         } for u in units],
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False) + "\n")
     print(f"OK → {OUT} ({OUT.stat().st_size // 1024} KB, {len(units)} unidades)")
 
     barrios = sorted((u for u in units if u["props"]["kind"] == "neighborhood"),
-                     key=lambda u: -u["score"])
-    print("\ntop 5 barrios:", [(b["props"]["name"]["es"], b["score"]) for b in barrios[:5]])
-    print("cola 3 barrios:", [(b["props"]["name"]["es"], b["score"]) for b in barrios[-3:]])
+                     key=lambda u: -u["coverage_index"])
+    print("\ntop 5 cobertura:", [(b["props"]["name"]["es"], b["coverage_index"]) for b in barrios[:5]])
+    print("cola 3 cobertura:", [(b["props"]["name"]["es"], b["coverage_index"]) for b in barrios[-3:]])
 
 
 if __name__ == "__main__":

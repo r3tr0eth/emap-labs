@@ -27,10 +27,10 @@ en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expecte
 
 ## Resultados
 
-Corpus 92 casos: **dev** 63 (60 puntuables + 3 known_gap, usados para calibrar)
-y **held-out** 29 (sección H, prefijo `ho-`, escritos tras fijar umbrales y
-keywords; el runner los excluye por defecto — `--split heldout` para correrlos,
-y NUNCA se calibra mirándolos).
+Corpus 117 casos: **dev** 63 (60 puntuables + 3 known_gap, usados para
+calibrar) y **held-out** 54 (secciones H y H2, prefijo `ho-`; 53 puntuables +
+1 known_gap; el runner los excluye por defecto — `--split heldout` para
+correrlos, y NUNCA se calibra mirándolos).
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
@@ -45,14 +45,12 @@ mejores o clasificador LLM). Patrón de fallo dominante: parking/bikepark
 absorben consultas ambiguas; 2 abstenciones con fuga (taxi, autocaravana).
 Resultados históricos con el held-out de 29 casos en results/.)
 
-(2026-07-07, MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config
-completa versionada en cada JSON de `results/`.)
+(MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config completa
+versionada en cada JSON de `results/`.)
 
-**El híbrido cumple el criterio de despliegue**: bate al baseline en held-out
-en ambos idiomas (+14 pts ES, +10 pts EU). La caída dev→held-out del híbrido
-(85→79 en ES) cuantifica el optimismo del tuning: ~6 puntos. En EU el dato es
-ruidoso (n=29) pero consistente: la semántica solo como fallback no rompe nada
-y rescata paráfrasis.
+**Criterio de despliegue**: el híbrido sigue ≥ baseline en held-out en ambos
+idiomas, pero tras la tanda H2 el margen es mínimo (+1/+2 pts). Se mantiene
+desplegado; la mejora de la etapa semántica es EL objetivo medible de L3.
 
 Lecciones del primer día de harness:
 

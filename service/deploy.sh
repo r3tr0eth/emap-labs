@@ -7,12 +7,13 @@ LABS="$(cd "$(dirname "$0")/.." && pwd)"
 NEXT="$LABS/../emap-next"
 
 echo "→ código y datos"
-ssh "$HOST" "mkdir -p /opt/emap-labs/{service,evals,data/pois-euskadi,data/processed/pois}"
+ssh "$HOST" "mkdir -p /opt/emap-labs/{service,evals,data/pois-euskadi,data/processed/pois,data/processed/neighborhoods}"
 rsync -az "$LABS/service/app.py" "$HOST:/opt/emap-labs/service/"
 rsync -az "$LABS/evals/baseline.py" "$LABS/evals/semantic_local.py" "$HOST:/opt/emap-labs/evals/"
 rsync -az "$NEXT/packages/geo" "$HOST:/opt/emap-labs/" --exclude __pycache__ --exclude '*.egg-info'
 rsync -az "$NEXT/data/pois-euskadi/" "$HOST:/opt/emap-labs/data/pois-euskadi/"
 rsync -az "$NEXT/data/processed/pois/" "$HOST:/opt/emap-labs/data/processed/pois/"
+rsync -az "$NEXT/data/processed/neighborhoods/neighborhoods.json" "$HOST:/opt/emap-labs/data/processed/neighborhoods/"
 
 echo "→ venv + dependencias"
 ssh "$HOST" 'cd /opt/emap-labs && [ -d .venv ] || python3 -m venv .venv
@@ -42,3 +43,6 @@ mkdir -p /opt/emap-labs/.cache && chown -R emap:emap /opt/emap-labs
 systemctl daemon-reload && systemctl enable --now emap-semantic'
 
 echo "→ hecho. Verificar: curl -s localhost:8083/healthz (en el VPS)"
+
+echo "→ reinicio"
+ssh "$HOST" "systemctl restart emap-semantic"

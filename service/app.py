@@ -45,6 +45,8 @@ LAYER_FILES = {
 app = FastAPI(title="emap-labs semantic", version="0.1")
 _retriever: HybridRetriever | None = None
 _counts: dict[str, int] = {}
+_datasets: dict[str, list[dict]] = {}
+_units: list[dict] = []  # barrios/distritos/municipios con anillos (lat,lon)
 
 
 @app.on_event("startup")
@@ -60,7 +62,18 @@ def load() -> None:
             print(f"aviso: falta {path}", file=sys.stderr)
     _retriever = HybridRetriever(datasets)
     _retriever.set_anchor_names([])
-    print(f"semantic listo: {sum(_counts.values())} POIs en {len(_counts)} capas")
+    _datasets.update(datasets)
+    nb = DATA_DIR / "processed/neighborhoods/neighborhoods.json"
+    if nb.is_file():
+        for f in json.loads(nb.read_text())["features"]:
+            rings = [[(p[1], p[0]) for p in poly[0]]
+                     for poly in f["geometry"]["coordinates"]]
+            lats = [p[0] for r in rings for p in r]
+            lons = [p[1] for r in rings for p in r]
+            _units.append({"props": f["properties"], "rings": rings,
+                           "bbox": (min(lats), min(lons), max(lats), max(lons))})
+    print(f"semantic listo: {sum(_counts.values())} POIs en {len(_counts)} capas, "
+          f"{len(_units)} unidades administrativas")
 
 
 @app.get("/healthz")
@@ -92,5 +105,51 @@ def search(
         "results": out,
         "retriever": _retriever.name,
         "took_ms": round((time.monotonic() - t0) * 1000),
+        "attribution": "© OpenStreetMap contributors (ODbL) · Open Data Euskadi",
+    }
+
+
+RAIL = ("metro", "euskotren", "cercanias")
+BUS = ("bilbobus", "bizkaibus")
+KIND_RANK = {"neighborhood": 0, "district": 1, "municipality": 2}
+
+
+def _nearest(layers: tuple[str, ...], lat: float, lon: float):
+    best = None
+    for layer in layers:
+        for p in _datasets.get(layer, []):
+            d = haversine_m(lat, lon, p["lat"], p["lon"])
+            if best is None or d < best[0]:
+                best = (d, p, layer)
+    if best is None:
+        return None
+    return {"name": best[1]["name"], "layer": best[2], "distance_m": round(best[0])}
+
+
+@app.get("/explain")
+def explain(lat: float, lon: float):
+    """Hechos del entorno de un punto — descriptivo, sin juicios (ETICA-DATOS)."""
+    from emap_geo.polygon import point_in_polygon
+
+    unit = None
+    for u in _units:
+        b = u["bbox"]
+        if not (b[0] <= lat <= b[2] and b[1] <= lon <= b[3]):
+            continue
+        if any(point_in_polygon(lat, lon, r) for r in u["rings"]):
+            if unit is None or KIND_RANK[u["props"]["kind"]] < KIND_RANK[unit["kind"]]:
+                unit = u["props"]
+    counts = {}
+    for layer in ("fountains", "toilets", "bikepark", "defib"):
+        counts[layer] = sum(
+            1 for p in _datasets.get(layer, [])
+            if haversine_m(lat, lon, p["lat"], p["lon"]) < 300)
+    return {
+        "unit": unit and {"name": unit["name"], "kind": unit["kind"],
+                          "parent": unit.get("parent")},
+        "nearest_rail": _nearest(RAIL, lat, lon),
+        "nearest_bus": _nearest(BUS, lat, lon),
+        "nearest_toilet": _nearest(("toilets",), lat, lon),
+        "counts_300m": counts,
         "attribution": "© OpenStreetMap contributors (ODbL) · Open Data Euskadi",
     }

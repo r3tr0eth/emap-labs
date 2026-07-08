@@ -1,13 +1,17 @@
 {
-  "retriever": "baseline-keywords-geo",
+  "retriever": "hybrid-keywords-then-semantic",
   "lang": "eu",
   "k": 5,
-  "config": {},
+  "config": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.45,
+    "tie_window": 0.08
+  },
   "n_corpus_cases": 63,
   "date": "2026-07-08",
   "corpus": 0,
   "total": {
-    "pass": 44,
+    "pass": 42,
     "cases": 60
   },
   "by_intent": {
@@ -16,7 +20,7 @@
       "cases": 18
     },
     "attribute": {
-      "pass": 6,
+      "pass": 7,
       "cases": 8
     },
     "transit": {
@@ -24,7 +28,7 @@
       "cases": 11
     },
     "semantic": {
-      "pass": 11,
+      "pass": 8,
       "cases": 23
     }
   },
@@ -184,10 +188,10 @@
     {
       "id": "ev-plazas-abando",
       "intent": "attribute",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking El Corte Ingles  (Don Diego L&#243;pez Haroko Kale Nagusia, 11)"
     },
     {
       "id": "fountain-fuera-bilbao",
@@ -288,9 +292,9 @@
     {
       "id": "asp-cafe-enchufes",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Ercilla/Moyua"
     },
     {
       "id": "asp-pintxos-casco",
@@ -302,16 +306,16 @@
     {
       "id": "asp-barrio-tranquilo",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aparcabicis"
     },
     {
       "id": "asp-parque-sombra-ninos",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aseo Público Autolimpiable Parque de los Enamorados"
     },
     {
       "id": "asp-plan-lluvia",
@@ -337,23 +341,23 @@
     {
       "id": "asp-mirador",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BERNAOLA ASC TER-2"
     },
     {
       "id": "asp-zona-verde-getxo",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Zarauzko hondartza"
     },
     {
       "id": "asp-similar-dona-casilda",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
     },
     {
       "id": "robust-typo-fuente",
@@ -408,16 +412,16 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
     },
     {
       "id": "par-bebe",
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "reason": "categoria_equivocada (cameras)",
+      "detail": "top1=Plza. Biribila ✗ categoria_equivocada (cameras)"
     },
     {
       "id": "par-servicio",
@@ -430,34 +434,34 @@
     {
       "id": "par-patinete",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
     },
     {
       "id": "par-enchufar",
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
     },
     {
       "id": "par-dejar-coche",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Karmelo"
     },
     {
       "id": "par-estacionar",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=San Roque"
     },
     {
       "id": "par-candar-bici",
@@ -479,25 +483,25 @@
       "id": "par-chapuzon",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "hit_at_k": true,
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
     },
     {
       "id": "par-arena",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "hit_at_k": true,
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
     },
     {
       "id": "par-carretera-ahora",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "hit_at_k": true,
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
     }
   ],
   "known_gaps": [

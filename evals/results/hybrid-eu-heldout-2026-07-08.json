@@ -11,7 +11,7 @@
   "date": "2026-07-08",
   "corpus": 0,
   "total": {
-    "pass": 37,
+    "pass": 35,
     "cases": 53
   },
   "by_intent": {
@@ -20,11 +20,11 @@
       "cases": 6
     },
     "semantic": {
-      "pass": 21,
+      "pass": 20,
       "cases": 32
     },
     "transit": {
-      "pass": 7,
+      "pass": 6,
       "cases": 9
     },
     "attribute": {
@@ -118,16 +118,16 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (parking)",
-      "detail": "top1=El Corte Inglés ✗ categoria_equivocada (parking)"
+      "reason": "categoria_equivocada (cameras)",
+      "detail": "top1=Plza. Biribila ✗ categoria_equivocada (cameras)"
     },
     {
       "id": "ho-guardar-coche",
       "intent": "semantic",
-      "pass": true,
+      "pass": false,
       "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Areatza"
+      "reason": "categoria_equivocada (cameras)",
+      "detail": "top1=PC21_ESTUFA_SAL ✗ categoria_equivocada (cameras)"
     },
     {
       "id": "ho-atar-bici-guggenheim",
@@ -196,10 +196,10 @@
     {
       "id": "ho-cercanias-muskiz",
       "intent": "transit",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Muskiz"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho-parking-gratis-centro",

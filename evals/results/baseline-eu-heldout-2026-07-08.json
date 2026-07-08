@@ -7,7 +7,7 @@
   "date": "2026-07-08",
   "corpus": 0,
   "total": {
-    "pass": 36,
+    "pass": 35,
     "cases": 53
   },
   "by_intent": {
@@ -20,7 +20,7 @@
       "cases": 32
     },
     "transit": {
-      "pass": 7,
+      "pass": 6,
       "cases": 9
     },
     "attribute": {
@@ -192,10 +192,10 @@
     {
       "id": "ho-cercanias-muskiz",
       "intent": "transit",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Muskiz"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho-parking-gratis-centro",

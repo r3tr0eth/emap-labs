@@ -34,8 +34,17 @@ correrlos, y NUNCA se calibra mirándolos).
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline-keywords-geo | 76% | 66% | 75% | 67% |
-| **hybrid-keywords-then-semantic** | **85%** | **67%** | 71% | **69%** |
+| baseline-keywords-geo | 76% | 66% | 73% | 66% |
+| **hybrid-keywords-then-semantic** | **85%** | **67%** | 70% | **66%** |
+
+**Euskera validado con Itzuli (2026-07-08)**: las 112 queries no-robustez se
+cotejaron con el traductor neuronal del Gobierno Vasco — 27 idénticas, 38
+adoptadas de Itzuli, 6 ajustes combinados, resto mantenidas con motivo
+(Itzuli también falla: candar→txanda, chapuzón→txapligu, formas subordinadas
+no-query). Hallazgo: con euskera correcto TODOS los números EU bajan 1-3
+pts y el híbrido pasa a EMPATAR con el baseline en held-out — el euskera
+artificial original inflaba la medición. La brecha EU real es mayor:
+argumento central del benchmark L3.
 
 (Held-out ampliado 2026-07-08 a 53 casos con la tanda H2, deliberadamente más
 dura: la ventaja del híbrido se estrecha a +1/+2 pts. Sigue ≥ baseline en

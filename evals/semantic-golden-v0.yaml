@@ -36,13 +36,13 @@ cases:
     expected: {layers: [fountains], within_m: 400}
 
   - id: fountain-casco-viejo
-    q: {es: "dónde puedo beber agua en el Casco Viejo", eu: "non edan dezaket ura Zazpikaleetan"}
+    q: {es: "dónde puedo beber agua en el Casco Viejo", eu: "non edan dezaket ura Alde Zaharrean"}
     intent: nearest
     anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [fountains], within_m: 400}
 
   - id: toilet-abando
-    q: {es: "aseo público cerca de la estación de Abando", eu: "komun publikoa Abando geltokitik gertu"}
+    q: {es: "aseo público cerca de la estación de Abando", eu: "komun publikoa Abandoko geltokitik gertu"}
     intent: nearest
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [toilets], within_m: 500}
@@ -54,7 +54,7 @@ cases:
     expected: {layers: [toilets], within_m: 600}
 
   - id: parking-santutxu
-    q: {es: "aparcamiento cerca de Santutxu", eu: "aparkalekua Santutxu inguruan"}
+    q: {es: "aparcamiento cerca de Santutxu", eu: "aparkalekua Santutxutik gertu"}
     intent: nearest
     anchor: {layer: metro, name: "Santutxu"}
     expected: {layers: [parking], within_m: 500}
@@ -72,14 +72,14 @@ cases:
     expected: {layers: [ev], within_m: 800}
 
   - id: ev-barakaldo
-    q: {es: "punto de carga para el coche en Barakaldo", eu: "kargatzeko puntua Barakaldon"}
+    q: {es: "punto de carga para el coche en Barakaldo", eu: "autoa kargatzeko puntua Barakaldon"}
     intent: nearest
     anchor: {layer: metro, name: "Barakaldo"}
     expected: {layers: [ev], within_m: 1200}
     known_gap: "El dataset EV es el registro municipal de Bilbao (60 puntos): no hay cargadores de Barakaldo. Se resuelve con fuente OCM/IBIL más amplia."
 
   - id: bikepark-sanmames
-    q: {es: "dónde dejar la bici cerca de San Mamés", eu: "non utzi bizikleta San Mames inguruan"}
+    q: {es: "dónde dejar la bici cerca de San Mamés", eu: "non utzi bizikleta San Mamesetik gertu"}
     intent: nearest
     anchor: {layer: metro, name: "Santimami/San Mamés"}
     expected: {layers: [bikepark], within_m: 400}
@@ -91,7 +91,7 @@ cases:
     expected: {layers: [bikepark], within_m: 500}
 
   - id: defib-basauri
-    q: {es: "desfibrilador más cercano en Basauri", eu: "desfibriladorerik hurbilena Basaurin"}
+    q: {es: "desfibrilador más cercano en Basauri", eu: "desfibriladore hurbilena Basaurin"}
     intent: nearest
     anchor: {layer: metro, name: "Basauri"}
     expected: {layers: [defib], within_m: 600}
@@ -109,7 +109,7 @@ cases:
     expected: {layers: [beaches], within_m: 2000}
 
   - id: beach-plentzia
-    q: {es: "dónde bañarse cerca de Plentzia", eu: "non bainatu Plentzia inguruan"}
+    q: {es: "dónde bañarse cerca de Plentzia", eu: "non bainatu Plentziatik gertu"}
     intent: nearest
     anchor: {layer: metro, name: "Plentzia"}
     expected: {layers: [beaches], within_m: 2000}
@@ -123,26 +123,26 @@ cases:
   # ── B. Con restricción de atributo (attribute) ──────────────────────
 
   - id: toilet-wheelchair-abando
-    q: {es: "aseo accesible en silla de ruedas cerca de Abando", eu: "gurpil-aulkirako komun irisgarria Abandotik gertu"}
+    q: {es: "aseo accesible en silla de ruedas cerca de Abando", eu: "komun irisgarria gurpil-aulkian, Abandotik gertu"}
     intent: attribute
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [toilets], within_m: 800, tags: {wheelchair: "yes"}}
 
   - id: toilet-free-casco
-    q: {es: "baño público gratuito en el Casco Viejo", eu: "doako komun publikoa Zazpikaleetan"}
+    q: {es: "baño público gratuito en el Casco Viejo", eu: "doako komun publikoa Alde Zaharrean"}
     intent: attribute
     anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [toilets], within_m: 800, tags: {fee: "no"}}
 
   - id: parking-free-etxebarri
-    q: {es: "aparcamiento gratis en Etxebarri", eu: "doako aparkalekua Etxebarrin"}
+    q: {es: "aparcamiento gratis en Etxebarri", eu: "aparkalekua doan Etxebarrin"}
     intent: attribute
     anchor: {layer: metro, name: "Etxebarri"}
     expected: {layers: [parking], within_m: 1000, tags: {fee: "no"}}
     known_gap: "OSM apenas tiene fee=no tagueado fuera de Bilbao; ningún retriever puede acertar. Mejorable mapeando en OSM."
 
   - id: parking-free-leioa
-    q: {es: "parking gratuito cerca de Leioa", eu: "doako parkinga Leioatik gertu"}
+    q: {es: "parking gratuito cerca de Leioa", eu: "doako aparkalekua Leioatik gertu"}
     intent: attribute
     anchor: {layer: metro, name: "Leioa"}
     expected: {layers: [parking], within_m: 1200, tags: {fee: "no"}}
@@ -156,7 +156,7 @@ cases:
     notes: "El cubierto más cercano real está a 1.575 m (OSM 2026-07); 1,8 km es razonable en bici."
 
   - id: bikepark-covered-algorta
-    q: {es: "sitio cubierto para dejar la bici en Algorta", eu: "bizikleta uzteko toki estalia Algortan"}
+    q: {es: "sitio cubierto para dejar la bici en Algorta", eu: "bizikleta uzteko leku estalia Algortan"}
     intent: attribute
     anchor: {layer: metro, name: "Algorta"}
     expected: {layers: [bikepark], within_m: 1000, tags: {covered: "yes"}}
@@ -168,7 +168,7 @@ cases:
     expected: {layers: [ev], within_m: 3000, tags_not: {TipoCarga: "Lenta (3-7 kW)"}}
 
   - id: ev-plazas-abando
-    q: {es: "electrolinera con varias plazas cerca de Abando", eu: "plaza anitzeko kargatokia Abandotik gertu"}
+    q: {es: "electrolinera con varias plazas cerca de Abando", eu: "Abandotik gertu hainbat plaza dituen elektrolinera"}
     intent: attribute
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [ev], within_m: 1500, min_results: 1}
@@ -193,7 +193,7 @@ cases:
     expected: {layers: [metro], name: "Moyua", answer_tags: {lines: ["L1", "L2"]}}
 
   - id: lines-basauri
-    q: {es: "qué línea llega a Basauri", eu: "zein lineak iristen dira Basaurira"}
+    q: {es: "qué línea llega a Basauri", eu: "zein linea iristen da Basaurira"}
     intent: transit
     expected: {layers: [metro], name: "Basauri", answer_tags: {lines: ["L1", "L2"]}}
     notes: "El GTFS oficial confirma que L1 y L2 llegan a Basauri (tronco común)."
@@ -206,7 +206,7 @@ cases:
     notes: "Moyua es la esperada; el landmark se resuelve con el geocoder."
 
   - id: nearest-metro-sanmames-estadio
-    q: {es: "cómo se llama la parada de metro del estadio de San Mamés", eu: "nola du izena San Mames estadioko metro geltokiak"}
+    q: {es: "cómo se llama la parada de metro del estadio de San Mamés", eu: "nola deitzen da San Mames estadioko metro-geltokia?"}
     intent: transit
     expected: {layers: [metro], name: "Santimami/San Mamés"}
 
@@ -216,12 +216,12 @@ cases:
     expected: {layers: [euskotren], name_contains: "Gernika"}
 
   - id: cercanias-c3
-    q: {es: "qué línea de cercanías pasa por Abaroa-San Miguel", eu: "zein aldiriko-linea igarotzen da Abaroa-San Migeletik"}
+    q: {es: "qué línea de cercanías pasa por Abaroa-San Miguel", eu: "zein aldiriko linea igarotzen da Abaroa-San Migeletik"}
     intent: transit
     expected: {layers: [cercanias], name: "Abaroa-San Miguel", answer_tags: {lines: ["C3"]}}
 
   - id: bus-stop-abando
-    q: {es: "parada de Bizkaibus junto a la estación de Abando", eu: "Bizkaibus geltokia Abando ondoan"}
+    q: {es: "parada de Bizkaibus junto a la estación de Abando", eu: "Bizkaibusen geltokia, Abandoko geltokiaren ondoan"}
     intent: transit
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [bizkaibus], within_m: 300}
@@ -247,13 +247,13 @@ cases:
   # needs: dataset que lo desbloquea (roadmap L0-L2 / D-018 post-corte).
 
   - id: asp-cafe-enchufes
-    q: {es: "cafetería tranquila con enchufes para trabajar cerca de Moyua", eu: "lasai lan egiteko kafetegia, entxufeekin, Moyua inguruan"}
+    q: {es: "cafetería tranquila con enchufes para trabajar cerca de Moyua", eu: "Moyua inguruan lan egiteko entxufeak dituen kafetegi lasaia"}
     intent: semantic
     answerable: false
     needs: places-osm-full
 
   - id: asp-pintxos-casco
-    q: {es: "dónde tomar pintxos en el Casco Viejo sin turistas", eu: "non jan pintxoak Zazpikaleetan turistarik gabe"}
+    q: {es: "dónde tomar pintxos en el Casco Viejo sin turistas", eu: "non hartu pintxoak Alde Zaharrean, turistarik gabe"}
     intent: semantic
     answerable: false
     needs: places-osm-full
@@ -265,31 +265,31 @@ cases:
     needs: neighborhoods + urban-signals-aggregate
 
   - id: asp-parque-sombra-ninos
-    q: {es: "parque con sombra para ir con niños en Deusto", eu: "itzala duen parkea umeekin joateko Deustun"}
+    q: {es: "parque con sombra para ir con niños en Deusto", eu: "itzalpeko parkea Deustun haurrekin joateko"}
     intent: semantic
     answerable: false
     needs: green-areas + tree-canopy
 
   - id: asp-plan-lluvia
-    q: {es: "qué hacer en Bilbao un día de lluvia", eu: "zer egin Bilbon euria egiten duen egun batean"}
+    q: {es: "qué hacer en Bilbao un día de lluvia", eu: "Zer egin Bilbon euri egun batean"}
     intent: semantic
     answerable: false
     needs: places-osm-full + events
 
   - id: asp-ruta-accesible
-    q: {es: "paseo accesible en silla de ruedas por la ría", eu: "gurpil-aulkiarekin egiteko ibilbide irisgarria itsasadarrean"}
+    q: {es: "paseo accesible en silla de ruedas por la ría", eu: "Ibilaldi irisgarria gurpil-aulkian itsasadarrean zehar"}
     intent: semantic
     answerable: false
     needs: sidewalks-opensidewalks
 
   - id: asp-mercado-local
-    q: {es: "mercado de productos locales cerca de mí", eu: "bertako produktuen merkatua nire ondoan"}
+    q: {es: "mercado de productos locales cerca de mí", eu: "tokiko produktuen merkatua nire ondoan"}
     intent: semantic
     answerable: false
     needs: places-osm-full
 
   - id: asp-mirador
-    q: {es: "mirador con buenas vistas de Bilbao al atardecer", eu: "Bilboko bista onak dituen behatokia ilunabarrean"}
+    q: {es: "mirador con buenas vistas de Bilbao al atardecer", eu: "begiratokia, Bilboko ikuspegi onarekin ilunabarrean"}
     intent: semantic
     answerable: false
     needs: places-osm-full + viewpoints
@@ -359,13 +359,13 @@ cases:
     expected: {layers: [fountains], within_m: 500}
 
   - id: par-bebe
-    q: {es: "sitio para cambiar al bebé cerca de Abando", eu: "haurra aldatzeko tokia Abando ondoan"}
+    q: {es: "sitio para cambiar al bebé cerca de Abando", eu: "haurtxoa Abandotik gertu aldatzeko gunea"}
     intent: semantic
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [toilets], within_m: 800}
 
   - id: par-servicio
-    q: {es: "necesito ir al servicio urgentemente", eu: "non egin dezaket txiza"}
+    q: {es: "necesito ir al servicio urgentemente", eu: "lehenbailehen joan behar dut zerbitzura"}
     intent: semantic
     anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [toilets], within_m: 500}
@@ -377,7 +377,7 @@ cases:
     expected: {layers: [ev], within_m: 800}
 
   - id: par-enchufar
-    q: {es: "un sitio para enchufar el coche", eu: "autoa entxufatzeko lekua"}
+    q: {es: "un sitio para enchufar el coche", eu: "Autoa entxufatzeko leku bat"}
     intent: semantic
     anchor: {layer: metro, name: "Moyua"}
     expected: {layers: [ev], within_m: 1000}
@@ -402,7 +402,7 @@ cases:
     notes: "En eu 'bizikleta' sí es keyword: el baseline puede acertar esa mitad."
 
   - id: par-emergencia-cardiaca
-    q: {es: "emergencia cardiaca, qué tengo cerca", eu: "bihotz-geldialdia, zer daukat gertu"}
+    q: {es: "emergencia cardiaca, qué tengo cerca", eu: "Bihotzeko larrialdia, zer daukat gertu?"}
     intent: semantic
     anchor: {layer: metro, name: "Basauri"}
     expected: {layers: [defib], within_m: 600}
@@ -414,7 +414,7 @@ cases:
     expected: {layers: [beaches], within_m: 2000}
 
   - id: par-arena
-    q: {es: "tumbarme en la arena al sol", eu: "hondarretan etzatea eguzkitan"}
+    q: {es: "tumbarme en la arena al sol", eu: "hondarretan eguzkitan etzan"}
     intent: semantic
     anchor: {layer: metro, name: "Plentzia"}
     expected: {layers: [beaches], within_m: 2000}
@@ -475,7 +475,7 @@ cases:
 
   - id: ho-eu-aparkaleku-etxebarri
     split: heldout
-    q: {es: "sitio para el coche en Etxebarri", eu: "autoarentzat lekua Etxebarrin"}
+    q: {es: "sitio para el coche en Etxebarri", eu: "autoarentzako lekua Etxebarrin"}
     intent: semantic
     anchor: {layer: metro, name: "Etxebarri"}
     expected: {layers: [parking], within_m: 1100}
@@ -504,14 +504,14 @@ cases:
 
   - id: ho-enchufe-coche
     split: heldout
-    q: {es: "necesito un enchufe para el coche", eu: "entxufe bat behar dut autoarentzat"}
+    q: {es: "necesito un enchufe para el coche", eu: "Autoarentzako entxufe bat behar dut"}
     intent: semantic
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [ev], within_m: 1000}
 
   - id: ho-guardar-coche
     split: heldout
-    q: {es: "dónde guardo el coche esta noche", eu: "non gorde autoa gauean"}
+    q: {es: "dónde guardo el coche esta noche", eu: "non gorde autoa gaur gauean"}
     intent: semantic
     anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [parking], within_m: 700}
@@ -546,7 +546,7 @@ cases:
 
   - id: ho-agua-perro
     split: heldout
-    q: {es: "agua para el perro", eu: "ura txakurrarentzat"}
+    q: {es: "agua para el perro", eu: "txakurrarentzako ura"}
     intent: semantic
     anchor: {layer: metro, name: "Santutxu"}
     expected: {layers: [fountains], within_m: 600}
@@ -572,7 +572,7 @@ cases:
 
   - id: ho-cercanias-muskiz
     split: heldout
-    q: {es: "cercanías hasta Muskiz", eu: "aldiriko trena Muskizeraino"}
+    q: {es: "cercanías hasta Muskiz", eu: "aldiriak Muskizeraino"}
     intent: transit
     expected: {layers: [cercanias], name_contains: "Muskiz"}
 
@@ -600,7 +600,7 @@ cases:
 
   - id: ho-carga-rapida-deustu
     split: heldout
-    q: {es: "punto de carga rápida por Deusto", eu: "karga azkarreko puntua Deustu aldean"}
+    q: {es: "punto de carga rápida por Deusto", eu: "karga azkarreko puntua Deustun"}
     intent: attribute
     anchor: {layer: metro, name: "Deustu"}
     expected: {layers: [ev], within_m: 1500, tags_not: {TipoCarga: "Lenta (3-7 kW)"}}
@@ -621,7 +621,7 @@ cases:
 
   - id: ho-menu-del-dia
     split: heldout
-    q: {es: "dónde comer un menú del día por 12 euros", eu: "non jan eguneko menua 12 eurotan"}
+    q: {es: "dónde comer un menú del día por 12 euros", eu: "eguneko menua non jan 12 euroren truke"}
     intent: semantic
     answerable: false
     needs: places-osm-full
@@ -644,7 +644,7 @@ cases:
 
   - id: ho2-eu-komun-durango
     split: heldout
-    q: {es: "dónde hay un baño en Durango", eu: "non dago komunik Durangon"}
+    q: {es: "dónde hay un baño en Durango", eu: "non dago komuna Durangon"}
     intent: nearest
     anchor: {layer: euskotren, name: "Durango"}
     expected: {layers: [toilets], within_m: 1300}
@@ -674,7 +674,7 @@ cases:
 
   - id: ho2-eu-txakurra
     split: heldout
-    q: {es: "agua para el perro en Basauri", eu: "txakurrarentzat ura Basaurin"}
+    q: {es: "agua para el perro en Basauri", eu: "txakurrarentzako ura Basaurin"}
     intent: semantic
     anchor: {layer: metro, name: "Basauri"}
     expected: {layers: [fountains], within_m: 600}
@@ -709,7 +709,7 @@ cases:
 
   - id: ho2-bici-noche
     split: heldout
-    q: {es: "un sitio seguro para la bici esta noche", eu: "bizikletarentzat leku segurua gaur gauean"}
+    q: {es: "un sitio seguro para la bici esta noche", eu: "bizikletarentzako leku segurua gaur gauean"}
     intent: semantic
     anchor: {layer: metro, name: "Abando"}
     expected: {layers: [bikepark], within_m: 500}
@@ -736,13 +736,13 @@ cases:
 
   - id: ho2-tren-durango
     split: heldout
-    q: {es: "qué tren pasa por Durango", eu: "zein tren igarotzen da Durangotik"}
+    q: {es: "qué tren pasa por Durango", eu: "zein tren pasatzen da Durangotik"}
     intent: transit
     expected: {layers: [euskotren], name: "Durango"}
 
   - id: ho2-bus-gernika
     split: heldout
-    q: {es: "parada de Bizkaibus en Gernika", eu: "Bizkaibus geltokia Gernikan"}
+    q: {es: "parada de Bizkaibus en Gernika", eu: "Bizkaibusen geltokia Gernikan"}
     intent: transit
     expected: {layers: [bizkaibus], name_contains: "GERNIKA"}
 
@@ -776,7 +776,7 @@ cases:
 
   - id: ho2-gasolinera-barata
     split: heldout
-    q: {es: "la gasolinera más barata cerca", eu: "gasolindegirik merkeena gertu"}
+    q: {es: "la gasolinera más barata cerca", eu: "gasolindegi merkeena gertu"}
     intent: semantic
     answerable: false
     needs: fuel-en-retriever
@@ -784,14 +784,14 @@ cases:
 
   - id: ho2-veterinario
     split: heldout
-    q: {es: "un veterinario de urgencias", eu: "larrialdiko albaitaria"}
+    q: {es: "un veterinario de urgencias", eu: "larrialdietako albaitari bat"}
     intent: semantic
     answerable: false
     needs: places-osm-full
 
   - id: ho2-autocaravana
     split: heldout
-    q: {es: "dónde pasar la noche con la autocaravana", eu: "non pasa gaua autokarabanarekin"}
+    q: {es: "dónde pasar la noche con la autocaravana", eu: "non igaro gaua autokarabanarekin"}
     intent: semantic
     answerable: false
     needs: places-osm-full

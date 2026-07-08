@@ -632,3 +632,180 @@ cases:
     intent: semantic
     answerable: false
     needs: places-osm-full
+
+  # ── H2. Segunda tanda held-out (2026-07-08) — mismas reglas que H ────
+
+  - id: ho2-eu-ur-hotza
+    split: heldout
+    q: {es: "quiero beber agua en Erandio", eu: "ura edan nahi dut Erandion"}
+    intent: nearest
+    anchor: {layer: metro, name: "Erandio"}
+    expected: {layers: [fountains], within_m: 600}
+
+  - id: ho2-eu-komun-durango
+    split: heldout
+    q: {es: "dónde hay un baño en Durango", eu: "non dago komunik Durangon"}
+    intent: nearest
+    anchor: {layer: euskotren, name: "Durango"}
+    expected: {layers: [toilets], within_m: 1300}
+    notes: "El aseo mapeado más cercano está a 1.149 m (OSM 2026-07)."
+
+  - id: ho2-eu-bizi-sestao
+    split: heldout
+    q: {es: "dejar la bici segura en Sestao", eu: "bizikleta segurtasunez utzi Sestaon"}
+    intent: semantic
+    anchor: {layer: metro, name: "Sestao"}
+    expected: {layers: [bikepark], within_m: 1000}
+    notes: "El aparcabicis mapeado más cercano está a 843 m (OSM 2026-07)."
+
+  - id: ho2-eu-dea-bermeo
+    split: heldout
+    q: {es: "el DEA más cercano en Bermeo", eu: "DEA hurbilena Bermeon"}
+    intent: nearest
+    anchor: {layer: euskotren, name: "Bermeo"}
+    expected: {layers: [defib], within_m: 700}
+
+  - id: ho2-eu-kargatu-gauez
+    split: heldout
+    q: {es: "sitio para cargar el coche por la noche en Indautxu", eu: "autoa gauez kargatzeko lekua Indautxun"}
+    intent: semantic
+    anchor: {layer: metro, name: "Indautxu"}
+    expected: {layers: [ev], within_m: 800}
+
+  - id: ho2-eu-txakurra
+    split: heldout
+    q: {es: "agua para el perro en Basauri", eu: "txakurrarentzat ura Basaurin"}
+    intent: semantic
+    anchor: {layer: metro, name: "Basauri"}
+    expected: {layers: [fountains], within_m: 600}
+
+  - id: ho2-eu-eguzkia
+    split: heldout
+    q: {es: "un sitio para tomar el sol cerca de Bidezabal", eu: "eguzkia hartzeko lekua Bidezabaletik gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Bidezabal"}
+    expected: {layers: [beaches], within_m: 2500}
+
+  - id: ho2-desmayo
+    split: heldout
+    q: {es: "se ha desmayado y no respira", eu: "konortea galdu du eta ez du arnasarik hartzen"}
+    intent: semantic
+    anchor: {layer: metro, name: "Indautxu"}
+    expected: {layers: [defib], within_m: 500}
+
+  - id: ho2-correr-agua
+    split: heldout
+    q: {es: "acabo de correr y necesito agua", eu: "korrika bukatu berri dut eta ura behar dut"}
+    intent: semantic
+    anchor: {layer: metro, name: "Sarriko"}
+    expected: {layers: [fountains], within_m: 500}
+
+  - id: ho2-crio-bano
+    split: heldout
+    q: {es: "el crío no aguanta, un baño ya", eu: "umeak ezin dio eutsi, komun bat oraintxe"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [toilets], within_m: 600}
+
+  - id: ho2-bici-noche
+    split: heldout
+    q: {es: "un sitio seguro para la bici esta noche", eu: "bizikletarentzat leku segurua gaur gauean"}
+    intent: semantic
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [bikepark], within_m: 500}
+
+  - id: ho2-mojarse
+    split: heldout
+    q: {es: "un sitio para mojarse los pies", eu: "oinak bustitzeko leku bat"}
+    intent: semantic
+    anchor: {layer: metro, name: "Plentzia"}
+    expected: {layers: [beaches], within_m: 2000}
+
+  - id: ho2-carga-trabajo
+    split: heldout
+    q: {es: "cargar el coche mientras trabajo", eu: "autoa kargatu lanean nagoen bitartean"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [ev], within_m: 1000}
+
+  - id: ho2-linea-algorta
+    split: heldout
+    q: {es: "qué línea de metro va a Algorta", eu: "zein metro-linea doa Algortara"}
+    intent: transit
+    expected: {layers: [metro], name: "Algorta", answer_tags_min: {lines: ["L1"]}}
+
+  - id: ho2-tren-durango
+    split: heldout
+    q: {es: "qué tren pasa por Durango", eu: "zein tren igarotzen da Durangotik"}
+    intent: transit
+    expected: {layers: [euskotren], name: "Durango"}
+
+  - id: ho2-bus-gernika
+    split: heldout
+    q: {es: "parada de Bizkaibus en Gernika", eu: "Bizkaibus geltokia Gernikan"}
+    intent: transit
+    expected: {layers: [bizkaibus], name_contains: "GERNIKA"}
+
+  - id: ho2-cercanias-portugalete
+    split: heldout
+    q: {es: "tren de cercanías en Portugalete", eu: "aldiriko trena Portugaleten"}
+    intent: transit
+    expected: {layers: [cercanias], name_contains: "Portugalete"}
+
+  - id: ho2-aseo-gratis-areeta
+    split: heldout
+    q: {es: "baño público gratis en Las Arenas", eu: "doako komun publikoa Areetan"}
+    intent: attribute
+    anchor: {layer: metro, name: "Areeta"}
+    expected: {layers: [toilets], within_m: 800, tags: {fee: "no"}}
+
+  - id: ho2-bikepark-cubierto-basauri
+    split: heldout
+    q: {es: "aparcabicis cubierto en Basauri", eu: "estalitako bizikleta-aparkalekua Basaurin"}
+    intent: attribute
+    anchor: {layer: metro, name: "Basauri"}
+    expected: {layers: [bikepark], within_m: 1500, tags: {covered: "yes"}}
+    known_gap: "No hay aparcabicis cubierto mapeado a <5 km de Basauri (el más cercano a 5.405 m); irresoluble para cualquier retriever. Mejorable mapeando en OSM."
+
+  - id: ho2-carga-rapida-sanmames
+    split: heldout
+    q: {es: "carga rápida cerca de San Mamés", eu: "karga azkarra San Mames inguruan"}
+    intent: attribute
+    anchor: {layer: metro, name: "Santimami/San Mamés"}
+    expected: {layers: [ev], within_m: 1500, tags_not: {TipoCarga: "Lenta (3-7 kW)"}}
+
+  - id: ho2-gasolinera-barata
+    split: heldout
+    q: {es: "la gasolinera más barata cerca", eu: "gasolindegirik merkeena gertu"}
+    intent: semantic
+    answerable: false
+    needs: fuel-en-retriever
+    notes: "La capa fuel existe en el producto pero no en el retriever; hasta entonces, abstención."
+
+  - id: ho2-veterinario
+    split: heldout
+    q: {es: "un veterinario de urgencias", eu: "larrialdiko albaitaria"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho2-autocaravana
+    split: heldout
+    q: {es: "dónde pasar la noche con la autocaravana", eu: "non pasa gaua autokarabanarekin"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho2-eu-igerilekua
+    split: heldout
+    q: {es: "una piscina cubierta", eu: "igerileku estali bat"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho2-taxi
+    split: heldout
+    q: {es: "dónde cojo un taxi", eu: "non hartu dezaket taxi bat"}
+    intent: semantic
+    answerable: false
+    needs: taxi-stands

@@ -1,0 +1,463 @@
+{
+  "retriever": "hybrid-keywords-then-semantic",
+  "lang": "eu",
+  "k": 5,
+  "config": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.45,
+    "tie_window": 0.08
+  },
+  "n_corpus_cases": 54,
+  "date": "2026-07-08",
+  "corpus": 0,
+  "total": {
+    "pass": 37,
+    "cases": 53
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 6,
+      "cases": 6
+    },
+    "semantic": {
+      "pass": 21,
+      "cases": 32
+    },
+    "transit": {
+      "pass": 7,
+      "cases": 9
+    },
+    "attribute": {
+      "pass": 3,
+      "cases": 6
+    }
+  },
+  "cases": [
+    {
+      "id": "ho-eu-iturria-santurtzi",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho-eu-komuna-algorta",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho-eu-kargatu-deustu",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Euskalduna ✗ categoria_equivocada (parking)"
+    },
+    {
+      "id": "ho-eu-hondartza-neguri",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Playa de la Bola"
+    },
+    {
+      "id": "ho-eu-bizikleta-areeta",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho-eu-dea-sopela",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Metro Bilbao S. A."
+    },
+    {
+      "id": "ho-eu-aparkaleku-etxebarri",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento"
+    },
+    {
+      "id": "ho-eu-tranbia-guggenheim",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Guggenheim"
+    },
+    {
+      "id": "ho-cantimplora",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-bano-nino",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho-enchufe-coche",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=El Corte Inglés ✗ categoria_equivocada (parking)"
+    },
+    {
+      "id": "ho-guardar-coche",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Areatza"
+    },
+    {
+      "id": "ho-atar-bici-guggenheim",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho-infarto-moyua",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
+    },
+    {
+      "id": "ho-nadar-larrabasterra",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Arrietara"
+    },
+    {
+      "id": "ho-trafico-sanmames",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plza. V&#237;ctor Ch&#225;varri"
+    },
+    {
+      "id": "ho-agua-perro",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho-linea-plentzia",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plentzia"
+    },
+    {
+      "id": "ho-metro-getxo",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": true,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Abando ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho-tren-bermeo",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Bermeo"
+    },
+    {
+      "id": "ho-cercanias-muskiz",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Muskiz"
+    },
+    {
+      "id": "ho-parking-gratis-centro",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "atributo_incumplido",
+      "detail": "top1=Aparcamiento ✗ atributo_incumplido"
+    },
+    {
+      "id": "ho-aseo-adaptado-sanmames",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho-bikepark-cubierto-abando",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho-carga-rapida-deustu",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho-farmacia-guardia",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho-hotel-barato",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BERNAOLA ASC TER-2"
+    },
+    {
+      "id": "ho-menu-del-dia",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho-wifi-gratis",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-eu-ur-hotza",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho2-eu-komun-durango",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-eu-bizi-sestao",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho2-eu-dea-bermeo",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Eroski S.Coop. (Eroski Center)"
+    },
+    {
+      "id": "ho2-eu-kargatu-gauez",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
+    },
+    {
+      "id": "ho2-eu-txakurra",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho2-eu-eguzkia",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": true,
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
+    },
+    {
+      "id": "ho2-desmayo",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho2-correr-agua",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho2-crio-bano",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-bici-noche",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho2-mojarse",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": true,
+      "reason": "categoria_equivocada (bikepark)",
+      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
+    },
+    {
+      "id": "ho2-carga-trabajo",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
+    },
+    {
+      "id": "ho2-linea-algorta",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Algorta"
+    },
+    {
+      "id": "ho2-tren-durango",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Durango"
+    },
+    {
+      "id": "ho2-bus-gernika",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=BIZKAI (4086) ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-cercanias-portugalete",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Portugalete"
+    },
+    {
+      "id": "ho2-aseo-gratis-areeta",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-carga-rapida-sanmames",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho2-gasolinera-barata",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-veterinario",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-autocaravana",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
+    },
+    {
+      "id": "ho2-eu-igerilekua",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-taxi",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
+    }
+  ],
+  "known_gaps": [
+    {
+      "id": "ho2-bikepark-cubierto-basauri",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (5405m > 1500m)",
+      "detail": "top1=Aparcabicis ✗ fuera_de_radio (5405m > 1500m)",
+      "known_gap": "No hay aparcabicis cubierto mapeado a <5 km de Basauri (el más cercano a 5.405 m); irresoluble para cualquier retriever. Mejorable mapeando en OSM."
+    }
+  ]
+}

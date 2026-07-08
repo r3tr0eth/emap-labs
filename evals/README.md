@@ -34,9 +34,16 @@ y NUNCA se calibra mirándolos).
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline-keywords-geo | 76% | 65% | 75% | 62% |
-| semantic-minilm-2stage | 63% | 48% | — | 34% |
-| **hybrid-keywords-then-semantic** | **85%** | **79%** | 71% | **72%** |
+| baseline-keywords-geo | 76% | 66% | 75% | 67% |
+| **hybrid-keywords-then-semantic** | **85%** | **67%** | 71% | **69%** |
+
+(Held-out ampliado 2026-07-08 a 53 casos con la tanda H2, deliberadamente más
+dura: la ventaja del híbrido se estrecha a +1/+2 pts. Sigue ≥ baseline en
+ambos idiomas — el criterio de despliegue se mantiene por la mínima — pero el
+margen fino marca el objetivo de L3: mejor etapa semántica (embeddings
+mejores o clasificador LLM). Patrón de fallo dominante: parking/bikepark
+absorben consultas ambiguas; 2 abstenciones con fuga (taxi, autocaravana).
+Resultados históricos con el held-out de 29 casos en results/.)
 
 (2026-07-07, MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config
 completa versionada en cada JSON de `results/`.)

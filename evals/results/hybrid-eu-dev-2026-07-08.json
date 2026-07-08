@@ -3,15 +3,15 @@
   "lang": "eu",
   "k": 5,
   "config": {
-    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "sim_threshold": 0.45,
+    "model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    "sim_threshold": 0.5,
     "tie_window": 0.08
   },
   "n_corpus_cases": 63,
   "date": "2026-07-08",
   "corpus": 0,
   "total": {
-    "pass": 44,
+    "pass": 43,
     "cases": 60
   },
   "by_intent": {
@@ -20,7 +20,7 @@
       "cases": 18
     },
     "attribute": {
-      "pass": 7,
+      "pass": 6,
       "cases": 8
     },
     "transit": {
@@ -188,10 +188,10 @@
     {
       "id": "ev-plazas-abando",
       "intent": "attribute",
-      "pass": true,
+      "pass": false,
       "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Parking El Corte Ingles  (Don Diego L&#243;pez Haroko Kale Nagusia, 11)"
+      "reason": "categoria_equivocada (metro)",
+      "detail": "top1=Abando ✗ categoria_equivocada (metro)"
     },
     {
       "id": "fountain-fuera-bilbao",
@@ -292,9 +292,9 @@
     {
       "id": "asp-cafe-enchufes",
       "intent": "semantic",
-      "pass": false,
-      "reason": "inventa",
-      "detail": "inventa: Aseo Público Autolimpiable Parque de los Enamorados"
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
     },
     {
       "id": "asp-pintxos-casco",
@@ -313,9 +313,9 @@
     {
       "id": "asp-parque-sombra-ninos",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BERNAOLA ASC TER-2"
     },
     {
       "id": "asp-plan-lluvia",
@@ -348,9 +348,9 @@
     {
       "id": "asp-zona-verde-getxo",
       "intent": "semantic",
-      "pass": false,
-      "reason": "inventa",
-      "detail": "inventa: Zarauzko hondartza"
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
     },
     {
       "id": "asp-similar-dona-casilda",
@@ -420,8 +420,8 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (cameras)",
-      "detail": "top1=Plza. Biribila ✗ categoria_equivocada (cameras)"
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "par-servicio",
@@ -434,18 +434,18 @@
     {
       "id": "par-patinete",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "par-enchufar",
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (bikepark)",
-      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
     },
     {
       "id": "par-dejar-coche",
@@ -458,10 +458,10 @@
     {
       "id": "par-estacionar",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "categoria_equivocada (cameras)",
-      "detail": "top1=Ribera Elorrieta ✗ categoria_equivocada (cameras)"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=San Roque"
     },
     {
       "id": "par-candar-bici",
@@ -482,26 +482,26 @@
     {
       "id": "par-chapuzon",
       "intent": "semantic",
-      "pass": false,
+      "pass": true,
       "hit_at_k": true,
-      "reason": "categoria_equivocada (bikepark)",
-      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
+      "reason": null,
+      "detail": "top1=El Sitio"
     },
     {
       "id": "par-arena",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Plentzia"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "par-carretera-ahora",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Plza. Moy&#250;a"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     }
   ],
   "known_gaps": [

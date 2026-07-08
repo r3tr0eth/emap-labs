@@ -57,6 +57,17 @@ Resultados históricos con el held-out de 29 casos en results/.)
 (MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config completa
 versionada en cada JSON de `results/`.)
 
+**Benchmark L3 — modelos de embedding probados (dev, híbrido):**
+
+| Modelo | dev ES | dev EU | Nota |
+|---|---|---|---|
+| **MiniLM-L12 multilingual (actual)** | **86%** | **73%** | τ=0.45 |
+| mpnet-base-v2 multilingual | 80% | 71% | recalibrado (barrido τ 0.35-0.50); PEOR pese a ser 3× más grande — descartado |
+| BGE-M3 | — | — | objetivo del roadmap; no está en fastembed y no cabe en el Mac (2.3GB libres) → esperar caja 8GB |
+
+Modelo y calibración ahora intercambiables por env (`EMAP_EMBED_MODEL`,
+`EMAP_SIM_TAU`, `EMAP_TIE_WIN`) — la mecánica del benchmark está lista.
+
 **Criterio de despliegue**: el híbrido sigue ≥ baseline en held-out en ambos
 idiomas, pero tras la tanda H2 el margen es mínimo (+1/+2 pts). Se mantiene
 desplegado; la mejora de la etapa semántica es EL objetivo medible de L3.

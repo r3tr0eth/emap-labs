@@ -3,15 +3,15 @@
   "lang": "es",
   "k": 5,
   "config": {
-    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "sim_threshold": 0.45,
+    "model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    "sim_threshold": 0.5,
     "tie_window": 0.08
   },
   "n_corpus_cases": 63,
   "date": "2026-07-08",
   "corpus": 0,
   "total": {
-    "pass": 52,
+    "pass": 47,
     "cases": 60
   },
   "by_intent": {
@@ -28,7 +28,7 @@
       "cases": 11
     },
     "semantic": {
-      "pass": 17,
+      "pass": 12,
       "cases": 23
     }
   },
@@ -299,9 +299,9 @@
     {
       "id": "asp-pintxos-casco",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
     },
     {
       "id": "asp-barrio-tranquilo",
@@ -313,23 +313,23 @@
     {
       "id": "asp-parque-sombra-ninos",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Zarauzko hondartza"
     },
     {
       "id": "asp-plan-lluvia",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Zarauzko hondartza"
     },
     {
       "id": "asp-ruta-accesible",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Areatza"
     },
     {
       "id": "asp-mercado-local",
@@ -348,16 +348,16 @@
     {
       "id": "asp-zona-verde-getxo",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
     },
     {
       "id": "asp-similar-dona-casilda",
       "intent": "semantic",
-      "pass": false,
-      "reason": "inventa",
-      "detail": "inventa: Eroski Ipurua goikoa"
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
     },
     {
       "id": "robust-typo-fuente",
@@ -418,10 +418,10 @@
     {
       "id": "par-bebe",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Aseo público"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "par-servicio",

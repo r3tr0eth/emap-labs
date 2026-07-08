@@ -24,9 +24,14 @@ from fastembed import TextEmbedding
 
 from baseline import BaselineRetriever, norm
 
-MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-SIM_THRESHOLD = 0.45   # bajo esto: "no sé" (los answerable:false rondan 0.33-0.54)
-TIE_WINDOW = 0.08      # categorías a menos de esto del top entran también
+# L3 carril 1: modelo intercambiable por env para el benchmark.
+# BGE-M3 (objetivo del roadmap) no está en fastembed y no cabe en este Mac
+# (2.3GB libres) — queda para la caja de 8GB; mpnet es el paso intermedio.
+import os
+MODEL = os.environ.get("EMAP_EMBED_MODEL",
+                       "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+SIM_THRESHOLD = float(os.environ.get("EMAP_SIM_TAU", "0.45"))  # bajo esto: "no sé"
+TIE_WINDOW = float(os.environ.get("EMAP_TIE_WIN", "0.08"))  # categorías a menos de esto del top entran también
 
 CATEGORY_TEXT = {
     "fountains": ("Fuente de agua potable: beber agua, rellenar la botella o el "

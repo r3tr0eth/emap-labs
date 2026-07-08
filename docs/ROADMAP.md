@@ -1,176 +1,121 @@
-# EMAP Labs — Roadmap realista v0.2
+# EMAP Labs — Roadmap v0.3 · "de laboratorio a plataforma"
 
-**Fecha:** 2026-07-07 · **Equipo:** 1 persona + Claude Code · **Horizonte:** jul 2026 → jun 2027
+**Fecha:** 2026-07-08 (sustituye a v0.2 del 07-07 — historia en git) ·
+**Equipo:** 1 persona + Claude Code · **Horizonte:** jul 2026 → mar 2027
 
-EMAP Labs es la capa de datos e inteligencia detrás de EMAP: **en gran parte
-formaliza trabajo que ya existe en `../emap-next`** y le añade lo que falta
-(capa semántica, evals, datasets propios). Este documento sustituye al borrador
-fundacional (ChatGPT, jul 2026) con un plan anclado en lo que hay construido y
-en lo que una persona puede ejecutar de verdad.
+EMAP Labs es la capa de datos e inteligencia detrás de emap. La v0.2 planificó
+jul→jun; **la velocidad real ejecutó tres meses de plan en 48 horas**, así que
+esta versión adelanta fechas, sube la ambición y añade una fase nueva (L5)
+nacida del research: no existe infraestructura MCP de movilidad hiperlocal —
+ese hueco es nuestro.
 
----
+## Estado (2026-07-08)
 
-## Punto de partida — lo que Labs ya tiene sin llamarse Labs
-
-| Objetivo del borrador | Estado real en emap-next |
+| Fase | Estado |
 |---|---|
-| Pipeline de datasets con metadatos | ✅ 70% — `packages/data-catalog` (manifest de 37 datasets, checksums, CLI validate/refresh), `sources.yml` con licencia/fuente/fecha. Falta: `quality` y `coverage` como campos formales, y versionado de releases |
-| Knowledge layer semántica | ✅ embrión — modelo `UrbanSignal` (14 tipos de señal vivos: incidencias, alertas RT, arbolado, iluminación, pendiente, retenciones históricas…) documentado en `URBAN-SIGNALS.md` |
-| Datasets iniciales (lugares/transporte/zonas verdes/accesibilidad) | ✅ lugares (9.138 POIs + DEA + aparcabicis), ✅ transporte (5 redes GTFS+RT), 🟡 zonas verdes (arbolado por corredor, falta capa completa), 🟡 accesibilidad (wheelchair OTP; esquema OpenSidewalks adoptado, sin datos). ❌ **barrios — el único que falta entero** |
-| Sistema de evaluación | ✅ metodología probada — golden data (52/52 live, benchmark 25 rutas, 1.800 casos del recomendador). Falta aplicarla a preguntas semánticas |
-| APIs reutilizables | ✅ 16 endpoints en producción; `recommend` dentro de `/api/route`. Faltan `/nearby` semántico y `/semantic-search` |
-| RAG (pgvector + embeddings) | ❌ **lo único genuinamente nuevo** |
-| Benchmarks de modelos | ❌ nuevo, pero barato una vez exista el corpus de evals |
+| **L0 Fundación** | ✅ CERRADO — catálogo quality/coverage, dataset barrios, release v0.1 (7 datasets/12.732 registros) |
+| **L1 Corte semántico** | ✅ CERRADO — harness (117 casos, held-out, CI con gates), híbrido en producción (`/api/semantic-search` + buscador), euskera validado con Itzuli |
+| **L2 Knowledge layer** | 🟡 70% — explain-place descriptivo en prod (EN DESTINO), coverage_index + informe institucional, ética de datos escrita; falta texto generado (espera L3) |
+| **D-018 (emap-next)** | ✅ OSRM propio + evitar autopistas real, señales labs en confort de ruta |
 
-**Conclusión:** el camino crítico es una sola cosa — la capa semántica (embeddings +
-pgvector + 2 endpoints) — más un dataset que falta (barrios). Todo lo demás es
-formalizar y publicar lo que ya funciona.
+Hallazgo rector (curación Itzuli): con euskera correcto el semántico actual
+EMPATA con keywords — **la brecha EU es real y mayor de lo medido**. Todo L3
+existe para cerrarla con datos.
 
-## Dónde vive
+## Dónde vive / infra / principios
 
-En este repo (**emap-labs**, privado — decisión 2026-07-07, sustituye al plan
-inicial de vivir en emap-next): docs, evals y pipelines de datasets propios.
-`packages/data-catalog` se queda en emap-next (es core del producto y su
-paridad depende del monorepo); labs lo consume como repo hermano
-(`../emap-next`), igual que emap-next consume el legacy. El código que emap
-sirva en producción (p. ej. `packages/knowledge`, endpoints) nace en
-emap-next con tier `lab`; aquí vive lo que no es producto: corpus, harness,
-pipelines, benchmarks. Se hace público (o se extraen repos como
-`emap-datasets`) en L4.
-
-## Infra
-
-- **Postgres + pgvector en el Hetzner** que ya pagas (corre OTP; OSRM pendiente).
-  Privacy-first, coste cero adicional, sin límites de free tier. Supabase solo si
-  el VPS se queda corto.
-- **Embeddings y LLM por API** (modelos abiertos hosted: Mistral, Qwen vía
-  proveedor barato, o local con Ollama para experimentar). **No se entrena nada.**
+Sin cambios de v0.2: este repo (privado hasta L4) + `../emap-next` (producto);
+VPS Hetzner propio (pendiente caja de 8 GB — CX33/CAX21 cuando haya stock,
+Gaizka vigila manualmente); **OSS/EU-first innegociable en el producto**;
+regla de oro financiera (~8-15 €/mes, emap solo gasta lo que trae);
+`ETICA-DATOS.md` manda; held-out jamás calibra.
 
 ---
 
 ## Fases
 
-Cada fase termina con algo **desplegado y consumido por EMAP en producción**.
-Una fase a la vez; si una se alarga, se recorta alcance, no se solapa con la siguiente.
+### L3 — Benchmark y salto semántico (ADELANTADO: jul–sep 2026, era dic–ene)
 
-### L0 — Fundación (julio 2026, ~2 semanas)
+La brecha EU medida convierte L3 en urgente. Tres carriles:
 
-Formalizar el catálogo y cerrar el dataset que falta.
+1. **Embeddings upgrade** (sin esperar servidor): sustituir MiniLM por
+   **BGE-M3** (MIT, 100+ idiomas, denso+sparse en un modelo — el workhorse
+   open de 2026) como clasificador de categoría; evaluar también
+   Qwen3-Embedding (Apache-2). Se itera en dev, se decide en held-out.
+   Jina descartado (CC-BY-NC — incompatible con uso comercial futuro).
+2. **Clasificador LLM** (al llegar la caja de 8 GB): **Latxa 7B** cuantizado
+   (HiTZ, el modelo DE euskera), Qwen3 pequeño y Mistral (API UE, única
+   referencia comercial) como clasificadores de intención contra el corpus
+   curado. Criterio: superar al híbrido en held-out EN AMBOS idiomas.
+3. **Publicación** (sep, sincronizada con NLnet): "primer benchmark de
+   retrieval geográfico en euskera" — metodología Itzuli-validada, corpus,
+   resultados por modelo, coste/latencia. Contactar HiTZ al publicar (son
+   aliados naturales: usamos Latxa y complementamos sus eval suites con un
+   dominio que no cubren).
 
-1. ✅ (2026-07-07) `data-catalog`: `coverage` declarado en los 37 datasets y
-   `quality` calculado por el nuevo CLI `python -m data_catalog quality`
-   (registros, % campos vacíos, frescura vs `maxAgeDays`). 34/37 medibles,
-   19.119 registros, 0 issues; paridad legacy intacta; 7 tests nuevos.
-2. ✅ (2026-07-07) **Dataset de barrios**: `datasets/neighborhoods/build.py`
-   (OSM/Overpass, ODbL) → `emap-next/data/processed/neighborhoods/` — 113
-   municipios (INE 48xxx, foráneos filtrados), 8 distritos y 26 barrios de
-   Bilbao con nombres oficiales ES/EU, parent por point-in-polygon y
-   geometría simplificada (1,1 MB). Registrado en el manifest (38 datasets,
-   quality OK). Cobertura honesta: barrios 26/~34 — upgrade pendiente con
-   cartografía oficial.
-3. Primer **release versionado** de un dataset (POIs Euskadi + DEA + barrios,
-   con los 6 metadatos) como artefacto descargable. Primer activo publicable.
+*Hecho cuando:* tabla pública de ≥4 modelos en ES/EU sobre el corpus, y el
+mejor desplegado en producción tras batir al híbrido en held-out.
 
-*Hecho cuando:* `manifest.json` valida quality/coverage ✅; capa de barrios
-visible en el mapa ✅ (2026-07-07: grupo TERRITORIO en el panel, límites +
-popup, verificado CDP claro/oscuro); release v0.1 etiquetado en git ✅
-(2026-07-07: tag `v0.1` + GitHub Release, 7 datasets / 12.732 registros con los
-6 metadatos — `releases/v0.1/manifest.json`, build reproducible en
-`releases/build_release.py`). **L0 CERRADO.**
+### L2-cierre — explain-place generativo (sep–oct, tras elegir modelo en L3)
 
-### L1 — Corte vertical semántico (agosto–septiembre 2026)
+Texto generado con citas de señales sobre el JSON de `/explain` (RAG de
+verdad, modelo elegido POR el benchmark, no por vibes) + score de barrio
+institucional integrado en el informe recurrente. pgvector entra aquí si
+el volumen de documentos lo pide (hoy no).
 
-El corazón de Labs. Un solo flujo, de punta a punta:
+### L4 — Abrir (ADELANTADO: oct–nov 2026, era feb–jun 2027)
 
-1. ~~pgvector en el Hetzner~~ → DECISIÓN 2026-07-07: a la escala de L1 no
-   hace falta base vectorial (la arquitectura híbrida solo embebe 13 textos
-   de categoría + la query). El servicio corre en memoria en el VPS actual
-   (service/, systemd emap-semantic, ~700 MB). pgvector pasa a L2, cuando
-   haya documentos de verdad (explain-place).
-2. `POST /api/semantic-search`: "cafetería tranquila con enchufes cerca de Moyúa",
-   "parque con sombra para ir con niños". Híbrido: filtro geo (packages/geo ya
-   lo hace) + ranking vectorial.
-3. `GET /api/nearby` estructurado (categoría + radio + señales) sobre la misma base.
-4. **Consumido por el buscador de EMAP**: si la query no parece dirección,
-   fallback a semantic-search. Feature visible para usuarios reales.
-5. **Eval v0 desde el día uno**: 75–100 preguntas doradas con resultados esperados
-   (mismo método que el golden de rutas). Sin esto no se puede iterar el ranking.
-   → Borrador de 50 en `evals/semantic-golden-v0.yaml` (2026-07-07):
-   anclas y nombres verificados contra los datasets; pendiente curación
-   humana del euskera y ampliar a 75–100.
+1. **emap-datasets público** con cadencia trimestral (v0.2 en oct: + barrios,
+   + tráfico completo, + scores) — primer OSS real de Labs.
+2. **Piloto institucional**: el informe de cobertura como puerta de entrada
+   (BEAZ/diputación); un piloto, no tres.
+3. Solicitar **Claude for OSS** si dependientes/tracción lo permiten.
+4. Kunoa como segundo consumidor de `packages/knowledge` si su calendario
+   encaja (no bloquea).
 
-*Hecho cuando:* el buscador de emap-next.vercel.app responde consultas de intención
-en ES y EU, y la eval corre en CI con precisión medida.
+### L5 — emap/agents: el MCP de movilidad hiperlocal (NUEVO — nov–dic 2026)
 
-### L2 — Knowledge layer: explain-place (octubre–noviembre 2026)
+Research 2026-07-08: existen MCP genéricos de GTFS (uno, feed-a-feed) y de
+OSM (varios), pero **nadie expone inteligencia de movilidad hiperlocal a
+agentes**: búsqueda semántica local, explain-place, rutas con confort/señales
+y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 
-Convertir las señales en respuestas.
+1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos:
+   `/nearby`, `/semantic-search`, `/explain-place`, `/route` (+ RT). Corre
+   en el VPS; herramientas con descripciones ES/EU/EN.
+2. **llms.txt / docs agent-readable** del API público.
+3. Distribución: registro MCP, awesome-lists, post técnico. Es
+   simultáneamente producto (emap dentro de Claude/agentes de cualquiera),
+   commons (perfil NLnet) y escaparate (BIND).
 
-1. Agregación de UrbanSignals por barrio: ruido proxy (incidencias históricas —
-   las 73 celdas de hora punta ya existen), verde (arbolado/parques), servicios,
-   transporte (paradas + frecuencias), pendiente media. → **score de barrio**
-   con componentes explicables, no una caja negra.
-2. `GET /api/explain-place`: contexto de un lugar o barrio en JSON + texto
-   generado (LLM por API sobre los datos recuperados — RAG de verdad, citando
-   señales). Responde "qué barrio es más tranquilo", "qué hay cerca y cómo llego".
-3. Publicar el **esquema UrbanSignal + docs agent-readable** (llms.txt / MCP-ready).
-   Es barato y es exactamente el tipo de activo que el borrador pedía.
-4. En EMAP: tarjeta de lugar enriquecida con explain-place.
+*Hecho cuando:* un agente externo (el Claude Desktop de cualquier usuario)
+puede preguntar "¿dónde dejo la bici cerca de San Mamés?" y obtener la
+respuesta de emap con atribución.
 
-*Hecho cuando:* la tarjeta de lugar de producción muestra contexto generado con
-citas de datos, y las respuestas pasan la eval (ampliada con casos explain-place).
+### Transversales (goteo continuo)
 
-### L3 — Evals de modelos + primer benchmark publicable (dic 2026 – ene 2027)
+- **Queries reales anonimizadas** (privacy-first, opt-out, sin PII) para
+  sustituir el corpus sintético — el mayor multiplicador de calidad pendiente.
+- **Isócronas** ("qué alcanzo en 15 min") — key gratuita ORS o cálculo propio
+  sobre OSRM/OTP.
+- **Freshness**: cron determinista en el VPS para datos (GTFS/OSM/tráfico) +
+  loop de agente solo para interpretar drift (convención CLAUDE.md).
+- Releases trimestrales de datasets; informe de cobertura re-generado con
+  cada release.
 
-1. Harness (ya existe en `evals/`): corre el corpus L1+L2 contra modelos
-   midiendo precisión, latencia y coste por 1k consultas. Alineación
-   OSS/EU-first (principio de emap, fijado 2026-07-07): solo **modelos
-   abiertos** (Qwen, DeepSeek, Gemma, **Latxa** para euskera) y como única
-   referencia comercial **Mistral (UE)**. Nada de dependencias US-cerradas
-   (Anthropic/OpenAI/Google) en el producto — como mucho una columna
-   informativa en el benchmark publicado, nunca en el camino de ejecución.
-   Inferencia: Ollama en el VPS (Hetzner, UE) o APIs con residencia UE.
-2. Elegir el modelo por datos y **publicar los resultados** (post/README):
-   "benchmarks de inteligencia geográfica en euskera y español" — nadie más tiene
-   esto y da credibilidad ante ayuntamientos e inversores.
+## Calendario de financiación (sin cambios, fechas verificadas)
 
-*Hecho cuando:* tabla de resultados publicada y el modelo de producción elegido
-por benchmark, no por vibes.
+Ago: borradores BIND (deadline **4-sep**) y NLnet → sep-oct: envíos →
+invierno: entidad solo con dinero confirmado. Detalle en
+`COSTES-Y-FINANCIACION.md`.
 
-### L4 — Abrir y vender (feb–jun 2027)
+## No hacer (vigente)
 
-Solo cuando L1–L3 estén en producción:
+Entrenar/fine-tunear modelos; expandir fuera de Euskadi antes de resolverlo;
+depender de APIs US-cerradas en el producto; rankings de barrios en UI de
+consumo; gastar sin ingreso confirmado; calibrar con held-out.
 
-1. Extraer **emap-datasets** como repo público (pipelines + releases + docs).
-   Primer OSS real de Labs.
-2. **Piloto institucional**: propuesta a un ayuntamiento/diputación con lo que ya
-   funciona (explain-place, accesibilidad, datos de barrio) — el dossier de
-   inversores del legacy es la base. Un piloto, no tres.
-3. **Kunoa reutiliza** `packages/knowledge` (recomendación/personalización) —
-   segundo consumidor, que es el trigger para estabilizar APIs internas.
-4. Preparar Euskadi completo (ESCALADO.md ya marca el camino; tráfico y aire ya
-   cubren las 3 provincias).
+## Regla principal (vigente)
 
----
-
-## Reglas de cordura (para una persona)
-
-- **Una fase a la vez.** Lo que no cabe, se recorta; no se paraleliza.
-- **Cada fase acaba en producción consumida por EMAP.** Si EMAP no lo usa, no
-  cuenta como hecho (dogfooding = la regla de decisión del borrador).
-- **Evals antes que features semánticas**, igual que paridad antes que switch:
-  es el método que ya funcionó en la migración.
-- **Nada de repos/marca/web de Labs** hasta L4. Un doc y un tier `lab` bastan.
-- **No entrenar modelos, no fine-tuning** en este horizonte. Revisar en jun 2027
-  con los datos de L3 en la mano.
-- QuestClub congelado; Kunoa solo como consumidor (no condiciona el diseño hasta L4).
-
-## Qué se descarta del borrador fundacional (y por qué)
-
-- *"Knowledge Layer" como proyecto separado* → es UrbanSignal + barrios + el
-  índice vectorial. Emergerá de L1/L2; diseñarla aparte sería optimización prematura.
-- *5 repos OSS (emap-rag, emap-evals, emap-sdk…)* → un repo (datasets) en L4;
-  el resto cuando exista demanda externa real.
-- *Supabase* → Postgres en el Hetzner propio (privacy-first, coste cero, sin lock-in).
-- *Monetizar en 6 vías* → una: piloto institucional en L4. Las demás (APIs de pago,
-  RAG privado, consultoría) se abren solas si el piloto funciona.
+Cada desarrollo debe: mejorar emap, ser reutilizable, publicable como OSS o
+vendible. Si no cumple ninguna, no se hace.

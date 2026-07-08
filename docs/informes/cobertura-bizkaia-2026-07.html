@@ -1,0 +1,61 @@
+<!doctype html><html lang=es><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Cobertura de infraestructura — Bizkaia · emap/labs</title>
+<style>
+:root { --ink:#16181D; --paper:#E9EBE4; --surface:#FFF; --border:#D8DBD1;
+  --t2:#5A5F58; --t3:#6B7066; --accent-text:#486312; }
+* { box-sizing:border-box }
+body { margin:0; padding:32px 20px; background:var(--paper); color:var(--ink);
+  font:15px/1.55 -apple-system, 'Segoe UI', sans-serif; }
+main { max-width:860px; margin:0 auto }
+h1 { font-size:26px; letter-spacing:-.01em; margin:0 0 4px }
+h2 { font-size:18px; margin:36px 0 4px }
+h3 { font-size:13px; margin:20px 0 8px; color:var(--t2);
+  text-transform:uppercase; letter-spacing:.12em;
+  font-family:ui-monospace,monospace; font-weight:500 }
+.meta { color:var(--t3); font-size:13px; margin:0 0 20px }
+.ethics { background:var(--surface); border:1px solid var(--border);
+  border-left:3px solid var(--accent-text); border-radius:8px;
+  padding:14px 16px; font-size:14px }
+.tw { overflow-x:auto }
+table { border-collapse:collapse; width:100%; background:var(--surface);
+  border:1px solid var(--border); border-radius:8px; font-size:13.5px }
+th,td { padding:7px 10px; text-align:left; border-top:1px solid #EEF0E9 }
+th { font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--t3); border-top:none }
+td.n { text-align:right; font-family:ui-monospace,monospace }
+.parent { color:var(--t3); font-size:12px }
+code { font-family:ui-monospace,monospace; font-size:.92em }
+li { margin:3px 0 }
+</style></head><body><main>
+<h1>Cobertura de infraestructura urbana — Bizkaia</h1>
+<p class=meta>emap/labs · 2026-07-08 · datos: OpenStreetMap (ODbL),
+GTFS oficiales, incidencias de tráfico de Euskadi · método: percentil de densidad
+por km² dentro de cada grupo (barrios con barrios, municipios con municipios)</p>
+
+<div class=ethics>
+<strong>Lectura correcta de este informe.</strong> El índice mide la
+<em>provisión de infraestructura pública</em> de cada zona, no su calidad de
+vida ni a sus habitantes. Un índice bajo señala una <strong>deuda de
+inversión de la administración con esa zona</strong> — es un argumento para
+priorizarla, nunca para evitarla. Este informe no usa ni usará datos de
+criminalidad, renta o demografía (regla dura del proyecto:
+<code>ETICA-DATOS.md</code>). Advertencia de sesgo: los conteos derivados de
+OpenStreetMap reflejan también la intensidad de mapeo de cada zona.
+</div>
+
+<h2>Dónde falta inversión primero</h2>
+<h3>Barrios de Bilbao con menor cobertura (de 26 mapeados en OSM)</h3><div class=tw><table><tr><th>Unidad</th><th>Índice</th><th>Fuentes</th><th>Aseos</th><th>DEA</th><th>Paradas</th><th>Bidegorri km</th><th>km²</th></tr><tr><td>Limitatua <span class=parent>(Otxandio)</span></td><td class=n>15.0</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>2</td><td class=n>0.0</td><td class=n>5.7</td></tr><tr><td>La Peña <span class=parent>(Bilbao)</span></td><td class=n>27.5</td><td class=n>5</td><td class=n>0</td><td class=n>2</td><td class=n>14</td><td class=n>0.0</td><td class=n>0.5</td></tr><tr><td>San Adrián <span class=parent>(Bilbao)</span></td><td class=n>32.5</td><td class=n>5</td><td class=n>0</td><td class=n>1</td><td class=n>9</td><td class=n>0.1</td><td class=n>0.2</td></tr><tr><td>Bolueta <span class=parent>(Bilbao)</span></td><td class=n>33.5</td><td class=n>6</td><td class=n>0</td><td class=n>10</td><td class=n>19</td><td class=n>0.9</td><td class=n>0.8</td></tr><tr><td>Zabala <span class=parent>(Bilbao)</span></td><td class=n>35.0</td><td class=n>1</td><td class=n>0</td><td class=n>1</td><td class=n>7</td><td class=n>0.0</td><td class=n>0.1</td></tr><tr><td>Otxarkoaga <span class=parent>(Bilbao)</span></td><td class=n>36.5</td><td class=n>18</td><td class=n>0</td><td class=n>6</td><td class=n>17</td><td class=n>0.3</td><td class=n>0.6</td></tr><tr><td>Arangoiti <span class=parent>(Bilbao)</span></td><td class=n>37.0</td><td class=n>4</td><td class=n>0</td><td class=n>1</td><td class=n>9</td><td class=n>0.0</td><td class=n>0.2</td></tr><tr><td>Zurbaran-Arabella <span class=parent>(Bilbao)</span></td><td class=n>38.0</td><td class=n>15</td><td class=n>0</td><td class=n>3</td><td class=n>18</td><td class=n>0.0</td><td class=n>0.4</td></tr><tr><td>Solokoetxe <span class=parent>(Bilbao)</span></td><td class=n>40.5</td><td class=n>3</td><td class=n>0</td><td class=n>1</td><td class=n>4</td><td class=n>0.0</td><td class=n>0.1</td></tr><tr><td>San Ignazio-Elorrieta <span class=parent>(Bilbao)</span></td><td class=n>42.5</td><td class=n>14</td><td class=n>1</td><td class=n>15</td><td class=n>16</td><td class=n>3.1</td><td class=n>0.7</td></tr></table></div>
+<h3>Municipios de Bizkaia con menor cobertura (de 113)</h3><div class=tw><table><tr><th>Unidad</th><th>Índice</th><th>Fuentes</th><th>Aseos</th><th>DEA</th><th>Paradas</th><th>Bidegorri km</th><th>km²</th></tr><tr><td>Orozko</td><td class=n>12.9</td><td class=n>10</td><td class=n>1</td><td class=n>5</td><td class=n>36</td><td class=n>0.0</td><td class=n>101.8</td></tr><tr><td>Zeanuri</td><td class=n>16.3</td><td class=n>14</td><td class=n>3</td><td class=n>1</td><td class=n>12</td><td class=n>0.0</td><td class=n>66.8</td></tr><tr><td>Mendata</td><td class=n>20.8</td><td class=n>5</td><td class=n>0</td><td class=n>1</td><td class=n>17</td><td class=n>0.0</td><td class=n>22.6</td></tr><tr><td>Lanestosa</td><td class=n>21.0</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>0.0</td><td class=n>1.1</td></tr><tr><td>Trucios-Turtzioz</td><td class=n>21.2</td><td class=n>1</td><td class=n>0</td><td class=n>0</td><td class=n>0</td><td class=n>0.0</td><td class=n>25.8</td></tr><tr><td>Zaratamo</td><td class=n>21.2</td><td class=n>5</td><td class=n>0</td><td class=n>0</td><td class=n>5</td><td class=n>0.0</td><td class=n>10.0</td></tr><tr><td>Karrantza Harana / Valle de Carranza</td><td class=n>21.4</td><td class=n>5</td><td class=n>4</td><td class=n>4</td><td class=n>0</td><td class=n>0.0</td><td class=n>137.6</td></tr><tr><td>Ziortza-Bolibar</td><td class=n>27.1</td><td class=n>4</td><td class=n>2</td><td class=n>0</td><td class=n>2</td><td class=n>0.0</td><td class=n>18.6</td></tr><tr><td>Ispaster</td><td class=n>27.4</td><td class=n>2</td><td class=n>1</td><td class=n>2</td><td class=n>12</td><td class=n>0.0</td><td class=n>22.8</td></tr><tr><td>Dima</td><td class=n>28.2</td><td class=n>12</td><td class=n>1</td><td class=n>4</td><td class=n>28</td><td class=n>0.0</td><td class=n>61.9</td></tr><tr><td>Arrankudiaga-Zollo</td><td class=n>28.8</td><td class=n>5</td><td class=n>0</td><td class=n>6</td><td class=n>14</td><td class=n>0.0</td><td class=n>22.6</td></tr><tr><td>Berriatua</td><td class=n>29.1</td><td class=n>1</td><td class=n>0</td><td class=n>2</td><td class=n>13</td><td class=n>0.0</td><td class=n>19.0</td></tr><tr><td>Bedia</td><td class=n>30.0</td><td class=n>4</td><td class=n>0</td><td class=n>2</td><td class=n>5</td><td class=n>0.0</td><td class=n>16.3</td></tr><tr><td>Errigoiti</td><td class=n>30.0</td><td class=n>5</td><td class=n>0</td><td class=n>0</td><td class=n>9</td><td class=n>0.0</td><td class=n>16.3</td></tr><tr><td>Mañaria</td><td class=n>30.0</td><td class=n>7</td><td class=n>0</td><td class=n>0</td><td class=n>4</td><td class=n>0.0</td><td class=n>17.5</td></tr></table></div>
+
+<h2>Referencia: mayor cobertura</h2>
+<h3>Barrios de Bilbao con mayor cobertura</h3><div class=tw><table><tr><th>Unidad</th><th>Índice</th><th>Fuentes</th><th>Aseos</th><th>DEA</th><th>Paradas</th><th>Bidegorri km</th><th>km²</th></tr><tr><td>Abando <span class=parent>(Bilbao)</span></td><td class=n>82.5</td><td class=n>26</td><td class=n>4</td><td class=n>117</td><td class=n>61</td><td class=n>2.9</td><td class=n>1.2</td></tr><tr><td>Indautxu <span class=parent>(Bilbao)</span></td><td class=n>75.5</td><td class=n>26</td><td class=n>6</td><td class=n>74</td><td class=n>38</td><td class=n>3.7</td><td class=n>1.0</td></tr><tr><td>Castaños <span class=parent>(Bilbao)</span></td><td class=n>71.5</td><td class=n>8</td><td class=n>1</td><td class=n>12</td><td class=n>10</td><td class=n>1.5</td><td class=n>0.2</td></tr><tr><td>Casco Viejo <span class=parent>(Bilbao)</span></td><td class=n>71.5</td><td class=n>23</td><td class=n>4</td><td class=n>20</td><td class=n>18</td><td class=n>1.9</td><td class=n>0.5</td></tr><tr><td>San Francisco <span class=parent>(Bilbao)</span></td><td class=n>68.5</td><td class=n>5</td><td class=n>0</td><td class=n>7</td><td class=n>10</td><td class=n>0.0</td><td class=n>0.2</td></tr></table></div>
+<h3>Municipios con mayor cobertura</h3><div class=tw><table><tr><th>Unidad</th><th>Índice</th><th>Fuentes</th><th>Aseos</th><th>DEA</th><th>Paradas</th><th>Bidegorri km</th><th>km²</th></tr><tr><td>Sestao</td><td class=n>87.4</td><td class=n>23</td><td class=n>3</td><td class=n>41</td><td class=n>38</td><td class=n>2.8</td><td class=n>3.6</td></tr><tr><td>Sopela</td><td class=n>81.8</td><td class=n>21</td><td class=n>5</td><td class=n>20</td><td class=n>16</td><td class=n>9.6</td><td class=n>8.2</td></tr><tr><td>Gernika-Lumo</td><td class=n>78.2</td><td class=n>30</td><td class=n>5</td><td class=n>13</td><td class=n>17</td><td class=n>2.8</td><td class=n>8.5</td></tr><tr><td>Bilbao</td><td class=n>77.7</td><td class=n>521</td><td class=n>30</td><td class=n>456</td><td class=n>693</td><td class=n>38.4</td><td class=n>40.4</td></tr><tr><td>Valle de Trápaga-Trapagaran</td><td class=n>77.3</td><td class=n>25</td><td class=n>5</td><td class=n>25</td><td class=n>39</td><td class=n>3.6</td><td class=n>12.8</td></tr></table></div>
+
+<h2>Componentes del índice</h2>
+<ul><li><strong>services</strong> — Servicios básicos (fuentes, aseos, DEA)</li><li><strong>mobility</strong> — Transporte público (paradas, ferroviario ×3)</li><li><strong>cycling</strong> — Ciclabilidad (bidegorris, aparcabicis)</li><li><strong>traffic</strong> — Presión de tráfico (inversa de incidencias)</li></ul>
+<p>El índice es la media de los cuatro componentes (percentiles 0–100).
+Los conteos crudos acompañan siempre a cada fila: <em>el índice ordena,
+el número manda</em>. Datos y metodología reproducibles:
+<code>github.com/r3tr0eth/emap-labs</code> (datasets/neighborhood-scores).</p>
+</main></body></html>

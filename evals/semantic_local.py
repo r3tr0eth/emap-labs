@@ -31,28 +31,32 @@ TIE_WINDOW = 0.08      # categorías a menos de esto del top entran también
 CATEGORY_TEXT = {
     "fountains": ("Fuente de agua potable: beber agua, rellenar la botella o el "
                   "bidón, quitar la sed. Edateko ur-iturria: ura edan, botila "
-                  "edo bidoia bete, egarria kendu."),
+                  "edo bidoia bete, egarria kendu, egarri naiz, kantinplora."),
     "toilets": ("Aseo público, baño, servicio, WC: ir al baño, hacer pis, "
-                "cambiar al bebé. Komun publikoa: txiza egin, haurra aldatu."),
-    "parking": ("Aparcamiento para dejar o estacionar el coche. Autoa "
-                "aparkatzeko edo uzteko aparkalekua."),
-    "bikepark": ("Aparcabicis: dejar, atar o candar la bicicleta. Bizikleta "
-                 "aparkalekua: bizikleta utzi edo lotu."),
+                "cambiar al bebé. Komun publikoa, komuna, bainugela: txiza "
+                "egin, haurra aldatu, komunera joan."),
+    "parking": ("Aparcamiento para dejar, guardar o estacionar el coche. "
+                "Autoa aparkatzeko edo uzteko aparkalekua, autoarentzako "
+                "lekua, non aparkatu."),
+    "bikepark": ("Aparcabicis: dejar, atar o candar la bicicleta de forma "
+                 "segura. Bizikleta-aparkalekua: bizikleta utzi, lotu, "
+                 "seguru utzi."),
     "ev": ("Punto de carga de vehículo eléctrico: cargar o enchufar el coche "
-           "eléctrico o el patinete. Ibilgailu elektrikoa kargatzeko puntua, "
-           "entxufatu."),
-    "defib": ("Desfibrilador DEA para una emergencia cardiaca, parada "
-              "cardiorrespiratoria, reanimación. Desfibriladorea, "
-              "bihotz-geldialdia, larrialdia."),
-    "beaches": ("Playa para bañarse, nadar, darse un chapuzón, tumbarse en la "
-                "arena, tomar el sol. Hondartza: bainatu, uretara sartu, "
-                "hondarretan etzan, eguzkia hartu."),
+           "eléctrico o el patinete. Autoa kargatzeko puntua, kargagailua, "
+           "elektrolinera, autoa entxufatu, patinete elektrikoa kargatu."),
+    "defib": ("Desfibrilador DEA para una emergencia cardiaca, un infarto, un "
+              "desmayo, reanimación. Desfibriladorea, DEA, KDA, bihotzeko "
+              "larrialdia, bihotzekoa eman dio, konortea galdu du."),
+    "beaches": ("Playa para bañarse, nadar, darse un chapuzón, mojarse, "
+                "tumbarse en la arena, tomar el sol. Hondartza: bainatu, "
+                "igeri egin itsasoan, uretara sartu, hondarretan etzan, "
+                "eguzkia hartu, oinak busti."),
     "cameras": ("Cámara de tráfico para ver el estado de la carretera ahora "
                 "mismo en directo. Trafiko-kamera: errepidearen egoera "
                 "zuzenean ikusi."),
     "metro": "Estación de metro, suburbano. Metro geltokia.",
     "euskotren": "Estación de tren o tranvía de Euskotren. Euskotren geltokia.",
-    "cercanias": "Estación de tren de Cercanías Renfe. Aldiriko tren geltokia.",
+    "cercanias": "Estación de tren de Cercanías Renfe. Aldiriko trena, aldiriak, tren geltokia.",
     "bilbobus": "Parada de autobús urbano Bilbobus. Bilbobus autobus geltokia.",
     "bizkaibus": "Parada de autobús Bizkaibus. Bizkaibus autobus geltokia.",
 }

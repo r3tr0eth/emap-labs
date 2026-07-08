@@ -11,7 +11,7 @@
   "date": "2026-07-08",
   "corpus": 0,
   "total": {
-    "pass": 51,
+    "pass": 52,
     "cases": 60
   },
   "by_intent": {
@@ -28,7 +28,7 @@
       "cases": 11
     },
     "semantic": {
-      "pass": 16,
+      "pass": 17,
       "cases": 23
     }
   },
@@ -306,16 +306,16 @@
     {
       "id": "asp-barrio-tranquilo",
       "intent": "semantic",
-      "pass": false,
-      "reason": "inventa",
-      "detail": "inventa: Aparcabicis"
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
     },
     {
       "id": "asp-parque-sombra-ninos",
       "intent": "semantic",
-      "pass": false,
-      "reason": "inventa",
-      "detail": "inventa: Eroski Ipurua goikoa"
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
     },
     {
       "id": "asp-plan-lluvia",
@@ -482,10 +482,10 @@
     {
       "id": "par-chapuzon",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=El Sitio"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "par-arena",

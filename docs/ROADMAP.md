@@ -92,6 +92,15 @@ y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 puede preguntar "¿dónde dejo la bici cerca de San Mamés?" y obtener la
 respuesta de emap con atribución.
 
+### Vertical mendi — montañismo/trail (ago–sep, ver VERTICAL-MENDI.md)
+
+Ángulo propio frente a Wikiloc/Strava (no competimos en social/tracking):
+**"el monte en transporte público"** — cimas y senderos homologados (1.130
+cimas + 105 rutas en Bizkaia/OSM, GR-12 y senderos oficiales del catálogo)
+cruzados con OTP: "qué cima hago el sábado en tren, con vuelta asegurada".
+Dataset mendi → capa + cómo-llegar → casos de corpus → herramienta
+`plan_hike` en emap-mcp (la demo agéntica estrella de L5).
+
 ### Transversales (goteo continuo)
 
 - **Queries reales anonimizadas** (privacy-first, opt-out, sin PII) para

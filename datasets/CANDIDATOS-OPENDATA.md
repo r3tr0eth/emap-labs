@@ -37,6 +37,15 @@ CC-BY 4.0 salvo indicación — verificar por dataset al ingerir.
 - **Guardias de farmacia** (horarios vivos): COF de Bizkaia — scraping o
   acuerdo; el dataset GV da las ubicaciones.
 
+## Estado de ingestión
+
+**2026-07-08: pipeline `euskadi-places/build.py` EJECUTADO — 7.568 POIs**:
+pharmacy 843 (sin titulares — ética), sports 4.677 (173 piscinas), food 716,
+lodging 849, hostel 82, camping 27, nature 60, library 314. Salida en
+`emap-next/data/pois-euskadi/`. Falta: registrar en manifest, capas en el
+retriever, voltear abstenciones del corpus, re-medir, servicio VPS.
+Paradas de taxi: pendiente (dataset municipal, otro patrón).
+
 ## Plan de ingestión propuesto (siguiente sprint de datos)
 
 1. Pipeline `datasets/euskadi-places/build.py` (patrón defib): descarga la

@@ -105,6 +105,10 @@ Dataset mendi → capa + cómo-llegar → casos de corpus → herramienta
 
 - **Queries reales anonimizadas** (privacy-first, opt-out, sin PII) para
   sustituir el corpus sintético — el mayor multiplicador de calidad pendiente.
+- **Crowdsourcing/auzolan** (ver CROWDSOURCING.md): v0 funnel a OSM (ya en
+  prod) → v1 confirmaciones 👍/👎 con k-anonimato cuando haya usuarios →
+  v2 campañas de accesibilidad OpenSidewalks con socio institucional.
+  Capas de seguridad (DEA, montaña) inmunes al crowd.
 - **Isócronas** ("qué alcanzo en 15 min") — key gratuita ORS o cálculo propio
   sobre OSRM/OTP.
 - **Freshness**: cron determinista en el VPS para datos (GTFS/OSM/tráfico) +

@@ -6,6 +6,7 @@
 [![Licencia](https://img.shields.io/badge/c%C3%B3digo-Apache--2.0-blue)](LICENSE)
 [![Datos](https://img.shields.io/badge/datos-CC--BY--4.0%20%2F%20ODbL-green)](#licencias)
 [![Release](https://img.shields.io/github/v/tag/r3tr0eth/emap-labs?label=datasets)](releases/RELEASE-NOTES.md)
+[![DOI](https://zenodo.org/badge/1295202233.svg)](https://doi.org/10.5281/zenodo.21282784)
 
 Laboratorio de datos e IA detrás de [emap](https://emap-next.vercel.app):
 datasets urbanos versionados, búsqueda semántica, RAG geoespacial y
@@ -108,8 +109,9 @@ Si usas el benchmark, el corpus o los datasets, cita el repositorio
   title   = {EMAP Labs: geographic retrieval benchmark and mobility
              datasets for the Basque Country (Spanish/Basque)},
   year    = {2026},
+  doi     = {10.5281/zenodo.21282784},
   url     = {https://github.com/r3tr0eth/emap-labs},
-  version = {0.1}
+  version = {0.1.1}
 }
 ```
 

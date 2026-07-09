@@ -12,9 +12,10 @@ authors:
     alias: r3tr0eth
 repository-code: https://github.com/r3tr0eth/emap-labs
 url: https://emap-next.vercel.app
+doi: 10.5281/zenodo.21282784
 license: Apache-2.0
-version: "0.1"
-date-released: "2026-07-07"
+version: "0.1.1"
+date-released: "2026-07-09"
 keywords:
   - geographic-retrieval
   - benchmark

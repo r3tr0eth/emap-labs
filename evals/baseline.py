@@ -42,8 +42,9 @@ KEYWORD_LAYERS: list[tuple[tuple[str, ...], tuple[str, ...]]] = [
     # ("comer", "dormir") son ambiguos y le tocan a la etapa semántica.
     (("farmacia", "farmazia", "botika", "botiquin"), ("pharmacy",)),
     (("biblioteca", "liburutegi", "mediateca", "mediateka"), ("library",)),
-    (("polideportivo", "kiroldegi", "fronton", "pilotaleku", "piscina",
-      "igerileku", "gimnasio", "instalacion deportiva"), ("sports",)),
+    (("polideportivo", "kiroldegi", "fronton", "frontoi", "pilotaleku",
+      "piscina", "igerileku", "gimnasio", "instalacion deportiva"),
+     ("sports",)),
     (("restaurante", "jatetxe", "sidreria", "sagardotegi", "asador"),
      ("food",)),
     (("albergue", "aterpe", "hostel"), ("hostel",)),

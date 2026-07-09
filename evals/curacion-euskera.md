@@ -25,8 +25,14 @@ Impacto medido: dev EU 75→73 (baseline) y 71→70 (híbrido); held-out EU
 Pendiente de lujo (no bloquea): 30 min de revisión nativa (HiTZ/Librezale)
 sobre las 41 mantenidas, y queries reales anonimizadas cuando haya uso.
 
-**Ampliación ep-\* (2026-07-09, PENDIENTE de Itzuli):** los 16 casos nuevos
-de euskadi-places llevan euskera de borrador propio (no validado). Antes de
-darlos por curados: pasar el BLOQUE 6 de `itzuli-bloques.md` por Itzuli y
-cotejar. Lo mismo aplica al texto EU de las 8 descripciones de categoría
-nuevas en `semantic_local.py`.
+**Ampliación ep-\* (2026-07-09): VALIDADA con Itzuli el mismo día** (BLOQUE
+6). De 16 queries: 9 idénticas (o solo coma), **5 adoptadas de Itzuli**
+(farmazia "Moyua inguruan", "frontoia" por pilotalekua, "botikak" por
+sendagaiak, "lo egiteko leku bat gaur gauean…", genitivo "biosferaren"),
+1 ajuste combinado ("ikasteko aretoa…" — el orden literal de Itzuli, con
+coma, no es una query realista). Hallazgos aplicados: keyword `frontoi`
+añadida al baseline (el "frontoia" de Itzuli no casaba con "fronton");
+"botikak" hace que en EU la consulta de medicamentos sea alcanzable por
+keywords (proximidad léxica farmacia/medicina real del euskera).
+Pendiente menor: cotejar el texto EU de las 8 descripciones de categoría
+nuevas de `semantic_local.py` (no son queries de usuario).

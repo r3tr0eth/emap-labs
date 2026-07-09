@@ -25,6 +25,11 @@ version: 0
 territory: bizkaia
 created: 2026-07-07
 status: draft
+# 2026-07-09: la estación de metro "Moyua" pasa a llamarse "Plaza Elíptica"
+# (aviso de Gaizka). Los anchors llevan fallback_name para resolver con el
+# dato viejo o el nuevo; las QUERIES mantienen "Moyua" porque es lo que la
+# gente seguirá escribiendo años. Cuando metro.json traiga el nombre nuevo,
+# revisar también los `expected.name` de los casos transit.
 cases:
 
   # ── A. Más cercano por categoría (nearest) ──────────────────────────
@@ -32,7 +37,7 @@ cases:
   - id: fountain-moyua
     q: {es: "fuente de agua potable cerca de Moyua", eu: "edateko ur-iturria Moyua inguruan"}
     intent: nearest
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [fountains], within_m: 400}
 
   - id: fountain-casco-viejo
@@ -117,7 +122,7 @@ cases:
   - id: camera-trafico-centro
     q: {es: "cámara de tráfico del centro de Bilbao", eu: "trafiko-kamera Bilboko erdigunean"}
     intent: nearest
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [cameras], within_m: 1000}
 
   # ── B. Con restricción de atributo (attribute) ──────────────────────
@@ -164,7 +169,7 @@ cases:
   - id: ev-fast-bilbao
     q: {es: "cargador rápido para el coche eléctrico en Bilbao", eu: "karga azkarreko puntua Bilbon"}
     intent: attribute
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [ev], within_m: 3000, tags_not: {TipoCarga: "Lenta (3-7 kW)"}}
 
   - id: ev-plazas-abando
@@ -311,7 +316,7 @@ cases:
   - id: robust-typo-fuente
     q: {es: "fuentes de agua zerca de moyua", eu: "iturria moiua onduan"}
     intent: nearest
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [fountains], within_m: 400}
     notes: "Erratas deliberadas; debe resolver igual que fountain-moyua."
 
@@ -349,7 +354,7 @@ cases:
   - id: par-bidon
     q: {es: "dónde relleno el bidón", eu: "non bete dezaket bidoia"}
     intent: semantic
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [fountains], within_m: 400}
 
   - id: par-sed
@@ -380,7 +385,7 @@ cases:
   - id: par-enchufar
     q: {es: "un sitio para enchufar el coche", eu: "Autoa entxufatzeko leku bat"}
     intent: semantic
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [ev], within_m: 1000}
 
   - id: par-dejar-coche
@@ -423,7 +428,7 @@ cases:
   - id: par-carretera-ahora
     q: {es: "cómo está la carretera ahora mismo en el centro", eu: "nola dago errepidea orain erdigunean"}
     intent: semantic
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [cameras], within_m: 1000}
 
   # ── P. euskadi-places (dev, añadidos 2026-07-09) ────────────────────
@@ -432,9 +437,9 @@ cases:
   # PENDIENTE de cotejo con Itzuli (ver curacion-euskera.md).
 
   - id: ep-farmacia-moyua
-    q: {es: "farmacia cerca de Moyua", eu: "farmazia bat Moyuatik gertu"}
+    q: {es: "farmacia cerca de Moyua", eu: "farmazia Moyua inguruan"}
     intent: nearest
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [pharmacy], within_m: 300}
 
   - id: ep-farmacia-plentzia
@@ -456,7 +461,7 @@ cases:
     expected: {layers: [library], within_m: 400}
 
   - id: ep-fronton-sopela
-    q: {es: "frontón cerca de Sopela", eu: "pilotalekua Sopelatik gertu"}
+    q: {es: "frontón cerca de Sopela", eu: "frontoia Sopelatik gertu"}
     intent: nearest
     anchor: {layer: metro, name: "Sopela"}
     expected: {layers: [sports], within_m: 400}
@@ -486,13 +491,13 @@ cases:
     expected: {layers: [camping], within_m: 1500}
 
   - id: ep-sem-medicinas
-    q: {es: "dónde comprar medicamentos cerca de Moyua", eu: "non erosi sendagaiak Moyuatik gertu"}
+    q: {es: "dónde comprar medicamentos cerca de Moyua", eu: "non erosi botikak Moyua inguruan"}
     intent: semantic
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [pharmacy], within_m: 300}
 
   - id: ep-sem-estudiar
-    q: {es: "sala para estudiar cerca del Casco Viejo", eu: "ikasteko gela Alde Zaharretik gertu"}
+    q: {es: "sala para estudiar cerca del Casco Viejo", eu: "ikasteko aretoa Alde Zaharretik gertu"}
     intent: semantic
     anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [library], within_m: 400}
@@ -504,7 +509,7 @@ cases:
     expected: {layers: [food], within_m: 400}
 
   - id: ep-sem-dormir
-    q: {es: "un sitio para dormir esta noche cerca del Casco Viejo", eu: "gaur gauean lo egiteko lekua Alde Zaharretik gertu"}
+    q: {es: "un sitio para dormir esta noche cerca del Casco Viejo", eu: "lo egiteko leku bat gaur gauean Alde Zaharretik gertu"}
     intent: semantic
     anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
     expected: {layers: [lodging, hostel], within_m: 400}
@@ -516,7 +521,7 @@ cases:
     expected: {layers: [sports], within_m: 300}
 
   - id: ep-sem-urdaibai
-    q: {es: "reserva de la biosfera de Urdaibai", eu: "Urdaibaiko biosfera erreserba"}
+    q: {es: "reserva de la biosfera de Urdaibai", eu: "Urdaibaiko biosferaren erreserba"}
     intent: semantic
     expected: {layers: [nature], name: "Urdaibai"}
 
@@ -627,7 +632,7 @@ cases:
     split: heldout
     q: {es: "creo que le está dando un infarto", eu: "bihotzekoak ematen ari zaiola uste dut"}
     intent: semantic
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [defib], within_m: 500}
 
   - id: ho-nadar-larrabasterra
@@ -680,7 +685,7 @@ cases:
     split: heldout
     q: {es: "aparcar gratis por el centro de Bilbao", eu: "doan aparkatu Bilboko erdigunean"}
     intent: attribute
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [parking], within_m: 1500, tags: {fee: "no"}}
 
   - id: ho-aseo-adaptado-sanmames
@@ -825,7 +830,7 @@ cases:
     split: heldout
     q: {es: "cargar el coche mientras trabajo", eu: "autoa kargatu lanean nagoen bitartean"}
     intent: semantic
-    anchor: {layer: metro, name: "Moyua"}
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
     expected: {layers: [ev], within_m: 1000}
 
   - id: ho2-linea-algorta

@@ -35,8 +35,8 @@ Resultados (k=5, 2026-07-09):
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline keywords+geo | 73% | **60%** | 69% | 62% |
-| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **81%** | 58% | 74% | **66%** |
+| baseline keywords+geo | 73% | **60%** | 71% | 62% |
+| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **81%** | 58% | 73% | **66%** |
 
 Dos hallazgos centrales: **con euskera correcto, la etapa semántica apenas
 aporta en EU** (los embeddings multilingües actuales flojean en euskera), y

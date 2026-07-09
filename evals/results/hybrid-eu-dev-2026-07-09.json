@@ -578,10 +578,10 @@
     {
       "id": "ep-sem-medicinas",
       "intent": "semantic",
-      "pass": false,
-      "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Colón de Larreategui Kalea/Calle 29)"
     },
     {
       "id": "ep-sem-estudiar",
@@ -604,8 +604,8 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "abstencion_indebida",
-      "detail": "top1=∅ ✗ abstencion_indebida"
+      "reason": "categoria_equivocada (pharmacy)",
+      "detail": "top1=Farmacia (Virgen de Begoña Kalea/Calle 2) ✗ categoria_equivocada (pharmacy)"
     },
     {
       "id": "ep-sem-deporte",
@@ -618,10 +618,10 @@
     {
       "id": "ep-sem-urdaibai",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Urdaibai"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ep-sem-biotopo-itxina",

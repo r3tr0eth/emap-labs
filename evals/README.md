@@ -34,8 +34,8 @@ known_gap, usados para calibrar) y **held-out** 54 (secciones H y H2, prefijo
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline-keywords-geo | 73% | **60%** | 69% | 62% |
-| **hybrid-keywords-then-semantic** | **81%** | 58% | 74% | **66%** |
+| baseline-keywords-geo | 73% | **60%** | 71% | 62% |
+| **hybrid-keywords-then-semantic** | **81%** | 58% | 73% | **66%** |
 
 **Ampliación 2026-07-09 (euskadi-places)**: +8 capas (farmacia, biblioteca,
 deporte, restaurantes, hotel, albergue, camping, espacios naturales — 7.568

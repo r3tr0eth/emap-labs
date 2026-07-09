@@ -92,7 +92,7 @@ y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 puede preguntar "¿dónde dejo la bici cerca de San Mamés?" y obtener la
 respuesta de emap con atribución.
 
-### Vertical mendi — montañismo/trail (ago–sep, ver VERTICAL-MENDI.md)
+### Vertical mendi — montañismo/trail (ago–sep)
 
 Ángulo propio frente a Wikiloc/Strava (no competimos en social/tracking):
 **"el monte en transporte público"** — cimas y senderos homologados (1.130
@@ -119,8 +119,7 @@ Dataset mendi → capa + cómo-llegar → casos de corpus → herramienta
 ## Calendario de financiación (sin cambios, fechas verificadas)
 
 Ago: borradores BIND (deadline **4-sep**) y NLnet → sep-oct: envíos →
-invierno: entidad solo con dinero confirmado. Detalle en
-`COSTES-Y-FINANCIACION.md`.
+invierno: entidad solo con dinero confirmado.
 
 ## No hacer (vigente)
 

@@ -1,9 +1,9 @@
 # CLAUDE.md — emap-labs
 
 Capa de datos e inteligencia detrás de emap (github.com/r3tr0eth/emap-labs,
-privado). Roadmap: `docs/ROADMAP.md`. Reglas duras: `docs/ETICA-DATOS.md`
-(infraestructura jamás personas) y `docs/COSTES-Y-FINANCIACION.md` §3
-(emap solo gasta dinero que emap trae).
+público). Roadmap: `docs/ROADMAP.md`. Reglas duras: `docs/ETICA-DATOS.md`
+(infraestructura jamás personas) y la regla financiera: emap solo gasta
+dinero que emap trae.
 
 ## Relación con otros repos
 

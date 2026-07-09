@@ -22,7 +22,7 @@ datasets/   pipelines de datasets propios (barrios, zonas verdes, …)
 | Repo | Papel |
 |---|---|
 | `../emap-next` | producto en producción; `packages/data-catalog` (manifest, quality, coverage) vive allí y labs lo consume como hermano |
-| `../emapdev-stable` | legacy, solo lectura |
+| `../emapdev-legacy` | demo legacy congelada, solo lectura |
 
 ## Principios
 
@@ -33,3 +33,9 @@ datasets/   pipelines de datasets propios (barrios, zonas verdes, …)
 
 Regla de decisión: cada desarrollo debe mejorar emap, ser reutilizable,
 publicable como open source o vendible. Si no cumple ninguna, no se hace.
+
+## Licencias
+
+- **Código**: [Apache-2.0](LICENSE).
+- **Corpus de evaluación propio** (`evals/*.yaml`, docs): [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/deed.es) — atribución "EMAP Labs".
+- **Datos derivados**: lo derivado de [OpenStreetMap](https://www.openstreetmap.org/copyright) mantiene **ODbL**; lo derivado de [Open Data Euskadi](https://opendata.euskadi.eus) mantiene **CC-BY-4.0** con atribución al portal. Cada dataset declara su fuente y licencia en sus metadatos.

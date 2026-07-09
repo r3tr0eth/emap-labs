@@ -627,9 +627,9 @@
       "id": "ep-sem-biotopo-itxina",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": false,
+      "hit_at_k": true,
       "reason": "nombre_o_lineas",
-      "detail": "top1=Playa de Aritzatxu ✗ nombre_o_lineas"
+      "detail": "top1=Biotopo Protegido Complejo Lagunar de Laguardia ✗ nombre_o_lineas"
     }
   ],
   "known_gaps": [

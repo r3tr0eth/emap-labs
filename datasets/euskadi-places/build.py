@@ -143,6 +143,12 @@ def main() -> None:
             if key not in seen:
                 seen.add(key)
                 clean.append(p)
+        if layer == "nature":
+            # la fuente mezcla zonas de baño con espacios naturales; las
+            # playas ya están (mejor) en la capa beaches — aquí duplican
+            # y desvirtúan la categoría (detectado en evals 2026-07-09)
+            clean = [p for p in clean
+                     if not p["name"]["es"].lower().startswith("playa")]
         path = OUT / f"{layer}.json"
         path.write_text(json.dumps({
             "generated": date.today().isoformat(),

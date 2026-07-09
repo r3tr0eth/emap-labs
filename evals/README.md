@@ -76,8 +76,9 @@ mejores o clasificador LLM). Patrón de fallo dominante: parking/bikepark
 absorben consultas ambiguas; 2 abstenciones con fuga (taxi, autocaravana).
 Resultados históricos con el held-out de 29 casos en results/.)
 
-(MiniLM multilingüe vía fastembed, τ=0.45, tie=0.08 — config completa
-versionada en cada JSON de `results/`.)
+(MiniLM multilingüe vía fastembed; config actual τ=0.50, tie=0.03 — la
+completa queda versionada en cada JSON de `results/`. Prod mantiene
+τ=0.45/0.08 con 13 capas, fijada en `service/deploy.sh`.)
 
 **Benchmark L3 — modelos de embedding probados (dev, híbrido):**
 
@@ -90,9 +91,12 @@ versionada en cada JSON de `results/`.)
 Modelo y calibración ahora intercambiables por env (`EMAP_EMBED_MODEL`,
 `EMAP_SIM_TAU`, `EMAP_TIE_WIN`) — la mecánica del benchmark está lista.
 
-**Criterio de despliegue**: el híbrido sigue ≥ baseline en held-out en ambos
-idiomas, pero tras la tanda H2 el margen es mínimo (+1/+2 pts). Se mantiene
-desplegado; la mejora de la etapa semántica es EL objetivo medible de L3.
+**Criterio de despliegue** (histórico 2026-07-08, con 13 capas): el híbrido
+seguía ≥ baseline en held-out en ambos idiomas por la mínima y se mantuvo
+desplegado. **Desde 2026-07-09, con 21 capas, el criterio está ROTO en ES**
+(ver hallazgos arriba): prod permanece en la config de 13 capas y las capas
+nuevas no se activan en producción hasta que una etapa semántica mejor
+recupere el criterio — EL objetivo medible de L3.
 
 Lecciones del primer día de harness:
 

@@ -4,14 +4,14 @@
   "k": 5,
   "config": {
     "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "sim_threshold": 0.45,
-    "tie_window": 0.08
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
   },
   "n_corpus_cases": 54,
   "date": "2026-07-09",
   "corpus": 0,
   "total": {
-    "pass": 36,
+    "pass": 31,
     "cases": 53
   },
   "by_intent": {
@@ -20,7 +20,7 @@
       "cases": 6
     },
     "semantic": {
-      "pass": 19,
+      "pass": 14,
       "cases": 32
     },
     "transit": {
@@ -102,8 +102,8 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (metro)",
-      "detail": "top1=San Ignazio ✗ categoria_equivocada (metro)"
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho-bano-nino",
@@ -124,10 +124,10 @@
     {
       "id": "ho-guardar-coche",
       "intent": "semantic",
-      "pass": true,
-      "hit_at_k": true,
-      "reason": null,
-      "detail": "top1=Areatza"
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho-atar-bici-guggenheim",
@@ -236,23 +236,23 @@
     {
       "id": "ho-farmacia-guardia",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Farmacia (Altube Kalea/Calle 5)"
     },
     {
       "id": "ho-hotel-barato",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BILBAO"
     },
     {
       "id": "ho-menu-del-dia",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Agorregi"
     },
     {
       "id": "ho-wifi-gratis",
@@ -354,14 +354,14 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (fountains)",
-      "detail": "top1=Fuente ✗ categoria_equivocada (fountains)"
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho2-carga-trabajo",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": true,
+      "hit_at_k": false,
       "reason": "categoria_equivocada (parking)",
       "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
     },
@@ -437,9 +437,9 @@
     {
       "id": "ho2-eu-igerilekua",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: MENDIBARREN UDAL PILOTALEKUA"
     },
     {
       "id": "ho2-taxi",

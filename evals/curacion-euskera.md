@@ -24,3 +24,9 @@ Impacto medido: dev EU 75→73 (baseline) y 71→70 (híbrido); held-out EU
 
 Pendiente de lujo (no bloquea): 30 min de revisión nativa (HiTZ/Librezale)
 sobre las 41 mantenidas, y queries reales anonimizadas cuando haya uso.
+
+**Ampliación ep-\* (2026-07-09, PENDIENTE de Itzuli):** los 16 casos nuevos
+de euskadi-places llevan euskera de borrador propio (no validado). Antes de
+darlos por curados: pasar el BLOQUE 6 de `itzuli-bloques.md` por Itzuli y
+cotejar. Lo mismo aplica al texto EU de las 8 descripciones de categoría
+nuevas en `semantic_local.py`.

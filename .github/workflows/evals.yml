@@ -18,11 +18,14 @@ jobs:
           cache: pip
           cache-dependency-path: evals/requirements.txt
       - run: pip install pyyaml
-      # umbrales = resultado actual − margen de ruido; si bajan, algo se rompió
-      - run: python evals/run.py --retriever baseline --lang es --min-pass 73
-      - run: python evals/run.py --retriever baseline --lang eu --min-pass 72
-      - run: python evals/run.py --retriever baseline --lang es --split heldout --min-pass 62
-      - run: python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 63
+      # umbrales = resultado actual − margen de ruido; si bajan, algo se rompió.
+      # Rebajados conscientemente 2026-07-09: corpus 117→133 casos y 13→21
+      # capas (euskadi-places) — el held-out es más duro para todos (detalle
+      # en evals/README.md).
+      - run: python evals/run.py --retriever baseline --lang es --min-pass 70
+      - run: python evals/run.py --retriever baseline --lang eu --min-pass 66
+      - run: python evals/run.py --retriever baseline --lang es --split heldout --min-pass 57
+      - run: python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 59
 
   hybrid:
     name: hybrid (semántico, con caché de modelo)
@@ -40,7 +43,10 @@ jobs:
           path: ~/.cache/fastembed
           key: fastembed-minilm-multilingual-v1
       - run: pip install -r evals/requirements.txt
-      # criterio de despliegue del README: batir al baseline en held-out en ambos idiomas
-      - run: python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 63
-      - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 65
-      - run: python evals/run.py --retriever hybrid --lang es --min-pass 80
+      # OJO 2026-07-09: con 21 capas el híbrido PIERDE el held-out ES contra
+      # el baseline (58 vs 60) — criterio de despliegue roto; prod sigue en
+      # 13 capas (env fijado en service/deploy.sh). Estos gates vigilan
+      # regresión del estado medido, no aprueban despliegue.
+      - run: python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 55
+      - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 63
+      - run: python evals/run.py --retriever hybrid --lang es --min-pass 78

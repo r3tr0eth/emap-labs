@@ -426,6 +426,105 @@ cases:
     anchor: {layer: metro, name: "Moyua"}
     expected: {layers: [cameras], within_m: 1000}
 
+  # ── P. euskadi-places (dev, añadidos 2026-07-09) ────────────────────
+  # 8 capas nuevas de Open Data Euskadi (7.568 POIs). Radios verificados
+  # contra los datos (distancia real medida + margen). EU: borrador propio
+  # PENDIENTE de cotejo con Itzuli (ver curacion-euskera.md).
+
+  - id: ep-farmacia-moyua
+    q: {es: "farmacia cerca de Moyua", eu: "farmazia bat Moyuatik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [pharmacy], within_m: 300}
+
+  - id: ep-farmacia-plentzia
+    q: {es: "farmacia en Plentzia", eu: "farmazia Plentzian"}
+    intent: nearest
+    anchor: {layer: metro, name: "Plentzia"}
+    expected: {layers: [pharmacy], within_m: 500}
+
+  - id: ep-biblioteca-casco
+    q: {es: "biblioteca cerca del Casco Viejo", eu: "liburutegia Alde Zaharretik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [library], within_m: 400}
+
+  - id: ep-biblioteca-sopela
+    q: {es: "biblioteca municipal de Sopela", eu: "Sopelako udal liburutegia"}
+    intent: nearest
+    anchor: {layer: metro, name: "Sopela"}
+    expected: {layers: [library], within_m: 400}
+
+  - id: ep-fronton-sopela
+    q: {es: "frontón cerca de Sopela", eu: "pilotalekua Sopelatik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Sopela"}
+    expected: {layers: [sports], within_m: 400}
+
+  - id: ep-restaurante-casco
+    q: {es: "restaurante cerca del Casco Viejo", eu: "jatetxea Alde Zaharretik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [food], within_m: 400}
+
+  - id: ep-hotel-abando
+    q: {es: "hotel cerca de la estación de Abando", eu: "hotela Abandoko geltokitik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [lodging], within_m: 300}
+
+  - id: ep-albergue-casco
+    q: {es: "albergue cerca del Casco Viejo", eu: "aterpetxea Alde Zaharretik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [hostel], within_m: 500}
+
+  - id: ep-camping-sopela
+    q: {es: "camping cerca de Sopela", eu: "kanpina Sopelatik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Sopela"}
+    expected: {layers: [camping], within_m: 1500}
+
+  - id: ep-sem-medicinas
+    q: {es: "dónde comprar medicamentos cerca de Moyua", eu: "non erosi sendagaiak Moyuatik gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua"}
+    expected: {layers: [pharmacy], within_m: 300}
+
+  - id: ep-sem-estudiar
+    q: {es: "sala para estudiar cerca del Casco Viejo", eu: "ikasteko gela Alde Zaharretik gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [library], within_m: 400}
+
+  - id: ep-sem-menu
+    q: {es: "menú del día cerca de Abando", eu: "eguneko menua Abandotik gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [food], within_m: 400}
+
+  - id: ep-sem-dormir
+    q: {es: "un sitio para dormir esta noche cerca del Casco Viejo", eu: "gaur gauean lo egiteko lekua Alde Zaharretik gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [lodging, hostel], within_m: 400}
+
+  - id: ep-sem-deporte
+    q: {es: "quiero hacer deporte cerca de Santutxu", eu: "kirola egin nahi dut Santutxutik gertu"}
+    intent: semantic
+    anchor: {layer: metro, name: "Santutxu"}
+    expected: {layers: [sports], within_m: 300}
+
+  - id: ep-sem-urdaibai
+    q: {es: "reserva de la biosfera de Urdaibai", eu: "Urdaibaiko biosfera erreserba"}
+    intent: semantic
+    expected: {layers: [nature], name: "Urdaibai"}
+
+  - id: ep-sem-biotopo-itxina
+    q: {es: "biotopo protegido de Itxina", eu: "Itxinako biotopo babestua"}
+    intent: semantic
+    expected: {layers: [nature], name: "Biotopo Protegido de Itxina"}
+
   # ── H. HELD-OUT (prefijo ho-) — NO usar para calibrar nada ──────────
   # Escritos el 2026-07-07 DESPUÉS de fijar umbrales y keywords. El runner
   # los excluye por defecto (--split heldout para correrlos). Si un cambio

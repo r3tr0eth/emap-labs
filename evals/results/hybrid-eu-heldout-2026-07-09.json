@@ -4,8 +4,8 @@
   "k": 5,
   "config": {
     "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "sim_threshold": 0.45,
-    "tie_window": 0.08
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
   },
   "n_corpus_cases": 54,
   "date": "2026-07-09",
@@ -125,9 +125,9 @@
       "id": "ho-guardar-coche",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": true,
-      "reason": "categoria_equivocada (cameras)",
-      "detail": "top1=PC21_ESTUFA_SAL ✗ categoria_equivocada (cameras)"
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho-atar-bici-guggenheim",
@@ -142,8 +142,8 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (cameras)",
-      "detail": "top1=Plza. Moy&#250;a ✗ categoria_equivocada (cameras)"
+      "reason": "categoria_equivocada (hostel)",
+      "detail": "top1=BILBAO CENTRAL HOSTEL ✗ categoria_equivocada (hostel)"
     },
     {
       "id": "ho-nadar-larrabasterra",
@@ -238,14 +238,14 @@
       "intent": "semantic",
       "pass": false,
       "reason": "inventa",
-      "detail": "inventa: Ayuntamiento De Portugalete"
+      "detail": "inventa: Farmacia (Altube Kalea/Calle 5)"
     },
     {
       "id": "ho-hotel-barato",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: ABANDO"
     },
     {
       "id": "ho-menu-del-dia",
@@ -314,8 +314,8 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (bikepark)",
-      "detail": "top1=Aparcabicis ✗ categoria_equivocada (bikepark)"
+      "reason": "categoria_equivocada (hostel)",
+      "detail": "top1=MOANA ECO SURF HOUSE ✗ categoria_equivocada (hostel)"
     },
     {
       "id": "ho2-desmayo",
@@ -354,16 +354,16 @@
       "intent": "semantic",
       "pass": false,
       "hit_at_k": false,
-      "reason": "categoria_equivocada (fountains)",
-      "detail": "top1=Fuente ✗ categoria_equivocada (fountains)"
+      "reason": "categoria_equivocada (pharmacy)",
+      "detail": "top1=Farmacia (Erribera Kalea/Calle 20) ✗ categoria_equivocada (pharmacy)"
     },
     {
       "id": "ho2-carga-trabajo",
       "intent": "semantic",
       "pass": false,
-      "hit_at_k": true,
-      "reason": "categoria_equivocada (parking)",
-      "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
     },
     {
       "id": "ho2-linea-algorta",
@@ -430,9 +430,9 @@
     {
       "id": "ho2-autocaravana",
       "intent": "semantic",
-      "pass": false,
-      "reason": "inventa",
-      "detail": "inventa: Eroski Ipurua goikoa"
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
     },
     {
       "id": "ho2-eu-igerilekua",

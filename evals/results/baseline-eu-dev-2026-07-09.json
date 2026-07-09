@@ -3,17 +3,17 @@
   "lang": "eu",
   "k": 5,
   "config": {},
-  "n_corpus_cases": 63,
+  "n_corpus_cases": 79,
   "date": "2026-07-09",
   "corpus": 0,
   "total": {
-    "pass": 44,
-    "cases": 60
+    "pass": 53,
+    "cases": 76
   },
   "by_intent": {
     "nearest": {
-      "pass": 18,
-      "cases": 18
+      "pass": 27,
+      "cases": 27
     },
     "attribute": {
       "pass": 6,
@@ -25,7 +25,7 @@
     },
     "semantic": {
       "pass": 11,
-      "cases": 22
+      "cases": 29
     }
   },
   "cases": [
@@ -498,6 +498,134 @@
       "hit_at_k": false,
       "reason": "abstencion_indebida",
       "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-farmacia-moyua",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Colón de Larreategui Kalea/Calle 29)"
+    },
+    {
+      "id": "ep-farmacia-plentzia",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Erribera Kalea/Calle 20)"
+    },
+    {
+      "id": "ep-biblioteca-casco",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Bilbao - Casco Viejo Biblioteca infantil"
+    },
+    {
+      "id": "ep-biblioteca-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Sopela - Biblioteca Municipal"
+    },
+    {
+      "id": "ep-fronton-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=FRONTÓN MUNICIPAL"
+    },
+    {
+      "id": "ep-restaurante-casco",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Víctor"
+    },
+    {
+      "id": "ep-hotel-abando",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Radisson Collection Hotel, Gran Via Bilbao"
+    },
+    {
+      "id": "ep-albergue-casco",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=GANBARA"
+    },
+    {
+      "id": "ep-camping-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=SOPELANA"
+    },
+    {
+      "id": "ep-sem-medicinas",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-estudiar",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-menu",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-dormir",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-deporte",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-urdaibai",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-biotopo-itxina",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Playa de Aritzatxu ✗ nombre_o_lineas"
     }
   ],
   "known_gaps": [

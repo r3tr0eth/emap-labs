@@ -143,3 +143,25 @@
 112. dónde cojo un taxi
 ```
 
+
+## BLOQUE 6 — casos ep-* (euskadi-places, 2026-07-09)
+
+Pega este bloque en Itzuli (castellano → euskera) y devuélveme el resultado
+completo. Los números casan cada traducción con su caso.
+
+1. farmacia cerca de Moyua
+2. farmacia en Plentzia
+3. biblioteca cerca del Casco Viejo
+4. biblioteca municipal de Sopela
+5. frontón cerca de Sopela
+6. restaurante cerca del Casco Viejo
+7. hotel cerca de la estación de Abando
+8. albergue cerca del Casco Viejo
+9. camping cerca de Sopela
+10. dónde comprar medicamentos cerca de Moyua
+11. sala para estudiar cerca del Casco Viejo
+12. menú del día cerca de Abando
+13. un sitio para dormir esta noche cerca del Casco Viejo
+14. quiero hacer deporte cerca de Santutxu
+15. reserva de la biosfera de Urdaibai
+16. biotopo protegido de Itxina

@@ -7,7 +7,7 @@
   "date": "2026-07-09",
   "corpus": 0,
   "total": {
-    "pass": 35,
+    "pass": 32,
     "cases": 53
   },
   "by_intent": {
@@ -16,7 +16,7 @@
       "cases": 6
     },
     "semantic": {
-      "pass": 18,
+      "pass": 15,
       "cases": 32
     },
     "transit": {
@@ -232,16 +232,16 @@
     {
       "id": "ho-farmacia-guardia",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Farmacia (Altube Kalea/Calle 5)"
     },
     {
       "id": "ho-hotel-barato",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BILBAO"
     },
     {
       "id": "ho-menu-del-dia",
@@ -433,9 +433,9 @@
     {
       "id": "ho2-eu-igerilekua",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: MENDIBARREN UDAL PILOTALEKUA"
     },
     {
       "id": "ho2-taxi",

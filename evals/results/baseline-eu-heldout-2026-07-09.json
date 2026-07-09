@@ -7,7 +7,7 @@
   "date": "2026-07-09",
   "corpus": 0,
   "total": {
-    "pass": 35,
+    "pass": 33,
     "cases": 53
   },
   "by_intent": {
@@ -16,7 +16,7 @@
       "cases": 6
     },
     "semantic": {
-      "pass": 20,
+      "pass": 18,
       "cases": 32
     },
     "transit": {
@@ -232,16 +232,16 @@
     {
       "id": "ho-farmacia-guardia",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Farmacia (Altube Kalea/Calle 5)"
     },
     {
       "id": "ho-hotel-barato",
       "intent": "semantic",
-      "pass": true,
-      "reason": null,
-      "detail": "abstiene"
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: ABANDO"
     },
     {
       "id": "ho-menu-del-dia",

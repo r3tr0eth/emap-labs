@@ -23,24 +23,28 @@ mobility datasets for the Basque Country. Reproducible in three commands.*
 
 ## Benchmark de retrieval ES/EU
 
-Corpus dorado de **117 casos** de búsqueda geográfica hiperlocal (fuentes,
-aseos, parking, transporte, DEA…) en español y euskera, con split **held-out
-estricto** (54 casos que jamás se usan para calibrar) y casos de abstención
-(`answerable: false` — el retriever que inventa, falla). El euskera está
-**validado con Itzuli**, el traductor neuronal del Gobierno Vasco — no es
+Corpus dorado de **133 casos** de búsqueda geográfica hiperlocal sobre **21
+categorías** (fuentes, aseos, parking, transporte, DEA, farmacias,
+bibliotecas…) en español y euskera, con split **held-out estricto** (54
+casos que jamás se usan para calibrar) y casos de abstención
+(`answerable: false` — el retriever que inventa, falla). El euskera se
+coteja con **Itzuli**, el traductor neuronal del Gobierno Vasco — no es
 euskera artificial de traducción automática sin revisar.
 
 Resultados (k=5, 2026-07-09):
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline keywords+geo | 77% | 66% | 73% | 66% |
-| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **87%** | **68%** | 75% | **66%** |
+| baseline keywords+geo | 73% | **60%** | 69% | 62% |
+| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **81%** | 58% | 74% | **66%** |
 
-El hallazgo central: **con euskera correcto, la etapa semántica no aporta
-ventaja en EU** — los embeddings multilingües actuales flojean en euskera, y
-cuantificar esa brecha por modelo es el objetivo del benchmark. Metodología,
-lecciones y resultados por modelo: [`evals/README.md`](evals/README.md).
+Dos hallazgos centrales: **con euskera correcto, la etapa semántica apenas
+aporta en EU** (los embeddings multilingües actuales flojean en euskera), y
+**al pasar de 13 a 21 categorías el híbrido pierde el held-out ES contra el
+baseline** — el modelo actual no escala con el espacio de categorías.
+Cuantificar ambas brechas por modelo es el objetivo del benchmark.
+Metodología, lecciones y resultados por modelo:
+[`evals/README.md`](evals/README.md).
 
 ## Reproducir en tres comandos
 

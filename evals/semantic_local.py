@@ -30,8 +30,12 @@ from baseline import BaselineRetriever, norm
 import os
 MODEL = os.environ.get("EMAP_EMBED_MODEL",
                        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-SIM_THRESHOLD = float(os.environ.get("EMAP_SIM_TAU", "0.45"))  # bajo esto: "no sé"
-TIE_WINDOW = float(os.environ.get("EMAP_TIE_WIN", "0.08"))  # categorías a menos de esto del top entran también
+# Recalibrado en dev 2026-07-09 al pasar de 13 → 21 categorías (τ 0.45→0.50,
+# tie 0.08→0.03): con más categorías el tie-window ancho dejaba colar capas
+# basura que robaban el top-1 por cercanía, y τ alto compensa la subida de
+# falsos positivos. Elegido por paridad ES/EU (barrido en dev, commit).
+SIM_THRESHOLD = float(os.environ.get("EMAP_SIM_TAU", "0.50"))  # bajo esto: "no sé"
+TIE_WINDOW = float(os.environ.get("EMAP_TIE_WIN", "0.03"))  # categorías a menos de esto del top entran también
 
 CATEGORY_TEXT = {
     "fountains": ("Fuente de agua potable: beber agua, rellenar la botella o el "
@@ -59,6 +63,36 @@ CATEGORY_TEXT = {
     "cameras": ("Cámara de tráfico para ver el estado de la carretera ahora "
                 "mismo en directo. Trafiko-kamera: errepidearen egoera "
                 "zuzenean ikusi."),
+    # euskadi-places (2026-07): EU pendiente de cotejo con Itzuli.
+    # Descripciones ceñidas a lo que el dato ES — sin necesidades genéricas
+    # ("tengo hambre", "sitio tranquilo") que absorben conceptos ausentes
+    # (pintxos, mercados, cafeterías, parques urbanos) y matan la abstención.
+    "pharmacy": ("Farmacia o botiquín de guardia: comprar medicamentos con "
+                 "o sin receta. Farmazia edo botika: sendagaiak erosi, "
+                 "errezetako botikak."),
+    "library": ("Biblioteca o mediateca pública: estudiar, leer, préstamo "
+                "de libros, sala de estudio. Liburutegi edo mediateka "
+                "publikoa: ikasi, irakurri, liburuak mailegatu, ikasteko "
+                "gela."),
+    "sports": ("Instalación deportiva: polideportivo, piscina municipal, "
+               "frontón, gimnasio, hacer deporte, entrenar. "
+               "Kirol-instalazioa: kiroldegia, udal igerilekua, "
+               "pilotalekua, kirola egin, entrenatu."),
+    "food": ("Restaurante, sidrería, asador o bodega: comida o cena de "
+             "restaurante, menú del día. Jatetxea, sagardotegia, "
+             "erretegia: jatetxeko bazkaria edo afaria, eguneko menua."),
+    "lodging": ("Hotel, pensión o agroturismo: dormir, pasar la noche, "
+                "reservar habitación para alojarse. Hotela, pentsioa, "
+                "nekazalturismoa: lo egin, gaua pasatu, gela erreserbatu, "
+                "ostatu hartu."),
+    "hostel": ("Albergue de peregrinos o juvenil: litera en dormitorio "
+               "compartido. Aterpetxea: erromesen aterpea, litera logela "
+               "partekatuan."),
+    "camping": ("Camping: parcela para tienda de campaña o bungalow. "
+                "Kanpina: kanpin-dendarako partzela, bungalowa."),
+    "nature": ("Espacio natural protegido: parque natural, biotopo, marisma, "
+               "humedal con aves. Naturgune babestua: natur parkea, "
+               "biotopoa, padura, hezegunea."),
     "metro": "Estación de metro, suburbano. Metro geltokia.",
     "euskotren": "Estación de tren o tranvía de Euskotren. Euskotren geltokia.",
     "cercanias": "Estación de tren de Cercanías Renfe. Aldiriko trena, aldiriak, tren geltokia.",
@@ -83,12 +117,18 @@ def strip_location(query: str, anchor_names: list[str]) -> str:
     out = []
     i = 0
     while i < len(tokens):
-        if any(tokens[i] in p.split() or p.startswith(tokens[i]) and len(tokens[i]) >= 4
+        if any(tokens[i] in p.split()
+               or (p.startswith(tokens[i]) and len(tokens[i]) >= 4)
+               # declinación vasca: "Moyuatik", "Sopelako" → anchor "moyua"…
+               or any(tokens[i].startswith(pw) and len(pw) >= 4 for pw in p.split())
                for p in parts):
             # borra también los tokens locativos que preceden al nombre
+            # (es: "cerca de Moyua") y los que lo siguen (eu: "Moyuatik gertu")
             while out and out[-1] in LOCATIVE:
                 out.pop()
             i += 1
+            while i < len(tokens) and tokens[i] in LOCATIVE:
+                i += 1
             continue
         out.append(tokens[i])
         i += 1

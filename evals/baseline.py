@@ -37,6 +37,21 @@ KEYWORD_LAYERS: list[tuple[tuple[str, ...], tuple[str, ...]]] = [
     (("camara", "kamera"), ("cameras",)),
     (("aparcamiento", "aparcar", "parking", "aparkaleku", "aparkatu"),
      ("parking",)),
+    # euskadi-places (2026-07): 8 capas de Open Data Euskadi.
+    # Solo sustantivos inequívocos de la categoría — los verbos de necesidad
+    # ("comer", "dormir") son ambiguos y le tocan a la etapa semántica.
+    (("farmacia", "farmazia", "botika", "botiquin"), ("pharmacy",)),
+    (("biblioteca", "liburutegi", "mediateca", "mediateka"), ("library",)),
+    (("polideportivo", "kiroldegi", "fronton", "pilotaleku", "piscina",
+      "igerileku", "gimnasio", "instalacion deportiva"), ("sports",)),
+    (("restaurante", "jatetxe", "sidreria", "sagardotegi", "asador"),
+     ("food",)),
+    (("albergue", "aterpe", "hostel"), ("hostel",)),
+    (("camping", "kanpin"), ("camping",)),
+    (("hotel", "pension", "alojamiento", "ostatu"),
+     ("lodging", "hostel", "camping")),
+    (("parque natural", "espacio natural", "naturgune", "natur parke",
+      "biotopo", "marisma"), ("nature",)),
     (("bilbobus",), ("bilbobus",)),
     (("bizkaibus",), ("bizkaibus",)),
     (("cercanias", "aldiriko"), ("cercanias",)),

@@ -27,18 +27,37 @@ en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expecte
 
 ## Resultados
 
-Corpus 117 casos: **dev** 63 (60 puntuables + 3 known_gap, usados para
-calibrar) y **held-out** 54 (secciones H y H2, prefijo `ho-`; 53 puntuables +
-1 known_gap; el runner los excluye por defecto — `--split heldout` para
-correrlos, y NUNCA se calibra mirándolos).
+Corpus 133 casos sobre **21 categorías**: **dev** 79 (76 puntuables + 3
+known_gap, usados para calibrar) y **held-out** 54 (secciones H y H2, prefijo
+`ho-`; 53 puntuables + 1 known_gap; el runner los excluye por defecto —
+`--split heldout` para correrlos, y NUNCA se calibra mirándolos).
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline-keywords-geo | 77% | 66% | 73% | 66% |
-| **hybrid-keywords-then-semantic** | **87%** | **68%** | 75% | **66%** |
+| baseline-keywords-geo | 73% | **60%** | 69% | 62% |
+| **hybrid-keywords-then-semantic** | **81%** | 58% | 74% | **66%** |
 
-(Última medición: 2026-07-09, tras el atributo cambiador — dev EU del híbrido
-sube de 70% a 75%; en held-out EU el híbrido EMPATA con el baseline.)
+**Ampliación 2026-07-09 (euskadi-places)**: +8 capas (farmacia, biblioteca,
+deporte, restaurantes, hotel, albergue, camping, espacios naturales — 7.568
+POIs de Open Data Euskadi) y +16 casos dev (`ep-*`). Tres hallazgos:
+
+1. **MiniLM no escala de 13 a 21 categorías**: en held-out ES el híbrido
+   pasa a PERDER contra el baseline (58% < 60%) — el criterio de despliegue
+   se rompe. **Prod sigue en 13 capas con su calibración fijada por env en
+   `service/deploy.sh`**; el upgrade de embeddings (L3) deja de ser mejora
+   y pasa a ser bloqueador para activar las capas nuevas.
+2. **La declinación vasca rompía `strip_location`**: "Moyuatik gertu" no
+   casaba con el anchor "Moyua" y la cláusula locativa entera ensuciaba el
+   embedding EU (por eso capas basura robaban el top-1). Arreglado
+   (prefijo + locativos pospuestos); el nombre declinado como resultado
+   ("Itxinako biotopo babestua") sigue abierto — caso `ep-sem-biotopo-itxina`.
+3. **Recalibración en dev** (τ 0.45→0.50, tie 0.08→0.03): con 21 categorías
+   el tie-window ancho colaba capas a 0.08 del top que ganaban por cercanía.
+   Elegido por paridad ES/EU sobre barrido completo.
+
+Además la capa `nature` viene mezclada de origen (41 playas + 19 espacios
+naturales reales) — separar zonas de baño es mejora pendiente del pipeline.
+Resultados históricos del corpus de 117 casos (13 capas): `results/` y git.
 
 **Euskera validado con Itzuli (2026-07-08)**: las 112 queries no-robustez se
 cotejaron con el traductor neuronal del Gobierno Vasco — 27 idénticas, 38

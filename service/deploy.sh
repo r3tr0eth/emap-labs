@@ -31,6 +31,10 @@ User=emap
 WorkingDirectory=/opt/emap-labs/service
 Environment=EMAP_DATA_DIR=/opt/emap-labs/data
 Environment=HF_HOME=/opt/emap-labs/.cache
+# Prod sirve las 13 capas originales: se fija SU calibración validada
+# (2026-07-08) para que los defaults de evals (21 capas) no la muevan.
+Environment=EMAP_SIM_TAU=0.45
+Environment=EMAP_TIE_WIN=0.08
 ExecStart=/opt/emap-labs/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8083
 Restart=on-failure
 MemoryHigh=700M

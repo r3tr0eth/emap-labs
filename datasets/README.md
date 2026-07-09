@@ -17,9 +17,13 @@ emap sea su consumidor.
   farmacias, bibliotecas, deporte, restaurantes, alojamiento, camping,
   espacios naturales) → `data/pois-euskadi/`. La capa nature filtra las
   playas de la fuente (duplican la capa beaches).
-- `mendi/` — 1.130 cimas con nombre de Bizkaia (OSM `natural=peak`) →
-  `data/pois-euskadi/peaks.json`. v0 del vertical "el monte en transporte
-  público"; las rutas GR/PR llegarán en otra iteración.
+- `mendi/` — el vertical "el monte en transporte público":
+  `build.py` trae 1.130 cimas con nombre (OSM `natural=peak` →
+  `peaks.json`) y 103 rutas señalizadas (`route=hiking`, solo metadatos →
+  `routes.json`); `transit_cross.py` cruza cimas × 5 redes de transporte
+  (→ `processed/mendi/peaks-transit.json`, registrado en el manifest):
+  **727 cimas con parada a ≤2 km** en línea recta (no ruta a pie — OTP
+  dará el cómo-llegar real en L5).
 
 Pendiente (emap-next): registrar las capas fuente de `data/pois-euskadi/`
 en el manifest — hoy solo `processed/` está catalogado.

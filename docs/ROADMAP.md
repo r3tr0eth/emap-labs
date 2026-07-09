@@ -24,7 +24,9 @@ existe para cerrarla con datos.
 
 ## Dónde vive / infra / principios
 
-Sin cambios de v0.2: este repo (privado hasta L4) + `../emap-next` (producto);
+Actualización 2026-07-09: **este repo es PÚBLICO** (Apache-2.0 + CC-BY-4.0/ODbL,
+historial limpio, CITATION.cff) — L4.1 adelantado. Resto sin cambios de v0.2:
+`../emap-next` (producto);
 VPS Hetzner propio (pendiente caja de 8 GB — CX33/CAX21 cuando haya stock,
 Gaizka vigila manualmente); **OSS/EU-first innegociable en el producto**;
 regla de oro financiera (~8-15 €/mes, emap solo gasta lo que trae);

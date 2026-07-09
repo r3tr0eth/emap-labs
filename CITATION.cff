@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: >-
+  Si usas el benchmark, el corpus o los datasets de EMAP Labs,
+  cita este repositorio.
+title: >-
+  EMAP Labs: geographic retrieval benchmark and mobility datasets
+  for the Basque Country (Spanish/Basque)
+type: software
+authors:
+  - family-names: Jiménez
+    given-names: Gaizka
+    alias: r3tr0eth
+repository-code: https://github.com/r3tr0eth/emap-labs
+url: https://emap-next.vercel.app
+license: Apache-2.0
+version: "0.1"
+date-released: "2026-07-07"
+keywords:
+  - geographic-retrieval
+  - benchmark
+  - basque
+  - euskera
+  - spanish
+  - semantic-search
+  - openstreetmap
+  - open-data
+  - mobility
+  - euskadi
+abstract: >-
+  Benchmark abierto de retrieval geográfico hiperlocal en español y
+  euskera (117 casos, held-out estricto, abstención medida, euskera
+  validado con Itzuli) y datasets versionados de movilidad e
+  infraestructura urbana de Euskadi derivados de OpenStreetMap y
+  Open Data Euskadi.

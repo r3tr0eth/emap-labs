@@ -34,8 +34,11 @@ correrlos, y NUNCA se calibra mirándolos).
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline-keywords-geo | 76% | 66% | 73% | 66% |
-| **hybrid-keywords-then-semantic** | **85%** | **67%** | 70% | **66%** |
+| baseline-keywords-geo | 77% | 66% | 73% | 66% |
+| **hybrid-keywords-then-semantic** | **87%** | **68%** | 75% | **66%** |
+
+(Última medición: 2026-07-09, tras el atributo cambiador — dev EU del híbrido
+sube de 70% a 75%; en held-out EU el híbrido EMPATA con el baseline.)
 
 **Euskera validado con Itzuli (2026-07-08)**: las 112 queries no-robustez se
 cotejaron con el traductor neuronal del Gobierno Vasco — 27 idénticas, 38

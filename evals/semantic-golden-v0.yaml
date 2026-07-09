@@ -360,9 +360,10 @@ cases:
 
   - id: par-bebe
     q: {es: "sitio para cambiar al bebé cerca de Abando", eu: "haurtxoa Abandotik gertu aldatzeko gunea"}
-    intent: semantic
+    intent: attribute
     anchor: {layer: metro, name: "Abando"}
-    expected: {layers: [toilets], within_m: 800}
+    expected: {layers: [toilets], within_m: 1100, tags: {changing_table: "yes"}}
+    notes: "El cambiador mapeado más cercano a Abando está a 963 m (OSM 2026-07)."
 
   - id: par-servicio
     q: {es: "necesito ir al servicio urgentemente", eu: "lehenbailehen joan behar dut zerbitzura"}

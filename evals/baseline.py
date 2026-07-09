@@ -54,6 +54,9 @@ ATTRIBUTE_FILTERS: list[tuple[tuple[str, ...], tuple[str, str, bool]]] = [
     (("gratis", "gratuito", "doako"), ("fee", "no", True)),
     (("cubierto", "estali", "toki estalia"), ("covered", "yes", True)),
     (("rapido", "azkar"), ("TipoCarga", "Lenta (3-7 kW)", False)),  # != lenta
+    # movilidad del cuidado: cambiador de bebé (33 aseos en Euskadi, OSM)
+    (("cambiador", "cambiar al bebe", "aldatzeko", "haurra aldatu", "aldalekua"),
+     ("changing_table", "yes", True)),
 ]
 
 

@@ -530,6 +530,46 @@ cases:
     intent: semantic
     expected: {layers: [nature], name: "Biotopo Protegido de Itxina"}
 
+  # ── M. mendi (dev, añadidos 2026-07-10) ─────────────────────────────
+  # Capa peaks (1.130 cimas OSM). Radios = distancia real medida + margen.
+  # EU: borrador propio PENDIENTE de Itzuli (BLOQUE 7).
+
+  - id: md-cima-santutxu
+    q: {es: "cima más cercana a Santutxu", eu: "Santutxutik hurbilen dagoen tontorra"}
+    intent: nearest
+    anchor: {layer: metro, name: "Santutxu"}
+    expected: {layers: [peaks], within_m: 900}
+
+  - id: md-monte-sopela
+    q: {es: "un monte cerca de Sopela", eu: "mendi bat Sopelatik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Sopela"}
+    expected: {layers: [peaks], within_m: 800}
+
+  - id: md-cima-plentzia
+    q: {es: "cima cerca de Plentzia", eu: "tontorra Plentziatik gertu"}
+    intent: nearest
+    anchor: {layer: metro, name: "Plentzia"}
+    expected: {layers: [peaks], within_m: 1300}
+
+  - id: md-anboto
+    q: {es: "el monte Anboto", eu: "Anboto mendia"}
+    intent: semantic
+    expected: {layers: [peaks], name: "Anboto"}
+
+  - id: md-serantes
+    q: {es: "monte Serantes", eu: "Serantes mendia"}
+    intent: semantic
+    expected: {layers: [peaks], name: "Serantes"}
+
+  - id: md-sem-subir
+    q: {es: "subir al Pagasarri", eu: "Pagasarrira igo"}
+    intent: semantic
+    expected: {layers: [peaks], name: "Pagasarri"}
+    notes: "Sin sustantivo de categoría: mide si la etapa semántica entiende
+      'subir a X' = cima. Hoy se espera fallo (peaks no está en la etapa
+      semántica hasta L3) — es el objetivo, no un bug del caso."
+
   # ── H. HELD-OUT (prefijo ho-) — NO usar para calibrar nada ──────────
   # Escritos el 2026-07-07 DESPUÉS de fijar umbrales y keywords. El runner
   # los excluye por defecto (--split heldout para correrlos). Si un cambio

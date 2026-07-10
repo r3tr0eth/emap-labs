@@ -64,6 +64,7 @@ LAYER_FILES = {
     "hostel": "pois-euskadi/hostel.json",
     "camping": "pois-euskadi/camping.json",
     "nature": "pois-euskadi/nature.json",
+    "peaks": "pois-euskadi/peaks.json",
     "ev": "processed/pois/ev.json",
     "cameras": "processed/pois/cameras.json",
     "metro": "processed/pois/metro.json",

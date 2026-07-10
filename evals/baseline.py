@@ -53,6 +53,7 @@ KEYWORD_LAYERS: list[tuple[tuple[str, ...], tuple[str, ...]]] = [
      ("lodging", "hostel", "camping")),
     (("parque natural", "espacio natural", "naturgune", "natur parke",
       "biotopo", "marisma"), ("nature",)),
+    (("cima", "monte", "tontor", "gailur", "mendi"), ("peaks",)),
     (("bilbobus",), ("bilbobus",)),
     (("bizkaibus",), ("bizkaibus",)),
     (("cercanias", "aldiriko"), ("cercanias",)),

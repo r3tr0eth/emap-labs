@@ -165,3 +165,15 @@ completo. Los números casan cada traducción con su caso.
 14. quiero hacer deporte cerca de Santutxu
 15. reserva de la biosfera de Urdaibai
 16. biotopo protegido de Itxina
+
+## BLOQUE 7 — casos md-* (mendi, 2026-07-10)
+
+Pega este bloque en Itzuli (castellano → euskera) y devuélveme el resultado
+completo. Los números casan cada traducción con su caso.
+
+1. cima más cercana a Santutxu
+2. un monte cerca de Sopela
+3. cima cerca de Plentzia
+4. el monte Anboto
+5. monte Serantes
+6. subir al Pagasarri

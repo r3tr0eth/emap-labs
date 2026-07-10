@@ -27,15 +27,15 @@ en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expecte
 
 ## Resultados
 
-Corpus 133 casos sobre **21 categorías**: **dev** 79 (76 puntuables + 3
-known_gap, usados para calibrar) y **held-out** 54 (secciones H y H2, prefijo
+Corpus 139 casos sobre **22 capas** (21 + peaks solo-keywords): **dev** 85
+(82 puntuables + 3 known_gap, usados para calibrar) y **held-out** 54 (secciones H y H2, prefijo
 `ho-`; 53 puntuables + 1 known_gap; el runner los excluye por defecto —
 `--split heldout` para correrlos, y NUNCA se calibra mirándolos).
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline-keywords-geo | 73% | **60%** | 71% | 62% |
-| **hybrid-keywords-then-semantic** | **81%** | 58% | 73% | **66%** |
+| baseline-keywords-geo | 74% | **60%** | 71% | 62% |
+| **hybrid-keywords-then-semantic** | **81%** | 58% | 74% | **66%** |
 
 **Ampliación 2026-07-09 (euskadi-places)**: +8 capas (farmacia, biblioteca,
 deporte, restaurantes, hotel, albergue, camping, espacios naturales — 7.568
@@ -54,6 +54,13 @@ POIs de Open Data Euskadi) y +16 casos dev (`ep-*`). Tres hallazgos:
 3. **Recalibración en dev** (τ 0.45→0.50, tie 0.08→0.03): con 21 categorías
    el tie-window ancho colaba capas a 0.08 del top que ganaban por cercanía.
    Elegido por paridad ES/EU sobre barrido completo.
+
+**Casos mendi (2026-07-10, `md-*`)**: la capa `peaks` (1.130 cimas) entra
+SOLO por keywords — añadirla a la etapa semántica con MiniLM repetiría la
+degradación medida el 07-09. El caso `md-sem-subir` ("subir al Pagasarri",
+sin sustantivo de categoría) queda como medición del hueco: hoy falla en
+ambos idiomas por diseño (en EU MiniLM lo clasifica como hostel), y es un
+objetivo explícito de L3.
 
 Además la capa `nature` viene mezclada de origen (41 playas + 19 espacios
 naturales reales) — separar zonas de baño es mejora pendiente del pipeline.

@@ -24,20 +24,20 @@ mobility datasets for the Basque Country. Reproducible in three commands.*
 
 ## Benchmark de retrieval ES/EU
 
-Corpus dorado de **133 casos** de búsqueda geográfica hiperlocal sobre **21
-categorías** (fuentes, aseos, parking, transporte, DEA, farmacias,
-bibliotecas…) en español y euskera, con split **held-out estricto** (54
+Corpus dorado de **139 casos** de búsqueda geográfica hiperlocal sobre **22
+capas** (fuentes, aseos, parking, transporte, DEA, farmacias, bibliotecas,
+cimas…) en español y euskera, con split **held-out estricto** (54
 casos que jamás se usan para calibrar) y casos de abstención
 (`answerable: false` — el retriever que inventa, falla). El euskera se
 coteja con **Itzuli**, el traductor neuronal del Gobierno Vasco — no es
 euskera artificial de traducción automática sin revisar.
 
-Resultados (k=5, 2026-07-09):
+Resultados (k=5, 2026-07-10):
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline keywords+geo | 73% | **60%** | 71% | 62% |
-| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **81%** | 58% | 73% | **66%** |
+| baseline keywords+geo | 74% | **60%** | 71% | 62% |
+| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **81%** | 58% | 74% | **66%** |
 
 Dos hallazgos centrales: **con euskera correcto, la etapa semántica apenas
 aporta en EU** (los embeddings multilingües actuales flojean en euskera), y

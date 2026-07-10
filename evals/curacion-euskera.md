@@ -36,3 +36,6 @@ añadida al baseline (el "frontoia" de Itzuli no casaba con "fronton");
 keywords (proximidad léxica farmacia/medicina real del euskera).
 Pendiente menor: cotejar el texto EU de las 8 descripciones de categoría
 nuevas de `semantic_local.py` (no son queries de usuario).
+
+**Ampliación md-\* (2026-07-10, PENDIENTE de Itzuli):** los 6 casos mendi
+llevan euskera de borrador propio. BLOQUE 7 en `itzuli-bloques.md`.

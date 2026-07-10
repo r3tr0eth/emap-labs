@@ -7,7 +7,7 @@ NEXT="$LABS/../emap-next/data"
 OUT="$LABS/evals/data"
 
 mkdir -p "$OUT/pois-euskadi" "$OUT/processed/pois"
-cp "$NEXT"/pois-euskadi/{fountains,toilets,parking,bikepark,defib,beaches,pharmacy,library,sports,food,lodging,hostel,camping,nature}.json "$OUT/pois-euskadi/"
+cp "$NEXT"/pois-euskadi/{fountains,toilets,parking,bikepark,defib,beaches,pharmacy,library,sports,food,lodging,hostel,camping,nature,peaks}.json "$OUT/pois-euskadi/"
 cp "$NEXT"/processed/pois/{ev,cameras,metro,euskotren,cercanias,bilbobus,bizkaibus}.json "$OUT/processed/pois/"
 du -sh "$OUT"
 echo "snapshot actualizado — commitear evals/data/"

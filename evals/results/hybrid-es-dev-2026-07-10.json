@@ -1,0 +1,712 @@
+{
+  "retriever": "hybrid-keywords-then-semantic",
+  "lang": "es",
+  "k": 5,
+  "config": {
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
+  },
+  "n_corpus_cases": 85,
+  "date": "2026-07-10",
+  "corpus": 0,
+  "total": {
+    "pass": 67,
+    "cases": 82
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 30,
+      "cases": 30
+    },
+    "attribute": {
+      "pass": 8,
+      "cases": 9
+    },
+    "transit": {
+      "pass": 9,
+      "cases": 11
+    },
+    "semantic": {
+      "pass": 20,
+      "cases": 32
+    }
+  },
+  "cases": [
+    {
+      "id": "fountain-moyua",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "fountain-casco-viejo",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "toilet-abando",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "toilet-areeta",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "parking-santutxu",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Karmelo"
+    },
+    {
+      "id": "parking-portugalete",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=San Roque"
+    },
+    {
+      "id": "ev-indautxu",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
+    },
+    {
+      "id": "bikepark-sanmames",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "bikepark-deusto",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "defib-basauri",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Alliance Healthcare España"
+    },
+    {
+      "id": "defib-santurtzi",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Serantes Kultur Aretoa"
+    },
+    {
+      "id": "beach-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=El Sitio"
+    },
+    {
+      "id": "beach-plentzia",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plentzia"
+    },
+    {
+      "id": "camera-trafico-centro",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plza. Moy&#250;a"
+    },
+    {
+      "id": "toilet-wheelchair-abando",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "toilet-free-casco",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "bikepark-covered-sarriko",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "bikepark-covered-algorta",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ev-fast-bilbao",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Elkano"
+    },
+    {
+      "id": "ev-plazas-abando",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking El Corte Ingles  (Don Diego L&#243;pez Haroko Kale Nagusia, 11)"
+    },
+    {
+      "id": "fountain-fuera-bilbao",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "defib-ayuntamiento",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Ayuntamiento De Portugalete"
+    },
+    {
+      "id": "lines-moyua",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Moyua"
+    },
+    {
+      "id": "lines-basauri",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Basauri"
+    },
+    {
+      "id": "nearest-metro-guggenheim",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Moyua"
+    },
+    {
+      "id": "nearest-metro-sanmames-estadio",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Santimami/San Mamés"
+    },
+    {
+      "id": "euskotren-gernika",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Gernika"
+    },
+    {
+      "id": "cercanias-c3",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Abaroa-San Miguel"
+    },
+    {
+      "id": "bus-stop-abando",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=GRAN VÍA 6 (126)"
+    },
+    {
+      "id": "bilbobus-abusu",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=ABUSU / IBAIALDE"
+    },
+    {
+      "id": "metro-hasta-playa",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (beaches)",
+      "detail": "top1=Playa ✗ categoria_equivocada (beaches)"
+    },
+    {
+      "id": "ultima-estacion-l1",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Abando ✗ nombre_o_lineas"
+    },
+    {
+      "id": "asp-cafe-enchufes",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Agorregi"
+    },
+    {
+      "id": "asp-pintxos-casco",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-barrio-tranquilo",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-parque-sombra-ninos",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-plan-lluvia",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-ruta-accesible",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-mercado-local",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-mirador",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-zona-verde-getxo",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "asp-similar-dona-casilda",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
+    },
+    {
+      "id": "robust-typo-fuente",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "robust-coloquial-wc",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "robust-mixto-kargagailu",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
+    },
+    {
+      "id": "robust-sin-tildes",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Guggenheim"
+    },
+    {
+      "id": "robust-generico-agua",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "par-bidon",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "par-sed",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "par-bebe",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "par-servicio",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "par-patinete",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
+    },
+    {
+      "id": "par-enchufar",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento ✗ categoria_equivocada (parking)"
+    },
+    {
+      "id": "par-dejar-coche",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Karmelo"
+    },
+    {
+      "id": "par-estacionar",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (metro)",
+      "detail": "top1=Portugalete ✗ categoria_equivocada (metro)"
+    },
+    {
+      "id": "par-candar-bici",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "par-emergencia-cardiaca",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Alliance Healthcare España"
+    },
+    {
+      "id": "par-chapuzon",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "par-arena",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "par-carretera-ahora",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Plza. Moy&#250;a"
+    },
+    {
+      "id": "ep-farmacia-moyua",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Colón de Larreategui Kalea/Calle 29)"
+    },
+    {
+      "id": "ep-farmacia-plentzia",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Erribera Kalea/Calle 20)"
+    },
+    {
+      "id": "ep-biblioteca-casco",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Bilbao - Casco Viejo Biblioteca infantil"
+    },
+    {
+      "id": "ep-biblioteca-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Sopela - Biblioteca Municipal"
+    },
+    {
+      "id": "ep-fronton-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=FRONTÓN MUNICIPAL"
+    },
+    {
+      "id": "ep-restaurante-casco",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Víctor"
+    },
+    {
+      "id": "ep-hotel-abando",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Radisson Collection Hotel, Gran Via Bilbao"
+    },
+    {
+      "id": "ep-albergue-casco",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=GANBARA"
+    },
+    {
+      "id": "ep-camping-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=SOPELANA"
+    },
+    {
+      "id": "ep-sem-medicinas",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Colón de Larreategui Kalea/Calle 29)"
+    },
+    {
+      "id": "ep-sem-estudiar",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-menu",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aitor Rauleaga"
+    },
+    {
+      "id": "ep-sem-dormir",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (camping)",
+      "detail": "top1=BILBAO CARAVANPARK ✗ categoria_equivocada (camping)"
+    },
+    {
+      "id": "ep-sem-deporte",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ep-sem-urdaibai",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Urdaibai"
+    },
+    {
+      "id": "ep-sem-biotopo-itxina",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Biotopo Protegido de Itxina"
+    },
+    {
+      "id": "md-cima-santutxu",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Artagan"
+    },
+    {
+      "id": "md-monte-sopela",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fraidemendi"
+    },
+    {
+      "id": "md-cima-plentzia",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Guzurmendi"
+    },
+    {
+      "id": "md-anboto",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Anboto"
+    },
+    {
+      "id": "md-serantes",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Serantes"
+    },
+    {
+      "id": "md-sem-subir",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    }
+  ],
+  "known_gaps": [
+    {
+      "id": "ev-barakaldo",
+      "intent": "nearest",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (3501m > 1200m)",
+      "detail": "top1=BM Sarriko ✗ fuera_de_radio (3501m > 1200m)",
+      "known_gap": "El dataset EV es el registro municipal de Bilbao (60 puntos): no hay cargadores de Barakaldo. Se resuelve con fuente OCM/IBIL más amplia."
+    },
+    {
+      "id": "parking-free-etxebarri",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (3666m > 1000m)",
+      "detail": "top1=Azkuna Zentroa ✗ fuera_de_radio (3666m > 1000m)",
+      "known_gap": "OSM apenas tiene fee=no tagueado fuera de Bilbao; ningún retriever puede acertar. Mejorable mapeando en OSM."
+    },
+    {
+      "id": "parking-free-leioa",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (1349m > 1200m)",
+      "detail": "top1=Antiguo Matadero ✗ fuera_de_radio (1349m > 1200m)",
+      "known_gap": "Mismo hueco de tags fee=no en OSM que Etxebarri."
+    }
+  ]
+}

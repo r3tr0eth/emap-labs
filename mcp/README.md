@@ -57,7 +57,10 @@ tras nginx en `https://gaizkajimenez.com/mcp` — config de cliente remoto:
 {"mcpServers": {"emap": {"url": "https://gaizkajimenez.com/mcp"}}}
 ```
 
-## Pendiente (L5.3)
+## Distribución (L5.3)
 
-Distribución: registro MCP, awesome-lists, post técnico. El `llms.txt` del
-API vive en emap-next (https://emap-next.vercel.app/llms.txt).
+- **Registro oficial MCP**: publicado como `io.github.r3tr0eth/emap`
+  (registry.modelcontextprotocol.io, remote streamable-http, status
+  active — 2026-07-10). `server.json` en este directorio.
+- `llms.txt` del API: https://emap-next.vercel.app/llms.txt
+- Pendiente: PR a awesome-mcp-servers y post técnico (borradores listos).

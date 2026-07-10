@@ -87,8 +87,11 @@ y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
    explain_place, plan_route, plan_hike) con descripciones ES/EU/EN y
    atribución en cada respuesta; criterio de 'hecho' verificado por
    protocolo (bici cerca de San Mamés → 47 m). Falta: modo HTTP/SSE en VPS.
-2. **llms.txt / docs agent-readable** del API público.
-3. Distribución: registro MCP, awesome-lists, post técnico. Es
+2. **llms.txt / docs agent-readable** del API público — ✅ HECHO
+   (emap-next.vercel.app/llms.txt, 2026-07-10).
+3. Distribución — 🟡 registro oficial MCP ✅ (io.github.r3tr0eth/emap,
+   active) y modo remoto público en gaizkajimenez.com/mcp; faltan
+   awesome-lists y post técnico (borradores en privado). Es
    simultáneamente producto (emap dentro de Claude/agentes de cualquiera),
    commons (perfil NLnet) y escaparate (BIND).
 

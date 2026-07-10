@@ -17,6 +17,7 @@ consumidor de todo lo que sale de aquí.
 mobility datasets for the Basque Country. Reproducible in three commands.*
 
 [Benchmark](#benchmark-de-retrieval-eseu) ·
+[MCP](#emap-desde-tu-agente-mcp) ·
 [Reproducir](#reproducir-en-tres-comandos) ·
 [Datasets](#datasets) ·
 [Ética](#ética-y-limitaciones) ·
@@ -46,6 +47,32 @@ baseline** — el modelo actual no escala con el espacio de categorías.
 Cuantificar ambas brechas por modelo es el objetivo del benchmark.
 Metodología, lecciones y resultados por modelo:
 [`evals/README.md`](evals/README.md).
+
+## emap desde tu agente (MCP)
+
+**El primer servidor MCP de movilidad hiperlocal**: existen MCPs genéricos
+de GTFS y de OSM, pero ninguno expone inteligencia de movilidad local a
+agentes — búsqueda semántica bilingüe ES/EU, contexto de lugar, rutas
+multimodales con infraestructura propia y *el monte en transporte público*.
+Cinco herramientas ([`mcp/`](mcp/README.md)):
+
+| Tool | Pregunta que responde |
+|---|---|
+| `search_places` | "dónde beber agua" · "haurra aldatzeko lekua" (con abstención honesta) |
+| `nearby_pois` | el DEA / aseo / aparcabici / cima más cercana |
+| `explain_place` | qué barrio es esto y qué servicios tiene alrededor |
+| `plan_route` | ruta real transit/walk/bike/car (OSRM/OTP propios) |
+| `plan_hike` | qué cima hago hoy en transporte público (2.825 cimas × 9 redes) |
+
+```json
+{ "mcpServers": { "emap": {
+    "command": "/ruta/a/emap-labs/.venv/bin/python",
+    "args": ["/ruta/a/emap-labs/mcp/server.py"] } } }
+```
+
+Toda respuesta lleva `attribution` (ODbL + GTFS + CC-BY-4.0). Criterio de
+aceptación cumplido y verificado por protocolo: *"¿dónde dejo la bici cerca
+de San Mamés?"* → aparcabicis a 47 m, con atribución.
 
 ## Reproducir en tres comandos
 

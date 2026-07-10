@@ -42,8 +42,22 @@ Cliente MCP stdio real → `nearby_pois(bikepark, San Mamés)` → aparcabicis a
 herramientas probadas contra producción (plan_hike: Arraiz 345 m con parada
 a 562 m; plan_route: bus A5 con transbordos y tiempos).
 
-## Pendiente (L5.2-5.3)
+## Modo HTTP (VPS, sin instalación local)
 
-`llms.txt`/docs agent-readable del API público; distribución (registro MCP,
-awesome-lists, post técnico); modo HTTP/SSE en el VPS para uso sin
-instalación local.
+El servidor también habla `streamable-http`:
+
+```bash
+EMAP_MCP_TRANSPORT=streamable-http EMAP_MCP_PORT=8084 python mcp/server.py
+```
+
+`./mcp/deploy.sh` lo deja en el VPS (systemd `emap-mcp`, 127.0.0.1:8084)
+tras nginx en `https://gaizkajimenez.com/mcp` — config de cliente remoto:
+
+```json
+{"mcpServers": {"emap": {"url": "https://gaizkajimenez.com/mcp"}}}
+```
+
+## Pendiente (L5.3)
+
+Distribución: registro MCP, awesome-lists, post técnico. El `llms.txt` del
+API vive en emap-next (https://emap-next.vercel.app/llms.txt).

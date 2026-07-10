@@ -30,8 +30,14 @@ API = os.environ.get("EMAP_API_URL", "https://emap-next.vercel.app")
 ATTRIBUTION = ("emap (emap-next.vercel.app) · © OpenStreetMap (ODbL) + "
                "GTFS oficiales + Open Data Euskadi (CC-BY-4.0)")
 
+# stdio (default, Claude Desktop local) o streamable-http (VPS, sin
+# instalación local): EMAP_MCP_TRANSPORT=streamable-http + HOST/PORT.
+TRANSPORT = os.environ.get("EMAP_MCP_TRANSPORT", "stdio")
+
 mcp = FastMCP(
     "emap",
+    host=os.environ.get("EMAP_MCP_HOST", "127.0.0.1"),
+    port=int(os.environ.get("EMAP_MCP_PORT", "8084")),
     instructions=(
         "Movilidad hiperlocal de Euskadi (País Vasco): transporte público "
         "multi-red, POIs urbanos, búsqueda semántica ES/EU y montañismo en "
@@ -158,4 +164,4 @@ async def plan_hike(lat: float, lon: float, max_stop_dist_m: int = 2000,
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport=TRANSPORT)

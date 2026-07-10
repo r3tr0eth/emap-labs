@@ -75,16 +75,18 @@ el volumen de documentos lo pide (hoy no).
 4. Kunoa como segundo consumidor de `packages/knowledge` si su calendario
    encaja (no bloquea).
 
-### L5 — emap/agents: el MCP de movilidad hiperlocal (NUEVO — nov–dic 2026)
+### L5 — emap/agents: el MCP de movilidad hiperlocal (ARRANCADO 2026-07-10; era nov–dic)
 
 Research 2026-07-08: existen MCP genéricos de GTFS (uno, feed-a-feed) y de
 OSM (varios), pero **nadie expone inteligencia de movilidad hiperlocal a
 agentes**: búsqueda semántica local, explain-place, rutas con confort/señales
 y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 
-1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos:
-   `/nearby`, `/semantic-search`, `/explain-place`, `/route` (+ RT). Corre
-   en el VPS; herramientas con descripciones ES/EU/EN.
+1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos —
+   ✅ v0 HECHO (mcp/): 5 herramientas (search_places, nearby_pois,
+   explain_place, plan_route, plan_hike) con descripciones ES/EU/EN y
+   atribución en cada respuesta; criterio de 'hecho' verificado por
+   protocolo (bici cerca de San Mamés → 47 m). Falta: modo HTTP/SSE en VPS.
 2. **llms.txt / docs agent-readable** del API público.
 3. Distribución: registro MCP, awesome-lists, post técnico. Es
    simultáneamente producto (emap dentro de Claude/agentes de cualquiera),

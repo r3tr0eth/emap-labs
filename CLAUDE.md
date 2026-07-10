@@ -54,7 +54,7 @@ repo), los bucles de agente son para juicio e iteración. Recetas:
 ## Convenciones
 
 - Commits convencionales en español (`feat(evals): …`, scopes: evals,
-  datasets, service, docs, ci). No commitear sin que Gaizka lo pida.
+  datasets, service, mcp, docs, ci). No commitear sin que Gaizka lo pida.
 - Datos: cada dataset con los 6 metadatos; `coverage.completeness` solo si es
   estimable honestamente; sesgo de mapeo OSM declarado en `coverage.notes`.
 - No se finge: abstención antes que inventar, en retrievers y en prosa.

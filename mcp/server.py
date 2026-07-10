@@ -25,6 +25,7 @@ from typing import Any
 
 import httpx
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 API = os.environ.get("EMAP_API_URL", "https://emap-next.vercel.app")
 ATTRIBUTION = ("emap (emap-next.vercel.app) · © OpenStreetMap (ODbL) + "
@@ -38,6 +39,14 @@ mcp = FastMCP(
     "emap",
     host=os.environ.get("EMAP_MCP_HOST", "127.0.0.1"),
     port=int(os.environ.get("EMAP_MCP_PORT", "8084")),
+    # tras nginx el Host es el dominio público: hay que permitirlo (la
+    # protección anti DNS-rebinding del SDK responde 421 si no)
+    transport_security=TransportSecuritySettings(
+        allowed_hosts=[h for h in os.environ.get(
+            "EMAP_MCP_ALLOWED_HOSTS",
+            "127.0.0.1:8084,localhost:8084").split(",") if h],
+        allowed_origins=[],
+    ),
     instructions=(
         "Movilidad hiperlocal de Euskadi (País Vasco): transporte público "
         "multi-red, POIs urbanos, búsqueda semántica ES/EU y montañismo en "

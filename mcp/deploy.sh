@@ -28,6 +28,7 @@ WorkingDirectory=/opt/emap-labs/mcp
 Environment=EMAP_MCP_TRANSPORT=streamable-http
 Environment=EMAP_MCP_HOST=127.0.0.1
 Environment=EMAP_MCP_PORT=8084
+Environment=EMAP_MCP_ALLOWED_HOSTS=gaizkajimenez.com,127.0.0.1:8084,localhost:8084
 ExecStart=/opt/emap-labs/.venv/bin/python /opt/emap-labs/mcp/server.py
 Restart=on-failure
 MemoryHigh=200M

@@ -117,6 +117,7 @@ def main() -> None:
             if t.get(k):
                 tags[k] = t[k]
         named.append({
+            "id": f"peak:{el['id']}",  # id del nodo OSM: estable y trazable
             "name": {"es": t.get("name:es", name), "eu": t.get("name:eu", name)},
             "lat": el["lat"], "lon": el["lon"], "tags": tags,
         })

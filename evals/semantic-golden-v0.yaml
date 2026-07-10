@@ -535,7 +535,7 @@ cases:
   # EU: borrador propio PENDIENTE de Itzuli (BLOQUE 7).
 
   - id: md-cima-santutxu
-    q: {es: "cima más cercana a Santutxu", eu: "Santutxutik hurbilen dagoen tontorra"}
+    q: {es: "cima más cercana a Santutxu", eu: "Santutxutik hurbilen dagoen gailurra"}
     intent: nearest
     anchor: {layer: metro, name: "Santutxu"}
     expected: {layers: [peaks], within_m: 900}
@@ -547,7 +547,7 @@ cases:
     expected: {layers: [peaks], within_m: 800}
 
   - id: md-cima-plentzia
-    q: {es: "cima cerca de Plentzia", eu: "tontorra Plentziatik gertu"}
+    q: {es: "cima cerca de Plentzia", eu: "gailurra Plentziatik gertu"}
     intent: nearest
     anchor: {layer: metro, name: "Plentzia"}
     expected: {layers: [peaks], within_m: 1300}

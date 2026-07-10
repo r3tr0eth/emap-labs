@@ -37,5 +37,10 @@ keywords (proximidad léxica farmacia/medicina real del euskera).
 Pendiente menor: cotejar el texto EU de las 8 descripciones de categoría
 nuevas de `semantic_local.py` (no son queries de usuario).
 
-**Ampliación md-\* (2026-07-10, PENDIENTE de Itzuli):** los 6 casos mendi
-llevan euskera de borrador propio. BLOQUE 7 en `itzuli-bloques.md`.
+**Ampliación md-\* (2026-07-10): VALIDADA con Itzuli el mismo día** (BLOQUE
+7). De 6 queries: 2 idénticas (Sopela, "Anboto mendia"), **2 adoptadas**
+(léxico "gailurra" de Itzuli por "tontorra" en las consultas de cima),
+2 mantenidas con motivo: "mendia Serantes" de Itzuli calca el orden
+castellano (la forma natural es "Serantes mendia", como el propio Itzuli
+devuelve en "anboto mendia") y "pagasarrira igotzea" es nominalización
+-tzea que nadie teclea (regla ya documentada arriba).

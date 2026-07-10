@@ -25,6 +25,8 @@ NEXT_DATA = (LABS / ".." / "emap-next" / "data").resolve()
 OUT = NEXT_DATA / "processed" / "mendi" / "peaks-transit.json"
 
 STOP_LAYERS = ["metro", "euskotren", "cercanias", "bilbobus", "bizkaibus"]
+# redes con formato propio (data/<red>.json, stops[] con name plano)
+NET_LAYERS = ["dbus", "lurraldebus", "tuvisa", "alavabus"]
 
 
 def haversine_m(lat1, lon1, lat2, lon2) -> float:
@@ -41,6 +43,10 @@ def main() -> None:
     for layer in STOP_LAYERS:
         for s in json.loads((NEXT_DATA / "processed" / "pois" / f"{layer}.json").read_text())["pois"]:
             stops.append((layer, s["name"].get("es", ""), s["lat"], s["lon"]))
+    for layer in NET_LAYERS:
+        doc = json.loads((NEXT_DATA / f"{layer}.json").read_text())
+        for s in doc.get("stops") or []:
+            stops.append((layer, s.get("name", ""), s["lat"], s["lon"]))
 
     items = []
     for p in peaks:
@@ -58,7 +64,7 @@ def main() -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
         "generated": date.today().isoformat(),
-        "source": "derivado: peaks.json (OSM) × paradas GTFS oficiales",
+        "source": "derivado: peaks.json (OSM) × paradas GTFS oficiales (9 redes)",
         "license": "ODbL 1.0 (agregado OSM + GTFS oficiales)",
         "method": ("distancia haversine en línea recta a la parada más "
                    "cercana — NO es ruta a pie ni tiempo; ranking de "

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cimas y rutas de Bizkaia desde OSM (Overpass) — vertical mendi.
+"""Cimas y rutas de Euskadi desde OSM (Overpass) — vertical mendi.
 
 Roadmap: "el monte en transporte público" — cimas y senderos homologados
 cruzados con transporte. Este pipeline produce las capas fuente:
@@ -24,19 +24,20 @@ OUT = DATA / "peaks.json"
 OUT_ROUTES = DATA / "routes.json"
 
 OVERPASS = "https://overpass-api.de/api/interpreter"
-# Bizkaia = ES-BI (admin_level 6). Solo nodos peak: las cimas son puntos.
+# Euskadi = ES-PV (admin_level 4). Solo nodos peak: las cimas son puntos.
+# (v0 era solo Bizkaia ES-BI; ampliado 2026-07-10 al detectar Gipuzkoa vacía.)
 QUERY = """
 [out:json][timeout:180];
-area["ISO3166-2"="ES-BI"][admin_level=6]->.bizkaia;
-node["natural"="peak"](area.bizkaia);
+area["ISO3166-2"="ES-PV"][admin_level=4]->.euskadi;
+node["natural"="peak"](area.euskadi);
 out body;
 """
 # Rutas señalizadas de senderismo (relaciones). Solo tags en v1: la
 # geometría (miembros way) pesa mucho y llegará cuando la capa la pida.
 QUERY_ROUTES = """
 [out:json][timeout:180];
-area["ISO3166-2"="ES-BI"][admin_level=6]->.bizkaia;
-relation["route"="hiking"](area.bizkaia);
+area["ISO3166-2"="ES-PV"][admin_level=4]->.euskadi;
+relation["route"="hiking"](area.euskadi);
 out tags;
 """
 
@@ -83,7 +84,7 @@ def build_routes() -> None:
     routes.sort(key=lambda r: (r["network"], r["ref"], r["name"]))
     OUT_ROUTES.write_text(json.dumps({
         "generated": date.today().isoformat(),
-        "source": "OpenStreetMap (Overpass, relation route=hiking, área ES-BI)",
+        "source": "OpenStreetMap (Overpass, relation route=hiking, área ES-PV)",
         "license": "ODbL 1.0 © OpenStreetMap contributors",
         "count": len(routes),
         "notes": ("solo metadatos de relaciones con name o ref; SIN geometría "
@@ -125,7 +126,7 @@ def main() -> None:
 
     OUT.write_text(json.dumps({
         "generated": date.today().isoformat(),
-        "source": "OpenStreetMap (Overpass, natural=peak, área ES-BI)",
+        "source": "OpenStreetMap (Overpass, natural=peak, área ES-PV)",
         "license": "ODbL 1.0 © OpenStreetMap contributors",
         "count": len(named),
         "notes": (f"solo cimas CON nombre ({unnamed} sin nombre omitidas); "

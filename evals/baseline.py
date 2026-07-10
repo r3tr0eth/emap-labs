@@ -120,20 +120,24 @@ class BaselineRetriever:
                 anchor["lat"], anchor["lon"], p["lat"], p["lon"]))
             return candidates[:k]
 
-        def name_match(p: dict) -> int:
+        def name_match(p: dict) -> tuple[int, int]:
+            """(rango, longitud casada): a igual rango gana el nombre MÁS
+            LARGO — "Serantes mendia" debe resolver a Serantes, no a la
+            cima llamada literalmente "Mendia" (caso real EU)."""
             names = [p["name"].get("es", "") or "", p["name"].get("eu", "") or ""]
             for cand in (norm(n) for n in names):
                 if len(cand) >= 4 and cand in q:
-                    return 2  # nombre completo citado
+                    return (2, len(cand))  # nombre completo citado
             # partes de nombres compuestos: "Santimami/San Mamés", "X (nota)"
             parts = [seg.split(" (")[0].strip()
                      for n in names for seg in n.split("/")]
-            if any(len(pt) >= 4 and norm(pt) in q for pt in parts):
-                return 1
-            return 0
+            hits = [norm(pt) for pt in parts if len(pt) >= 4 and norm(pt) in q]
+            if hits:
+                return (1, max(len(h) for h in hits))
+            return (0, 0)
 
-        named = sorted(((s, p) for p in candidates if (s := name_match(p))),
-                       key=lambda sp: -sp[0])
+        named = sorted(((s, p) for p in candidates if (s := name_match(p))[0]),
+                       key=lambda sp: (-sp[0][0], -sp[0][1]))
         if named:
             return [p for _, p in named[:k]]
         return candidates[:k]

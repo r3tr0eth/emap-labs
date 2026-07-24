@@ -241,12 +241,14 @@ def main() -> int:
 
     out_dir = LABS / "evals/results"
     out_dir.mkdir(exist_ok=True)
-    out = out_dir / f"{args.retriever}-{args.lang}-{args.split}-{date.today().isoformat()}.json"
     config = {}
+    tag = ""  # sufijo de modelo para no pisar resultados entre modelos del benchmark
     if args.retriever in ("semantic", "hybrid"):
         import semantic_local as sl
         config = {"model": sl.MODEL, "sim_threshold": sl.SIM_THRESHOLD,
                   "tie_window": sl.TIE_WINDOW}
+        tag = f"-{sl.MODEL_TAG}"
+    out = out_dir / f"{args.retriever}{tag}-{args.lang}-{args.split}-{date.today().isoformat()}.json"
     out.write_text(json.dumps({
         "retriever": retriever.name, "lang": args.lang, "k": args.k,
         "config": config, "n_corpus_cases": len(corpus["cases"]),

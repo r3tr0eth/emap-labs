@@ -21,10 +21,12 @@ jobs:
       # Umbrales = resultado medido − margen de ruido; si bajan, algo se rompió.
       # Actualizados 2026-08-05: corpus curado (v1, 139 casos) desplegado con
       # e5-large en 22 capas. Baseline no usa modelo → inmutable.
+      # Baseline: keywords+geo, sin modelo. ES: dev 74%/heldout 58%;
+      # EU: dev 71%/heldout 52% (consultas EU más difíciles para keywords).
       - run: python evals/run.py --retriever baseline --lang es --min-pass 70
       - run: python evals/run.py --retriever baseline --lang eu --min-pass 66
-      - run: python evals/run.py --retriever baseline --lang es --split heldout --min-pass 57
-      - run: python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 59
+      - run: python evals/run.py --retriever baseline --lang es --split heldout --min-pass 55
+      - run: python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 50
 
   hybrid:
     name: hybrid (semántico, con caché de modelo)

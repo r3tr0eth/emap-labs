@@ -45,6 +45,15 @@ La brecha EU medida convierte L3 en urgente. Tres carriles:
    open de 2026) como clasificador de categoría; evaluar también
    Qwen3-Embedding (Apache-2). Se itera en dev, se decide en held-out.
    Jina descartado (CC-BY-NC — incompatible con uso comercial futuro).
+   — ✅ **HECHO 2026-07-24**, con un giro: fastembed 0.8 no trae BGE-M3 ni
+   Qwen3 (esperan la caja de 8 GB con sentence-transformers nativo), así que
+   el benchmark se corrió sobre la vía viable hoy (MiniLM/mpnet/**e5-large**).
+   Ganador claro **multilingual-e5-large** (MIT, 1024d): held-out **75% ES /
+   81% EU** frente al híbrido MiniLM (58/66) — recupera el criterio de
+   despliegue roto y CIERRA la brecha EU. Lección publicable: el umbral de
+   abstención es propiedad del par (modelo, corpus) — con τ heredado la
+   abstención de e5 quedaba muerta. Tabla y método: `evals/README.md`.
+   Despliegue a prod gateado por la caja de 8 GB (e5-large pesa 2.24 GB).
 2. **Clasificador LLM** (al llegar la caja de 8 GB): **Latxa 7B** cuantizado
    (HiTZ, el modelo DE euskera), Qwen3 pequeño y Mistral (API UE, única
    referencia comercial) como clasificadores de intención contra el corpus

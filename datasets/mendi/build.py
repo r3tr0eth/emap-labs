@@ -14,9 +14,11 @@ from __future__ import annotations
 
 import json
 import time
-import urllib.request
+import urllib.parse
 from datetime import date
 from pathlib import Path
+
+import httpx
 
 LABS = Path(__file__).resolve().parents[2]
 DATA = LABS / ".." / "emap-next" / "data" / "pois-euskadi"
@@ -47,21 +49,25 @@ ENDPOINTS = [OVERPASS, "https://overpass.kumi.systems/api/interpreter"]
 
 def fetch(query: str) -> list[dict]:
     last: Exception | None = None
-    for attempt in range(4):
+    failed: list[str] = []
+    data = "data=" + urllib.parse.quote(query)
+    for attempt in range(5):
         url = ENDPOINTS[attempt % len(ENDPOINTS)]
-        req = urllib.request.Request(
-            url,
-            data=("data=" + urllib.parse.quote(query)).encode(),
-            headers={"User-Agent": "emap-labs/mendi (contact: github.com/r3tr0eth/emap-labs)"},
-        )
         try:
-            with urllib.request.urlopen(req, timeout=240) as r:
-                return json.load(r)["elements"]
-        except Exception as e:  # 504/429 del endpoint público: esperar y rotar
+            with httpx.Client(timeout=240) as c:
+                r = c.post(url, content=data,
+                           headers={"User-Agent": "emap-labs/mendi (contact: github.com/r3tr0eth/emap-labs)",
+                                    "Content-Type": "application/x-www-form-urlencoded"})
+                r.raise_for_status()
+                return r.json()["elements"]
+        except Exception as e:  # 504/429 del endpoint público: backoff + rotar
             last = e
-            print(f"  overpass KO ({url.split('/')[2]}: {e}) — reintento en 30s")
-            time.sleep(30)
-    raise SystemExit(f"Overpass agotado tras 4 intentos: {last}")
+            host = url.split("/")[2]
+            failed.append(host)
+            wait = 30 * (2 ** attempt)  # 30, 60, 120, 240, 480s
+            print(f"  overpass KO ({host}: {e}) — reintento en {wait}s (intento {attempt + 1}/5)")
+            time.sleep(wait)
+    raise SystemExit(f"Overpass agotado tras 5 intentos. Mirrors caídos: {failed}. Último error: {last}")
 
 
 def build_routes() -> None:

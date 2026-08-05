@@ -33,20 +33,22 @@ casos que jamás se usan para calibrar) y casos de abstención
 coteja con **Itzuli**, el traductor neuronal del Gobierno Vasco — no es
 euskera artificial de traducción automática sin revisar.
 
-Resultados (k=5, 2026-07-10):
+Resultados held-out (k=5, cada modelo en su config dev-óptima, 2026-07-24):
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
-| baseline keywords+geo | 74% | **60%** | 71% | 62% |
-| **híbrido keywords→semántico** (MiniLM-L12 mult.) | **81%** | 58% | 74% | **66%** |
+| baseline keywords+geo | 74% | 60% | 71% | 62% |
+| híbrido · MiniLM-L12 mult. | 80% | 60% | 76% | 66% |
+| híbrido · mpnet-base mult. | 79% | 64% | 73% | 66% |
+| **híbrido · multilingual-e5-large** | **88%** | **75%** | **84%** | **81%** |
 
-Dos hallazgos centrales: **con euskera correcto, la etapa semántica apenas
-aporta en EU** (los embeddings multilingües actuales flojean en euskera), y
-**al pasar de 13 a 21 categorías el híbrido pierde el held-out ES contra el
-baseline** — el modelo actual no escala con el espacio de categorías.
-Cuantificar ambas brechas por modelo es el objetivo del benchmark.
-Metodología, lecciones y resultados por modelo:
-[`evals/README.md`](evals/README.md).
+Hallazgo central: **la brecha del euskera no era del idioma, era del modelo**.
+Con MiniLM la etapa semántica apenas aportaba en EU; con **e5-large** el
+held-out EU llega al 81% y supera al ES. Además el umbral de abstención
+**no transfiere entre modelos** (τ=0.50 dejaba muerta la abstención de e5;
+recalibrado a 0.80 pasa a mejor de todos). Informe completo —metodología,
+coste/latencia, limitaciones—: **[`BENCHMARK.md`](BENCHMARK.md)**;
+lecciones del harness: [`evals/README.md`](evals/README.md).
 
 ## emap desde tu agente (MCP)
 

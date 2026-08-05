@@ -16,9 +16,15 @@ Uso: ../emap-next/.venv/bin/python datasets/mendi/transit_cross.py
 from __future__ import annotations
 
 import json
-import math
+import sys
 from datetime import date
 from pathlib import Path
+
+try:
+    from emap_geo.distance import haversine_m
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "evals"))
+    from _geo import haversine_m  # noqa: E402
 
 LABS = Path(__file__).resolve().parents[2]
 NEXT_DATA = (LABS / ".." / "emap-next" / "data").resolve()
@@ -27,14 +33,6 @@ OUT = NEXT_DATA / "processed" / "mendi" / "peaks-transit.json"
 STOP_LAYERS = ["metro", "euskotren", "cercanias", "bilbobus", "bizkaibus"]
 # redes con formato propio (data/<red>.json, stops[] con name plano)
 NET_LAYERS = ["dbus", "lurraldebus", "tuvisa", "alavabus"]
-
-
-def haversine_m(lat1, lon1, lat2, lon2) -> float:
-    p = math.pi / 180
-    a = (0.5 - math.cos((lat2 - lat1) * p) / 2
-         + math.cos(lat1 * p) * math.cos(lat2 * p)
-         * (1 - math.cos((lon2 - lon1) * p)) / 2)
-    return 12742000 * math.asin(math.sqrt(a))
 
 
 def main() -> None:

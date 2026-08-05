@@ -24,12 +24,28 @@ from fastembed import TextEmbedding
 
 from baseline import BaselineRetriever, norm
 
-# L3 carril 1: modelo intercambiable por env para el benchmark.
-# BGE-M3 (objetivo del roadmap) no está en fastembed y no cabe en este Mac
-# (2.3GB libres) — queda para la caja de 8GB; mpnet es el paso intermedio.
+# L3 carril 1: modelo intercambiable por env para el benchmark por-modelo.
+# fastembed 0.8 no trae BGE-M3 ni Qwen3 (los objetivos del roadmap sólo tienen
+# variantes en/zh de BGE) — ésos esperan la caja de 8GB con sentence-transformers
+# nativo. La vía multilingüe viable HOY (cabe en este Mac): MiniLM-L12 (384d,
+# actual), mpnet-base (768d) y multilingual-e5-large (1024d, el más fuerte).
 import os
 MODEL = os.environ.get("EMAP_EMBED_MODEL",
                        "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+
+# Tag corto y estable para nombrar retriever y ficheros de resultados por modelo.
+MODEL_TAG = {
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "minilm",
+    "sentence-transformers/paraphrase-multilingual-mpnet-base-v2": "mpnet",
+    "intfloat/multilingual-e5-large": "e5large",
+}.get(MODEL, MODEL.split("/")[-1].lower())
+
+# Los modelos e5 se entrenaron con prefijos asimétricos: la consulta lleva
+# "query:" y los textos indexados "passage:". Sin ellos el coseno se degrada
+# (es el error clásico al portar e5). El resto de modelos no llevan prefijo.
+_IS_E5 = "e5" in MODEL.lower()
+QUERY_PREFIX = "query: " if _IS_E5 else ""
+DOC_PREFIX = "passage: " if _IS_E5 else ""
 # Recalibrado en dev 2026-07-09 al pasar de 13 → 21 categorías (τ 0.45→0.50,
 # tie 0.08→0.03): con más categorías el tie-window ancho dejaba colar capas
 # basura que robaban el top-1 por cercanía, y τ alto compensa la subida de
@@ -81,15 +97,16 @@ CATEGORY_TEXT = {
     "food": ("Restaurante, sidrería, asador o bodega: comida o cena de "
              "restaurante, menú del día. Jatetxea, sagardotegia, "
              "erretegia: jatetxeko bazkaria edo afaria, eguneko menua."),
-    "lodging": ("Hotel, pensión o agroturismo: dormir, pasar la noche, "
-                "reservar habitación para alojarse. Hotela, pentsioa, "
-                "nekazalturismoa: lo egin, gaua pasatu, gela erreserbatu, "
-                "ostatu hartu."),
+    "lodging": ("Hotel, pensión o agroturismo: alojarse en habitación con "
+                "cama, reservar una habitación, pasar la noche en un hotel. "
+                "Hotela, pentsioa, nekazalturismoa: gela erreserbatu, ostatu "
+                "hartu, lo egin ohean, gaua pasatu hotelan."),
     "hostel": ("Albergue de peregrinos o juvenil: litera en dormitorio "
                "compartido. Aterpetxea: erromesen aterpea, litera logela "
                "partekatuan."),
-    "camping": ("Camping: parcela para tienda de campaña o bungalow. "
-                "Kanpina: kanpin-dendarako partzela, bungalowa."),
+    "camping": ("Camping al aire libre: parcela para tienda de campaña o "
+                "bungalow. Kanpina: zelaia kanpina, dendarako partzela, "
+                "bungalowa."),
     "nature": ("Espacio natural protegido: parque natural, biotopo, marisma, "
                "humedal con aves. Naturgune babestua: natur parkea, "
                "biotopoa, padura, hezegunea."),
@@ -136,13 +153,14 @@ def strip_location(query: str, anchor_names: list[str]) -> str:
 
 
 class SemanticRetriever(BaselineRetriever):
-    name = "semantic-minilm-2stage"
+    name = f"semantic-{MODEL_TAG}-2stage"
 
     def __init__(self, datasets: dict[str, list[dict]]):
         super().__init__(datasets)
         self.model = TextEmbedding(MODEL)
         self.cats = [c for c in CATEGORY_TEXT if c in datasets]
-        vecs = np.array(list(self.model.embed([CATEGORY_TEXT[c] for c in self.cats])))
+        docs = [DOC_PREFIX + CATEGORY_TEXT[c] for c in self.cats]
+        vecs = np.array(list(self.model.embed(docs)))
         self.cat_vecs = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
         self._anchor_names: list[str] = []
 
@@ -152,7 +170,7 @@ class SemanticRetriever(BaselineRetriever):
 
     def detect_layers(self, query: str) -> list[str]:
         q = strip_location(query, self._anchor_names)
-        v = np.array(list(self.model.embed([q])))[0]
+        v = np.array(list(self.model.embed([QUERY_PREFIX + q])))[0]
         v /= np.linalg.norm(v)
         sims = self.cat_vecs @ v
         best = float(sims.max())
@@ -167,7 +185,7 @@ class HybridRetriever(SemanticRetriever):
     composición natural: el baseline nunca inventa categoría (se abstiene)
     y ahí entra la semántica."""
 
-    name = "hybrid-keywords-then-semantic"
+    name = f"hybrid-keywords-then-{MODEL_TAG}"
 
     def detect_layers(self, query: str) -> list[str]:
         layers = BaselineRetriever.detect_layers(self, query)

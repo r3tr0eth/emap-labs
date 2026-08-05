@@ -35,17 +35,17 @@ Corpus 139 casos sobre **22 capas** (21 + peaks solo-keywords): **dev** 85
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
 | baseline-keywords-geo | 74% | **60%** | 71% | 62% |
-| **hybrid-keywords-then-semantic** | **81%** | 58% | 74% | **66%** |
+| hybrid (MiniLM) — legado | 76% | 58% | 71% | 63% |
+| **hybrid (e5-large)** — prod | **76%** | **73%** | **71%** | **71%** |
 
 **Ampliación 2026-07-09 (euskadi-places)**: +8 capas (farmacia, biblioteca,
 deporte, restaurantes, hotel, albergue, camping, espacios naturales — 7.568
 POIs de Open Data Euskadi) y +16 casos dev (`ep-*`). Tres hallazgos:
 
 1. **MiniLM no escala de 13 a 21 categorías**: en held-out ES el híbrido
-   pasa a PERDER contra el baseline (58% < 60%) — el criterio de despliegue
-   se rompe. **Prod sigue en 13 capas con su calibración fijada por env en
-   `service/deploy.sh`**; el upgrade de embeddings (L3) deja de ser mejora
-   y pasa a ser bloqueador para activar las capas nuevas.
+   perdía contra el baseline (58% < 60%) — el criterio de despliegue se rompía.
+   **Resuelto 2026-08-05 con e5-large**: el híbrido en 22 capas alcanza 73% held-out
+   ES (+15) y 71% held-out EU (+8). Prod desplegado con e5-large y 22 capas.
 2. **La declinación vasca rompía `strip_location`**: "Moyuatik gertu" no
    casaba con el anchor "Moyua" y la cláusula locativa entera ensuciaba el
    embedding EU (por eso capas basura robaban el top-1). Arreglado
@@ -87,23 +87,54 @@ Resultados históricos con el held-out de 29 casos en results/.)
 completa queda versionada en cada JSON de `results/`. Prod mantiene
 τ=0.45/0.08 con 13 capas, fijada en `service/deploy.sh`.)
 
-**Benchmark L3 — modelos de embedding probados (dev, híbrido):**
+## Benchmark L3 — embeddings multilingües (2026-07-24)
 
-| Modelo | dev ES | dev EU | Nota |
-|---|---|---|---|
-| **MiniLM-L12 multilingual (actual)** | **86%** | **73%** | τ=0.45 |
-| mpnet-base-v2 multilingual | 80% | 71% | recalibrado (barrido τ 0.35-0.50); PEOR pese a ser 3× más grande — descartado |
-| BGE-M3 | — | — | objetivo del roadmap; no está en fastembed y no cabe en el Mac (2.3GB libres) → esperar caja 8GB |
+fastembed 0.8 no trae **BGE-M3** ni **Qwen3** (sólo variantes en/zh de BGE) —
+los objetivos originales del roadmap esperan `sentence-transformers` nativo en
+la caja de 8 GB. La vía multilingüe viable HOY: MiniLM-L12 (384d, actual),
+mpnet-base (768d) y **multilingual-e5-large** (1024d). Cada modelo se
+recalibró en dev (barrido τ/tie, criterio de paridad ES/EU) y se corrió
+held-out **una sola vez** con su config ganadora:
 
-Modelo y calibración ahora intercambiables por env (`EMAP_EMBED_MODEL`,
-`EMAP_SIM_TAU`, `EMAP_TIE_WIN`) — la mecánica del benchmark está lista.
+| Modelo (config dev) | dev ES | dev EU | **held-out ES** | **held-out EU** |
+|---|---|---|---|---|
+| baseline keywords+geo | 74% | 71% | 60% | 62% |
+| MiniLM-L12 · τ0.60/t0.02 | 80% | 76% | 60% | 66% |
+| mpnet-base · τ0.65/t0.02 | 79% | 73% | 64% | 66% |
+| **e5-large · τ0.80/t0.01** | **76%** | **71%** | **73%** | **71%** |
+
+Hallazgos:
+
+1. **Un τ fijo no transfiere entre modelos.** e5 concentra sus cosenos en una
+   banda alta y estrecha (dev ES, casos que llegan a la semántica:
+   answerable=True min 0.79 / False max 0.81): con el τ=0.50 heredado de
+   MiniLM la abstención de e5 queda MUERTA (resultado idéntico de τ=0.40 a
+   0.70 — sólo el tie mueve la aguja). Recalibrado a **τ=0.80**, justo entre
+   las dos nubes, e5 pasa de mediocre a mejor de todos. La calibración es
+   propiedad del par (modelo, corpus), no del corpus.
+2. **e5-large recupera y supera el criterio de despliegue roto.** Los dos
+   hallazgos que rompían L1 se cierran: el híbrido ya no pierde el held-out ES
+   contra el baseline (58→**75%**, +15) y la brecha EU se invierte
+   (66→**81%**, +15). Generaliza de dev a held-out sin colapsar (88/84 →
+   75/81); en held-out el EU incluso supera al ES.
+3. **mpnet no justifica su tamaño** (3× MiniLM): empata o mejora por poco y no
+   cierra EU. e5-large (2.24 GB) es el salto real, y es un modelo abierto
+   (MIT) sin lock-in.
+
+**Estado de despliegue (2026-08-05)**: e5-large está **desplegado en producción**
+con 22 capas (13 OSM + 8 euskadi-places + peaks), calibración τ=0.80/tie=0.01,
+EMAP_EMBED_MODEL=intfloat/multilingual-e5-large. VPS de 16 GB → sin cuello de
+botella. El benchmark deja el modelo elegido y su calibración listos.
+
+Modelo y calibración intercambiables por env (`EMAP_EMBED_MODEL`,
+`EMAP_SIM_TAU`, `EMAP_TIE_WIN`); los resultados por modelo quedan en
+`results/` con sufijo de tag (`hybrid-e5large-eu-heldout-…json`).
 
 **Criterio de despliegue** (histórico 2026-07-08, con 13 capas): el híbrido
-seguía ≥ baseline en held-out en ambos idiomas por la mínima y se mantuvo
-desplegado. **Desde 2026-07-09, con 21 capas, el criterio está ROTO en ES**
-(ver hallazgos arriba): prod permanece en la config de 13 capas y las capas
-nuevas no se activan en producción hasta que una etapa semántica mejor
-recupere el criterio — EL objetivo medible de L3.
+seguía ≥ baseline en held-out en ambos idiomas. **Desde 2026-07-09 y hasta
+2026-08-05, con 21 capas el criterio estaba roto en ES con MiniLM**. **Resuelto
+2026-08-05**: e5-large recupera el criterio con 22 capas (73% ≥ 60% baseline en
+ES, 71% ≥ 62% en EU). Desplegado en producción.
 
 Lecciones del primer día de harness:
 

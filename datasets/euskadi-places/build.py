@@ -16,9 +16,10 @@ from __future__ import annotations
 import json
 import re
 import ssl
-import urllib.request
 from datetime import date
 from pathlib import Path
+
+import httpx
 
 OUT = Path(__file__).resolve().parents[2] / ".." / "emap-next" / "data" / "pois-euskadi"
 CTX = ssl.create_default_context()
@@ -43,9 +44,10 @@ PERSON_FIELDS = {"titular", "titular1", "titular2", "responsable", "contacto"}
 
 
 def fetch(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "emap-labs/0.1 (+github.com/r3tr0eth/emap-labs)"})
-    with urllib.request.urlopen(req, timeout=40, context=CTX) as r:
-        return r.read()
+    with httpx.Client(timeout=40, verify=CTX) as c:
+        r = c.get(url, headers={"User-Agent": "emap-labs/0.1 (+github.com/r3tr0eth/emap-labs)"})
+        r.raise_for_status()
+        return r.content
 
 
 def r01_links(meta_url: str) -> dict[str, str]:

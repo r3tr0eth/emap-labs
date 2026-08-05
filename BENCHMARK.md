@@ -1,6 +1,6 @@
 # Benchmark de retrieval geográfico hiperlocal en español y euskera
 
-**EMAP Labs · v1 · 2026-07-24** ·
+**EMAP Labs · v2 · 2026-08-05** ·
 [![DOI](https://zenodo.org/badge/1295202233.svg)](https://doi.org/10.5281/zenodo.21282784)
 · código Apache-2.0 · datos CC-BY-4.0 / ODbL
 
@@ -192,6 +192,16 @@ Modelo y calibración se cambian por variables de entorno (`EMAP_EMBED_MODEL`,
 `EMAP_SIM_TAU`, `EMAP_TIE_WIN`); cada corrida guarda su JSON en
 `evals/results/` con la configuración completa. Metodología detallada y
 lecciones: [`evals/README.md`](evals/README.md).
+
+## Changelog
+
+- **v2 (2026-08-05)** — e5-large desplegado en producción con 22 capas.
+  Resultados post-deploy: held-out ES 73% (+15 vs MiniLM), EU 71% (+8).
+  Corpus curado v1 (139 casos, status: curated). Nuevas capas euskadi-places
+  (farmacias, bibliotecas, deporte, restauración, alojamiento, camping,
+  espacios naturales). KD-tree en explain-place. Rate limiting en producción.
+- **v1 (2026-07-24)** — publicación inicial. MiniLM-L12, 13 capas, 117 casos.
+  Búsqueda del modelo ganador (e5-large) vía benchmark L3.
 
 ## Cómo citar
 

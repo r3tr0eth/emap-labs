@@ -14,8 +14,8 @@ repository-code: https://github.com/r3tr0eth/emap-labs
 url: https://emap-next.vercel.app
 doi: 10.5281/zenodo.21282784
 license: Apache-2.0
-version: "0.1.1"
-date-released: "2026-07-09"
+version: "0.2.0"
+date-released: "2026-08-05"
 keywords:
   - geographic-retrieval
   - benchmark
@@ -28,8 +28,9 @@ keywords:
   - mobility
   - euskadi
 abstract: >-
-  Benchmark abierto de retrieval geográfico hiperlocal en español y
-  euskera (117 casos, held-out estricto, abstención medida, euskera
-  validado con Itzuli) y datasets versionados de movilidad e
-  infraestructura urbana de Euskadi derivados de OpenStreetMap y
-  Open Data Euskadi.
+   Benchmark abierto de retrieval geográfico hiperlocal en español y
+   euskera (139 casos curados, 22 capas, held-out estricto, abstención
+   medida, euskera validado con Itzuli) y datasets versionados de
+   movilidad e infraestructura urbana de Euskadi derivados de
+   OpenStreetMap y Open Data Euskadi. v2: e5-large desplegado en
+   producción (held-out ES 73%, EU 71%).

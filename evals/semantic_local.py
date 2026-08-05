@@ -163,6 +163,7 @@ class SemanticRetriever(BaselineRetriever):
         vecs = np.array(list(self.model.embed(docs)))
         self.cat_vecs = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
         self._anchor_names: list[str] = []
+        self.sim_threshold = SIM_THRESHOLD
 
     def set_anchor_names(self, names: list[str]) -> None:
         """El runner informa del texto del anchor del caso (nunca del expected)."""
@@ -192,3 +193,27 @@ class HybridRetriever(SemanticRetriever):
         if layers:
             return layers
         return SemanticRetriever.detect_layers(self, query)
+
+    def detect_layers_with_scores(self, query: str) -> tuple[list[str], dict[str, float], str]:
+        """Devuelve (capas, scores_por_capa, método). 'method' es 'keywords'
+        o 'semantic' según qué etapa detectó la categoría."""
+        # Probar keywords primero
+        kw_layers = BaselineRetriever.detect_layers(self, query)
+        if kw_layers:
+            scores = {c: 0.0 for c in self.cats}
+            for c in kw_layers:
+                scores[c] = 1.0  # keywords: score binario
+            return kw_layers, scores, "keywords"
+
+        # Fall back a semántica
+        layers = SemanticRetriever.detect_layers(self, query)
+        if not layers:
+            return [], {}, "semantic"
+
+        # Recuperar scores reales
+        q = strip_location(query, self._anchor_names)
+        v = np.array(list(self.model.embed([QUERY_PREFIX + q])))[0]
+        v /= np.linalg.norm(v)
+        sims = self.cat_vecs @ v
+        scores = {c: float(s) for c, s in zip(self.cats, sims)}
+        return layers, scores, "semantic"

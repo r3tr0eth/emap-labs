@@ -28,6 +28,7 @@ from semantic_local import HybridRetriever  # noqa: E402
 from fastembed.rerank.cross_encoder import TextCrossEncoder  # noqa: E402
 
 from emap_geo.distance import haversine_m  # noqa: E402
+from explain import explain_detection, explain_result, _load_source  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 
@@ -199,15 +200,22 @@ def search(
         })
     t0 = time.monotonic()
     anchor = {"lat": lat, "lon": lon} if lat is not None and lon is not None else None
+
+    # Detección de categoría con scores para explicabilidad
+    detected_layers, cat_scores, method = _retriever.detect_layers_with_scores(q)
+    threshold = getattr(_retriever, "sim_threshold", 0.50)
+
     # Recuperar más candidatos de los necesarios para que el reranker elija.
     candidates = _retriever.retrieve(q, anchor, k=min(k * 4, 20))
     results = _rerank(q, candidates, k)
+
     out = []
     for r in results:
         item = {"id": r["id"], "name": r["name"], "lat": r["lat"], "lon": r["lon"],
                 "layer": r["layer"], "tags": r.get("tags") or {}}
         if anchor:
             item["distance_m"] = round(haversine_m(lat, lon, r["lat"], r["lon"]))
+        item["why"] = explain_result(r, q, anchor, cat_scores, threshold)
         out.append(item)
 
     _log_query(q, anchor, out)
@@ -216,6 +224,7 @@ def search(
         "query": q,
         "abstained": not out,  # no inventamos: sin categoría clara, vacío
         "results": out,
+        "explanation": explain_detection(detected_layers, cat_scores, threshold, method),
         "retriever": f"{_retriever.name}+rerank",
         "reranked": len(candidates) > k,
         "took_ms": round((time.monotonic() - t0) * 1000),

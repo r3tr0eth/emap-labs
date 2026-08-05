@@ -55,6 +55,10 @@ repo), los bucles de agente son para juicio e iteración. Recetas:
 
 - Commits convencionales en español (`feat(evals): …`, scopes: evals,
   datasets, service, mcp, docs, ci). No commitear sin que Gaizka lo pida.
+- **REGLA DURA DE CI**: tras cada push a main, verificar inmediatamente con
+  `gh run list --limit 1`. Si el CI está rojo, arreglar ANTES de hacer
+  cualquier otra cosa. No existe "ya lo arreglaré después". El CI verde es
+  condición de fin de tarea. Si el CI falla, la tarea NO está terminada.
 - Datos: cada dataset con los 6 metadatos; `coverage.completeness` solo si es
   estimable honestamente; sesgo de mapeo OSM declarado en `coverage.notes`.
 - No se finge: abstención antes que inventar, en retrievers y en prosa.

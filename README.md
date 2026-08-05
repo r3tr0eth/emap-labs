@@ -33,22 +33,25 @@ casos que jamás se usan para calibrar) y casos de abstención
 coteja con **Itzuli**, el traductor neuronal del Gobierno Vasco — no es
 euskera artificial de traducción automática sin revisar.
 
-Resultados held-out (k=5, cada modelo en su config dev-óptima, 2026-07-24):
+Resultados en producción (k=5, 2026-08-05):
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
 | baseline keywords+geo | 74% | 60% | 71% | 62% |
-| híbrido · MiniLM-L12 mult. | 80% | 60% | 76% | 66% |
-| híbrido · mpnet-base mult. | 79% | 64% | 73% | 66% |
-| **híbrido · multilingual-e5-large** | **88%** | **75%** | **84%** | **81%** |
+| híbrido · MiniLM-L12 mult. | 76% | 58% | 71% | 63% |
+| **híbrido · multilingual-e5-large** | **76%** | **73%** | **71%** | **71%** |
+
+e5-large es el modelo desplegado en producción. La calibración es
+τ=0.80/tie=0.01 (propiedad del par modelo+corpus, no heredable).
 
 Hallazgo central: **la brecha del euskera no era del idioma, era del modelo**.
-Con MiniLM la etapa semántica apenas aportaba en EU; con **e5-large** el
-held-out EU llega al 81% y supera al ES. Además el umbral de abstención
-**no transfiere entre modelos** (τ=0.50 dejaba muerta la abstención de e5;
-recalibrado a 0.80 pasa a mejor de todos). Informe completo —metodología,
-coste/latencia, limitaciones—: **[`BENCHMARK.md`](BENCHMARK.md)**;
-lecciones del harness: [`evals/README.md`](evals/README.md).
+Con MiniLM la etapa semántica apenas aportaba en EU; con e5-large el
+held-out ES sube de 58% a 73% (+15) y el EU de 63% a 71% (+8).
+
+Suite extendida post-v0.2.0: 76 heldout con nuevas capas y edge cases,
+64% global. Informe completo —metodología, coste/latencia, limitaciones—:
+**[`BENCHMARK.md`](BENCHMARK.md)**; lecciones del harness:
+[`evals/README.md`](evals/README.md).
 
 ## emap desde tu agente (MCP)
 
@@ -91,10 +94,13 @@ la configuración exacta (modelo, τ, tie-window) con la que se obtuvo.
 
 ## Datasets
 
-Release **v0.1** (2026-07): 7 datasets / 12.732 registros de movilidad e
-infraestructura urbana de Euskadi (foco Bizkaia) — fuentes, aseos, parking,
-DEA, EV, cámaras y paradas multi-red (metro, Euskotren, Cercanías, Bilbobus,
-Bizkaibus). Detalle y metadatos: [`releases/RELEASE-NOTES.md`](releases/RELEASE-NOTES.md).
+Release **v0.2** (2026-08-05): 22 capas / 27.515 POIs de movilidad e
+infraestructura urbana de Euskadi — fuentes, aseos, parking, aparcabicis,
+carga eléctrica, desfibriladores, playas, farmacias, bibliotecas, deporte,
+restaurantes, alojamiento, camping, espacios naturales, cimas, bancos,
+papeleras, reciclaje, refugios, buzones, teléfonos y paradas multi-red
+(metro, Euskotren, Cercanías, Bilbobus, Bizkaibus). Cobertura expandida
+a toda Bizkaia. Detalle y metadatos: [`releases/RELEASE-NOTES.md`](releases/RELEASE-NOTES.md).
 Cada dataset declara fuente, licencia, fecha y cobertura estimada solo cuando
 es honestamente estimable. Pipelines reproducibles en [`datasets/`](datasets/README.md).
 
@@ -140,7 +146,7 @@ Si usas el benchmark, el corpus o los datasets, cita el repositorio
   year    = {2026},
   doi     = {10.5281/zenodo.21282784},
   url     = {https://github.com/r3tr0eth/emap-labs},
-  version = {0.1.1}
+   version = {0.2.0}
 }
 ```
 

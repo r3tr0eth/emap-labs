@@ -12,10 +12,14 @@ natural ("¿dónde lleno la botella cerca de Abando?" / "*non bete dezaket
 botila Abando ondoan?*"), clasificar la **categoría de infraestructura**
 correcta —o abstenerse si no la hay— sobre 22 capas de movilidad de Euskadi.
 
-> *EN: First known open benchmark for hyperlocal geographic retrieval that
+> *EN: Open benchmark for hyperlocal geographic retrieval that
 > evaluates Spanish and Basque at parity — strict held-out split, measured
 > abstention, Basque queries validated against Itzuli (the Basque
-> Government's neural MT). Reproducible in three commands.*
+> Government's neural MT). Reproducible in three commands. To the best of
+> our knowledge (literature review 2026-07-15: MIRACL, MTEB, MSMARCO,
+> BEIR — none covers hyperlocal ES/EU retrieval), this is the first
+> open benchmark specifically targeting this combination of language
+> pair, geographic granularity, and abstention measurement.*
 
 ---
 
@@ -193,15 +197,51 @@ Modelo y calibración se cambian por variables de entorno (`EMAP_EMBED_MODEL`,
 `evals/results/` con la configuración completa. Metodología detallada y
 lecciones: [`evals/README.md`](evals/README.md).
 
+## Versiones de evaluación
+
+| Evaluación | Corpus | Held-out | Fecha | Resultado | Uso |
+|---|---|---|---|---|---|
+| v1.0 L3 benchmark | 139 | 54 | 2026-07-24 | e5 88/75/84/81 | Selección de modelo |
+| v2.0 producción | 139 | 54 | 2026-08-05 | e5 76/73/71/71 | Estado del sistema desplegado |
+| v2.1 extended suite | 164 | 76 | 2026-08-05 | 64% global | Estrés con nuevas capas y edge cases |
+
+La bajada de v1.0 a v2.0 refleja diferencias en la medición post-deploy
+(los datos se limpiaron y la abstención se recalibró). La v2.1 añade
+categorías sin cobertura previa y casos aspiracionales, lo que reduce la
+media pero aumenta la cobertura. Ninguna es una regresión: cada una mide
+un sistema distinto.
+
 ## Changelog
 
-- **v2 (2026-08-05)** — e5-large desplegado en producción con 22 capas.
-  Resultados post-deploy: held-out ES 73% (+15 vs MiniLM), EU 71% (+8).
-  Corpus curado v1 (139 casos, status: curated). Nuevas capas euskadi-places
-  (farmacias, bibliotecas, deporte, restauración, alojamiento, camping,
-  espacios naturales). KD-tree en explain-place. Rate limiting en producción.
-- **v1 (2026-07-24)** — publicación inicial. MiniLM-L12, 13 capas, 117 casos.
-  Búsqueda del modelo ganador (e5-large) vía benchmark L3.
+- **v0.2.0 (2026-08-05)** — release tag. e5-large desplegado con 22 capas.
+  Corpus curado v1 (139 casos). MCP con 5 herramientas. KD-tree.
+- **Post-v0.2.0** — deduplicación (1751 POIs eliminados), expansión Bizkaia
+  (+11,193 POIs), 25 casos heldout nuevos, reranking jina-reranker-v2
+  (57ms/consulta, activo en producción), traducciones EU para bikepark.
+- **v0.1.x (2026-07)** — publicación inicial. MiniLM-L12, 13 capas, 117 casos.
+
+## Estado del reranker (post-v0.2.0)
+
+El servicio en producción aplica reranking con
+`jinaai/jina-reranker-v2-base-multilingual` (~1.1 GB, ONNX) sobre el
+top-20 del híbrido. Latencia: ~57 ms por consulta. No evaluado aún con
+el protocolo completo del benchmark (métrica principal: reranking mejora
+el orden subjetivo, pendiente de medir hit@1/hit@5 en held-out).
+
+## Limitaciones conocidas
+
+- **Corpus sintético**: las consultas las escribió una persona. Demuestra
+  generalización sobre consultas similares al dominio diseñado, pero NO
+  que usuarios reales encuentren mejor lo que buscan. Prioridad para v0.3:
+  200+ consultas reales anonimizadas con etiquetado independiente.
+- **Sesgo de autor**: las descripciones de categoría y las consultas del
+  corpus provienen de la misma fuente. El held-out mitiga pero no elimina
+  este sesgo.
+- **EU parcialmente fallback**: capas de euskadi-places tienen EU=ES cuando
+  no hay traducción disponible. Las capas OSM tienen ~93% de nombres
+  bilingües reales.
+- **Cobertura desigual**: Bilbao sigue mejor cubierto que zonas rurales
+  (sesgo de mapeo OSM declarado en cada dataset).
 
 ## Cómo citar
 

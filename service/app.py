@@ -15,6 +15,7 @@ import math
 import os
 import sys
 import time
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -156,6 +157,31 @@ def _rerank(query: str, results: list[dict], k: int) -> list[dict]:
     return [r for _, r in scored[:k]]
 
 
+def _log_query(q: str, anchor: dict | None, results: list[dict]) -> None:
+    """Log anónimo de cada búsqueda. Sin IP, sin sesión, coordenadas
+    generalizadas a ~100m. Escritura no bloqueante: fallo no afecta respuesta."""
+    try:
+        gen_lat = round(anchor["lat"], 2) if anchor else None
+        gen_lon = round(anchor["lon"], 2) if anchor else None
+        entry = {
+            "ts": int(time.time()),
+            "date": date.today().isoformat(),
+            "q": q[:200],
+            "gen_lat": gen_lat,
+            "gen_lon": gen_lon,
+            "n_results": len(results),
+            "layers": [r["layer"] for r in results[:5]],
+            "retriever": _retriever.name if _retriever else "uninitialized",
+        }
+        log_dir = Path(os.environ.get("EMAP_QUERY_LOG", "/opt/emap-labs/data/queries"))
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_file = log_dir / f"{date.today().isoformat()}.jsonl"
+        with log_file.open("a") as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    except Exception:
+        pass  # logging nunca rompe la respuesta
+
+
 @app.get("/search")
 def search(
     request: Request,
@@ -183,6 +209,9 @@ def search(
         if anchor:
             item["distance_m"] = round(haversine_m(lat, lon, r["lat"], r["lon"]))
         out.append(item)
+
+    _log_query(q, anchor, out)
+
     return {
         "query": q,
         "abstained": not out,  # no inventamos: sin categoría clara, vacío

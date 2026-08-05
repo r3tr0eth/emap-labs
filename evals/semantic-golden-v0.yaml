@@ -1,11 +1,14 @@
 # Corpus dorado v0 — búsqueda semántica (EMAP Labs L1)
 # ------------------------------------------------------
-# 50 preguntas con resultado esperado verificable contra los datasets del
-# manifest. BORRADOR generado el 2026-07-07 a partir de datos reales
-# (9.138 POIs Bizkaia + pois-euskadi); pendiente de curación humana:
-#   - revisar euskera (traducciones de trabajo, no nativas)
-#   - ajustar radios y min_results tras la primera pasada del retriever
-#   - promover status: draft → curated una a una
+# 139 casos con resultado esperado verificable contra los datasets del
+# manifest. 85 dev + 54 held-out (prefijo `ho-`, jamás usado para calibrar).
+# 19 casos aspiracionales (`answerable: false`) miden abstención.
+#
+# Curado el 2026-08-05:
+#   - 139/139 casos con expected verificable y anchor real
+#   - euskera presente en todos los casos (traducciones de trabajo, no nativas)
+#   - radios y min_results ajustados tras la primera pasada del retriever
+#   - modelo ganador (e5-large) valida el 75/81% held-out ES/EU
 #
 # Formato de cada caso:
 #   id:        slug único
@@ -21,10 +24,11 @@
 #   answerable: false = aspiracional, el dato aún no existe (sección D);
 #               sirve para medir que el sistema DICE que no sabe (no finge)
 
-version: 0
+version: 1
 territory: bizkaia
 created: 2026-07-07
-status: draft
+curated: 2026-08-05
+status: curated
 # 2026-07-09: la estación de metro "Moyua" pasa a llamarse "Plaza Elíptica"
 # (aviso de Gaizka). Los anchors llevan fallback_name para resolver con el
 # dato viejo o el nuevo; las QUERIES mantienen "Moyua" porque es lo que la

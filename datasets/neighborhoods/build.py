@@ -16,10 +16,12 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 import urllib.parse
-import urllib.request
 from datetime import date
 from pathlib import Path
+
+import httpx
 
 from emap_geo.polygon import point_in_polygon
 
@@ -43,18 +45,27 @@ DP_TOLERANCE = 1e-4    # Douglas-Peucker en grados, ~8-11 m
 
 
 def fetch() -> dict:
-    body = urllib.parse.urlencode({"data": QUERY}).encode()
+    body = urllib.parse.urlencode({"data": QUERY})
     last: Exception | None = None
-    for url in MIRRORS:
-        try:
-            req = urllib.request.Request(url, data=body,
-                                         headers={"User-Agent": "emap-labs/0.1"})
-            with urllib.request.urlopen(req, timeout=240) as resp:
-                return json.load(resp)
-        except Exception as exc:  # noqa: BLE001 — probar el siguiente mirror
-            last = exc
-            print(f"  mirror caído {url}: {exc}", file=sys.stderr)
-    raise SystemExit(f"todos los mirrors fallaron: {last}")
+    failed: list[str] = []
+    for attempt in range(3):
+        for url in MIRRORS:
+            try:
+                with httpx.Client(timeout=240) as c:
+                    r = c.post(url, content=body,
+                               headers={"User-Agent": "emap-labs/0.1",
+                                        "Content-Type": "application/x-www-form-urlencoded"})
+                    r.raise_for_status()
+                    return r.json()
+            except Exception as exc:  # noqa: BLE001 — probar el siguiente mirror
+                last = exc
+                host = url.split("/")[2]
+                failed.append(host)
+                print(f"  mirror caído {host}: {exc}", file=sys.stderr)
+        wait = 30 * (2 ** attempt)
+        print(f"  ronda {attempt + 1}/3 agotada — backoff {wait}s")
+        time.sleep(wait)
+    raise SystemExit(f"todos los mirrors fallaron tras 3 rondas. Caídos: {failed}. Último: {last}")
 
 
 def stitch_rings(segments: list[list[tuple[float, float]]]) -> list[list[tuple[float, float]]]:

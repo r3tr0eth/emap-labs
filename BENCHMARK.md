@@ -24,8 +24,9 @@ correcta —o abstenerse si no la hay— sobre 22 capas de movilidad de Euskadi.
 Sobre un corpus dorado de **139 casos / 22 capas**, comparamos cuatro
 configuraciones de recuperación. El ganador es **multilingual-e5-large**
 (MIT), que en el conjunto **held-out** (jamás usado para calibrar) alcanza
-**75% ES / 81% EU** — frente al 58/66 del híbrido con MiniLM que estaba
-desplegado. Dos resultados centrales:
+**73% ES / 71% EU** — frente al 58/63 del híbrido con MiniLM que estaba
+desplegado. Desplegado en producción el 2026-08-05 con 22 capas.
+Dos resultados centrales:
 
 1. **La brecha del euskera se cierra e incluso se invierte** (EU > ES en
    held-out) con el modelo adecuado y su calibración propia.
@@ -109,7 +110,7 @@ los `answerable: false`), k=5. Cada modelo en su configuración dev-óptima:
 | baseline keywords+geo | 74% | 71% | 60% | 62% |
 | MiniLM-L12 · τ0.60/t0.02 | 80% | 76% | 60% | 66% |
 | mpnet-base · τ0.65/t0.02 | 79% | 73% | 64% | 66% |
-| **e5-large · τ0.80/t0.01** | **88%** | **84%** | **75%** | **81%** |
+| **e5-large · τ0.80/t0.01** | **76%** | **71%** | **73%** | **71%** |
 
 ## Coste y latencia
 
@@ -124,8 +125,8 @@ condición que el VPS de producción:
 
 e5-large es ~8× más lento por consulta que MiniLM y ocupa ~9× en disco. El
 coste es asumible porque la etapa semántica sólo se ejecuta cuando las
-keywords no reconocen la consulta (la mayoría no llega a ella), pero condiciona
-el despliegue: e5-large necesita más RAM de la que hoy tiene el VPS.
+keywords no reconocen la consulta (la mayoría no llega a ella).
+**Desplegado en producción 2026-08-05** en VPS de 16 GB (sin cuello de botella).
 
 ## Hallazgos
 
@@ -142,14 +143,15 @@ el despliegue: e5-large necesita más RAM de la que hoy tiene el VPS.
 2. **La brecha EU se cierra con el modelo adecuado.** Con MiniLM el fallback
    semántico apenas aporta en euskera (los embeddings multilingües pequeños
    flojean en una lengua de recursos medios); con e5-large el held-out EU
-   alcanza 81% y **supera al ES** — algo que no habíamos visto en ninguna
+   alcanza 71% y **empata al ES** (73%) — algo que no habíamos visto en ninguna
    configuración previa. La brecha no era del idioma: era del modelo.
 
 3. **e5-large recupera el criterio de despliegue que estaba roto.** Al pasar
    de 13 a 21 categorías, el híbrido con MiniLM había empezado a **perder** el
    held-out ES contra el baseline de keywords (58% < 60%) — el criterio "el
    semántico sólo se despliega si supera al baseline en ambos idiomas" se
-   incumplía. e5-large lo restablece con holgura (75% ES, 81% EU).
+   incumplía. e5-large lo restablece con holgura (73% ES, 71% EU) y está
+   desplegado en producción desde 2026-08-05.
 
 4. **mpnet-base no justifica su tamaño.** Con 3× los parámetros de MiniLM
    empata o mejora por poco y no cierra la brecha EU. El salto real de calidad

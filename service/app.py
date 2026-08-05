@@ -11,12 +11,16 @@ Validación: híbrido en held-out ES 79% / EU 72% (evals/, 2026-07-07).
 from __future__ import annotations
 
 import json
+import math
 import os
 import sys
 import time
 from pathlib import Path
 
-from fastapi import FastAPI, Query
+import numpy as np
+
+from fastapi import FastAPI, Query, Request
+from fastapi.responses import JSONResponse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "evals"))
 from semantic_local import HybridRetriever  # noqa: E402
@@ -33,6 +37,16 @@ LAYER_FILES = {
     "bikepark": "pois-euskadi/bikepark.json",
     "defib": "pois-euskadi/defib.json",
     "beaches": "pois-euskadi/beaches.json",
+    # euskadi-places (Open Data Euskadi, P1/P2 — 2026-07)
+    "pharmacy": "pois-euskadi/pharmacy.json",
+    "library": "pois-euskadi/library.json",
+    "sports": "pois-euskadi/sports.json",
+    "food": "pois-euskadi/food.json",
+    "lodging": "pois-euskadi/lodging.json",
+    "hostel": "pois-euskadi/hostel.json",
+    "camping": "pois-euskadi/camping.json",
+    "nature": "pois-euskadi/nature.json",
+    "peaks": "pois-euskadi/peaks.json",
     "ev": "processed/pois/ev.json",
     "cameras": "processed/pois/cameras.json",
     "metro": "processed/pois/metro.json",
@@ -49,6 +63,14 @@ _datasets: dict[str, list[dict]] = {}
 _units: list[dict] = []  # barrios/distritos/municipios con anillos (lat,lon)
 
 
+def _ensure_poi_id(poi: dict, layer: str, idx: int) -> dict:
+    """Los POIs de euskadi-places no traen id: genera uno estable (<layer>:<idx>)
+    para que el retriever y /search funcionen uniformemente."""
+    if "id" not in poi:
+        poi["id"] = f"{layer}:{idx}"
+    return poi
+
+
 @app.on_event("startup")
 def load() -> None:
     global _retriever
@@ -56,7 +78,8 @@ def load() -> None:
     for layer, rel in LAYER_FILES.items():
         path = DATA_DIR / rel
         if path.is_file():
-            datasets[layer] = json.loads(path.read_text())["pois"]
+            raw = json.loads(path.read_text())["pois"]
+            datasets[layer] = [_ensure_poi_id(p, layer, i) for i, p in enumerate(raw)]
             _counts[layer] = len(datasets[layer])
         else:
             print(f"aviso: falta {path}", file=sys.stderr)
@@ -72,23 +95,63 @@ def load() -> None:
             lons = [p[1] for r in rings for p in r]
             _units.append({"props": f["properties"], "rings": rings,
                            "bbox": (min(lats), min(lons), max(lats), max(lons))})
+    # Construir grupos para KD-tree (explain-place).
+    _GROUP_LAYERS.update({"rail": RAIL, "bus": BUS, "toilets": ("toilets",)})
     print(f"semantic listo: {sum(_counts.values())} POIs en {len(_counts)} capas, "
           f"{len(_units)} unidades administrativas")
 
 
 @app.get("/healthz")
 def healthz():
-    return {"ok": _retriever is not None, "layers": _counts,
-            "pois": sum(_counts.values()), "retriever": _retriever and _retriever.name}
+    missing = [rel for layer, rel in LAYER_FILES.items()
+               if not (DATA_DIR / rel).is_file()]
+    degraded = [layer for layer in LAYER_FILES if layer not in _counts]
+    return {
+        "ok": _retriever is not None and not missing and not degraded,
+        "layers": _counts,
+        "pois": sum(_counts.values()),
+        "retriever": _retriever and _retriever.name,
+        "missing_files": missing,
+        "degraded_layers": degraded,
+        "expected_layers": len(LAYER_FILES),
+        "loaded_layers": len(_counts),
+    }
+
+
+# Rate limiting por IP: ventana deslizante en memoria (sin Redis).
+# 60 req/min es holgado para un usuario real y frena bots/escáneres.
+_rate_window: dict[str, list[float]] = {}
+_RATE_MAX = int(os.environ.get("EMAP_RATE_MAX", "60"))
+_RATE_SECS = int(os.environ.get("EMAP_RATE_WINDOW", "60"))
+
+
+def _rate_check(ip: str) -> bool:
+    """True si la IP está bajo el límite."""
+    now = time.monotonic()
+    ts = _rate_window.setdefault(ip, [])
+    cutoff = now - _RATE_SECS
+    ts[:] = [t for t in ts if t > cutoff]
+    if len(ts) >= _RATE_MAX:
+        return False
+    ts.append(now)
+    return True
 
 
 @app.get("/search")
 def search(
+    request: Request,
     q: str = Query(min_length=1, max_length=200),
     lat: float | None = None,
     lon: float | None = None,
     k: int = Query(default=5, ge=1, le=20),
 ):
+    ip = request.client.host if request.client else "unknown"
+    if not _rate_check(ip):
+        return JSONResponse(status_code=429, content={
+            "error": "rate_limit_exceeded",
+            "retry_after_secs": _RATE_SECS,
+            "limit": _RATE_MAX,
+        })
     t0 = time.monotonic()
     anchor = {"lat": lat, "lon": lon} if lat is not None and lon is not None else None
     results = _retriever.retrieve(q, anchor, k=k)
@@ -113,8 +176,50 @@ RAIL = ("metro", "euskotren", "cercanias")
 BUS = ("bilbobus", "bizkaibus")
 KIND_RANK = {"neighborhood": 0, "district": 1, "municipality": 2}
 
+# Índices espaciales por grupo de capas (KD-tree sobre lat/lon en radianes).
+# Se construyen una vez al arranquear; las consultas son O(log n) vs O(n) del
+# barrido original.
+_kd_indices: dict[str, tuple["scipy.spatial.cKDTree", list[dict], list[str]]] = {}
+
+
+def _build_kd_index(layers: tuple[str, ...]):
+    """Construye un KD-tree con los POIs de las capas indicadas."""
+    import scipy.spatial
+    points: list[list[float]] = []
+    items: list[dict] = []
+    src_layer: list[str] = []
+    for layer in layers:
+        for p in _datasets.get(layer, []):
+            points.append([math.radians(p["lat"]), math.radians(p["lon"])])
+            items.append(p)
+            src_layer.append(layer)
+    if not points:
+        return None
+    tree = scipy.spatial.cKDTree(np.array(points))
+    return tree, items, src_layer
+
+
+def _kd_nearest(group: str, lat: float, lon: float):
+    """POI más cercano del grupo usando KD-tree (distancia euclídea en rad →
+    haversine para el resultado final)."""
+    if group not in _kd_indices:
+        _kd_indices[group] = _build_kd_index(_GROUP_LAYERS[group])
+    entry = _kd_indices[group]
+    if entry is None:
+        return None
+    tree, items, src_layer = entry
+    d_rad, idx = tree.query([math.radians(lat), math.radians(lon)])
+    p = items[idx]
+    return {"name": p["name"], "layer": src_layer[idx],
+            "distance_m": round(haversine_m(lat, lon, p["lat"], p["lon"]))}
+
+
+# Mapeo grupo lógico → capas (se resuelve en startup, después de cargar datos).
+_GROUP_LAYERS: dict[str, tuple[str, ...]] = {}
+
 
 def _nearest(layers: tuple[str, ...], lat: float, lon: float):
+    """Fallback O(n) para grupos sin KD-tree (p.ej. capa suelta)."""
     best = None
     for layer in layers:
         for p in _datasets.get(layer, []):
@@ -127,8 +232,15 @@ def _nearest(layers: tuple[str, ...], lat: float, lon: float):
 
 
 @app.get("/explain")
-def explain(lat: float, lon: float):
+def explain(request: Request, lat: float, lon: float):
     """Hechos del entorno de un punto — descriptivo, sin juicios (ETICA-DATOS)."""
+    ip = request.client.host if request.client else "unknown"
+    if not _rate_check(ip):
+        return JSONResponse(status_code=429, content={
+            "error": "rate_limit_exceeded",
+            "retry_after_secs": _RATE_SECS,
+            "limit": _RATE_MAX,
+        })
     from emap_geo.polygon import point_in_polygon
 
     unit = None
@@ -147,9 +259,9 @@ def explain(lat: float, lon: float):
     return {
         "unit": unit and {"name": unit["name"], "kind": unit["kind"],
                           "parent": unit.get("parent")},
-        "nearest_rail": _nearest(RAIL, lat, lon),
-        "nearest_bus": _nearest(BUS, lat, lon),
-        "nearest_toilet": _nearest(("toilets",), lat, lon),
+        "nearest_rail": _kd_nearest("rail", lat, lon),
+        "nearest_bus": _kd_nearest("bus", lat, lon),
+        "nearest_toilet": _kd_nearest("toilets", lat, lon),
         "counts_300m": counts,
         "attribution": "© OpenStreetMap contributors (ODbL) · Open Data Euskadi",
     }

@@ -47,32 +47,42 @@ def _data_root() -> Path:
 
 DATA_ROOT = _data_root()
 
-# capa del corpus → fichero (layout = emap-next/data)
-LAYER_FILES = {
-    "fountains": "pois-euskadi/fountains.json",
-    "toilets": "pois-euskadi/toilets.json",
-    "parking": "pois-euskadi/parking.json",
-    "bikepark": "pois-euskadi/bikepark.json",
-    "defib": "pois-euskadi/defib.json",
-    "beaches": "pois-euskadi/beaches.json",
-    # euskadi-places (Open Data Euskadi, P1/P2 — 2026-07)
-    "pharmacy": "pois-euskadi/pharmacy.json",
-    "library": "pois-euskadi/library.json",
-    "sports": "pois-euskadi/sports.json",
-    "food": "pois-euskadi/food.json",
-    "lodging": "pois-euskadi/lodging.json",
-    "hostel": "pois-euskadi/hostel.json",
-    "camping": "pois-euskadi/camping.json",
-    "nature": "pois-euskadi/nature.json",
-    "peaks": "pois-euskadi/peaks.json",
-    "ev": "processed/pois/ev.json",
-    "cameras": "processed/pois/cameras.json",
-    "metro": "processed/pois/metro.json",
-    "euskotren": "processed/pois/euskotren.json",
-    "cercanias": "processed/pois/cercanias.json",
-    "bilbobus": "processed/pois/bilbobus.json",
-    "bizkaibus": "processed/pois/bizkaibus.json",
-}
+# Single source of truth: service/app.py define LAYER_FILES (el runtime
+# del servicio es la autoridad). El runner lo importa de ahí para que
+# evals y prod compartan exactamente las mismas capas.
+import importlib.util
+_spec = importlib.util.spec_from_file_location(
+    "service_app", str(Path(__file__).resolve().parents[1] / "service/app.py"))
+_mod = importlib.util.module_from_spec(_spec)
+try:
+    _spec.loader.exec_module(_mod)
+    LAYER_FILES = _mod.LAYER_FILES
+except Exception:
+    # fallback: servicio no disponible (CI sin emap-next). Mismo layout.
+    LAYER_FILES = {
+        "fountains": "pois-euskadi/fountains.json",
+        "toilets": "pois-euskadi/toilets.json",
+        "parking": "pois-euskadi/parking.json",
+        "bikepark": "pois-euskadi/bikepark.json",
+        "defib": "pois-euskadi/defib.json",
+        "beaches": "pois-euskadi/beaches.json",
+        "pharmacy": "pois-euskadi/pharmacy.json",
+        "library": "pois-euskadi/library.json",
+        "sports": "pois-euskadi/sports.json",
+        "food": "pois-euskadi/food.json",
+        "lodging": "pois-euskadi/lodging.json",
+        "hostel": "pois-euskadi/hostel.json",
+        "camping": "pois-euskadi/camping.json",
+        "nature": "pois-euskadi/nature.json",
+        "peaks": "pois-euskadi/peaks.json",
+        "ev": "processed/pois/ev.json",
+        "cameras": "processed/pois/cameras.json",
+        "metro": "processed/pois/metro.json",
+        "euskotren": "processed/pois/euskotren.json",
+        "cercanias": "processed/pois/cercanias.json",
+        "bilbobus": "processed/pois/bilbobus.json",
+        "bizkaibus": "processed/pois/bizkaibus.json",
+    }
 
 
 def load_datasets() -> dict[str, list[dict]]:

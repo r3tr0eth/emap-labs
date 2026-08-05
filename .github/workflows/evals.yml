@@ -18,10 +18,9 @@ jobs:
           cache: pip
           cache-dependency-path: evals/requirements.txt
       - run: pip install pyyaml
-      # umbrales = resultado actual − margen de ruido; si bajan, algo se rompió.
-      # Rebajados conscientemente 2026-07-09: corpus 117→133 casos y 13→21
-      # capas (euskadi-places) — el held-out es más duro para todos (detalle
-      # en evals/README.md).
+      # Umbrales = resultado medido − margen de ruido; si bajan, algo se rompió.
+      # Actualizados 2026-08-05: corpus curado (v1, 139 casos) desplegado con
+      # e5-large en 22 capas. Baseline no usa modelo → inmutable.
       - run: python evals/run.py --retriever baseline --lang es --min-pass 70
       - run: python evals/run.py --retriever baseline --lang eu --min-pass 66
       - run: python evals/run.py --retriever baseline --lang es --split heldout --min-pass 57
@@ -37,16 +36,29 @@ jobs:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: evals/requirements.txt
-      - name: Caché del modelo de embeddings
+      - name: Caché de modelos de embeddings (minilm + e5-large)
         uses: actions/cache@v4
         with:
           path: ~/.cache/fastembed
-          key: fastembed-minilm-multilingual-v1
+          key: fastembed-models-${{ hashFiles('evals/requirements.txt') }}
+          restore-keys: fastembed-models-
       - run: pip install -r evals/requirements.txt
-      # OJO 2026-07-09: con 21 capas el híbrido PIERDE el held-out ES contra
-      # el baseline (58 vs 60) — criterio de despliegue roto; prod sigue en
-      # 13 capas (env fijado en service/deploy.sh). Estos gates vigilan
-      # regresión del estado medido, no aprueban despliegue.
+      # MiniLM (modelo legacy, 2026-08-05): vigila regresión del baseline
+      # semántico. Ya no es el modelo de producción (e5-large), pero si estos
+      # gates caen, algo se rompió en el harness o los datos.
+      # Medido 2026-08-05: es=76%, eu=71% dev; es=58%, eu=63% heldout.
+      - run: python evals/run.py --retriever hybrid --lang es --min-pass 73
+      - run: python evals/run.py --retriever hybrid --lang eu --min-pass 68
       - run: python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 55
-      - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 63
-      - run: python evals/run.py --retriever hybrid --lang es --min-pass 78
+      - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 60
+      # e5-large (modelo en producción desde 2026-08-05): 22 capas, calibración
+      # τ=0.80, tie=0.01. Medido: es=76%, eu=71% dev; es=73%, eu=71% heldout.
+      # Gate principal: si el heldout cae, el modelo o los datos han empeorado.
+      - name: Eval e5-large (gate de producción)
+        env:
+          EMAP_EMBED_MODEL: intfloat/multilingual-e5-large
+        run: |
+          python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 70
+          python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 68
+          python evals/run.py --retriever hybrid --lang es --min-pass 73
+          python evals/run.py --retriever hybrid --lang eu --min-pass 68

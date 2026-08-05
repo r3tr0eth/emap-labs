@@ -97,15 +97,16 @@ CATEGORY_TEXT = {
     "food": ("Restaurante, sidrería, asador o bodega: comida o cena de "
              "restaurante, menú del día. Jatetxea, sagardotegia, "
              "erretegia: jatetxeko bazkaria edo afaria, eguneko menua."),
-    "lodging": ("Hotel, pensión o agroturismo: dormir, pasar la noche, "
-                "reservar habitación para alojarse. Hotela, pentsioa, "
-                "nekazalturismoa: lo egin, gaua pasatu, gela erreserbatu, "
-                "ostatu hartu."),
+    "lodging": ("Hotel, pensión o agroturismo: alojarse en habitación con "
+                "cama, reservar una habitación, pasar la noche en un hotel. "
+                "Hotela, pentsioa, nekazalturismoa: gela erreserbatu, ostatu "
+                "hartu, lo egin ohean, gaua pasatu hotelan."),
     "hostel": ("Albergue de peregrinos o juvenil: litera en dormitorio "
                "compartido. Aterpetxea: erromesen aterpea, litera logela "
                "partekatuan."),
-    "camping": ("Camping: parcela para tienda de campaña o bungalow. "
-                "Kanpina: kanpin-dendarako partzela, bungalowa."),
+    "camping": ("Camping al aire libre: parcela para tienda de campaña o "
+                "bungalow. Kanpina: zelaia kanpina, dendarako partzela, "
+                "bungalowa."),
     "nature": ("Espacio natural protegido: parque natural, biotopo, marisma, "
                "humedal con aves. Naturgune babestua: natur parkea, "
                "biotopoa, padura, hezegunea."),

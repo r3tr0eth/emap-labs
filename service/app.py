@@ -24,6 +24,7 @@ from fastapi.responses import JSONResponse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "evals"))
 from semantic_local import HybridRetriever  # noqa: E402
+from fastembed.rerank.cross_encoder import TextCrossEncoder  # noqa: E402
 
 from emap_geo.distance import haversine_m  # noqa: E402
 
@@ -56,8 +57,9 @@ LAYER_FILES = {
     "bizkaibus": "processed/pois/bizkaibus.json",
 }
 
-app = FastAPI(title="emap-labs semantic", version="0.1")
+app = FastAPI(title="emap-labs semantic", version="0.2")
 _retriever: HybridRetriever | None = None
+_reranker: TextCrossEncoder | None = None
 _counts: dict[str, int] = {}
 _datasets: dict[str, list[dict]] = {}
 _units: list[dict] = []  # barrios/distritos/municipios con anillos (lat,lon)
@@ -97,8 +99,10 @@ def load() -> None:
                            "bbox": (min(lats), min(lons), max(lats), max(lons))})
     # Construir grupos para KD-tree (explain-place).
     _GROUP_LAYERS.update({"rail": RAIL, "bus": BUS, "toilets": ("toilets",)})
+    # Reranker multilingüe (jina-reranker-v2). Modelo ONNX, ~1.1 GB en disco.
+    _reranker = TextCrossEncoder("jinaai/jina-reranker-v2-base-multilingual")
     print(f"semantic listo: {sum(_counts.values())} POIs en {len(_counts)} capas, "
-          f"{len(_units)} unidades administrativas")
+          f"{len(_units)} unidades administrativas, reranker cargado")
 
 
 @app.get("/healthz")
@@ -137,6 +141,21 @@ def _rate_check(ip: str) -> bool:
     return True
 
 
+def _rerank(query: str, results: list[dict], k: int) -> list[dict]:
+    """Re-ordena resultados con cross-encoder multilingüe. El reranker recibe
+    (query, texto_del_poi) y devuelve scores; nos quedamos con los top-k.
+    El texto del POI: nombre en ambos idiomas + tags (lo más representativo)."""
+    if not results or _reranker is None:
+        return results[:k]
+    docs = []
+    for r in results:
+        name = r["name"] if isinstance(r["name"], str) else r["name"].get("es", "")
+        docs.append(name)
+    scores = list(_reranker.rerank(query, docs))
+    scored = sorted(zip(scores, results), key=lambda x: x[0], reverse=True)
+    return [r for _, r in scored[:k]]
+
+
 @app.get("/search")
 def search(
     request: Request,
@@ -154,7 +173,9 @@ def search(
         })
     t0 = time.monotonic()
     anchor = {"lat": lat, "lon": lon} if lat is not None and lon is not None else None
-    results = _retriever.retrieve(q, anchor, k=k)
+    # Recuperar más candidatos de los necesarios para que el reranker elija.
+    candidates = _retriever.retrieve(q, anchor, k=min(k * 4, 20))
+    results = _rerank(q, candidates, k)
     out = []
     for r in results:
         item = {"id": r["id"], "name": r["name"], "lat": r["lat"], "lon": r["lon"],
@@ -166,7 +187,8 @@ def search(
         "query": q,
         "abstained": not out,  # no inventamos: sin categoría clara, vacío
         "results": out,
-        "retriever": _retriever.name,
+        "retriever": f"{_retriever.name}+rerank",
+        "reranked": len(candidates) > k,
         "took_ms": round((time.monotonic() - t0) * 1000),
         "attribution": "© OpenStreetMap contributors (ODbL) · Open Data Euskadi",
     }

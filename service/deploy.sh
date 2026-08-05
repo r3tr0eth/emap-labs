@@ -19,7 +19,9 @@ rsync -az "$NEXT/data/processed/neighborhoods/neighborhoods.json" "$HOST:/opt/em
 echo "→ venv + dependencias"
 ssh "$HOST" 'cd /opt/emap-labs && [ -d .venv ] || python3 -m venv .venv
   ./.venv/bin/pip install -q --upgrade pip
-  ./.venv/bin/pip install -q fastembed fastapi "uvicorn[standard]" numpy scipy ./geo'
+  ./.venv/bin/pip install -q fastembed fastapi "uvicorn[standard]" numpy scipy ./geo
+  # fastembed con soporte de rerank (ONNX). Misma versión, reclama el extra.
+  # Si ya estaba instalado sin rerank, esto lo amplía.'
 
 echo "→ systemd"
 ssh "$HOST" 'cat > /etc/systemd/system/emap-semantic.service <<UNIT

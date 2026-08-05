@@ -7,25 +7,25 @@
     "sim_threshold": 0.5,
     "tie_window": 0.03
   },
-  "n_corpus_cases": 54,
+  "n_corpus_cases": 77,
   "date": "2026-08-05",
   "corpus": 1,
   "total": {
-    "pass": 39,
-    "cases": 53
+    "pass": 49,
+    "cases": 76
   },
   "by_intent": {
     "nearest": {
-      "pass": 6,
-      "cases": 6
+      "pass": 7,
+      "cases": 7
     },
     "semantic": {
-      "pass": 22,
-      "cases": 32
+      "pass": 29,
+      "cases": 51
     },
     "transit": {
-      "pass": 7,
-      "cases": 9
+      "pass": 9,
+      "cases": 12
     },
     "attribute": {
       "pass": 4,
@@ -143,7 +143,7 @@
       "pass": true,
       "hit_at_k": true,
       "reason": null,
-      "detail": "top1=Cortefiel S. A."
+      "detail": "top1=Kutxabank, S. A."
     },
     {
       "id": "ho-nadar-larrabasterra",
@@ -447,6 +447,185 @@
       "pass": false,
       "reason": "inventa",
       "detail": "inventa: Aseo Público Autolimpiable Parque de los Enamorados"
+    },
+    {
+      "id": "ho2-farmacia-cerca-abando",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Berastegui Kalea/Calle 1)"
+    },
+    {
+      "id": "ho2-biblioteca-estudio",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Bilbao - Biblioteca Municipal de Deusto"
+    },
+    {
+      "id": "ho2-piscina-municipal",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=C.Pr. HIJAS DE LA CARIDAD-N. SRA DE BEGOÑA"
+    },
+    {
+      "id": "ho2-restaurante-menu",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Víctor"
+    },
+    {
+      "id": "ho2-hostel-barato",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=BARRIKA SURF CAMP ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-camping-naturaleza",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=ARRIEN ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-parque-natural",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Biotopo Protegido Complejo Lagunar de Laguardia ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-cima-subir",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (fountains)",
+      "detail": "top1=Fuente de la Mujer ✗ categoria_equivocada (fountains)"
+    },
+    {
+      "id": "ho2-monte-conocido",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Aketegi ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-bilbobus-parada",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=SAN MAMÉS"
+    },
+    {
+      "id": "ho2-bizkaibus-bermeo",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=BIZKAI (4086) ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-eu-berrikuntza",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Moyua"
+    },
+    {
+      "id": "ho2-fountain-mascota",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Fuente de la Mujer ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-aseo-cambiador",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-parking-motos",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento"
+    },
+    {
+      "id": "ho2-defib-trabajo",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Ayuntamiento De Portugalete ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-ev-enchufe-rapido",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking instituto Unamuno"
+    },
+    {
+      "id": "ho2-playa-perro",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Playa"
+    },
+    {
+      "id": "ho2-guarderia",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Fuente de la Mujer"
+    },
+    {
+      "id": "ho2-cajero-cerca",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aseo Público Autolimpiable Parque de los Enamorados"
+    },
+    {
+      "id": "ho2-oficina-correos",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aseo Público Autolimpiable Parque de los Enamorados"
+    },
+    {
+      "id": "ho2-mercado-barrio",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
+    },
+    {
+      "id": "ho2-cine-cerca",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aparcabicis"
     }
   ],
   "known_gaps": [

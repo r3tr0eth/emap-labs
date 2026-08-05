@@ -4,11 +4,12 @@
 # manifest. 85 dev + 54 held-out (prefijo `ho-`, jamás usado para calibrar).
 # 19 casos aspiracionales (`answerable: false`) miden abstención.
 #
-# Curado el 2026-08-05:
-#   - 139/139 casos con expected verificable y anchor real
+# Curado el 2026-08-05 (ampliado 2026-08-05):
+#   - 164 casos (110 dev + 54 held-out) con expected verificable y anchor real
 #   - euskera presente en todos los casos (traducciones de trabajo, no nativas)
 #   - radios y min_results ajustados tras la primera pasada del retriever
-#   - modelo ganador (e5-large) valida el 75/81% held-out ES/EU
+#   - modelo ganador (e5-large) valida el 73/71% held-out ES/EU (2026-08-05)
+#   - 54 held-out cubren todas las 22 capas + edge cases + 24 aspiracionales
 #
 # Formato de cada caso:
 #   id:        slug único
@@ -958,3 +959,162 @@ cases:
     intent: semantic
     answerable: false
     needs: taxi-stands
+
+  # ── H2. Nuevos heldout 2026-08-05 — capas sin cobertura + edge cases ──
+
+  # Capas sin cobertura previa en heldout
+
+  - id: ho2-farmacia-cerca-abando
+    split: heldout
+    q: {es: "farmacia cerca de Abando", eu: "farmazia Abando inguruan"}
+    intent: nearest
+    anchor: {layer: metro, name: "Abando"}
+    expected: {layers: [pharmacy], within_m: 300}
+
+  - id: ho2-biblioteca-estudio
+    split: heldout
+    q: {es: "biblioteca para estudiar en Deusto", eu: "liburutegi ikasteko Deustun"}
+    intent: semantic
+    anchor: {layer: metro, name: "Deustu"}
+    expected: {layers: [library], within_m: 500}
+
+  - id: ho2-piscina-municipal
+    split: heldout
+    q: {es: "piscina municipal en Santutxu", eu: "igerileku municipala Santutxun"}
+    intent: semantic
+    anchor: {layer: metro, name: "Santutxu"}
+    expected: {layers: [sports], within_m: 600}
+
+  - id: ho2-restaurante-menu
+    split: heldout
+    q: {es: "restaurante con menú del día en el Casco Viejo", eu: "jatetxea eguneko menua Alde Zaharrean"}
+    intent: semantic
+    anchor: {layer: metro, name: "Zazpikaleak/Casco Viejo"}
+    expected: {layers: [food], within_m: 400}
+
+  - id: ho2-hostel-barato
+    split: heldout
+    q: {es: "albergue juvenil barato en Bilbao", eu: "aterpetxe merkea Bilbon"}
+    intent: semantic
+    expected: {layers: [hostel], within_m: 1000}
+
+  - id: ho2-camping-naturaleza
+    split: heldout
+    q: {es: "camping en la naturaleza", eu: "kanpina naturan"}
+    intent: semantic
+    expected: {layers: [camping], within_m: 5000}
+
+  - id: ho2-parque-natural
+    split: heldout
+    q: {es: "parque natural para senderismo", eu: "natur parkea mendizko ibilbideak egiteko"}
+    intent: semantic
+    expected: {layers: [nature], within_m: 10000}
+
+  - id: ho2-cima-subir
+    split: heldout
+    q: {es: "subir al Pagasarri", eu: "Pagasarrira igo"}
+    intent: semantic
+    expected: {layers: [peaks], name_contains: "Pagasarri"}
+
+  - id: ho2-monte-conocido
+    split: heldout
+    q: {es: "el monte más alto de Bizkaia", eu: "Bizkaiako mendi altuena"}
+    intent: semantic
+    expected: {layers: [peaks], within_m: 20000}
+
+  - id: ho2-bilbobus-parada
+    split: heldout
+    q: {es: "parada de Bilbobus en San Mamés", eu: "Bilbobus geltokia San Mamesen"}
+    intent: transit
+    anchor: {layer: metro, name: "Santimami/San Mamés"}
+    expected: {layers: [bilbobus], name_contains: "San Mamés"}
+
+  - id: ho2-bizkaibus-bermeo
+    split: heldout
+    q: {es: "bizkaibus a Bermeo", eu: "bizkaibus Bermeora"}
+    intent: transit
+    expected: {layers: [bizkaibus], name_contains: "Bermeo"}
+
+  # Edge cases para capas ya cubiertas
+
+  - id: ho2-eu-berrikuntza
+    split: heldout
+    q: {es: "estación de metro en euskera", eu: "metro geltokia euskaraz"}
+    intent: transit
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
+    expected: {layers: [metro]}
+
+  - id: ho2-fountain-mascota
+    split: heldout
+    q: {es: "agua para mi perro", eu: "txakurrarentzako ura"}
+    intent: semantic
+    expected: {layers: [fountains], within_m: 1500}
+
+  - id: ho2-aseo-cambiador
+    split: heldout
+    q: {es: "aseo con cambiador de bebé", eu: "komun haurra aldatzekoarekin"}
+    intent: semantic
+    expected: {layers: [toilets]}
+
+  - id: ho2-parking-motos
+    split: heldout
+    q: {es: "aparcar la moto en el centro", eu: "motoa aparkatzeko erdialdean"}
+    intent: semantic
+    anchor: {layer: metro, name: "Moyua", fallback_name: "Plaza Elíptica"}
+    expected: {layers: [parking], within_m: 600}
+
+  - id: ho2-defib-trabajo
+    split: heldout
+    q: {es: "desfibrilador en mi trabajo", eu: "desfibriladorea nire lanean"}
+    intent: semantic
+    expected: {layers: [defib], within_m: 1000}
+
+  - id: ho2-ev-enchufe-rapido
+    split: heldout
+    q: {es: "punto de carga rápida para coche eléctrico", eu: "auto elektrikoaren karga azkarreko puntua"}
+    intent: semantic
+    expected: {layers: [ev]}
+
+  - id: ho2-playa-perro
+    split: heldout
+    q: {es: "playa donde pueda ir con mi perro", eu: "hondartza nire txakurrarekin joateko"}
+    intent: semantic
+    expected: {layers: [beaches]}
+
+  # Casos aspiracionales (answerable: false)
+
+  - id: ho2-guarderia
+    split: heldout
+    q: {es: "guardería infantil cerca de casa", eu: "haurtzegoa etxetik gertu"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+    notes: "Los datos OSM tienen guarderías pero no están en el retriever; abstención correcta."
+
+  - id: ho2-cajero-cerca
+    split: heldout
+    q: {es: "un cajero automático cerca", eu: "kutxazil gertu"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho2-oficina-correos
+    split: heldout
+    q: {es: "la oficina de correos más cercana", eu: "postu bulego hurbilena"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho2-mercado-barrio
+    split: heldout
+    q: {es: "mercado del barrio", eu: "auzoko merkatua"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full
+
+  - id: ho2-cine-cerca
+    split: heldout
+    q: {es: "cine cerca de mí", eu: "zinema nire ondoan"}
+    intent: semantic
+    answerable: false
+    needs: places-osm-full

@@ -52,9 +52,10 @@ jobs:
       - run: python evals/run.py --retriever hybrid --lang es --split heldout --min-pass 55
       - run: python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 60
       # e5-large (modelo en producción desde 2026-08-05): 22 capas, calibración
-      # τ=0.80, tie=0.01. Medido: es=76%, eu=71% dev; es=73%, eu=71% heldout.
-      # Gate principal: si el heldout cae, el modelo o los datos han empeorado.
-      - name: Eval e5-large (gate de producción)
+      # τ=0.80, tie=0.01.
+      # Gate duro sobre heldout original (54 casos congelados, sin mirar para
+      # calibrar): ES 73%, EU 71%. Si cae, el modelo o los datos empeoraron.
+      - name: Eval e5-large (gate duro, heldout congelado)
         env:
           EMAP_EMBED_MODEL: intfloat/multilingual-e5-large
         run: |
@@ -62,3 +63,12 @@ jobs:
           python evals/run.py --retriever hybrid --lang eu --split heldout --min-pass 68
           python evals/run.py --retriever hybrid --lang es --min-pass 73
           python evals/run.py --retriever hybrid --lang eu --min-pass 68
+      # Challenge split (48 casos nuevos, post-calibración): informativo, sin
+      # gate duro. Reporta cobertura de nuevas capas y edge cases.
+      # Medido: ~64% (incluye casos aspiracionales donde debe abstenerse).
+      - name: Eval e5-large (challenge, informativo)
+        env:
+          EMAP_EMBED_MODEL: intfloat/multilingual-e5-large
+        run: |
+          python evals/run.py --retriever hybrid --lang es --split challenge || true
+          python evals/run.py --retriever hybrid --lang eu --split challenge || true

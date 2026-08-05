@@ -196,9 +196,12 @@ def main() -> int:
     ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--min-pass", type=float, default=None,
                     help="%% mínimo de aciertos; por debajo, exit 1 (gate de CI)")
-    ap.add_argument("--split", default="dev", choices=["dev", "heldout", "all"],
-                    help="dev: casos de desarrollo (default). heldout: solo los "
-                         "reservados — NO calibrar nada mirándolos.")
+    ap.add_argument("--split", default="dev",
+                    choices=["dev", "heldout", "challenge", "all"],
+                    help="dev: casos de desarrollo (default). heldout: split "
+                         "original congelado — gate duro. challenge: casos "
+                         "nuevos añadidos post-calibración — informativo. "
+                         "all: todos los casos.")
     args = ap.parse_args()
 
     corpus = yaml.safe_load((LABS / "evals/semantic-golden-v0.yaml").read_text())

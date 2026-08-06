@@ -147,13 +147,15 @@ async def plan_route(from_lat: float, from_lon: float, to_lat: float,
 
 @mcp.tool()
 async def plan_hike(lat: float, lon: float, max_stop_dist_m: int = 2000,
-                    min_ele_m: int = 0, max_results: int = 5) -> dict:
+                    min_ele_m: int = 0, max_results: int = 5,
+                    date: str | None = None,
+                    start_time: str = "08:00") -> dict:
     """El monte en transporte público: cimas de Euskadi (2.825, OSM)
-    alcanzables por transporte — para cada candidata, su parada/estación
-    más cercana entre 9 redes. · Mendia garraio publikoz: tontor
-    iritsgarriak. · Peak-bagging by public transport. HONESTO: distancias
-    en línea recta, no ruta a pie; usa plan_route hasta la parada para el
-    trayecto real."""
+    alcanzables por transporte. Para cada candidata, planificación real con
+    horarios GTFS: ida (transit+walk), tiempo de ascenso, regreso verificable.
+    · Mendia garraio publikoz: tontor iritsgarriak planifikatuta.
+    · Peak-bagging by public transport. Con horarios reales."""
+    # Obtener candidatas (distancia linea recta como filtro inicial)
     async with httpx.AsyncClient(timeout=25) as c:
         r = await c.get(f"{API}/data/processed/mendi/peaks-transit.json")
         r.raise_for_status()
@@ -164,11 +166,31 @@ async def plan_hike(lat: float, lon: float, max_stop_dist_m: int = 2000,
     for i in cands:
         i["dist_from_you_m"] = int(_hav_m(lat, lon, i["lat"], i["lon"]))
     cands.sort(key=lambda i: i["dist_from_you_m"])
+    top = cands[:max(1, min(max_results, 20))]
+
+    # Planificar cada candidata con el motor de horarios reales
+    planned = []
+    async with httpx.AsyncClient(timeout=30) as c:
+        for cand in top:
+            peak_name = cand["peak"]["es"]
+            try:
+                resp = await c.get(
+                    f"{API}/semantic/hike-plan",
+                    params={"peak": peak_name, "from_lat": lat,
+                            "from_lon": lon, "date": date or "",
+                            "start_time": start_time},
+                    timeout=25,
+                )
+                plan = resp.json()
+                planned.append(plan)
+            except Exception:
+                planned.append({"ok": False, "peak": cand["peak"]})
+
     return _out({
-        "method": cross.get("method"),
-        "candidates": cands[:max(1, min(max_results, 20))],
-        "hint": ("usa plan_route(mode='transit') hasta la parada de la "
-                 "candidata para el cómo-llegar real"),
+        "method": "otp-transit-walk + gtfs-schedules",
+        "hike_plans": planned,
+        "hint": ("Los horarios son orientativos. Verifica con la operadora "
+                 "antes de salir."),
     })
 
 

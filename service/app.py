@@ -31,6 +31,7 @@ from emap_geo.distance import haversine_m  # noqa: E402
 from explain import explain_detection, explain_result, _load_source  # noqa: E402
 from hike_planner import plan_hike  # noqa: E402
 from accessibility import plan_accessible_route, find_accessible_pois  # noqa: E402
+from isochrones import compute_isochrone, find_pois_in_isochrone  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 
@@ -274,6 +275,19 @@ def accessible_pois(lat: float, lon: float, radius: int = 1000,
     dlon = radius / (111000 * math.cos(math.radians(lat)))
     bbox = (lat - dlat, lon - dlon, lat + dlat, lon + dlon)
     return {"pois": find_accessible_pois(bbox, poi_type), "count": 0}
+
+
+@app.get("/isochrone")
+def isochrone(lat: float, lon: float, minutes: int = 15,
+              profile: str = "car", include_pois: bool = True):
+    """Calcula isócrona: área alcanzable en X minutos.
+
+    Perfiles: car, foot, bike.
+    Si include_pois=true, incluye infraestructura alcanzable.
+    """
+    if include_pois:
+        return find_pois_in_isochrone(lat, lon, minutes, profile)
+    return compute_isochrone(lat, lon, minutes, profile)
 
 
 RAIL = ("metro", "euskotren", "cercanias")

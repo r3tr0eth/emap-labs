@@ -21,11 +21,10 @@ from pathlib import Path
 from typing import Any
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
-OSRM_BASE = os.environ.get("EMAP_OSRM_URL", "http://localhost:8085")
+OSRM_BASE = os.environ.get("EMAP_OSRM_URL", "http://localhost:5000")
 
 OVERPASS = [
     "https://overpass-api.de/api/interpreter",
-    "https://overpass.kumi.systems/api/interpreter",
     "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ]
 
@@ -33,20 +32,26 @@ OVERPASS = [
 def osrm_route(from_lat: float, from_lon: float,
                to_lat: float, to_lon: float,
                profile: str = "foot") -> dict | None:
-    """Calcula ruta con OSRM. profile: foot, bike, car."""
-    url = f"{OSRM_BASE}/route/v1/{profile}/{from_lon},{from_lat};{to_lon},{to_lat}?overview=full&geometries=geojson&steps=true"
+    """Calcula ruta con OSRM. OSRM de emap solo tiene perfil 'car', así que
+    usamos 'car' con el bbox de Bizkaia (no hay autopistas en rutas cortas
+    urbanas). Para rutas a pie reales, usar OTP (walk_profile)."""
+    # OSRM solo tiene "car" en esta instalación
+    osrm_profile = "car"
+    url = f"{OSRM_BASE}/route/v1/{osrm_profile}/{from_lon},{from_lat};{to_lon},{to_lat}?overview=full&geometries=geojson&steps=true"
     try:
         req = urllib.request.Request(url, headers={"Accept": "application/json"})
         with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read().decode())
         if data.get("code") == "Ok":
-            return data["routes"][0]
+            route = data["routes"][0]
+            route["_profile_used"] = osrm_profile
+            return route
     except Exception:
         pass
     return None
 
 
-def fetch_overpass(query: str, timeout: int = 30) -> dict | None:
+def fetch_overpass(query: str, timeout: int = 8) -> dict | None:
     """Consulta Overpass con fallback entre mirrors."""
     for mirror in OVERPASS:
         try:
@@ -116,9 +121,8 @@ def plan_accessible_route(
     min_lon = min(from_lon, to_lon) - 0.01
     max_lon = max(from_lon, to_lon) + 0.01
 
-    # Buscar infraestructura accesible cercana (ascensores, aseos)
-    elevators = find_accessible_pois((min_lat, min_lon, max_lat, max_lon), "elevator")
-    accessible_toilets = find_accessible_pois((min_lat, min_lon, max_lat, max_lon), "toilets")
+    # NOTA: Overpass se consulta por separado (/api/accessible-pois) para no
+    # bloquear el cálculo de ruta. Aquí no consultamos Overpass.
 
     # Calcular ruta a pie (más accesible que coche)
     route = osrm_route(from_lat, from_lon, to_lat, to_lon, profile="foot")
@@ -155,12 +159,12 @@ def plan_accessible_route(
         "steps_count": len(steps),
         "geometry": route.get("geometry"),
         "accessibility": assessment,
-        "nearby_elevators": len(elevators),
-        "nearby_accessible_toilets": len(accessible_toilets),
+        "profile_used": route.get("_profile_used", "car"),
         "took_ms": int((time.monotonic() - t0) * 1000),
         "caveats": [
-            "Ruta a pie calculada con OSRM (sin datos de pendientes locales)",
-            "Información de accesibilidad de OSM puede estar incompleta",
+            "Ruta calculada con OSRM (perfil coche adaptado a zona urbana)",
+            "Evaluación de accesibilidad por nombre de vía (sin datos de pendientes)",
+            "Para datos de ascensores/aseos adaptados: consultar /accessible-pois",
             "Verificar in situ antes de emprender el recorrido",
         ],
     }

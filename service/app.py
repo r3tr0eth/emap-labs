@@ -30,7 +30,7 @@ from fastembed.rerank.cross_encoder import TextCrossEncoder  # noqa: E402
 from emap_geo.distance import haversine_m  # noqa: E402
 from explain import explain_detection, explain_result, _load_source  # noqa: E402
 from hike_planner import plan_hike  # noqa: E402
-from accessibility import plan_accessible_route  # noqa: E402
+from accessibility import plan_accessible_route, find_accessible_pois  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 
@@ -252,12 +252,28 @@ def hike_plan(peak: str, from_lat: float, from_lon: float,
 def accessible_route(from_lat: float, from_lon: float,
                      to_lat: float, to_lon: float,
                      profile: str = "wheelchair"):
-    """Calcula una ruta accesible a pie.
+    """Calcula una ruta accesible.
 
     Perfiles: wheelchair, stroller, reduced_mobility.
     Devuelve distancia, duración, pasos y evaluación de accesibilidad.
     """
     return plan_accessible_route(from_lat, from_lon, to_lat, to_lon, profile)
+
+
+@app.get("/accessible-pois")
+def accessible_pois(lat: float, lon: float, radius: int = 1000,
+                    poi_type: str = "toilets"):
+    """Busca POIs accesibles cercanos vía Overpass.
+
+    poi_type: toilets, elevator, pharmacy.
+    Radio en metros (default 1000).
+    """
+    import math
+    # Convertir radio en grados aprox
+    dlat = radius / 111000
+    dlon = radius / (111000 * math.cos(math.radians(lat)))
+    bbox = (lat - dlat, lon - dlon, lat + dlat, lon + dlon)
+    return {"pois": find_accessible_pois(bbox, poi_type), "count": 0}
 
 
 RAIL = ("metro", "euskotren", "cercanias")

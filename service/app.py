@@ -29,6 +29,7 @@ from fastembed.rerank.cross_encoder import TextCrossEncoder  # noqa: E402
 
 from emap_geo.distance import haversine_m  # noqa: E402
 from explain import explain_detection, explain_result, _load_source  # noqa: E402
+from hike_planner import plan_hike  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 
@@ -230,6 +231,20 @@ def search(
         "took_ms": round((time.monotonic() - t0) * 1000),
         "attribution": "© OpenStreetMap contributors (ODbL) · Open Data Euskadi",
     }
+
+
+@app.get("/hike-plan")
+def hike_plan(peak: str, from_lat: float, from_lon: float,
+              date: str | None = None, start_time: str = "08:00"):
+    """Planifica una excursión al monte en transporte público.
+
+    Args:
+        peak: nombre de la cima (ES o EU)
+        from_lat, from_lon: punto de origen
+        date: fecha ISO (default: hoy)
+        start_time: hora de salida HH:MM (default: 08:00)
+    """
+    return plan_hike(peak, from_lat, from_lon, date, start_time)
 
 
 RAIL = ("metro", "euskotren", "cercanias")

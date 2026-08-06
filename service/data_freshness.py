@@ -1,0 +1,193 @@
+"""Frescura y confianza del dato.
+
+Cada POI y capa debería decir:
+- cuándo se actualizó por última vez
+- fuente y licencia
+- confianza/frescura del dato
+- si puede estar obsoleto
+"""
+from __future__ import annotations
+
+import json
+import os
+import time
+from datetime import date, datetime, timedelta
+from pathlib import Path
+from typing import Any
+
+DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
+
+# SLA por tipo de dato (días antes de considerar obsoleto)
+DEFAULT_SLA_DAYS = {
+    "fountains": 365,       # infraestructura estable
+    "toilets": 365,
+    "parking": 180,
+    "bikepark": 180,
+    "defib": 90,            # DEA: mantenimiento crítico
+    "beaches": 7,           # playas: temporada
+    "pharmacy": 90,
+    "library": 180,
+    "sports": 180,
+    "food": 90,             # restaurantes cambian
+    "lodging": 180,
+    "hostel": 180,
+    "camping": 90,
+    "nature": 365,
+    "peaks": 365,           # cimas no cambian
+    "ev": 90,               # puntos de carga cambian
+    "cameras": 30,          # cámaras: verificación frecuente
+    "metro": 365,
+    "euskotren": 365,
+    "cercanias": 365,
+    "bilbobus": 180,
+    "bizkaibus": 180,
+}
+
+
+def check_layer_freshness(layer: str) -> dict:
+    """Comprueba la frescura de una capa."""
+    path = _layer_path(layer)
+    if not path or not path.exists():
+        return {
+            "layer": layer,
+            "status": "missing",
+            "path": str(path) if path else None,
+        }
+
+    try:
+        doc = json.loads(path.read_text())
+    except Exception as e:
+        return {
+            "layer": layer,
+            "status": "corrupt",
+            "error": str(e),
+        }
+
+    # Extraer metadatos
+    generated = doc.get("generated") or doc.get("updated") or doc.get("last_updated")
+    source = doc.get("source") or doc.get("source_id", "unknown")
+    license_ = doc.get("license", "unknown")
+    count = doc.get("count") or len(doc.get("pois", []))
+
+    # Calcular edad
+    age_days = None
+    stale = None
+    if generated:
+        try:
+            gen_date = datetime.fromisoformat(generated.replace("Z", "+00:00")).date()
+            age_days = (date.today() - gen_date).days
+            sla = DEFAULT_SLA_DAYS.get(layer, 180)
+            stale = age_days > sla
+        except Exception:
+            pass
+
+    # Determinar estado
+    if age_days is None:
+        status = "unknown_date"
+    elif stale:
+        status = "stale"
+    elif age_days < 7:
+        status = "fresh"
+    else:
+        status = "ok"
+
+    return {
+        "layer": layer,
+        "status": status,
+        "count": count,
+        "source": source,
+        "license": license_,
+        "generated": generated,
+        "age_days": age_days,
+        "sla_days": DEFAULT_SLA_DAYS.get(layer, 180),
+        "stale": stale,
+    }
+
+
+def _layer_path(layer: str) -> Path | None:
+    """Resuelve ruta de una capa."""
+    rel_paths = {
+        "fountains": "pois-euskadi/fountains.json",
+        "toilets": "pois-euskadi/toilets.json",
+        "parking": "pois-euskadi/parking.json",
+        "bikepark": "pois-euskadi/bikepark.json",
+        "defib": "pois-euskadi/defib.json",
+        "beaches": "pois-euskadi/beaches.json",
+        "pharmacy": "pois-euskadi/pharmacy.json",
+        "library": "pois-euskadi/library.json",
+        "sports": "pois-euskadi/sports.json",
+        "food": "pois-euskadi/food.json",
+        "lodging": "pois-euskadi/lodging.json",
+        "hostel": "pois-euskadi/hostel.json",
+        "camping": "pois-euskadi/camping.json",
+        "nature": "pois-euskadi/nature.json",
+        "peaks": "pois-euskadi/peaks.json",
+        "ev": "processed/pois/ev.json",
+        "cameras": "processed/pois/cameras.json",
+        "metro": "processed/pois/metro.json",
+        "euskotren": "processed/pois/euskotren.json",
+        "cercanias": "processed/pois/cercanias.json",
+        "bilbobus": "processed/pois/bilbobus.json",
+        "bizkaibus": "processed/pois/bizkaibus.json",
+    }
+    rel = rel_paths.get(layer)
+    return DATA_DIR / rel if rel else None
+
+
+def quality_report(layers: list[str] | None = None) -> dict:
+    """Genera informe de calidad de todas las capas."""
+    if layers is None:
+        layers = sorted(DEFAULT_SLA_DAYS.keys())
+
+    t0 = time.monotonic()
+    report = []
+    status_counts: dict[str, int] = {}
+
+    for layer in layers:
+        info = check_layer_freshness(layer)
+        report.append(info)
+        s = info.get("status", "?")
+        status_counts[s] = status_counts.get(s, 0) + 1
+
+    # Score global (0-100)
+    total = len(report)
+    fresh = status_counts.get("fresh", 0) + status_counts.get("ok", 0)
+    score = round(fresh / total * 100, 1) if total else 0
+
+    return {
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "score": score,
+        "total_layers": total,
+        "status_counts": status_counts,
+        "layers": report,
+        "stale_layers": [r["layer"] for r in report if r.get("stale")],
+        "took_ms": int((time.monotonic() - t0) * 1000),
+    }
+
+
+def poi_freshness(poi: dict) -> dict:
+    """Devuelve metadatos de frescura para un POI individual."""
+    layer = poi.get("layer", poi.get("layer_id", ""))
+    info = check_layer_freshness(layer)
+
+    return {
+        "layer": layer,
+        "data_source": info.get("source"),
+        "license": info.get("license"),
+        "data_generated": info.get("generated"),
+        "data_age_days": info.get("age_days"),
+        "freshness": info.get("status"),
+        "confidence": _confidence_label(info),
+    }
+
+
+def _confidence_label(info: dict) -> str:
+    """Etiqueta de confianza legible."""
+    status = info.get("status")
+    if status == "fresh":
+        return "high"
+    if status == "ok":
+        return "medium"
+    if status == "stale":
+        return "low"
+    return "unknown"

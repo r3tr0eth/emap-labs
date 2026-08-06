@@ -32,6 +32,7 @@ from explain import explain_detection, explain_result, _load_source  # noqa: E40
 from hike_planner import plan_hike  # noqa: E402
 from accessibility import plan_accessible_route, find_accessible_pois  # noqa: E402
 from isochrones import compute_isochrone, find_pois_in_isochrone  # noqa: E402
+from data_freshness import quality_report, poi_freshness  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 
@@ -219,6 +220,7 @@ def search(
         if anchor:
             item["distance_m"] = round(haversine_m(lat, lon, r["lat"], r["lon"]))
         item["why"] = explain_result(r, q, anchor, cat_scores, threshold)
+        item["data"] = poi_freshness(r)
         out.append(item)
 
     _log_query(q, anchor, out)
@@ -288,6 +290,22 @@ def isochrone(lat: float, lon: float, minutes: int = 15,
     if include_pois:
         return find_pois_in_isochrone(lat, lon, minutes, profile)
     return compute_isochrone(lat, lon, minutes, profile)
+
+
+@app.get("/data-quality")
+def data_quality():
+    """Informe de frescura y calidad de todas las capas de datos.
+
+    Devuelve score global, conteo por estado (fresh/ok/stale/missing)
+    y detalle por capa: fuente, licencia, edad del dato, SLA.
+    """
+    return quality_report()
+
+
+@app.get("/poi-freshness")
+def poi_freshness_endpoint(layer: str):
+    """Frescura de datos para una capa específica."""
+    return poi_freshness({"layer": layer})
 
 
 RAIL = ("metro", "euskotren", "cercanias")

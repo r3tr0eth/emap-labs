@@ -30,6 +30,7 @@ from fastembed.rerank.cross_encoder import TextCrossEncoder  # noqa: E402
 from emap_geo.distance import haversine_m  # noqa: E402
 from explain import explain_detection, explain_result, _load_source  # noqa: E402
 from hike_planner import plan_hike  # noqa: E402
+from accessibility import plan_accessible_route  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 
@@ -245,6 +246,18 @@ def hike_plan(peak: str, from_lat: float, from_lon: float,
         start_time: hora de salida HH:MM (default: 08:00)
     """
     return plan_hike(peak, from_lat, from_lon, date, start_time)
+
+
+@app.get("/accessible-route")
+def accessible_route(from_lat: float, from_lon: float,
+                     to_lat: float, to_lon: float,
+                     profile: str = "wheelchair"):
+    """Calcula una ruta accesible a pie.
+
+    Perfiles: wheelchair, stroller, reduced_mobility.
+    Devuelve distancia, duración, pasos y evaluación de accesibilidad.
+    """
+    return plan_accessible_route(from_lat, from_lon, to_lat, to_lon, profile)
 
 
 RAIL = ("metro", "euskotren", "cercanias")

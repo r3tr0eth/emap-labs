@@ -1,0 +1,21 @@
+name: Tenerife
+territory: Santa Cruz de Tenerife
+languages:
+- es
+bbox:
+- -16.9
+- 28.0
+- -16.1
+- 28.6
+sources:
+  transit: configurar-fuente-gtfs
+  pois: osm-overpass
+eval_split:
+  dev: 0
+  heldout: 0
+solar_calibration:
+  model: intfloat/multilingual-e5-large
+  tau: 0.8
+  tie: 0.01
+  note: recalibrar con datos locales
+attribution: "configurar-atribuci\xF3n"

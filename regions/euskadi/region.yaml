@@ -1,0 +1,23 @@
+name: euskadi
+territory: País Vasco / Euskadi
+languages: [es, eu]
+bbox: [42.40, -3.40, 43.50, -1.60]
+sources:
+  transit: gtfs-oficiales
+  pois: osm-overpass + opendata-euskadi
+  peaks: osm-natural=peak
+  neighborhoods: osm-boundary=administrative
+eval_split:
+  dev: 85
+  heldout: 29
+  challenge: 48
+solar_calibration:
+  model: intfloat/multilingual-e5-large
+  tau: 0.80
+  tie: 0.01
+data_freshness_sla:
+  defib: 90
+  food: 90
+  beaches: 7
+  fountains: 365
+attribution: © OpenStreetMap (ODbL) + Open Data Euskadi (CC-BY-4.0) + GTFS oficiales

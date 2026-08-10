@@ -75,6 +75,16 @@ Cinco herramientas ([`mcp/`](mcp/README.md)):
     "args": ["/ruta/a/emap-labs/mcp/server.py"] } } }
 ```
 
+Remoto (sin instalar nada), registro `io.github.r3tr0eth/emap`:
+
+```json
+{ "mcpServers": { "emap": { "url": "https://gaizkajimenez.com/mcp" } } }
+```
+
+Migración de URL a dominio de producto (`emapapp.com`) en curso — detalle
+en [`mcp/README.md`](mcp/README.md). Smoke: `.venv/bin/python mcp/smoke.py
+--base https://gaizkajimenez.com --live`.
+
 Toda respuesta lleva `attribution` (ODbL + GTFS + CC-BY-4.0). Criterio de
 aceptación cumplido y verificado por protocolo: *"¿dónde dejo la bici cerca
 de San Mamés?"* → aparcabicis a 47 m, con atribución.

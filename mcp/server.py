@@ -4,7 +4,7 @@
 No existe (research 2026-07-08) un MCP que exponga inteligencia de movilidad
 hiperlocal: búsqueda semántica local bilingüe, explain-place, rutas
 multimodales y "el monte en transporte público". Este servidor envuelve los
-endpoints públicos de emap (emap-next.vercel.app) — no duplica lógica.
+endpoints públicos de emap (API de solo lectura) — no duplica lógica.
 
 Uso (stdio, p. ej. Claude Desktop):
     .venv/bin/python mcp/server.py
@@ -12,6 +12,9 @@ Uso (stdio, p. ej. Claude Desktop):
 Config Claude Desktop:
     {"mcpServers": {"emap": {"command": "<repo>/.venv/bin/python",
                              "args": ["<repo>/mcp/server.py"]}}}
+
+Remoto (streamable-http, tras nginx):
+    EMAP_MCP_TRANSPORT=streamable-http EMAP_MCP_PORT=8084 python mcp/server.py
 
 Principios heredados: NO SE FINGE (si la API no sabe, la herramienta dice
 que no sabe), atribución SIEMPRE (ODbL/GTFS/CC-BY), infraestructura jamás
@@ -26,26 +29,68 @@ from typing import Any
 import httpx
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 
-API = os.environ.get("EMAP_API_URL", "https://emap-next.vercel.app")
-ATTRIBUTION = ("emap (emap-next.vercel.app) · © OpenStreetMap (ODbL) + "
-               "GTFS oficiales + Open Data Euskadi (CC-BY-4.0)")
+VERSION = "0.1.1"
+
+# API pública de emap. Por defecto sigue el deploy actual en Vercel; cuando
+# emapapp.com sea canónico de mapa/API se cambia con EMAP_API_URL (sin
+# redeploy de código si se setea en systemd).
+API = os.environ.get("EMAP_API_URL", "https://emap-next.vercel.app").rstrip("/")
+# Marca en atribución (dominio de producto cuando exista; no es la URL del MCP).
+SITE = os.environ.get("EMAP_SITE_URL", "https://emapapp.com").rstrip("/")
+ATTRIBUTION = (
+    f"emap ({SITE.replace('https://', '').replace('http://', '')}) · "
+    "© OpenStreetMap (ODbL) + GTFS oficiales + Open Data Euskadi (CC-BY-4.0)"
+)
 
 # stdio (default, Claude Desktop local) o streamable-http (VPS, sin
 # instalación local): EMAP_MCP_TRANSPORT=streamable-http + HOST/PORT.
 TRANSPORT = os.environ.get("EMAP_MCP_TRANSPORT", "stdio")
+BIND_HOST = os.environ.get("EMAP_MCP_HOST", "127.0.0.1")
+BIND_PORT = int(os.environ.get("EMAP_MCP_PORT", "8084"))
+
+
+def _split_csv(raw: str) -> list[str]:
+    return [h.strip() for h in raw.split(",") if h.strip()]
+
+
+def _default_allowed_hosts(port: int) -> str:
+    """Local (con el puerto real) + personal (prod) + candidatos emapapp.
+
+    La allowlist anti DNS-rebinding del SDK compara el header Host tal cual
+    (incluye :puerto en llamadas directas). Tras nginx el Host es solo el
+    dominio público.
+    """
+    local = [
+        f"127.0.0.1:{port}",
+        f"localhost:{port}",
+        "127.0.0.1",
+        "localhost",
+    ]
+    public = [
+        "gaizkajimenez.com",
+        "emapapp.com",
+        "mcp.emapapp.com",
+        "www.emapapp.com",
+    ]
+    return ",".join(local + public)
+
 
 mcp = FastMCP(
     "emap",
-    host=os.environ.get("EMAP_MCP_HOST", "127.0.0.1"),
-    port=int(os.environ.get("EMAP_MCP_PORT", "8084")),
-    # tras nginx el Host es el dominio público: hay que permitirlo (la
-    # protección anti DNS-rebinding del SDK responde 421 si no)
+    website_url=SITE,
+    host=BIND_HOST,
+    port=BIND_PORT,
     transport_security=TransportSecuritySettings(
-        allowed_hosts=[h for h in os.environ.get(
-            "EMAP_MCP_ALLOWED_HOSTS",
-            "127.0.0.1:8084,localhost:8084").split(",") if h],
-        allowed_origins=[],
+        allowed_hosts=_split_csv(
+            os.environ.get(
+                "EMAP_MCP_ALLOWED_HOSTS",
+                _default_allowed_hosts(BIND_PORT),
+            )
+        ),
+        allowed_origins=_split_csv(os.environ.get("EMAP_MCP_ALLOWED_ORIGINS", "")),
     ),
     instructions=(
         "Movilidad hiperlocal de Euskadi (País Vasco): transporte público "
@@ -79,6 +124,18 @@ async def _get(path: str, **params: Any) -> dict:
 
 def _out(payload: dict) -> dict:
     return {**payload, "attribution": ATTRIBUTION}
+
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health_check(_request: Request) -> JSONResponse:
+    """Liveness para nginx/systemd/monitores. Sin auth (público a propósito)."""
+    return JSONResponse({
+        "status": "ok",
+        "service": "emap-mcp",
+        "version": VERSION,
+        "transport": TRANSPORT,
+        "api": API,
+    })
 
 
 @mcp.tool()

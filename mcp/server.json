@@ -3,8 +3,8 @@
   "name": "io.github.r3tr0eth/emap",
   "title": "emap — Euskadi hyperlocal mobility",
   "description": "Basque Country hyperlocal mobility: ES/EU semantic search, routing, open-data POIs, peak-bagging.",
-  "version": "0.1.0",
-  "websiteUrl": "https://emap-next.vercel.app",
+  "version": "0.1.1",
+  "websiteUrl": "https://emapapp.com",
   "repository": {
     "url": "https://github.com/r3tr0eth/emap-labs",
     "source": "github"

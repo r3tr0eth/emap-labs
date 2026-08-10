@@ -92,17 +92,21 @@ agentes**: búsqueda semántica local, explain-place, rutas con confort/señales
 y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 
 1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos —
-   ✅ v0 HECHO (mcp/): 5 herramientas (search_places, nearby_pois,
+   ✅ v0.1.1 (mcp/): 5 herramientas (search_places, nearby_pois,
    explain_place, plan_route, plan_hike) con descripciones ES/EU/EN y
    atribución en cada respuesta; criterio de 'hecho' verificado por
-   protocolo (bici cerca de San Mamés → 47 m). Falta: modo HTTP/SSE en VPS.
+   protocolo (bici cerca de San Mamés → 47 m). HTTP streamable en VPS ✅;
+   `GET /health` + `mcp/smoke.py` ✅; allowlist multi-dominio (transición
+   a emapapp.com) ✅.
 2. **llms.txt / docs agent-readable** del API público — ✅ HECHO
    (emap-next.vercel.app/llms.txt, 2026-07-10).
 3. Distribución — 🟡 registro oficial MCP ✅ (io.github.r3tr0eth/emap,
-   active) y modo remoto público en gaizkajimenez.com/mcp; faltan
-   awesome-lists y post técnico (borradores en privado). Es
-   simultáneamente producto (emap dentro de Claude/agentes de cualquiera),
-   commons (perfil NLnet) y escaparate (BIND).
+   active) y remoto público en gaizkajimenez.com/mcp; **pendiente** mover
+   la URL canónica a dominio de producto (`mcp.emapapp.com` o
+   `emapapp.com/mcp` — decisión abierta), republicar registry, awesome-lists
+   y post técnico (borrador en docs/estrategia). Es simultáneamente producto
+   (emap dentro de Claude/agentes de cualquiera), commons (perfil NLnet) y
+   escaparate (BIND).
 
 *Hecho cuando:* un agente externo (el Claude Desktop de cualquier usuario)
 puede preguntar "¿dónde dejo la bici cerca de San Mamés?" y obtener la

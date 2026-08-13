@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 # Despliegue de emap-mcp (modo streamable-http) al VPS (idempotente).
-# Uso: ./mcp/deploy.sh [host]   (default root@gaizkajimenez.com)
+# Uso: ./mcp/deploy.sh [host]   (default root@vps.emapapp.com)
 #
 # Deja el servidor en 127.0.0.1:8084 tras systemd (emap-mcp.service).
 # Nginx se configura a mano una vez (ver mcp/nginx.example.conf):
-#   - prod actual:  https://gaizkajimenez.com/mcp
+#   - prod actual:  https://vps.emapapp.com/mcp
 #   - transición:   host allowlist ya incluye emapapp.com y mcp.emapapp.com
 #   - cuando haya DNS/TLS del dominio de producto, solo nginx + registry.
 set -euo pipefail
-HOST="${1:-root@gaizkajimenez.com}"
+HOST="${1:-root@vps.emapapp.com}"
 LABS="$(cd "$(dirname "$0")/.." && pwd)"
 
 # Hosts públicos aceptados por la protección anti DNS-rebinding del SDK.
 # Incluye dominio personal (prod hoy) + candidatos del dominio de producto
 # mientras se decide path (emapapp.com/mcp) vs subdominio (mcp.emapapp.com).
-ALLOWED_HOSTS="${EMAP_MCP_ALLOWED_HOSTS:-127.0.0.1:8084,localhost:8084,gaizkajimenez.com,emapapp.com,mcp.emapapp.com,www.emapapp.com}"
+ALLOWED_HOSTS="${EMAP_MCP_ALLOWED_HOSTS:-127.0.0.1:8084,localhost:8084,vps.emapapp.com,emapapp.com,mcp.emapapp.com,www.emapapp.com}"
 API_URL="${EMAP_API_URL:-https://emap-next.vercel.app}"
 SITE_URL="${EMAP_SITE_URL:-https://emapapp.com}"
 
@@ -62,8 +62,8 @@ curl -s -o /tmp/emap-mcp-init.json -w "initialize_http=%{http_code}\n" -X POST h
   -d "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-03-26\",\"capabilities\":{},\"clientInfo\":{\"name\":\"deploy\",\"version\":\"0\"}}}"
 head -c 300 /tmp/emap-mcp-init.json; echo'
 
-echo "→ hecho. Público actual: https://gaizkajimenez.com/mcp"
+echo "→ hecho. Público actual: https://vps.emapapp.com/mcp"
 echo "   Producto (pendiente DNS/nginx): mcp.emapapp.com o emapapp.com/mcp"
 echo "   Snippet nginx: mcp/nginx.example.conf"
 echo "   Smoke desde el portátil:"
-echo "     .venv/bin/python mcp/smoke.py --base https://gaizkajimenez.com --live"
+echo "     .venv/bin/python mcp/smoke.py --base https://vps.emapapp.com --live"

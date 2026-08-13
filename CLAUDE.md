@@ -21,7 +21,7 @@ dinero que emap trae.
 ./evals/sync-data.sh              # refrescar snapshot para CI tras cambiar datos
 ../emap-next/.venv/bin/python datasets/<pipeline>/build.py    # pipelines
 ./service/deploy.sh               # desplegar servicio semántico al VPS
-ssh root@gaizkajimenez.com        # VPS (OTP :8082, semantic :8083, nginx)
+ssh root@vps.emapapp.com          # VPS (OTP :8082, semantic :8083, nginx)
 ```
 
 - Venv propio (`.venv`, python3.13: fastembed/numpy) solo para el retriever

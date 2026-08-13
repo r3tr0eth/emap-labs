@@ -70,7 +70,7 @@ def _default_allowed_hosts(port: int) -> str:
         "localhost",
     ]
     public = [
-        "gaizkajimenez.com",
+        "vps.emapapp.com",
         "emapapp.com",
         "mcp.emapapp.com",
         "www.emapapp.com",

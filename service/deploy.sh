@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Despliegue del servicio semántico al VPS (idempotente).
-# Uso: ./service/deploy.sh [host]   (default root@gaizkajimenez.com)
+# Uso: ./service/deploy.sh [host]   (default root@vps.emapapp.com)
 set -euo pipefail
-HOST="${1:-root@gaizkajimenez.com}"
+HOST="${1:-root@vps.emapapp.com}"
 LABS="$(cd "$(dirname "$0")/.." && pwd)"
 NEXT="$LABS/../emap-next"
 

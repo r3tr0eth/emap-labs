@@ -21,7 +21,7 @@ from pathlib import Path
 import numpy as np
 
 from fastapi import FastAPI, Query, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "evals"))
 from semantic_local import HybridRetriever  # noqa: E402
@@ -126,6 +126,25 @@ def healthz():
         "expected_layers": len(LAYER_FILES),
         "loaded_layers": len(_counts),
     }
+
+
+@app.get("/tts")
+def tts(text: str = Query(..., min_length=1, max_length=280), lang: str = "eu"):
+    """WAV de navegación. Solo euskera (Piper Maider). Sin modelo → 503, no se finge."""
+    from tts import synthesize_eu
+
+    low = (lang or "eu").lower()
+    if not low.startswith("eu"):
+        return JSONResponse({"unavailable": True, "reason": "only-eu"}, status_code=404)
+    try:
+        body, ctype, info = synthesize_eu(text)
+    except Exception as exc:
+        return JSONResponse({"unavailable": True, "reason": str(exc)[:200]}, status_code=503)
+    return Response(
+        content=body,
+        media_type=ctype,
+        headers={"X-Emap-Tts": info["engine"], "Cache-Control": "public, max-age=86400"},
+    )
 
 
 # Rate limiting por IP: ventana deslizante en memoria (sin Redis).

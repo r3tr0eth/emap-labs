@@ -8,7 +8,8 @@ NEXT="$LABS/../emap-next"
 
 echo "→ código y datos"
 ssh "$HOST" "mkdir -p /opt/emap-labs/{service,evals,data/pois-euskadi,data/processed/pois,data/processed/neighborhoods}"
-rsync -az "$LABS/service/app.py" "$HOST:/opt/emap-labs/service/"
+# NOTA: añadir aquí cualquier nuevo módulo *.py de service/
+rsync -az "$LABS/service/app.py" "$LABS/service/explain.py" "$LABS/service/hike_planner.py" "$LABS/service/accessibility.py" "$LABS/service/isochrones.py" "$LABS/service/data_freshness.py" "$LABS/service/tts.py" "$HOST:/opt/emap-labs/service/"
 rsync -az "$LABS/evals/baseline.py" "$LABS/evals/semantic_local.py" "$HOST:/opt/emap-labs/evals/"
 rsync -az "$NEXT/packages/geo" "$HOST:/opt/emap-labs/" --exclude __pycache__ --exclude '*.egg-info'
 rsync -az "$NEXT/data/pois-euskadi/" "$HOST:/opt/emap-labs/data/pois-euskadi/"
@@ -20,6 +21,9 @@ echo "→ venv + dependencias"
 ssh "$HOST" 'cd /opt/emap-labs && [ -d .venv ] || python3 -m venv .venv
   ./.venv/bin/pip install -q --upgrade pip
   ./.venv/bin/pip install -q fastembed fastapi "uvicorn[standard]" numpy scipy ./geo
+  # TTS euskera (Piper Maider). Falla en silencio si no hay espeak-ng;
+  # fetch-maider.sh + apt install espeak-ng son el paso humano.
+  ./.venv/bin/pip install -q piper-tts || true
   # fastembed con soporte de rerank (ONNX). Misma versión, reclama el extra.
   # Si ya estaba instalado sin rerank, esto lo amplía.'
 
@@ -33,6 +37,7 @@ After=network.target
 User=emap
 WorkingDirectory=/opt/emap-labs/service
 Environment=EMAP_DATA_DIR=/opt/emap-labs/data
+Environment=EMAP_PIPER_DIR=/opt/emap-labs/tts
 Environment=HF_HOME=/opt/emap-labs/.cache
 # e5-large (L3, 2026-08-05): modelo ganador del benchmark (75/81% held-out
 # ES/EU). Calibración propia para 21 capas (2026-07-09): τ 0.80, tie 0.01.

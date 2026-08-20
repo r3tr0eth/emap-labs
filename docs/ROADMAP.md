@@ -9,6 +9,13 @@ esta versión adelanta fechas, sube la ambición y añade una fase nueva (L5)
 nacida del research: no existe infraestructura MCP de movilidad hiperlocal —
 ese hueco es nuestro.
 
+## TTS de navegación (2026-08-20)
+
+`GET /tts?text=&lang=eu` — Piper Maider (HiTZ/Aholab), lazy-load, 503 si
+no hay modelo. No se finge. Proxy en emap-next: `/api/tts`. Cómo
+activar el modelo: `service/fetch-maider.sh` + `espeak-ng` +
+`deploy.sh`. Contrato: `../emap-next/docs/VOZ.md` (D-025).
+
 ## Estado (2026-07-08)
 
 | Fase | Estado |

@@ -10,3 +10,7 @@ datasets/**/cache/
 # Artefactos de release (se publican como assets de GitHub Release)
 dist/
 evals/cache/
+
+# Piper Maider (service/fetch-maider.sh); no commitear el ONNX
+/tts/*.onnx
+/tts/*.onnx.json

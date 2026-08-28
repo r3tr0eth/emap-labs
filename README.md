@@ -108,7 +108,7 @@ viven en `evals/retriever-config.json`.
 
 ## Datasets
 
-Prerelease **v0.3.0-rc.1** (2026-08-28): valida el mismo registro territorial
+Prerelease **v0.3.0-rc.1** (2026-08-29): valida el mismo registro territorial
 y pipeline de retrieval sobre Euskadi y un primer pack oficial de Madrid.
 El activo descargable incluye 8 datasets / 17.241 registros; Madrid aporta
 2.306 fuentes municipales verificables. El corpus completo de Euskadi conserva

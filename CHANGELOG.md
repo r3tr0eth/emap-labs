@@ -3,7 +3,7 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/). Las versiones
 `vX.Y` etiquetan releases de datasets/artefactos publicables.
 
-## [v0.3.0-rc.1] — 2026-08-28
+## [v0.3.0-rc.1] — 2026-08-29
 
 Prerelease de validación multi-territorio de EMAP Intelligence/Core.
 

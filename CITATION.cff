@@ -15,7 +15,7 @@ url: https://emap-next.vercel.app
 doi: 10.5281/zenodo.21282784
 license: Apache-2.0
 version: "0.3.0-rc.1"
-date-released: "2026-08-28"
+date-released: "2026-08-29"
 keywords:
   - geographic-retrieval
   - benchmark

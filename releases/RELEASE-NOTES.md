@@ -63,7 +63,7 @@ honestidad.
 ## Reproducibilidad
 
 ```bash
-python releases/build_release.py --version 0.3.0-rc.1 --date 2026-08-28
+python releases/build_release.py --version 0.3.0-rc.1 --date 2026-08-29
 python evals/run.py --retriever hybrid --profile e5large --lang es --split dev
 python evals/run.py --retriever hybrid --profile minilm --territory madrid --lang es --split dev
 ```

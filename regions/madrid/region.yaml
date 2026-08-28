@@ -1,0 +1,21 @@
+name: madrid
+version: 0.1.0
+territory: Municipio de Madrid
+languages: [es]
+bbox: [-3.90, 40.30, -3.50, 40.65]
+layers:
+  fountains: madrid/pois/fountains.json
+sources:
+  fountains: Ayuntamiento de Madrid, dataset 300051-0
+eval_split:
+  dev: 18
+  heldout: 0
+  challenge: 0
+evaluation:
+  corpus: evals/madrid-golden-v0.yaml
+  landmarks: evals/madrid-landmarks.yaml
+retrieval:
+  production_profile: e5large
+freshness_sla_days:
+  fountains: 2
+attribution: Ayuntamiento de Madrid (CC BY 4.0)

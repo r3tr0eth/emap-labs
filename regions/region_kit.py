@@ -24,13 +24,18 @@ from pathlib import Path
 
 import yaml
 
-REGIONS_DIR = Path(__file__).resolve().parent / "regions"
-# Si se ejecuta desde fuera, __file__ puede ser relativo. Forzar absoluto.
-if not REGIONS_DIR.exists():
-    REGIONS_DIR = Path(__file__).resolve().parent.parent / "regions"
+LABS_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(LABS_ROOT))
+from regions.registry import (  # noqa: E402
+    TerritoryConfigError,
+    list_territories as registry_territories,
+    load_territory,
+)
+
+REGIONS_DIR = Path(__file__).resolve().parent
 
 # Schema mínimo requerido
-REQUIRED_FIELDS = ["name", "territory", "languages", "bbox"]
+REQUIRED_FIELDS = ["name", "version", "territory", "languages", "bbox"]
 REQUIRED_LAYERS = ["fountains", "toilets", "parking"]  # mínimo viable
 
 
@@ -44,13 +49,7 @@ def load_region(region_id: str) -> dict | None:
 
 def list_regions() -> list[str]:
     """Lista regiones disponibles."""
-    if not REGIONS_DIR.exists():
-        return []
-    regions = []
-    for d in sorted(REGIONS_DIR.iterdir()):
-        if d.is_dir() and (d / "region.yaml").exists():
-            regions.append(d.name)
-    return regions
+    return registry_territories()
 
 
 def validate_region(region_id: str) -> tuple[bool, list[str]]:
@@ -60,6 +59,11 @@ def validate_region(region_id: str) -> tuple[bool, list[str]]:
         (es_válido, lista_de_problemas)
     """
     problems = []
+
+    try:
+        load_territory(region_id)
+    except TerritoryConfigError as exc:
+        problems.append(str(exc))
 
     region = load_region(region_id)
     if region is None:
@@ -85,13 +89,10 @@ def validate_region(region_id: str) -> tuple[bool, list[str]]:
     if not langs or "es" not in langs:
         problems.append("languages debe incluir al menos 'es'")
 
-    # Calibración solar (si existe)
-    solar = region.get("solar_calibration")
-    if solar:
-        if "model" not in solar:
-            problems.append("solar_calibration requiere model")
-        if "tau" not in solar:
-            problems.append("solar_calibration requiere tau")
+    # El perfil une modelo y calibración en evals/retriever-config.json.
+    retrieval = region.get("retrieval")
+    if retrieval and "production_profile" not in retrieval:
+        problems.append("retrieval requiere production_profile")
 
     # Datos mínimos
     data_dir = REGIONS_DIR / region_id / "data"
@@ -116,6 +117,7 @@ def scaffold_region(region_id: str, name: str, territory: str,
 
     config = {
         "name": name,
+        "version": "0.1.0",
         "territory": territory,
         "languages": languages,
         "bbox": bbox,
@@ -123,13 +125,18 @@ def scaffold_region(region_id: str, name: str, territory: str,
             "transit": "configurar-fuente-gtfs",
             "pois": "osm-overpass",
         },
-        "eval_split": {"dev": 0, "heldout": 0},
-        "solar_calibration": {
-            "model": "intfloat/multilingual-e5-large",
-            "tau": 0.80,
-            "tie": 0.01,
-            "note": "recalibrar con datos locales",
+        "layers": {
+            "fountains": "data/fountains.json",
+            "toilets": "data/toilets.json",
+            "parking": "data/parking.json",
         },
+        "eval_split": {"dev": 0, "heldout": 0},
+        "evaluation": {
+            "corpus": f"regions/{region_id}/evals/golden.yaml",
+            "landmarks": f"regions/{region_id}/evals/landmarks.yaml",
+        },
+        "retrieval": {"production_profile": "e5large"},
+        "freshness_sla_days": {},
         "attribution": "configurar-atribución",
     }
 

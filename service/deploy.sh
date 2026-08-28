@@ -7,10 +7,12 @@ LABS="$(cd "$(dirname "$0")/.." && pwd)"
 NEXT="$LABS/../emap-next"
 
 echo "→ código y datos"
-ssh "$HOST" "mkdir -p /opt/emap-labs/{service,evals,data/pois-euskadi,data/processed/pois,data/processed/neighborhoods}"
+ssh "$HOST" "mkdir -p /opt/emap-labs/{service,evals,regions/euskadi,data/pois-euskadi,data/processed/pois,data/processed/neighborhoods}"
 # NOTA: añadir aquí cualquier nuevo módulo *.py de service/
 rsync -az "$LABS/service/app.py" "$LABS/service/explain.py" "$LABS/service/hike_planner.py" "$LABS/service/accessibility.py" "$LABS/service/isochrones.py" "$LABS/service/data_freshness.py" "$LABS/service/tts.py" "$HOST:/opt/emap-labs/service/"
-rsync -az "$LABS/evals/baseline.py" "$LABS/evals/semantic_local.py" "$HOST:/opt/emap-labs/evals/"
+rsync -az "$LABS/evals/baseline.py" "$LABS/evals/semantic_local.py" "$LABS/evals/retriever_config.py" "$LABS/evals/retriever-config.json" "$LABS/evals/requirements.txt" "$HOST:/opt/emap-labs/evals/"
+rsync -az "$LABS/regions/__init__.py" "$LABS/regions/registry.py" "$HOST:/opt/emap-labs/regions/"
+rsync -az "$LABS/regions/euskadi/region.yaml" "$HOST:/opt/emap-labs/regions/euskadi/"
 rsync -az "$NEXT/packages/geo" "$HOST:/opt/emap-labs/" --exclude __pycache__ --exclude '*.egg-info'
 rsync -az "$NEXT/data/pois-euskadi/" "$HOST:/opt/emap-labs/data/pois-euskadi/"
 rsync -az "$NEXT/data/pois-euskadi/peaks.json" "$HOST:/opt/emap-labs/data/pois-euskadi/"
@@ -20,12 +22,10 @@ rsync -az "$NEXT/data/processed/neighborhoods/neighborhoods.json" "$HOST:/opt/em
 echo "→ venv + dependencias"
 ssh "$HOST" 'cd /opt/emap-labs && [ -d .venv ] || python3 -m venv .venv
   ./.venv/bin/pip install -q --upgrade pip
-  ./.venv/bin/pip install -q fastembed fastapi "uvicorn[standard]" numpy scipy ./geo
+  ./.venv/bin/pip install -q -r evals/requirements.txt fastapi "uvicorn[standard]" scipy ./geo
   # TTS euskera (Piper Maider). Falla en silencio si no hay espeak-ng;
   # fetch-maider.sh + apt install espeak-ng son el paso humano.
-  ./.venv/bin/pip install -q piper-tts || true
-  # fastembed con soporte de rerank (ONNX). Misma versión, reclama el extra.
-  # Si ya estaba instalado sin rerank, esto lo amplía.'
+  ./.venv/bin/pip install -q piper-tts || true'
 
 echo "→ systemd"
 ssh "$HOST" 'cat > /etc/systemd/system/emap-semantic.service <<UNIT
@@ -37,13 +37,11 @@ After=network.target
 User=emap
 WorkingDirectory=/opt/emap-labs/service
 Environment=EMAP_DATA_DIR=/opt/emap-labs/data
+Environment=EMAP_TERRITORY=euskadi
 Environment=EMAP_PIPER_DIR=/opt/emap-labs/tts
 Environment=HF_HOME=/opt/emap-labs/.cache
-# e5-large (L3, 2026-08-05): modelo ganador del benchmark (75/81% held-out
-# ES/EU). Calibración propia para 21 capas (2026-07-09): τ 0.80, tie 0.01.
-Environment=EMAP_EMBED_MODEL=intfloat/multilingual-e5-large
-Environment=EMAP_SIM_TAU=0.80
-Environment=EMAP_TIE_WIN=0.01
+# El perfil versionado une modelo y calibración; evita deriva CI/prod.
+Environment=EMAP_RETRIEVER_PROFILE=e5large
 ExecStart=/opt/emap-labs/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8083
 Restart=on-failure
 MemoryHigh=3G

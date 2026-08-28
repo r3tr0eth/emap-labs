@@ -13,7 +13,10 @@ import os
 from pathlib import Path
 from typing import Any
 
+from regions import load_territory, resolve_layer_path
+
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
+TERRITORY = load_territory(os.environ.get("EMAP_TERRITORY", "euskadi"))
 
 # Cache de metadatos de fuente por capa
 _source_cache: dict[str, dict] = {}
@@ -24,43 +27,18 @@ def _load_source(layer: str) -> dict:
     if layer in _source_cache:
         return _source_cache[layer]
 
-    rel_paths = {
-        "fountains": "pois-euskadi/fountains.json",
-        "toilets": "pois-euskadi/toilets.json",
-        "parking": "pois-euskadi/parking.json",
-        "bikepark": "pois-euskadi/bikepark.json",
-        "defib": "pois-euskadi/defib.json",
-        "beaches": "pois-euskadi/beaches.json",
-        "pharmacy": "pois-euskadi/pharmacy.json",
-        "library": "pois-euskadi/library.json",
-        "sports": "pois-euskadi/sports.json",
-        "food": "pois-euskadi/food.json",
-        "lodging": "pois-euskadi/lodging.json",
-        "hostel": "pois-euskadi/hostel.json",
-        "camping": "pois-euskadi/camping.json",
-        "nature": "pois-euskadi/nature.json",
-        "peaks": "pois-euskadi/peaks.json",
-        "ev": "processed/pois/ev.json",
-        "cameras": "processed/pois/cameras.json",
-        "metro": "processed/pois/metro.json",
-        "euskotren": "processed/pois/euskotren.json",
-        "cercanias": "processed/pois/cercanias.json",
-        "bilbobus": "processed/pois/bilbobus.json",
-        "bizkaibus": "processed/pois/bizkaibus.json",
-    }
-
     meta = {"source": "unknown", "license": "unknown", "last_updated": None}
-    rel = rel_paths.get(layer)
-    if rel:
-        path = DATA_DIR / rel
-        if path.exists():
-            try:
-                doc = json.loads(path.read_text())
-                meta["source"] = doc.get("source", doc.get("source_id", "unknown"))
-                meta["license"] = doc.get("license", "unknown")
-                meta["last_updated"] = doc.get("generated", doc.get("updated"))
-            except Exception:
-                pass
+    path = resolve_layer_path(DATA_DIR, TERRITORY, layer)
+    if path and path.exists():
+        try:
+            doc = json.loads(path.read_text())
+            meta["source"] = doc.get("source", doc.get("source_id", "unknown"))
+            meta["license"] = doc.get("license", "unknown")
+            meta["last_updated"] = (
+                doc.get("generated") or doc.get("updated") or doc.get("source_updated")
+            )
+        except Exception:
+            pass
 
     _source_cache[layer] = meta
     return meta

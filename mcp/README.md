@@ -65,6 +65,7 @@ Cliente remoto (prod actual):
 | `EMAP_MCP_HOST` / `PORT` | `127.0.0.1` / `8084` | bind del proceso |
 | `EMAP_MCP_ALLOWED_HOSTS` | local + gaizkajimenez + emapapp* | Host permitidos (anti rebinding) |
 | `EMAP_API_URL` | `https://emap-next.vercel.app` | API que envuelve el MCP |
+| `EMAP_SEMANTIC_URL` | `https://vps.emapapp.com/semantic` | Servicio Labs para planificación de montaña |
 | `EMAP_SITE_URL` | `https://emapapp.com` | marca en atribución / website |
 
 Snippet nginx (path o subdominio): `nginx.example.conf`.

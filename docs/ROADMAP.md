@@ -16,6 +16,27 @@ no hay modelo. No se finge. Proxy en emap-next: `/api/tts`. Cómo
 activar el modelo: `service/fetch-maider.sh` + `espeak-ng` +
 `deploy.sh`. Contrato: `../emap-next/docs/VOZ.md` (D-025).
 
+## Intelligence/Core — primer sprint (2026-08-27)
+
+- ✅ Registro territorial runtime único (`regions/registry.py`): servicio,
+  evals, evidence, freshness e isócronas consumen el mismo manifest Euskadi.
+- ✅ Perfiles reproducibles (`retriever-config.json`): producción selecciona
+  e5large con su calibración; CI deja de heredar thresholds MiniLM.
+- ✅ Held-out fuera del loop normal: development en push/PR; ejecución
+  held-out solo manual y explícita.
+- ✅ Reranker retirado del runtime: no estaba conectado y `/search` afirmaba
+  falsamente `+rerank`.
+- ✅ Contratos MCP corregidos: rutas conservan métricas/evidence y `plan_hike`
+  usa la URL real de Labs.
+- ✅ Frescura reconoce `source_updated`: QA local 22/22 capas, score 86,4
+  (1 stale, 2 sin fecha).
+- 🟡 Madrid v0.1 ejecutable: fuentes municipales aceptadas (2.306 POIs),
+  manifest, freshness y 18 casos development sobre el mismo runner. Baseline
+  77%, semantic MiniLM 83% e hybrid MiniLM 88%; held-out sigue cerrado. Próximo
+  gate: segunda capa P0 y 30–50 casos sin ramas Madrid en Core.
+
+Arquitectura y límites: `docs/intelligence/architecture.md`.
+
 ## Estado (2026-07-08)
 
 | Fase | Estado |
@@ -99,7 +120,8 @@ agentes**: búsqueda semántica local, explain-place, rutas con confort/señales
 y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 
 1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos —
-   ✅ v0.1.1 (mcp/): 5 herramientas (search_places, nearby_pois,
+   ✅ v0.1.1 en producción; v0.1.2 corregida en código local y pendiente de
+   deploy (mcp/): 5 herramientas (search_places, nearby_pois,
    explain_place, plan_route, plan_hike) con descripciones ES/EU/EN y
    atribución en cada respuesta; criterio de 'hecho' verificado por
    protocolo (bici cerca de San Mamés → 47 m). HTTP streamable en VPS ✅;
@@ -150,7 +172,8 @@ invierno: entidad solo con dinero confirmado.
 
 ## No hacer (vigente)
 
-Entrenar/fine-tunear modelos; expandir fuera de Euskadi antes de resolverlo;
+Entrenar/fine-tunear modelos; expandir más allá de Euskadi+Madrid antes de
+medir la degradación cross-territory;
 depender de APIs US-cerradas en el producto; rankings de barrios en UI de
 consumo; gastar sin ingreso confirmado; calibrar con held-out.
 

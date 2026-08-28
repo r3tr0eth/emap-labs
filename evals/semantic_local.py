@@ -11,7 +11,8 @@ Arquitectura en dos etapas (la misma que tendrá /nearby en producción):
 El primer intento (embeder cada POI con su nombre) puntuó 13/60: el nombre
 ahogaba la señal de categoría. Documentado en results/.
 
-Modelo: paraphrase-multilingual-MiniLM-L12-v2 vía fastembed (ONNX, sin GPU).
+Modelo y calibración: perfil de `retriever-config.json` vía FastEmbed (ONNX,
+sin GPU). MiniLM es el default reproducible; producción selecciona e5large.
 
 AVISO de honestidad: las descripciones de categoría y las paráfrasis del
 corpus las escribió la misma persona; la validación real llegará con
@@ -19,26 +20,26 @@ consultas de usuarios.
 """
 from __future__ import annotations
 
+import os
+
 import numpy as np
 from fastembed import TextEmbedding
 
 from baseline import BaselineRetriever, norm
+from retriever_config import resolve_profile
 
 # L3 carril 1: modelo intercambiable por env para el benchmark por-modelo.
 # fastembed 0.8 no trae BGE-M3 ni Qwen3 (los objetivos del roadmap sólo tienen
 # variantes en/zh de BGE) — ésos esperan la caja de 8GB con sentence-transformers
 # nativo. La vía multilingüe viable HOY (cabe en este Mac): MiniLM-L12 (384d,
 # actual), mpnet-base (768d) y multilingual-e5-large (1024d, el más fuerte).
-import os
-MODEL = os.environ.get("EMAP_EMBED_MODEL",
-                       "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-
-# Tag corto y estable para nombrar retriever y ficheros de resultados por modelo.
-MODEL_TAG = {
-    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": "minilm",
-    "sentence-transformers/paraphrase-multilingual-mpnet-base-v2": "mpnet",
-    "intfloat/multilingual-e5-large": "e5large",
-}.get(MODEL, MODEL.split("/")[-1].lower())
+PROFILE = resolve_profile(
+    profile_name=os.environ.get("EMAP_RETRIEVER_PROFILE"),
+    model=os.environ.get("EMAP_EMBED_MODEL"),
+)
+PROFILE_NAME = PROFILE.name
+MODEL = PROFILE.model
+MODEL_TAG = PROFILE.name
 
 # Los modelos e5 se entrenaron con prefijos asimétricos: la consulta lleva
 # "query:" y los textos indexados "passage:". Sin ellos el coseno se degrada
@@ -50,8 +51,8 @@ DOC_PREFIX = "passage: " if _IS_E5 else ""
 # tie 0.08→0.03): con más categorías el tie-window ancho dejaba colar capas
 # basura que robaban el top-1 por cercanía, y τ alto compensa la subida de
 # falsos positivos. Elegido por paridad ES/EU (barrido en dev, commit).
-SIM_THRESHOLD = float(os.environ.get("EMAP_SIM_TAU", "0.50"))  # bajo esto: "no sé"
-TIE_WINDOW = float(os.environ.get("EMAP_TIE_WIN", "0.03"))  # categorías a menos de esto del top entran también
+SIM_THRESHOLD = float(os.environ.get("EMAP_SIM_TAU", PROFILE.sim_threshold))
+TIE_WINDOW = float(os.environ.get("EMAP_TIE_WIN", PROFILE.tie_window))
 
 CATEGORY_TEXT = {
     "fountains": ("Fuente de agua potable: beber agua, rellenar la botella o el "

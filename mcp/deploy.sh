@@ -16,6 +16,7 @@ LABS="$(cd "$(dirname "$0")/.." && pwd)"
 # mientras se decide path (emapapp.com/mcp) vs subdominio (mcp.emapapp.com).
 ALLOWED_HOSTS="${EMAP_MCP_ALLOWED_HOSTS:-127.0.0.1:8084,localhost:8084,vps.emapapp.com,emapapp.com,mcp.emapapp.com,www.emapapp.com}"
 API_URL="${EMAP_API_URL:-https://emap-next.vercel.app}"
+SEMANTIC_URL="${EMAP_SEMANTIC_URL:-https://vps.emapapp.com/semantic}"
 SITE_URL="${EMAP_SITE_URL:-https://emapapp.com}"
 
 echo "→ código"
@@ -39,6 +40,7 @@ Environment=EMAP_MCP_HOST=127.0.0.1
 Environment=EMAP_MCP_PORT=8084
 Environment=EMAP_MCP_ALLOWED_HOSTS=${ALLOWED_HOSTS}
 Environment=EMAP_API_URL=${API_URL}
+Environment=EMAP_SEMANTIC_URL=${SEMANTIC_URL}
 Environment=EMAP_SITE_URL=${SITE_URL}
 ExecStart=/opt/emap-labs/.venv/bin/python /opt/emap-labs/mcp/server.py
 Restart=on-failure

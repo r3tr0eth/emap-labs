@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "default_profile": "minilm",
+  "profiles": {
+    "minilm": {
+      "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "sim_threshold": 0.5,
+      "tie_window": 0.03
+    },
+    "mpnet": {
+      "model": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+      "sim_threshold": 0.65,
+      "tie_window": 0.02
+    },
+    "e5large": {
+      "model": "intfloat/multilingual-e5-large",
+      "sim_threshold": 0.8,
+      "tie_window": 0.01
+    }
+  }
+}

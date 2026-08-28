@@ -5,17 +5,20 @@ Corpus dorados y harness de evaluación del sistema semántico (roadmap L1/L3).
 ## Ejecutar
 
 ```bash
-../emap-next/.venv/bin/python evals/run.py [--retriever baseline] [--lang es|eu] [-k 5]
+./.venv/bin/python evals/run.py --retriever baseline --lang es
+./.venv/bin/python evals/run.py --retriever hybrid --profile minilm --lang eu
 ```
 
 Lee los datasets desde `../emap-next` (solo lectura), corre el corpus contra el
 retriever y guarda `evals/results/<retriever>-<lang>-<fecha>.json` para comparar
-en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expected`**.
+en el tiempo. `--output-dir /tmp/...` permite una verificación aislada. El
+retriever recibe solo consulta + anchor — **nunca ve `expected`**.
 
 ## Ficheros
 
-- `semantic-golden-v0.yaml` — 50 casos (nearest/attribute/transit/semantic +
-  robustez), anclas y nombres verificados contra datos reales. Los
+- `semantic-golden-v0.yaml` — 162 casos
+  (nearest/attribute/transit/semantic + robustez), anclas y nombres
+  verificados contra datos reales. Los
   `answerable: false` miden abstención (no inventar); los `known_gap` marcan
   casos irresolubles por falta de datos — se reportan como inventario de huecos,
   no como fallo del retriever.
@@ -24,13 +27,30 @@ en el tiempo. El retriever recibe solo consulta + anchor — **nunca ve `expecte
 - `landmarks.yaml` — anclas tipo landmark → coordenadas fijas (entrada del
   caso, no parte de la respuesta).
 - `run.py` — el harness.
+- `retriever-config.json` — perfiles versionados que unen modelo, threshold y
+  tie-window; evita calibraciones implícitas distintas en local/CI/prod.
 
 ## Resultados
 
-Corpus 139 casos sobre **22 capas** (21 + peaks solo-keywords): **dev** 85
-(82 puntuables + 3 known_gap, usados para calibrar) y **held-out** 54 (secciones H y H2, prefijo
-`ho-`; 53 puntuables + 1 known_gap; el runner los excluye por defecto —
-`--split heldout` para correrlos, y NUNCA se calibra mirándolos).
+Corpus actual: **162 casos** sobre 22 capas. Se divide en **dev 85**
+(82 puntuables + 3 `known_gap`), **held-out 29** sellados y **challenge 48**
+(47 puntuables + 1 gap). El runner usa dev por defecto. CI usa dev; held-out
+solo se habilita manualmente para una decisión final y NUNCA para calibrar.
+
+Verificación development del 2026-08-27 tras introducir el registro
+territorial y fijar FastEmbed 0.8.0:
+
+| Retriever | dev ES | dev EU |
+|---|---:|---:|
+| baseline-keywords-geo | 61/82 (74%) | 59/82 (71%) |
+| hybrid MiniLM · perfil `minilm` | 67/82 (81%) | 61/82 (74%) |
+
+El perfil `e5large` queda configurado con τ=0.80/tie=0.01 y gateado en CI. No
+se reejecutó localmente el 2026-08-27: su artefacto ONNX de 2,24 GB no cabía en
+el volumen (2,13 GB libres). No se ejecutó held-out para suplir esa ausencia.
+
+La siguiente tabla es **histórica** (2026-08-05), conservada para trazabilidad;
+no equivale a una medición nueva del corpus actual:
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
@@ -83,9 +103,9 @@ mejores o clasificador LLM). Patrón de fallo dominante: parking/bikepark
 absorben consultas ambiguas; 2 abstenciones con fuga (taxi, autocaravana).
 Resultados históricos con el held-out de 29 casos en results/.)
 
-(MiniLM multilingüe vía fastembed; config actual τ=0.50, tie=0.03 — la
-completa queda versionada en cada JSON de `results/`. Prod mantiene
-τ=0.45/0.08 con 13 capas, fijada en `service/deploy.sh`.)
+(MiniLM multilingüe vía FastEmbed 0.8.0; perfil actual `minilm` τ=0.50,
+tie=0.03. Producción selecciona el perfil versionado `e5large` τ=0.80,
+tie=0.01 desde `service/deploy.sh`.)
 
 ## Benchmark L3 — embeddings multilingües (2026-07-24)
 
@@ -126,9 +146,11 @@ con 22 capas (13 OSM + 8 euskadi-places + peaks), calibración τ=0.80/tie=0.01,
 EMAP_EMBED_MODEL=intfloat/multilingual-e5-large. VPS de 16 GB → sin cuello de
 botella. El benchmark deja el modelo elegido y su calibración listos.
 
-Modelo y calibración intercambiables por env (`EMAP_EMBED_MODEL`,
-`EMAP_SIM_TAU`, `EMAP_TIE_WIN`); los resultados por modelo quedan en
-`results/` con sufijo de tag (`hybrid-e5large-eu-heldout-…json`).
+Modelo y calibración se seleccionan juntos mediante
+`EMAP_RETRIEVER_PROFILE` o `--profile`; los overrides de laboratorio
+`EMAP_SIM_TAU`/`EMAP_TIE_WIN` siguen disponibles, pero cualquier modelo nuevo
+debe registrar primero un perfil. Los resultados quedan en `results/` con
+sufijo estable (`hybrid-e5large-eu-heldout-…json`).
 
 **Criterio de despliegue** (histórico 2026-07-08, con 13 capas): el híbrido
 seguía ≥ baseline en held-out en ambos idiomas. **Desde 2026-07-09 y hasta

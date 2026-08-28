@@ -15,7 +15,10 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from regions import load_territory, resolve_layer_path
+
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
+TERRITORY = load_territory(os.environ.get("EMAP_TERRITORY", "euskadi"))
 OSRM_BASE = os.environ.get("EMAP_OSRM_URL", "http://localhost:5000")
 
 OVERPASS = [
@@ -223,32 +226,7 @@ def find_pois_in_isochrone(lat: float, lon: float,
 
 def _layer_path(layer: str) -> Path | None:
     """Resuelve ruta de una capa."""
-    rel_paths = {
-        "fountains": "pois-euskadi/fountains.json",
-        "toilets": "pois-euskadi/toilets.json",
-        "parking": "pois-euskadi/parking.json",
-        "bikepark": "pois-euskadi/bikepark.json",
-        "defib": "pois-euskadi/defib.json",
-        "beaches": "pois-euskadi/beaches.json",
-        "pharmacy": "pois-euskadi/pharmacy.json",
-        "library": "pois-euskadi/library.json",
-        "sports": "pois-euskadi/sports.json",
-        "food": "pois-euskadi/food.json",
-        "lodging": "pois-euskadi/lodging.json",
-        "hostel": "pois-euskadi/hostel.json",
-        "camping": "pois-euskadi/camping.json",
-        "nature": "pois-euskadi/nature.json",
-        "peaks": "pois-euskadi/peaks.json",
-        "ev": "processed/pois/ev.json",
-        "cameras": "processed/pois/cameras.json",
-        "metro": "processed/pois/metro.json",
-        "euskotren": "processed/pois/euskotren.json",
-        "cercanias": "processed/pois/cercanias.json",
-        "bilbobus": "processed/pois/bilbobus.json",
-        "bizkaibus": "processed/pois/bizkaibus.json",
-    }
-    rel = rel_paths.get(layer)
-    return DATA_DIR / rel if rel else None
+    return resolve_layer_path(DATA_DIR, TERRITORY, layer)
 
 
 def _point_in_polygon(x: float, y: float,

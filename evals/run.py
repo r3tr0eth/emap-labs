@@ -32,6 +32,9 @@ except ImportError:  # CI / entorno sin emap-next: fallback vendorizado
     from _geo import haversine_m  # noqa: E402
 
 LABS = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(LABS))
+from regions import Territory, load_territory  # noqa: E402
+from retriever_config import profile_names  # noqa: E402
 
 
 def _data_root() -> Path:
@@ -47,47 +50,23 @@ def _data_root() -> Path:
 
 DATA_ROOT = _data_root()
 
-# Single source of truth: service/app.py define LAYER_FILES (el runtime
-# del servicio es la autoridad). El runner lo importa de ahí para que
-# evals y prod compartan exactamente las mismas capas.
-import importlib.util
-_spec = importlib.util.spec_from_file_location(
-    "service_app", str(Path(__file__).resolve().parents[1] / "service/app.py"))
-_mod = importlib.util.module_from_spec(_spec)
-try:
-    _spec.loader.exec_module(_mod)
-    LAYER_FILES = _mod.LAYER_FILES
-except Exception:
-    # fallback: servicio no disponible (CI sin emap-next). Mismo layout.
-    LAYER_FILES = {
-        "fountains": "pois-euskadi/fountains.json",
-        "toilets": "pois-euskadi/toilets.json",
-        "parking": "pois-euskadi/parking.json",
-        "bikepark": "pois-euskadi/bikepark.json",
-        "defib": "pois-euskadi/defib.json",
-        "beaches": "pois-euskadi/beaches.json",
-        "pharmacy": "pois-euskadi/pharmacy.json",
-        "library": "pois-euskadi/library.json",
-        "sports": "pois-euskadi/sports.json",
-        "food": "pois-euskadi/food.json",
-        "lodging": "pois-euskadi/lodging.json",
-        "hostel": "pois-euskadi/hostel.json",
-        "camping": "pois-euskadi/camping.json",
-        "nature": "pois-euskadi/nature.json",
-        "peaks": "pois-euskadi/peaks.json",
-        "ev": "processed/pois/ev.json",
-        "cameras": "processed/pois/cameras.json",
-        "metro": "processed/pois/metro.json",
-        "euskotren": "processed/pois/euskotren.json",
-        "cercanias": "processed/pois/cercanias.json",
-        "bilbobus": "processed/pois/bilbobus.json",
-        "bizkaibus": "processed/pois/bizkaibus.json",
-    }
+
+def result_filename(
+    retriever: str,
+    model_tag: str,
+    territory: str,
+    lang: str,
+    split: str,
+    run_date: date,
+) -> str:
+    """Nombre inequívoco del artefacto; dos territorios nunca se pisan."""
+    tag = f"-{model_tag}" if model_tag else ""
+    return f"{retriever}{tag}-{territory}-{lang}-{split}-{run_date.isoformat()}.json"
 
 
-def load_datasets() -> dict[str, list[dict]]:
+def load_datasets(territory: Territory) -> dict[str, list[dict]]:
     out = {}
-    for layer, rel in LAYER_FILES.items():
+    for layer, rel in territory.layers.items():
         path = DATA_ROOT / rel
         if not path.is_file():
             print(f"  aviso: falta {rel} — capa {layer} fuera", file=sys.stderr)
@@ -193,6 +172,13 @@ def main() -> int:
     ap.add_argument("--retriever", default="baseline",
                     choices=["baseline", "semantic", "hybrid"])
     ap.add_argument("--lang", default="es", choices=["es", "eu"])
+    ap.add_argument("--territory", default="euskadi",
+                    help="id de regions/<id>/region.yaml")
+    ap.add_argument("--profile", choices=profile_names(),
+                    help="perfil versionado de modelo + calibración")
+    ap.add_argument("--output-dir", type=Path,
+                    default=LABS / "evals/results",
+                    help="directorio de resultados (útil para CI y QA aislada)")
     ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--min-pass", type=float, default=None,
                     help="%% mínimo de aciertos; por debajo, exit 1 (gate de CI)")
@@ -204,12 +190,15 @@ def main() -> int:
                          "all: todos los casos.")
     args = ap.parse_args()
 
-    corpus = yaml.safe_load((LABS / "evals/semantic-golden-v0.yaml").read_text())
+    territory = load_territory(args.territory)
+    corpus = yaml.safe_load(territory.evaluation_path("corpus").read_text())
     if args.split != "all":
         corpus["cases"] = [c for c in corpus["cases"]
                            if c.get("split", "dev") == args.split]
-    landmarks = yaml.safe_load((LABS / "evals/landmarks.yaml").read_text())
-    datasets = load_datasets()
+    landmarks = yaml.safe_load(territory.evaluation_path("landmarks").read_text())
+    datasets = load_datasets(territory)
+    if args.profile:
+        os.environ["EMAP_RETRIEVER_PROFILE"] = args.profile
     if args.retriever == "semantic":
         from semantic_local import SemanticRetriever  # requiere .venv de labs
         retriever = SemanticRetriever(datasets)
@@ -247,23 +236,33 @@ def main() -> int:
     print(f"\n{retriever.name} · lang={args.lang} · k={args.k}")
     for intent, (p, n) in sorted(by_intent.items()):
         print(f"  {intent:9} {p:>2}/{n}")
-    print(f"  TOTAL     {total:>2}/{len(rows)}  ({100 * total // len(rows)}%)"
+    score_pct = 100 * total // len(rows) if rows else 0
+    print(f"  TOTAL     {total:>2}/{len(rows)}  ({score_pct}%)"
           f"  ·  {len(gaps)} huecos de datos conocidos")
     for g in gaps:
         print(f"    gap: {g['id']} — {g['known_gap']}")
 
-    out_dir = LABS / "evals/results"
-    out_dir.mkdir(exist_ok=True)
+    out_dir = args.output_dir.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
     config = {}
-    tag = ""  # sufijo de modelo para no pisar resultados entre modelos del benchmark
+    model_tag = ""  # sufijo de modelo para no pisar resultados entre modelos
     if args.retriever in ("semantic", "hybrid"):
         import semantic_local as sl
-        config = {"model": sl.MODEL, "sim_threshold": sl.SIM_THRESHOLD,
+        config = {"profile": sl.PROFILE_NAME, "model": sl.MODEL,
+                  "sim_threshold": sl.SIM_THRESHOLD,
                   "tie_window": sl.TIE_WINDOW}
-        tag = f"-{sl.MODEL_TAG}"
-    out = out_dir / f"{args.retriever}{tag}-{args.lang}-{args.split}-{date.today().isoformat()}.json"
+        model_tag = sl.MODEL_TAG
+    out = out_dir / result_filename(
+        args.retriever,
+        model_tag,
+        territory.id,
+        args.lang,
+        args.split,
+        date.today(),
+    )
     out.write_text(json.dumps({
-        "retriever": retriever.name, "lang": args.lang, "k": args.k,
+        "retriever": retriever.name, "territory": territory.id,
+        "lang": args.lang, "k": args.k,
         "config": config, "n_corpus_cases": len(corpus["cases"]),
         "date": date.today().isoformat(), "corpus": corpus["version"],
         "total": {"pass": total, "cases": len(rows)},
@@ -271,7 +270,11 @@ def main() -> int:
         "cases": rows,
         "known_gaps": gaps,
     }, ensure_ascii=False, indent=2) + "\n")
-    print(f"  → {out.relative_to(LABS)}")
+    try:
+        shown_out = out.relative_to(LABS)
+    except ValueError:
+        shown_out = out
+    print(f"  → {shown_out}")
     pct = 100 * total / len(rows) if rows else 0
     if args.min_pass is not None and pct < args.min_pass:
         print(f"GATE: {pct:.0f}% < mínimo exigido {args.min_pass:.0f}%")

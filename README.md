@@ -25,15 +25,16 @@ mobility datasets for the Basque Country. Reproducible in three commands.*
 
 ## Benchmark de retrieval ES/EU
 
-Corpus dorado de **139 casos** de búsqueda geográfica hiperlocal sobre **22
-capas** (fuentes, aseos, parking, transporte, DEA, farmacias, bibliotecas,
-cimas…) en español y euskera, con split **held-out estricto** (54
-casos que jamás se usan para calibrar) y casos de abstención
+Corpus dorado actual de **162 casos** de búsqueda geográfica hiperlocal sobre
+**22 capas** (fuentes, aseos, parking, transporte, DEA, farmacias,
+bibliotecas, cimas…) en español y euskera: 85 development, **29 held-out
+sellados** y 48 challenge. Incluye 24 casos de abstención
 (`answerable: false` — el retriever que inventa, falla). El euskera se
 coteja con **Itzuli**, el traductor neuronal del Gobierno Vasco — no es
 euskera artificial de traducción automática sin revisar.
 
-Resultados en producción (k=5, 2026-08-05):
+Última tabla histórica versionada (k=5, 2026-08-05; no reejecutada en el
+sprint 2026-08-27):
 
 | Retriever | dev ES | **held-out ES** | dev EU | **held-out EU** |
 |---|---|---|---|---|
@@ -48,8 +49,9 @@ Hallazgo central: **la brecha del euskera no era del idioma, era del modelo**.
 Con MiniLM la etapa semántica apenas aportaba en EU; con e5-large el
 held-out ES sube de 58% a 73% (+15) y el EU de 63% a 71% (+8).
 
-Suite extendida post-v0.2.0: 76 heldout con nuevas capas y edge cases,
-64% global. Informe completo —metodología, coste/latencia, limitaciones—:
+Suite challenge post-calibración: 48 casos con nuevas capas y edge cases; es
+informativa y no sustituye al held-out. Informe completo —metodología,
+coste/latencia, limitaciones—:
 **[`BENCHMARK.md`](BENCHMARK.md)**; lecciones del harness:
 [`evals/README.md`](evals/README.md).
 
@@ -94,13 +96,15 @@ de San Mamés?"* → aparcabicis a 47 m, con atribución.
 ```bash
 git clone https://github.com/r3tr0eth/emap-labs && cd emap-labs
 pip install -r evals/requirements.txt
-python evals/run.py --retriever hybrid --lang eu --split heldout
+python evals/run.py --retriever hybrid --profile minilm --lang eu
 ```
 
 Autocontenido: el snapshot de datos vive en `evals/data/` (el mismo que usa
 el [CI](https://github.com/r3tr0eth/emap-labs/actions/workflows/evals.yml),
-con gates de regresión en cada push). Cada JSON de `evals/results/` versiona
-la configuración exacta (modelo, τ, tie-window) con la que se obtuvo.
+con gates de regresión **development** en cada push). Held-out solo se ejecuta
+manualmente para una decisión final; no aparece en cada iteración. Cada JSON
+versiona territorio, perfil, modelo, τ y tie-window. Los perfiles canónicos
+viven en `evals/retriever-config.json`.
 
 ## Datasets
 
@@ -120,8 +124,10 @@ es honestamente estimable. Pipelines reproducibles en [`datasets/`](datasets/REA
 evals/      corpus dorado ES/EU, harness, resultados versionados
 datasets/   pipelines de datasets propios (places, barrios, scores)
 service/    servicio semántico (FastAPI + fastembed, corre en VPS propio)
+regions/    packs y registro territorial de runtime
+mcp/        adapter para agentes sobre API + Labs
 releases/   releases versionadas de datasets
-docs/       roadmap, ética de datos, informes de cobertura
+docs/       Intelligence/Core, roadmap, ética e informes de cobertura
 ```
 
 ## Principios

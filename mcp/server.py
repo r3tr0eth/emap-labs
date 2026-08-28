@@ -32,12 +32,17 @@ from mcp.server.transport_security import TransportSecuritySettings
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 
 # API pública de emap. Por defecto sigue el deploy actual en Vercel; cuando
 # emapapp.com sea canónico de mapa/API se cambia con EMAP_API_URL (sin
 # redeploy de código si se setea en systemd).
 API = os.environ.get("EMAP_API_URL", "https://emap-next.vercel.app").rstrip("/")
+# El planificador de montaña vive en emap-labs, no en la API serverless.
+# Mantener ambas bases separadas evita inventar rutas proxy que no existen.
+SEMANTIC_API = os.environ.get(
+    "EMAP_SEMANTIC_URL", "https://vps.emapapp.com/semantic"
+).rstrip("/")
 # Marca en atribución (dominio de producto cuando exista; no es la URL del MCP).
 SITE = os.environ.get("EMAP_SITE_URL", "https://emapapp.com").rstrip("/")
 ATTRIBUTION = (
@@ -135,6 +140,7 @@ async def health_check(_request: Request) -> JSONResponse:
         "version": VERSION,
         "transport": TRANSPORT,
         "api": API,
+        "semantic_api": SEMANTIC_API,
     })
 
 
@@ -147,8 +153,15 @@ async def search_places(query: str, lat: float, lon: float, k: int = 5) -> dict:
     d = await _get("/api/semantic-search", q=query, lat=lat, lon=lon, k=k)
     if d.get("unavailable"):
         return _out({"error": "servicio semántico no disponible ahora mismo"})
-    return _out({"query": query, "abstained": d.get("abstained", False),
-                 "results": d.get("results", [])})
+    fields = (
+        "query", "abstained", "results", "territory", "territory_version",
+        "retriever", "reranked", "explanation", "limitations",
+    )
+    payload = {key: d[key] for key in fields if key in d}
+    payload.setdefault("query", query)
+    payload.setdefault("abstained", False)
+    payload.setdefault("results", [])
+    return _out(payload)
 
 
 @mcp.tool()
@@ -192,13 +205,26 @@ async def plan_route(from_lat: float, from_lon: float, to_lat: float,
                    **{"from": f"{from_lat},{from_lon}", "to": f"{to_lat},{to_lon}"})
     if d.get("unavailable") or d.get("error"):
         return _out({"error": d.get("error") or "ruta no disponible para ese modo"})
-    slim = {k: d[k] for k in ("mode", "duration_s", "distance_m", "legs",
-                              "summary", "fare") if k in d}
+    # Adapter deliberadamente estrecho: conserva el contrato estable y la
+    # evidencia, pero no reenvía geometrías ni alternativas pesadas al agente.
+    route_fields = (
+        "version", "provider", "engine", "mode", "label", "duration",
+        "distance", "origin", "destination", "summary", "operators",
+        "fareSystems", "dataSources", "confidence", "limitations",
+        "transfers", "start_time", "end_time", "recommendation", "zbe",
+        "impact", "fare", "legs",
+    )
+    slim = {key: d[key] for key in route_fields if key in d}
     if "legs" in slim and isinstance(slim["legs"], list):
-        slim["legs"] = [{k: l[k] for k in ("mode", "line", "from", "to",
-                                           "duration_s", "distance_m",
-                                           "headsign") if k in l}
-                        for l in slim["legs"]]
+        leg_fields = (
+            "mode", "instruction", "line", "from", "to", "duration",
+            "distance", "start_time", "end_time", "agency", "stops",
+            "headsign", "impact",
+        )
+        slim["legs"] = [
+            {key: leg[key] for key in leg_fields if key in leg}
+            for leg in slim["legs"]
+        ]
     return _out(slim or d)
 
 
@@ -232,16 +258,21 @@ async def plan_hike(lat: float, lon: float, max_stop_dist_m: int = 2000,
             peak_name = cand["peak"]["es"]
             try:
                 resp = await c.get(
-                    f"{API}/semantic/hike-plan",
+                    f"{SEMANTIC_API}/hike-plan",
                     params={"peak": peak_name, "from_lat": lat,
                             "from_lon": lon, "date": date or "",
                             "start_time": start_time},
                     timeout=25,
                 )
+                resp.raise_for_status()
                 plan = resp.json()
                 planned.append(plan)
-            except Exception:
-                planned.append({"ok": False, "peak": cand["peak"]})
+            except (httpx.HTTPError, ValueError):
+                planned.append({
+                    "ok": False,
+                    "peak": cand["peak"],
+                    "reason": "planificador de montaña no disponible",
+                })
 
     return _out({
         "method": "otp-transit-walk + gtfs-schedules",

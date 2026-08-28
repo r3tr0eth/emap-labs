@@ -1,12 +1,12 @@
 """emap-labs semantic service — el retriever híbrido como servicio HTTP.
 
 Corre en el VPS (patrón OTP): emap-next (Vercel) hace proxy vía
-EMAP_SEMANTIC_URL. Sin base de datos: 13 vectores de categoría en memoria
-+ búsqueda estructurada sobre los POIs cargados al arrancar.
+EMAP_SEMANTIC_URL. Sin base de datos: descriptores de categoría en memoria
++ búsqueda estructurada sobre las capas del pack territorial cargado.
 
     EMAP_DATA_DIR=/opt/emap-labs/data uvicorn app:app --port 8083
 
-Validación: híbrido en held-out ES 79% / EU 72% (evals/, 2026-07-07).
+Validación y configuración reproducible: evals/ y regions/<id>/region.yaml.
 """
 from __future__ import annotations
 
@@ -23,9 +23,17 @@ import numpy as np
 from fastapi import FastAPI, Query, Request
 from fastapi.responses import JSONResponse, Response
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "evals"))
+LABS_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(LABS_ROOT))
+sys.path.insert(0, str(LABS_ROOT / "evals"))
+from regions import load_territory  # noqa: E402
+
+TERRITORY_ID = os.environ.get("EMAP_TERRITORY", "euskadi")
+TERRITORY = load_territory(TERRITORY_ID)
+if "EMAP_RETRIEVER_PROFILE" not in os.environ:
+    os.environ["EMAP_RETRIEVER_PROFILE"] = TERRITORY.production_retriever_profile
+
 from semantic_local import HybridRetriever  # noqa: E402
-from fastembed.rerank.cross_encoder import TextCrossEncoder  # noqa: E402
 
 from emap_geo.distance import haversine_m  # noqa: E402
 from explain import explain_detection, explain_result, _load_source  # noqa: E402
@@ -35,37 +43,10 @@ from isochrones import compute_isochrone, find_pois_in_isochrone  # noqa: E402
 from data_freshness import quality_report, poi_freshness  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
-
-# mismo layout que emap-next/data (rsync tal cual)
-LAYER_FILES = {
-    "fountains": "pois-euskadi/fountains.json",
-    "toilets": "pois-euskadi/toilets.json",
-    "parking": "pois-euskadi/parking.json",
-    "bikepark": "pois-euskadi/bikepark.json",
-    "defib": "pois-euskadi/defib.json",
-    "beaches": "pois-euskadi/beaches.json",
-    # euskadi-places (Open Data Euskadi, P1/P2 — 2026-07)
-    "pharmacy": "pois-euskadi/pharmacy.json",
-    "library": "pois-euskadi/library.json",
-    "sports": "pois-euskadi/sports.json",
-    "food": "pois-euskadi/food.json",
-    "lodging": "pois-euskadi/lodging.json",
-    "hostel": "pois-euskadi/hostel.json",
-    "camping": "pois-euskadi/camping.json",
-    "nature": "pois-euskadi/nature.json",
-    "peaks": "pois-euskadi/peaks.json",
-    "ev": "processed/pois/ev.json",
-    "cameras": "processed/pois/cameras.json",
-    "metro": "processed/pois/metro.json",
-    "euskotren": "processed/pois/euskotren.json",
-    "cercanias": "processed/pois/cercanias.json",
-    "bilbobus": "processed/pois/bilbobus.json",
-    "bizkaibus": "processed/pois/bizkaibus.json",
-}
+LAYER_FILES = dict(TERRITORY.layers)
 
 app = FastAPI(title="emap-labs semantic", version="0.2")
 _retriever: HybridRetriever | None = None
-_reranker: TextCrossEncoder | None = None
 _counts: dict[str, int] = {}
 _datasets: dict[str, list[dict]] = {}
 _units: list[dict] = []  # barrios/distritos/municipios con anillos (lat,lon)
@@ -105,10 +86,8 @@ def load() -> None:
                            "bbox": (min(lats), min(lons), max(lats), max(lons))})
     # Construir grupos para KD-tree (explain-place).
     _GROUP_LAYERS.update({"rail": RAIL, "bus": BUS, "toilets": ("toilets",)})
-    # Reranker multilingüe (jina-reranker-v2). Modelo ONNX, ~1.1 GB en disco.
-    _reranker = TextCrossEncoder("jinaai/jina-reranker-v2-base-multilingual")
     print(f"semantic listo: {sum(_counts.values())} POIs en {len(_counts)} capas, "
-          f"{len(_units)} unidades administrativas, reranker cargado")
+          f"{len(_units)} unidades administrativas")
 
 
 @app.get("/healthz")
@@ -125,6 +104,8 @@ def healthz():
         "degraded_layers": degraded,
         "expected_layers": len(LAYER_FILES),
         "loaded_layers": len(_counts),
+        "territory": TERRITORY.id,
+        "territory_version": TERRITORY.version,
     }
 
 
@@ -164,21 +145,6 @@ def _rate_check(ip: str) -> bool:
         return False
     ts.append(now)
     return True
-
-
-def _rerank(query: str, results: list[dict], k: int) -> list[dict]:
-    """Re-ordena resultados con cross-encoder multilingüe. El reranker recibe
-    (query, texto_del_poi) y devuelve scores; nos quedamos con los top-k.
-    El texto del POI: nombre en ambos idiomas + tags (lo más representativo)."""
-    if not results or _reranker is None:
-        return results[:k]
-    docs = []
-    for r in results:
-        name = r["name"] if isinstance(r["name"], str) else r["name"].get("es", "")
-        docs.append(name)
-    scores = list(_reranker.rerank(query, docs))
-    scored = sorted(zip(scores, results), key=lambda x: x[0], reverse=True)
-    return [r for _, r in scored[:k]]
 
 
 def _log_query(q: str, anchor: dict | None, results: list[dict]) -> None:
@@ -228,9 +194,7 @@ def search(
     detected_layers, cat_scores, method = _retriever.detect_layers_with_scores(q)
     threshold = getattr(_retriever, "sim_threshold", 0.50)
 
-    # Recuperar más candidatos de los necesarios para que el reranker elija.
-    candidates = _retriever.retrieve(q, anchor, k=min(k * 4, 20))
-    results = _rerank(q, candidates, k)
+    results = _retriever.retrieve(q, anchor, k=k)
 
     out = []
     for r in results:
@@ -249,10 +213,12 @@ def search(
         "abstained": not out,  # no inventamos: sin categoría clara, vacío
         "results": out,
         "explanation": explain_detection(detected_layers, cat_scores, threshold, method),
-        "retriever": f"{_retriever.name}+rerank",
-        "reranked": len(candidates) > k,
+        "retriever": _retriever.name,
+        "reranked": False,
+        "territory": TERRITORY.id,
+        "territory_version": TERRITORY.version,
         "took_ms": round((time.monotonic() - t0) * 1000),
-        "attribution": "© OpenStreetMap contributors (ODbL) · Open Data Euskadi",
+        "attribution": TERRITORY.attribution,
     }
 
 

@@ -11,11 +11,13 @@ from __future__ import annotations
 import json
 import os
 import time
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timezone
 from pathlib import Path
-from typing import Any
+
+from regions import load_territory, resolve_layer_path
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
+TERRITORY = load_territory(os.environ.get("EMAP_TERRITORY", "euskadi"))
 
 # SLA por tipo de dato (días antes de considerar obsoleto)
 DEFAULT_SLA_DAYS = {
@@ -42,6 +44,7 @@ DEFAULT_SLA_DAYS = {
     "bilbobus": 180,
     "bizkaibus": 180,
 }
+DEFAULT_SLA_DAYS.update(TERRITORY.freshness_sla_days)
 
 
 def check_layer_freshness(layer: str) -> dict:
@@ -64,7 +67,12 @@ def check_layer_freshness(layer: str) -> dict:
         }
 
     # Extraer metadatos
-    generated = doc.get("generated") or doc.get("updated") or doc.get("last_updated")
+    generated = (
+        doc.get("generated")
+        or doc.get("updated")
+        or doc.get("last_updated")
+        or doc.get("source_updated")
+    )
     source = doc.get("source") or doc.get("source_id", "unknown")
     license_ = doc.get("license", "unknown")
     count = doc.get("count") or len(doc.get("pois", []))
@@ -106,32 +114,7 @@ def check_layer_freshness(layer: str) -> dict:
 
 def _layer_path(layer: str) -> Path | None:
     """Resuelve ruta de una capa."""
-    rel_paths = {
-        "fountains": "pois-euskadi/fountains.json",
-        "toilets": "pois-euskadi/toilets.json",
-        "parking": "pois-euskadi/parking.json",
-        "bikepark": "pois-euskadi/bikepark.json",
-        "defib": "pois-euskadi/defib.json",
-        "beaches": "pois-euskadi/beaches.json",
-        "pharmacy": "pois-euskadi/pharmacy.json",
-        "library": "pois-euskadi/library.json",
-        "sports": "pois-euskadi/sports.json",
-        "food": "pois-euskadi/food.json",
-        "lodging": "pois-euskadi/lodging.json",
-        "hostel": "pois-euskadi/hostel.json",
-        "camping": "pois-euskadi/camping.json",
-        "nature": "pois-euskadi/nature.json",
-        "peaks": "pois-euskadi/peaks.json",
-        "ev": "processed/pois/ev.json",
-        "cameras": "processed/pois/cameras.json",
-        "metro": "processed/pois/metro.json",
-        "euskotren": "processed/pois/euskotren.json",
-        "cercanias": "processed/pois/cercanias.json",
-        "bilbobus": "processed/pois/bilbobus.json",
-        "bizkaibus": "processed/pois/bizkaibus.json",
-    }
-    rel = rel_paths.get(layer)
-    return DATA_DIR / rel if rel else None
+    return resolve_layer_path(DATA_DIR, TERRITORY, layer)
 
 
 def quality_report(layers: list[str] | None = None) -> dict:
@@ -155,7 +138,7 @@ def quality_report(layers: list[str] | None = None) -> dict:
     score = round(fresh / total * 100, 1) if total else 0
 
     return {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "score": score,
         "total_layers": total,
         "status_counts": status_counts,

@@ -1,0 +1,33 @@
+# Puntos fijos de referencia para medir corrección geográfica en Madrid.
+# No son resultados esperados ni entran en el índice: solo representan el
+# origen de la consulta, de la misma forma que una posición GPS.
+puerta-del-sol:
+  lat: 40.41693
+  lon: -3.70355
+plaza-mayor:
+  lat: 40.41551
+  lon: -3.70740
+cibeles:
+  lat: 40.41933
+  lon: -3.69321
+atocha:
+  lat: 40.40659
+  lon: -3.68920
+retiro:
+  lat: 40.41526
+  lon: -3.68450
+moncloa:
+  lat: 40.43520
+  lon: -3.71912
+nuevos-ministerios:
+  lat: 40.44627
+  lon: -3.69228
+plaza-castilla:
+  lat: 40.46690
+  lon: -3.68920
+bernabeu:
+  lat: 40.45305
+  lon: -3.68835
+matadero:
+  lat: 40.39168
+  lon: -3.69760

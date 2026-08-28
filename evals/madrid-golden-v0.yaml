@@ -1,0 +1,125 @@
+version: 0.1.0
+territory: madrid
+created: 2026-08-28
+status: development
+notes: >-
+  Primer corpus de integración territorial. Solo mide fuentes de beber del
+  municipio de Madrid; no representa todavía la cobertura Madrid Labs final
+  ni contiene un split held-out.
+cases:
+- id: mad-fountain-sol
+  split: dev
+  q: {es: fuente de agua cerca de Puerta del Sol}
+  intent: nearest
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [fountains], within_m: 250}
+- id: mad-fountain-plaza-mayor
+  split: dev
+  q: {es: dónde beber agua en la Plaza Mayor}
+  intent: nearest
+  anchor: {landmark: plaza-mayor}
+  expected: {layers: [fountains], within_m: 200}
+- id: mad-fountain-cibeles
+  split: dev
+  q: {es: fuente potable junto a Cibeles}
+  intent: nearest
+  anchor: {landmark: cibeles}
+  expected: {layers: [fountains], within_m: 150}
+- id: mad-fountain-atocha
+  split: dev
+  q: {es: agua para beber cerca de Atocha}
+  intent: nearest
+  anchor: {landmark: atocha}
+  expected: {layers: [fountains], within_m: 350}
+- id: mad-fountain-retiro
+  split: dev
+  q: {es: fuente de agua en el Retiro}
+  intent: nearest
+  anchor: {landmark: retiro}
+  expected: {layers: [fountains], within_m: 150}
+- id: mad-fountain-moncloa
+  split: dev
+  q: {es: fuente para beber en Moncloa}
+  intent: nearest
+  anchor: {landmark: moncloa}
+  expected: {layers: [fountains], within_m: 600}
+- id: mad-fountain-castilla
+  split: dev
+  q: {es: agua potable cerca de Plaza Castilla}
+  intent: nearest
+  anchor: {landmark: plaza-castilla}
+  expected: {layers: [fountains], within_m: 300}
+- id: mad-fountain-matadero
+  split: dev
+  q: {es: fuente pública junto a Matadero Madrid}
+  intent: nearest
+  anchor: {landmark: matadero}
+  expected: {layers: [fountains], within_m: 350}
+- id: mad-sem-botella
+  split: dev
+  q: {es: dónde puedo rellenar mi botella en Nuevos Ministerios}
+  intent: semantic
+  anchor: {landmark: nuevos-ministerios}
+  expected: {layers: [fountains], within_m: 250}
+- id: mad-sem-sed
+  split: dev
+  q: {es: tengo sed cerca del Bernabéu}
+  intent: semantic
+  anchor: {landmark: bernabeu}
+  expected: {layers: [fountains], within_m: 400}
+- id: mad-sem-hidratarme
+  split: dev
+  q: {es: necesito hidratarme en Puerta del Sol}
+  intent: semantic
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [fountains], within_m: 250}
+- id: mad-operational-retiro
+  split: dev
+  q: {es: fuente operativa en el Retiro}
+  intent: attribute
+  anchor: {landmark: retiro}
+  expected:
+    layers: [fountains]
+    within_m: 150
+    tags: {operational: true}
+- id: mad-operational-matadero
+  split: dev
+  q: {es: fuente de agua funcionando cerca de Matadero}
+  intent: attribute
+  anchor: {landmark: matadero}
+  expected:
+    layers: [fountains]
+    within_m: 350
+    tags: {operational: true}
+- id: mad-out-of-service-atocha
+  split: dev
+  q: {es: fuente fuera de servicio cerca de Atocha}
+  intent: attribute
+  anchor: {landmark: atocha}
+  expected:
+    layers: [fountains]
+    within_m: 400
+    tags: {operational: false}
+- id: mad-abstain-gasolinera
+  split: dev
+  q: {es: gasolinera cerca de Puerta del Sol}
+  intent: semantic
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-adversarial-fuente-tipografica
+  split: dev
+  q: {es: necesito una fuente tipográfica cerca de Sol}
+  intent: semantic
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-abstain-piscina
+  split: dev
+  q: {es: piscina pública cerca del Retiro}
+  intent: semantic
+  anchor: {landmark: retiro}
+  answerable: false
+- id: mad-adversarial-fuente-juventud
+  split: dev
+  q: {es: dónde está la fuente de la juventud}
+  intent: semantic
+  answerable: false

@@ -65,7 +65,13 @@ KEYWORD_LAYERS: list[tuple[tuple[str, ...], tuple[str, ...]]] = [
 ]
 
 # atributo detectado en la consulta → filtro sobre tags del POI
-ATTRIBUTE_FILTERS: list[tuple[tuple[str, ...], tuple[str, str, bool]]] = [
+ATTRIBUTE_FILTERS: list[tuple[tuple[str, ...], tuple[str, object, bool]]] = [
+    # El negativo debe evaluarse primero: "no operativa" también contiene
+    # el token positivo "operativa".
+    (("fuera de servicio", "no operativa", "no operativo", "cerrada temporalmente"),
+     ("operational", False, True)),
+    (("operativa", "operativo", "en servicio", "funcionando"),
+     ("operational", True, True)),
     (("silla de ruedas", "gurpil-aulki", "accesible", "irisgarri"),
      ("wheelchair", "yes", True)),
     (("gratis", "gratuito", "doako"), ("fee", "no", True)),
@@ -90,7 +96,7 @@ class BaselineRetriever:
         # la derecha queda libre para plurales/declinaciones (fuente→fuentes)
         for keywords, layer_ids in KEYWORD_LAYERS:
             if any(re.search(rf"(?<![a-zà-ÿ]){re.escape(kw)}", q) for kw in keywords):
-                return [l for l in layer_ids if l in self.datasets]
+                return [layer for layer in layer_ids if layer in self.datasets]
         return []
 
     def retrieve(self, query: str, anchor: dict | None, k: int = 5) -> list[dict]:
@@ -101,9 +107,16 @@ class BaselineRetriever:
         if not layers:
             return []  # no sé qué me pides: abstención
 
-        candidates = [dict(p, layer=l) for l in layers for p in self.datasets[l]]
+        candidates = [
+            dict(poi, layer=layer)
+            for layer in layers
+            for poi in self.datasets[layer]
+        ]
 
+        filtered_tags: set[str] = set()
         for keywords, (tag, value, must_equal) in ATTRIBUTE_FILTERS:
+            if tag in filtered_tags:
+                continue
             if any(hit(kw) for kw in keywords):
                 # sin fallback: si nada cumple el atributo, mejor abstenerse
                 # que devolver resultados que no cumplen lo pedido
@@ -112,6 +125,7 @@ class BaselineRetriever:
                     if (p.get("tags", {}).get(tag) == value) == must_equal
                     and (must_equal or p.get("tags", {}).get(tag) is not None)
                 ]
+                filtered_tags.add(tag)
 
         # con anchor manda la distancia (lo genérico cerca gana a lo
         # homónimo lejos); el nombre citado solo decide sin ubicación

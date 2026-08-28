@@ -1,0 +1,176 @@
+{
+  "retriever": "hybrid-keywords-then-minilm",
+  "territory": "madrid",
+  "lang": "es",
+  "k": 5,
+  "config": {
+    "profile": "minilm",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
+  },
+  "n_corpus_cases": 18,
+  "date": "2026-08-28",
+  "corpus": "0.1.0",
+  "total": {
+    "pass": 16,
+    "cases": 18
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 8,
+      "cases": 8
+    },
+    "semantic": {
+      "pass": 5,
+      "cases": 7
+    },
+    "attribute": {
+      "pass": 3,
+      "cases": 3
+    }
+  },
+  "cases": [
+    {
+      "id": "mad-fountain-sol",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-fountain-plaza-mayor",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · C/V BORDADORES · Calle Mayor 32"
+    },
+    {
+      "id": "mad-fountain-cibeles",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · c/v Pza. Cibeles en bulevar junto paradas de autobús · Paseo Recoletos 1"
+    },
+    {
+      "id": "mad-fountain-atocha",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · EN ZONA PEATONAL · Calle Murcia 26"
+    },
+    {
+      "id": "mad-fountain-retiro",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Plaza de Honduras · Plaza Plaza Independencia 7"
+    },
+    {
+      "id": "mad-fountain-moncloa",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · CV CALLE DE ALTAMIRANO · Calle Princesa 71"
+    },
+    {
+      "id": "mad-fountain-castilla",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Calle Bravo Murillo 379"
+    },
+    {
+      "id": "mad-fountain-matadero",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Frente a la Junta municipal de Arganzuela"
+    },
+    {
+      "id": "mad-sem-botella",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Nuevas ministerios, estación metro · Paseo Castellana 65"
+    },
+    {
+      "id": "mad-sem-sed",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PSO. DE LA CASTELLANA Nº 146-148 · Paseo Castellana 148"
+    },
+    {
+      "id": "mad-sem-hidratarme",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-operational-retiro",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Plaza de Honduras · Plaza Plaza Independencia 7"
+    },
+    {
+      "id": "mad-operational-matadero",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Frente a la Junta municipal de Arganzuela"
+    },
+    {
+      "id": "mad-out-of-service-atocha",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · JUNTO FAROLA 4, EN ACERADO DE PASEO CENTRAL · Paseo Infanta Isabel 4"
+    },
+    {
+      "id": "mad-abstain-gasolinera",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-adversarial-fuente-tipografica",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-abstain-piscina",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-adversarial-fuente-juventud",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Fuente de agua · ZONA ESTANCIAL EN PLAZA DE MILMARCOS · Calle Muela De San Juan 5"
+    }
+  ],
+  "known_gaps": []
+}

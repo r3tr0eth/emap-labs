@@ -3,8 +3,8 @@ message: >-
   Si usas el benchmark, el corpus o los datasets de EMAP Labs,
   cita este repositorio.
 title: >-
-  EMAP Labs: geographic retrieval benchmark and mobility datasets
-  for the Basque Country (Spanish/Basque)
+  EMAP Labs: verifiable geographic retrieval benchmark and territorial
+  mobility datasets for Euskadi and Madrid
 type: software
 authors:
   - family-names: Jiménez
@@ -14,8 +14,8 @@ repository-code: https://github.com/r3tr0eth/emap-labs
 url: https://emap-next.vercel.app
 doi: 10.5281/zenodo.21282784
 license: Apache-2.0
-version: "0.2.0"
-date-released: "2026-08-05"
+version: "0.3.0-rc.1"
+date-released: "2026-08-28"
 keywords:
   - geographic-retrieval
   - benchmark
@@ -27,10 +27,13 @@ keywords:
   - open-data
   - mobility
   - euskadi
+  - madrid
+  - provenance
+  - abstention
 abstract: >-
    Benchmark abierto de retrieval geográfico hiperlocal en español y
-   euskera (139 casos curados, 22 capas, held-out estricto, abstención
-   medida, euskera validado con Itzuli) y datasets versionados de
-   movilidad e infraestructura urbana de Euskadi derivados de
-   OpenStreetMap y Open Data Euskadi. v2: e5-large desplegado en
-   producción (held-out ES 73%, EU 71%).
+   euskera: 139 casos de Euskadi sobre 22 capas con held-out estricto y
+   abstención medida, más un primer pack de Madrid con una fuente oficial,
+   2.306 POIs y 18 casos development. La prerelease v0.3 valida un registro
+   territorial, evidencia, frescura y contratos compartidos sin delegar los
+   hechos a un modelo generativo.

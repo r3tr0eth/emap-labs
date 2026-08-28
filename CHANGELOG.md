@@ -3,6 +3,41 @@
 Formato basado en [Keep a Changelog](https://keepachangelog.com/). Las versiones
 `vX.Y` etiquetan releases de datasets/artefactos publicables.
 
+## [v0.3.0-rc.1] — 2026-08-28
+
+Prerelease de validación multi-territorio de EMAP Intelligence/Core.
+
+### Añadido
+- Registro territorial versionado para Euskadi y Madrid, consumido por servicio,
+  evals, frescura y contratos de respuesta sin ramas hardcoded por ciudad.
+- Primer adapter oficial de Madrid: 2.306 fuentes de agua municipales con
+  estado operativo, procedencia de coordenadas, checksum, cobertura y calidad.
+- EMAPBench Madrid dev: 18 consultas geográficas, semánticas, de atributos,
+  abstención y adversariales.
+- Perfiles reproducibles de retrieval (`minilm`, `mpnet`, `e5large`) y gates CI
+  separados para development y held-out manual.
+- Contratos MCP que conservan territorio, método, limitaciones y atribución de
+  la respuesta de Core.
+
+### Cambiado
+- El dataset canónico de Madrid se genera en `emap-next/data/processed`; el
+  snapshot de `evals/data` queda como copia autocontenida de CI.
+- El reranking se declara inactivo cuando no existe; no se atribuye una mejora
+  al componente sin evidencia controlada.
+- El builder de releases acepta semver/fecha, incorpora Madrid y genera tarballs
+  con metadatos deterministas.
+
+### Verificado
+- Madrid dev: baseline 77%, semantic MiniLM 83%, hybrid MiniLM 88%.
+- Euskadi dev e5-large: 89% ES y 84% EU.
+- Euskadi held-out e5-large: 79% ES y 82% EU; baseline 58% ES y 51% EU.
+
+### Limitaciones conocidas
+- Madrid contiene una fuente y 18 casos dev; todavía no tiene held-out.
+- El servicio selecciona un territorio por proceso, no ambos simultáneamente.
+- El endpoint MCP objetivo requiere redeploy: devolvía 421 el 2026-08-28.
+- Telemetría formal y response contract completo quedan fuera de esta RC.
+
 ## [v0.1] — 2026-07-07
 
 Primer release versionado de datasets — **cierra la fase L0** del roadmap.

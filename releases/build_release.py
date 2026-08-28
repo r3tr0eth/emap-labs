@@ -5,26 +5,27 @@ Lee los datasets fuente de ../emap-next (solo lectura — NO los modifica),
 calcula los 6 metadatos (fuente, licencia, fecha, checksum, cobertura,
 calidad) y produce:
 
-  releases/<version>/manifest.json          metadatos + checksums (se commitea)
-  dist/emap-labs-datasets-<version>.tar.gz  datos + manifest + README (release asset)
+  releases/v<version>/manifest.json           metadatos + checksums (se commitea)
+  dist/emap-labs-datasets-v<version>.tar.gz   datos + manifest + README (release asset)
 
-Uso: python releases/build_release.py            (desde la raíz de emap-labs)
+Uso: python releases/build_release.py --version 0.3.0-rc.1
 """
 from __future__ import annotations
 
+import argparse
+import gzip
 import hashlib
 import json
+import re
 import shutil
 import tarfile
 from datetime import date
 from pathlib import Path
 
-VERSION = "0.1"
 LABS = Path(__file__).resolve().parent.parent
 EMAP_NEXT = (LABS / ".." / "emap-next").resolve()
-OUT_DIR = LABS / "releases" / f"v{VERSION}"
 DIST = LABS / "dist"
-STAGE = DIST / f"emap-labs-datasets-v{VERSION}"
+VERSION_RE = re.compile(r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$")
 
 # Procedencia curada a mano (verificada contra los generadores de emap-next).
 # records_field: clave de la lista de registros en cada JSON.
@@ -95,6 +96,21 @@ DATASETS = [
             "notes": "113 municipios y 8 distritos completos; 26/~34 barrios de Bilbao.",
         },
     },
+    {
+        "id": "pois-madrid-fountains",
+        "title": "Fuentes de agua para beber del Ayuntamiento de Madrid",
+        "src": "data/processed/madrid/pois/fountains.json",
+        "records_field": "pois",
+        "source": "Ayuntamiento de Madrid — dataset 300051-0",
+        "license": "CC BY 4.0 (Ayuntamiento de Madrid)",
+        "coverage": {
+            "territory": "madrid",
+            "notes": (
+                "Inventario municipal oficial; completeness no estimada "
+                "sin un universo independiente."
+            ),
+        },
+    },
 ]
 
 
@@ -123,15 +139,49 @@ def quality(records: list) -> dict:
     return {"records": n, "emptyFieldsPct": pct}
 
 
+def _release_date(value: str) -> str:
+    try:
+        return date.fromisoformat(value).isoformat()
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("fecha esperada: YYYY-MM-DD") from exc
+
+
+def _tar_filter(info: tarfile.TarInfo) -> tarfile.TarInfo:
+    """Normaliza metadatos del tar para que dos builds iguales den el mismo hash."""
+    info.uid = info.gid = 0
+    info.uname = info.gname = ""
+    info.mtime = 0
+    return info
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--version", required=True, help="semver sin prefijo v")
+    parser.add_argument(
+        "--date",
+        type=_release_date,
+        default=date.today().isoformat(),
+        help="fecha reproducible de release (YYYY-MM-DD)",
+    )
+    args = parser.parse_args()
+    if not VERSION_RE.fullmatch(args.version):
+        parser.error("--version debe ser semver, por ejemplo 0.3.0-rc.1")
+    return args
+
+
 def main() -> None:
+    args = parse_args()
+    version = args.version
+    out_dir = LABS / "releases" / f"v{version}"
+    stage = DIST / f"emap-labs-datasets-v{version}"
     print(f"emap-next: {EMAP_NEXT}")
     if not EMAP_NEXT.exists():
         raise SystemExit(f"No encuentro emap-next en {EMAP_NEXT}")
 
-    if STAGE.exists():
-        shutil.rmtree(STAGE)
-    (STAGE / "data").mkdir(parents=True)
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    if stage.exists():
+        shutil.rmtree(stage)
+    (stage / "data").mkdir(parents=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     entries = []
     for ds in DATASETS:
@@ -139,7 +189,7 @@ def main() -> None:
         raw = json.loads(src.read_text())
         records = raw.get(ds["records_field"], [])
         dst_name = f"{ds['id']}.json"
-        shutil.copy2(src, STAGE / "data" / dst_name)
+        shutil.copy2(src, stage / "data" / dst_name)
         entry = {
             "id": ds["id"],
             "title": ds["title"],
@@ -147,7 +197,12 @@ def main() -> None:
             "format": "GeoJSON" if ds["records_field"] == "features" else "JSON (pois[])",
             "source": ds["source"],
             "license": ds["license"],
-            "updated": raw.get("updated") or date.fromtimestamp(src.stat().st_mtime).isoformat(),
+            "updated": (
+                raw.get("source_updated")
+                or raw.get("updated")
+                or raw.get("generated")
+                or date.fromtimestamp(src.stat().st_mtime).isoformat()
+            ),
             "sizeBytes": src.stat().st_size,
             "checksum": {"algo": "sha256", "value": sha256(src)},
             "coverage": ds["coverage"],
@@ -158,27 +213,36 @@ def main() -> None:
               f"{entry['quality']['emptyFieldsPct']:>5}% vacío  {ds['license'][:32]}")
 
     manifest = {
-        "release": f"v{VERSION}",
+        "release": f"v{version}",
+        "status": "prerelease" if "-" in version else "stable",
         "project": "EMAP Labs — datasets",
-        "generatedAt": date.today().isoformat(),
-        "territory": "euskadi",
+        "generatedAt": args.date,
+        "territories": ["euskadi", "madrid"],
         "datasets": entries,
         "totals": {
             "datasets": len(entries),
             "records": sum(e["quality"]["records"] for e in entries),
         },
     }
-    (OUT_DIR / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
-    shutil.copy2(OUT_DIR / "manifest.json", STAGE / "manifest.json")
-    shutil.copy2(LABS / "releases" / "RELEASE-NOTES.md", STAGE / "README.md") if (LABS / "releases" / "RELEASE-NOTES.md").exists() else None
+    manifest_path = out_dir / "manifest.json"
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    shutil.copy2(manifest_path, stage / "manifest.json")
+    notes = LABS / "releases" / "RELEASE-NOTES.md"
+    if notes.exists():
+        shutil.copy2(notes, stage / "README.md")
 
     # Tarball descargable
     DIST.mkdir(exist_ok=True)
-    tar_path = DIST / f"emap-labs-datasets-v{VERSION}.tar.gz"
-    with tarfile.open(tar_path, "w:gz") as tar:
-        tar.add(STAGE, arcname=STAGE.name)
+    tar_path = DIST / f"emap-labs-datasets-v{version}.tar.gz"
+    with tar_path.open("wb") as raw_out:
+        with gzip.GzipFile(filename="", mode="wb", fileobj=raw_out, mtime=0) as gz:
+            with tarfile.open(fileobj=gz, mode="w") as tar:
+                tar.add(stage, arcname=stage.name, filter=_tar_filter)
 
-    print(f"\nmanifest → {OUT_DIR / 'manifest.json'}")
+    print(f"\nmanifest → {manifest_path}")
     print(f"tarball  → {tar_path}  ({tar_path.stat().st_size // 1024} KB)")
     print(f"total: {manifest['totals']['datasets']} datasets, "
           f"{manifest['totals']['records']} registros")

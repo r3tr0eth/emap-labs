@@ -1,45 +1,72 @@
-# EMAP Labs — Datasets v0.1
+# EMAP Labs v0.3.0-rc.1 — Intelligence/Core multi-territorio
 
-Primer release versionado de datasets de **EMAP Labs**, la capa de datos e
-inteligencia detrás de [EMAP](https://emap-next.vercel.app). Territorio: Euskadi
-(foco Bizkaia). Fecha: 2026-07.
+Prerelease técnica para validar que un mismo seam territorial, pipeline de
+retrieval y contrato de evidencia funcionan sobre Euskadi y Madrid. No es la
+integración completa de Madrid ni implica un deploy de producción.
 
-Cada dataset se publica con **6 metadatos**: fuente, licencia, fecha de
-actualización, checksum (SHA-256), cobertura y calidad (nº de registros y % de
-campos vacíos). Ver `manifest.json` para los valores exactos.
+## Qué incorpora
 
-## Contenido — 7 datasets, 12.732 registros
+- registro territorial versionado para Euskadi y Madrid;
+- adapter oficial de fuentes de agua del Ayuntamiento de Madrid;
+- 2.306 POIs Madrid con estado, procedencia de coordenadas, freshness,
+  checksum, cobertura y calidad;
+- EMAPBench Madrid dev con 18 consultas geográficas, semánticas, ambiguas,
+  imposibles y adversariales;
+- perfiles versionados MiniLM/MPNet/e5-large y separación estricta dev/held-out;
+- respuesta Labs con territorio, versión, retriever, evidencia, freshness,
+  limitaciones y atribución;
+- MCP 0.1.2 preparado para conservar la atribución territorial de Core.
 
-| Dataset | Registros | Fuente | Licencia |
-|---|---:|---|---|
-| **DEA (desfibriladores) de Euskadi** | 3.321 | Registro Vasco de DEA — Dpto. de Salud, Gobierno Vasco | Open Data Euskadi (CC BY 4.0) |
-| Fuentes de agua potable | 6.278 | OpenStreetMap (Overpass) | ODbL 1.0 |
-| Aseos públicos | 696 | OpenStreetMap (Overpass) | ODbL 1.0 |
-| Aparcamientos | 641 | OpenStreetMap (Overpass) | ODbL 1.0 |
-| Aparcabicis | 1.432 | OpenStreetMap (Overpass) | ODbL 1.0 |
-| Playas | 217 | OpenStreetMap + Open Data Bizkaia (DFB) | ODbL 1.0 / CC BY 4.0 |
-| **Barrios / límites administrativos de Bizkaia** | 147 | OpenStreetMap (Overpass) | ODbL 1.0 |
+## Resultados de release
 
-Barrios = 113 municipios + 8 distritos + 26 barrios de Bilbao (GeoJSON con
-nombres oficiales ES/EU). El resto son POIs con `lat`/`lon`, nombre ES/EU,
-categoría y tags.
+| Territorio / split | Baseline | Semantic | Hybrid |
+|---|---:|---:|---:|
+| Madrid dev ES (18) | 77% | 83% MiniLM | 88% MiniLM |
+| Euskadi dev ES (82) | 74% | — | 89% e5-large |
+| Euskadi dev EU (82) | 71% | — | 84% e5-large |
+| Euskadi held-out ES (29) | 58% | — | 79% e5-large |
+| Euskadi held-out EU (29) | 51% | — | 82% e5-large |
 
-## Formato
+El held-out se ejecutó una sola vez como gate final. No se utilizó para ajustar
+thresholds ni casos.
 
-- `manifest.json` — índice con los 6 metadatos por dataset.
-- `data/*.json` — los datasets. Barrios en **GeoJSON** (`features[]`); el resto
-  en JSON con `pois[]` (`{source, updated, pois}`).
+## Asset de datasets
 
-## Uso y atribución
+`emap-labs-datasets-v0.3.0-rc.1.tar.gz` contiene 8 datasets y 17.241 registros:
 
-- **OpenStreetMap (ODbL 1.0):** al usar o redistribuir hay que atribuir
-  "© OpenStreetMap contributors" y mantener la licencia ODbL en obras derivadas.
-- **DEA — Open Data Euskadi (CC BY 4.0):** atribuir al Registro Vasco de DEA
-  (Dpto. de Salud, Gobierno Vasco). Dato de emergencia: **puede estar
-  desactualizado**; no sustituye a fuentes oficiales en una urgencia.
-- **Playas / Open Data Bizkaia:** atribución a la Diputación Foral de Bizkaia.
+| Dataset | Registros | Fuente / licencia |
+|---|---:|---|
+| DEA Euskadi | 2.731 | Open Data Euskadi · CC BY 4.0 |
+| Fuentes Euskadi | 8.968 | OpenStreetMap · ODbL |
+| Aseos Euskadi | 967 | OpenStreetMap · ODbL |
+| Aparcamientos Euskadi | 827 | OpenStreetMap · ODbL |
+| Aparcabicis Euskadi | 1.077 | OpenStreetMap · ODbL |
+| Playas Euskadi | 218 | OSM + Open Data Bizkaia · ODbL / CC BY 4.0 |
+| Límites administrativos Bizkaia | 147 | OpenStreetMap · ODbL |
+| Fuentes Madrid | 2.306 | Ayuntamiento de Madrid · CC BY 4.0 |
+
+Cada entrada incluye fuente, licencia, fecha, SHA-256, cobertura y métricas de
+calidad. No se publica `coverage.completeness` cuando no puede estimarse con
+honestidad.
+
+## Límites explícitos de esta RC
+
+- Madrid solo tiene una de las 5–8 fuentes objetivo y 18 casos dev; no tiene
+  held-out.
+- El servicio carga un territorio por proceso; aún no atiende Euskadi y Madrid
+  simultáneamente desde la misma instancia.
+- El response contract y la calibración formal de confidence están parciales.
+- La telemetría Intelligence todavía no está implementada.
+- `https://vps.emapapp.com/mcp` devolvía 421 el 2026-08-28: el código 0.1.2
+  está preparado, pero el redeploy y el smoke verde son una operación separada.
 
 ## Reproducibilidad
 
-Regenerable con `python releases/build_release.py` desde el repo, que lee los
-datasets fuente de `../emap-next` y recalcula checksums y calidad.
+```bash
+python releases/build_release.py --version 0.3.0-rc.1 --date 2026-08-28
+python evals/run.py --retriever hybrid --profile e5large --lang es --split dev
+python evals/run.py --retriever hybrid --profile minilm --territory madrid --lang es --split dev
+```
+
+Código Apache-2.0; corpus EMAP CC-BY-4.0; datos derivados conservan las
+licencias y atribuciones indicadas en `manifest.json`.

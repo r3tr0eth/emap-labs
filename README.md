@@ -80,12 +80,12 @@ Cinco herramientas ([`mcp/`](mcp/README.md)):
 Remoto (sin instalar nada), registro `io.github.r3tr0eth/emap`:
 
 ```json
-{ "mcpServers": { "emap": { "url": "https://gaizkajimenez.com/mcp" } } }
+{ "mcpServers": { "emap": { "url": "https://vps.emapapp.com/mcp" } } }
 ```
 
 Migración de URL a dominio de producto (`emapapp.com`) en curso — detalle
 en [`mcp/README.md`](mcp/README.md). Smoke: `.venv/bin/python mcp/smoke.py
---base https://gaizkajimenez.com --live`.
+--base https://vps.emapapp.com --live`.
 
 Toda respuesta lleva `attribution` (ODbL + GTFS + CC-BY-4.0). Criterio de
 aceptación cumplido y verificado por protocolo: *"¿dónde dejo la bici cerca
@@ -108,8 +108,11 @@ viven en `evals/retriever-config.json`.
 
 ## Datasets
 
-Release **v0.2** (2026-08-05): 22 capas / 27.515 POIs de movilidad e
-infraestructura urbana de Euskadi — fuentes, aseos, parking, aparcabicis,
+Prerelease **v0.3.0-rc.1** (2026-08-28): valida el mismo registro territorial
+y pipeline de retrieval sobre Euskadi y un primer pack oficial de Madrid.
+El activo descargable incluye 8 datasets / 17.241 registros; Madrid aporta
+2.306 fuentes municipales verificables. El corpus completo de Euskadi conserva
+22 capas de movilidad e infraestructura — fuentes, aseos, parking, aparcabicis,
 carga eléctrica, desfibriladores, playas, farmacias, bibliotecas, deporte,
 restaurantes, alojamiento, camping, espacios naturales, cimas, bancos,
 papeleras, reciclaje, refugios, buzones, teléfonos y paradas multi-red
@@ -157,12 +160,12 @@ Si usas el benchmark, el corpus o los datasets, cita el repositorio
 ```bibtex
 @software{emaplabs2026,
   author  = {Jiménez, Gaizka},
-  title   = {EMAP Labs: geographic retrieval benchmark and mobility
-             datasets for the Basque Country (Spanish/Basque)},
+  title   = {EMAP Labs: verifiable geographic retrieval benchmark and
+             territorial mobility datasets for Euskadi and Madrid},
   year    = {2026},
   doi     = {10.5281/zenodo.21282784},
   url     = {https://github.com/r3tr0eth/emap-labs},
-   version = {0.2.0}
+  version = {0.3.0-rc.1}
 }
 ```
 

@@ -24,7 +24,8 @@ geo-semántico: cada fuente aún necesita adapter, manifest y evaluación.
 La fuente de fuentes de beber pasa a **aceptada** con evidencia reproducible:
 
 - adapter: `datasets/madrid-fountains/build.py`;
-- salida normalizada: `evals/data/madrid/pois/fountains.json`;
+- salida canónica: `../emap-next/data/processed/madrid/pois/fountains.json`;
+- snapshot reproducible para CI: `evals/data/processed/madrid/pois/fountains.json`;
 - 2.306 POIs válidos, 271 coordenadas recuperadas desde ETRS89/UTM 30N y un
   registro oficial descartado por carecer de coordenadas utilizables;
 - 2.261 operativos, 43 fuera de servicio y 2 cerrados temporalmente;

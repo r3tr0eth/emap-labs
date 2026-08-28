@@ -6,7 +6,7 @@ No existe otro MCP de movilidad hiperlocal: búsqueda semántica local ES/EU,
 contexto de lugar, rutas multimodales con infraestructura propia (OSRM/OTP)
 y "el monte en transporte público".
 
-**Versión:** 0.1.1 · wrapper de solo lectura · Apache-2.0
+**Versión:** 0.1.2 · wrapper de solo lectura · Apache-2.0
 
 ## Herramientas
 
@@ -47,14 +47,14 @@ EMAP_MCP_TRANSPORT=streamable-http EMAP_MCP_PORT=8084 python mcp/server.py
 
 | Superficie | URL | Estado |
 |---|---|---|
-| Remoto actual | `https://gaizkajimenez.com/mcp` | ✅ en prod |
+| Endpoint objetivo | `https://vps.emapapp.com/mcp` | ⏳ código listo; requiere redeploy (421 verificado el 2026-08-28) |
 | Dominio de producto | `mcp.emapapp.com` o `emapapp.com/mcp` | ⏳ DNS/nginx (decisión abierta) |
 | Health (local al proceso) | `GET http://127.0.0.1:8084/health` | ✅ desde 0.1.1 |
 
-Cliente remoto (prod actual):
+Cliente remoto (después del redeploy y smoke verde):
 
 ```json
-{"mcpServers": {"emap": {"url": "https://gaizkajimenez.com/mcp"}}}
+{"mcpServers": {"emap": {"url": "https://vps.emapapp.com/mcp"}}}
 ```
 
 ### Variables de entorno
@@ -63,7 +63,7 @@ Cliente remoto (prod actual):
 |---|---|---|
 | `EMAP_MCP_TRANSPORT` | `stdio` | `streamable-http` en VPS |
 | `EMAP_MCP_HOST` / `PORT` | `127.0.0.1` / `8084` | bind del proceso |
-| `EMAP_MCP_ALLOWED_HOSTS` | local + gaizkajimenez + emapapp* | Host permitidos (anti rebinding) |
+| `EMAP_MCP_ALLOWED_HOSTS` | local + gaizkajimenez + emapapp* | Hosts permitidos (anti rebinding; incluye el dominio anterior durante la transición) |
 | `EMAP_API_URL` | `https://emap-next.vercel.app` | API que envuelve el MCP |
 | `EMAP_SEMANTIC_URL` | `https://vps.emapapp.com/semantic` | Servicio Labs para planificación de montaña |
 | `EMAP_SITE_URL` | `https://emapapp.com` | marca en atribución / website |
@@ -84,8 +84,8 @@ Snippet nginx (path o subdominio): `nginx.example.conf`.
 EMAP_MCP_TRANSPORT=streamable-http .venv/bin/python mcp/server.py &
 .venv/bin/python mcp/smoke.py --base http://127.0.0.1:8084
 
-# prod actual
-.venv/bin/python mcp/smoke.py --base https://gaizkajimenez.com --live
+# endpoint objetivo (requiere redeploy y smoke verde)
+.venv/bin/python mcp/smoke.py --base https://vps.emapapp.com --live
 
 # cuando exista el dominio de producto
 .venv/bin/python mcp/smoke.py --base https://mcp.emapapp.com --live
@@ -96,8 +96,9 @@ EMAP_MCP_TRANSPORT=streamable-http .venv/bin/python mcp/server.py &
 - **Registro oficial MCP**: `io.github.r3tr0eth/emap`
   (registry.modelcontextprotocol.io, remote streamable-http, status
   active — 2026-07-10). `server.json` en este directorio.
-- URL remota del registry: sigue siendo `gaizkajimenez.com/mcp` hasta
-  fijar el hostname de producto y republicar (`mcp-publisher publish`).
+- `server.json` prepara `vps.emapapp.com/mcp`, pero no debe republicarse en el
+  registry hasta que el redeploy termine con smoke verde. El dominio anterior
+  continúa en la allowlist durante la transición.
 - `llms.txt` del API: https://emap-next.vercel.app/llms.txt
 - Pendiente: PR a awesome-mcp-servers y post técnico (borradores listos);
   migrar URL pública a dominio `emapapp.com`.

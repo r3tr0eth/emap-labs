@@ -4,7 +4,7 @@ territory: Municipio de Madrid
 languages: [es]
 bbox: [-3.90, 40.30, -3.50, 40.65]
 layers:
-  fountains: madrid/pois/fountains.json
+  fountains: processed/madrid/pois/fountains.json
 sources:
   fountains: Ayuntamiento de Madrid, dataset 300051-0
 eval_split:

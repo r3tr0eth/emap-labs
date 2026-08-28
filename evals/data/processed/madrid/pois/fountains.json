@@ -5,6 +5,16 @@
     "published_wgs84": 2035
   },
   "count": 2306,
+  "coverage": {
+    "bbox": [
+      -3.9,
+      40.3,
+      -3.5,
+      40.65
+    ],
+    "notes": "Inventario municipal oficial; cobertura limitada al municipio. No se estima completeness sin un universo independiente.",
+    "territory": "Municipio de Madrid"
+  },
   "dropped": 1,
   "generated": "2026-08-28",
   "layer_id": "fountains",
@@ -65288,6 +65298,20 @@
       "territory": "madrid"
     }
   ],
+  "quality": {
+    "coordinate_counts": {
+      "derived_etrs89_utm30n": 271,
+      "published_wgs84": 2035
+    },
+    "dropped": 1,
+    "records": 2306,
+    "status_counts": {
+      "operational": 2261,
+      "out_of_service": 43,
+      "temporarily_closed": 2
+    },
+    "unique_ids": 2306
+  },
   "source": "Fuentes de beber del Ayuntamiento de Madrid",
   "source_id": "madrid_fountains_official",
   "source_sha256": "7fc4e530ddf61e895b8d164b70e868adef3b8095221ae25e9bb6c8af77e2dd05",

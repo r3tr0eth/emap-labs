@@ -75,6 +75,8 @@ def _default_allowed_hosts(port: int) -> str:
         "localhost",
     ]
     public = [
+        "gaizkajimenez.com",
+        "www.gaizkajimenez.com",
         "vps.emapapp.com",
         "emapapp.com",
         "mcp.emapapp.com",
@@ -128,7 +130,7 @@ async def _get(path: str, **params: Any) -> dict:
 
 
 def _out(payload: dict) -> dict:
-    return {**payload, "attribution": ATTRIBUTION}
+    return {**payload, "attribution": payload.get("attribution") or ATTRIBUTION}
 
 
 @mcp.custom_route("/health", methods=["GET"])
@@ -156,6 +158,7 @@ async def search_places(query: str, lat: float, lon: float, k: int = 5) -> dict:
     fields = (
         "query", "abstained", "results", "territory", "territory_version",
         "retriever", "reranked", "explanation", "limitations",
+        "attribution",
     )
     payload = {key: d[key] for key in fields if key in d}
     payload.setdefault("query", query)

@@ -3,7 +3,7 @@
   "name": "io.github.r3tr0eth/emap",
   "title": "emap — Euskadi hyperlocal mobility",
   "description": "Basque Country hyperlocal mobility: ES/EU semantic search, routing, open-data POIs, peak-bagging.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://emapapp.com",
   "repository": {
     "url": "https://github.com/r3tr0eth/emap-labs",
@@ -12,7 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://gaizkajimenez.com/mcp"
+      "url": "https://vps.emapapp.com/mcp"
     }
   ]
 }

@@ -192,7 +192,7 @@ def main() -> int:
             path = scaffold_region(args.region_id, args.name, args.territory,
                                    args.languages, args.bbox)
             print(f"✅ Creado: {path}")
-            print(f"   Edita region.yaml y añade tus datos en data/")
+            print("   Edita region.yaml y añade tus datos en data/")
         except FileExistsError as e:
             print(f"❌ {e}")
             return 1

@@ -15,12 +15,10 @@ from __future__ import annotations
 
 import json
 import os
-import time
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Any
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
 OTP_BASE = os.environ.get("EMAP_OTP_URL", "http://localhost:8082/otp/routers/default")

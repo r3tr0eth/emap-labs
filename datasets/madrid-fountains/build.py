@@ -31,7 +31,15 @@ from emap_geo import utm30n_to_wgs84
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_OUTPUT = ROOT / "evals" / "data" / "madrid" / "pois" / "fountains.json"
+DEFAULT_OUTPUT = (
+    ROOT.parent
+    / "emap-next"
+    / "data"
+    / "processed"
+    / "madrid"
+    / "pois"
+    / "fountains.json"
+)
 SOURCE_URL = (
     "https://datos.madrid.es/dataset/300051-0-fuentes/resource/"
     "300051-0-fuentes/download/300051-0-fuentes.json"
@@ -204,6 +212,21 @@ def build_document(raw: bytes, source_updated: str) -> dict[str, Any]:
         "dropped": dropped,
         "status_counts": dict(sorted(status_counts.items())),
         "coordinate_counts": dict(sorted(coordinate_counts.items())),
+        "coverage": {
+            "territory": "Municipio de Madrid",
+            "bbox": list(MADRID_BBOX),
+            "notes": (
+                "Inventario municipal oficial; cobertura limitada al municipio. "
+                "No se estima completeness sin un universo independiente."
+            ),
+        },
+        "quality": {
+            "records": len(pois),
+            "dropped": dropped,
+            "unique_ids": len(by_id),
+            "status_counts": dict(sorted(status_counts.items())),
+            "coordinate_counts": dict(sorted(coordinate_counts.items())),
+        },
         "pois": pois,
     }
 

@@ -120,7 +120,7 @@ agentes**: búsqueda semántica local, explain-place, rutas con confort/señales
 y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 
 1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos —
-   ✅ v0.1.1 en producción; v0.1.2 corregida en código local y pendiente de
+   ✅ v0.1.1 publicada históricamente; v0.1.2 corregida en código y pendiente de
    deploy (mcp/): 5 herramientas (search_places, nearby_pois,
    explain_place, plan_route, plan_hike) con descripciones ES/EU/EN y
    atribución en cada respuesta; criterio de 'hecho' verificado por
@@ -130,7 +130,8 @@ y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 2. **llms.txt / docs agent-readable** del API público — ✅ HECHO
    (emap-next.vercel.app/llms.txt, 2026-07-10).
 3. Distribución — 🟡 registro oficial MCP ✅ (io.github.r3tr0eth/emap,
-   active) y remoto público en gaizkajimenez.com/mcp; **pendiente** mover
+   active); el remoto anterior devuelve 404 y `vps.emapapp.com/mcp` devuelve
+   421 hasta redeploy. **Pendiente** activar, pasar smoke y mover
    la URL canónica a dominio de producto (`mcp.emapapp.com` o
    `emapapp.com/mcp` — decisión abierta), republicar registry, awesome-lists
    y post técnico (borrador en docs/estrategia). Es simultáneamente producto

@@ -13,7 +13,6 @@ import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from typing import Any
 
 from regions import load_territory, resolve_layer_path
 

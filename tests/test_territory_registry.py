@@ -37,7 +37,10 @@ class TerritoryRegistryTest(unittest.TestCase):
         territory = load_territory("madrid")
 
         self.assertEqual("Municipio de Madrid", territory.territory)
-        self.assertEqual({"fountains": "madrid/pois/fountains.json"}, dict(territory.layers))
+        self.assertEqual(
+            {"fountains": "processed/madrid/pois/fountains.json"},
+            dict(territory.layers),
+        )
         self.assertEqual(2, territory.freshness_sla_days["fountains"])
         self.assertEqual("e5large", territory.production_retriever_profile)
 

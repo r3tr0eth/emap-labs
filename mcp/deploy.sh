@@ -14,7 +14,7 @@ LABS="$(cd "$(dirname "$0")/.." && pwd)"
 # Hosts públicos aceptados por la protección anti DNS-rebinding del SDK.
 # Incluye dominio personal (prod hoy) + candidatos del dominio de producto
 # mientras se decide path (emapapp.com/mcp) vs subdominio (mcp.emapapp.com).
-ALLOWED_HOSTS="${EMAP_MCP_ALLOWED_HOSTS:-127.0.0.1:8084,localhost:8084,vps.emapapp.com,emapapp.com,mcp.emapapp.com,www.emapapp.com}"
+ALLOWED_HOSTS="${EMAP_MCP_ALLOWED_HOSTS:-127.0.0.1:8084,localhost:8084,gaizkajimenez.com,www.gaizkajimenez.com,vps.emapapp.com,emapapp.com,mcp.emapapp.com,www.emapapp.com}"
 API_URL="${EMAP_API_URL:-https://emap-next.vercel.app}"
 SEMANTIC_URL="${EMAP_SEMANTIC_URL:-https://vps.emapapp.com/semantic}"
 SITE_URL="${EMAP_SITE_URL:-https://emapapp.com}"

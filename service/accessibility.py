@@ -18,7 +18,6 @@ import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from typing import Any
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
 OSRM_BASE = os.environ.get("EMAP_OSRM_URL", "http://localhost:5000")
@@ -114,12 +113,6 @@ def plan_accessible_route(
         dict con ruta y metadatos de accesibilidad
     """
     t0 = time.monotonic()
-
-    # Calcular bbox para buscar POIs de accesibilidad cercanos
-    min_lat = min(from_lat, to_lat) - 0.01
-    max_lat = max(from_lat, to_lat) + 0.01
-    min_lon = min(from_lon, to_lon) - 0.01
-    max_lon = max(from_lon, to_lon) + 0.01
 
     # NOTA: Overpass se consulta por separado (/api/accessible-pois) para no
     # bloquear el cálculo de ruta. Aquí no consultamos Overpass.

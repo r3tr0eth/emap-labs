@@ -7,13 +7,13 @@ Uso:
   .venv/bin/python mcp/smoke.py --base http://127.0.0.1:8084
 
   # prod actual (dominio personal)
-  .venv/bin/python mcp/smoke.py --base https://gaizkajimenez.com
+  .venv/bin/python mcp/smoke.py --base https://vps.emapapp.com
 
   # futuro dominio de producto
   .venv/bin/python mcp/smoke.py --base https://mcp.emapapp.com
 
   # con tool real (San Mamés bikepark — criterio L5.1)
-  .venv/bin/python mcp/smoke.py --base https://gaizkajimenez.com --live
+  .venv/bin/python mcp/smoke.py --base https://vps.emapapp.com --live
 
 Salida: exit 0 si pasa; mensajes en stderr si falla.
 """
@@ -122,7 +122,7 @@ def mcp_initialize(client: httpx.Client, mcp_url: str) -> str:
             "params": {
                 "protocolVersion": "2025-03-26",
                 "capabilities": {},
-                "clientInfo": {"name": "emap-mcp-smoke", "version": "0.1.1"},
+                "clientInfo": {"name": "emap-mcp-smoke", "version": "0.1.2"},
             },
         },
         timeout=20,

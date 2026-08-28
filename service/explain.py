@@ -11,7 +11,6 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
-from typing import Any
 
 from regions import load_territory, resolve_layer_path
 
@@ -114,5 +113,5 @@ def explain_detection(
         "threshold": threshold,
         "passed_threshold": best_score >= threshold,
         "alternatives": alternatives,
-        "all_scores": {l: round(s, 3) for l, s in sorted_scores},
+        "all_scores": {layer: round(score, 3) for layer, score in sorted_scores},
     }

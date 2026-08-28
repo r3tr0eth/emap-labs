@@ -77,6 +77,7 @@ class McpContractTest(unittest.TestCase):
                 "retriever": "hybrid-keywords-then-minilm",
                 "reranked": False,
                 "explanation": {"method": "keywords"},
+                "attribution": "Ayuntamiento de Madrid (CC BY 4.0)",
             }
         )
 
@@ -86,6 +87,18 @@ class McpContractTest(unittest.TestCase):
         self.assertEqual("0.2.0", body["territory_version"])
         self.assertEqual("hybrid-keywords-then-minilm", body["retriever"])
         self.assertFalse(body["reranked"])
+        self.assertEqual(
+            "Ayuntamiento de Madrid (CC BY 4.0)", body["attribution"]
+        )
+
+    def test_out_solo_usa_atribucion_global_como_fallback(self) -> None:
+        server = _load_server()
+
+        self.assertEqual(server.ATTRIBUTION, server._out({})["attribution"])
+        self.assertEqual(
+            "Fuente territorial",
+            server._out({"attribution": "Fuente territorial"})["attribution"],
+        )
 
     def test_plan_route_conserva_metricas_del_contrato_api(self) -> None:
         server = _load_server()

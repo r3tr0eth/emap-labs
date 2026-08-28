@@ -36,7 +36,7 @@ if "EMAP_RETRIEVER_PROFILE" not in os.environ:
 from semantic_local import HybridRetriever  # noqa: E402
 
 from emap_geo.distance import haversine_m  # noqa: E402
-from explain import explain_detection, explain_result, _load_source  # noqa: E402
+from explain import explain_detection, explain_result  # noqa: E402
 from hike_planner import plan_hike  # noqa: E402
 from accessibility import plan_accessible_route, find_accessible_pois  # noqa: E402
 from isochrones import compute_isochrone, find_pois_in_isochrone  # noqa: E402
@@ -300,7 +300,7 @@ KIND_RANK = {"neighborhood": 0, "district": 1, "municipality": 2}
 # Índices espaciales por grupo de capas (KD-tree sobre lat/lon en radianes).
 # Se construyen una vez al arranquear; las consultas son O(log n) vs O(n) del
 # barrido original.
-_kd_indices: dict[str, tuple["scipy.spatial.cKDTree", list[dict], list[str]]] = {}
+_kd_indices: dict[str, tuple[object, list[dict], list[str]] | None] = {}
 
 
 def _build_kd_index(layers: tuple[str, ...]):

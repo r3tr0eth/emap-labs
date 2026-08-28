@@ -105,6 +105,10 @@ class MadridFountainsAdapterTest(unittest.TestCase):
         self.assertEqual(2, first["count"])
         self.assertEqual(2, first["dropped"])
         self.assertEqual({"not_ready": 1, "operational": 1}, first["status_counts"])
+        self.assertEqual("Municipio de Madrid", first["coverage"]["territory"])
+        self.assertNotIn("completeness", first["coverage"])
+        self.assertEqual(2, first["quality"]["records"])
+        self.assertEqual(2, first["quality"]["unique_ids"])
 
 
 class MadridFountainsRetrievalTest(unittest.TestCase):

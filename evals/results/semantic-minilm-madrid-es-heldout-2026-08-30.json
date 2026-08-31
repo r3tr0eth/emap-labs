@@ -1,0 +1,196 @@
+{
+  "retriever": "semantic-minilm-2stage",
+  "territory": "madrid",
+  "lang": "es",
+  "k": 5,
+  "config": {
+    "profile": "minilm",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
+  },
+  "n_corpus_cases": 19,
+  "date": "2026-08-30",
+  "corpus": "0.2.0",
+  "total": {
+    "pass": 11,
+    "cases": 19
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 2,
+      "cases": 4
+    },
+    "semantic": {
+      "pass": 4,
+      "cases": 5
+    },
+    "attribute": {
+      "pass": 1,
+      "cases": 3
+    },
+    "multi_layer": {
+      "pass": 1,
+      "cases": 3
+    },
+    "unsupported": {
+      "pass": 2,
+      "cases": 3
+    },
+    "adversarial": {
+      "pass": 1,
+      "cases": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "mad-ho-fountain-retiro",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Plaza de Honduras · Plaza Plaza Independencia 7"
+    },
+    {
+      "id": "mad-ho-fountain-bernabeu",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PSO. DE LA CASTELLANA Nº 146-148 · Paseo Castellana 148"
+    },
+    {
+      "id": "mad-ho-fountain-castilla",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "mad-ho-fountain-closed",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "mad-ho-parking-cibeles",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Montalbán"
+    },
+    {
+      "id": "mad-ho-parking-atocha-public",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (1135m > 700m)",
+      "detail": "top1=Aparcamiento público. Las Cortes ✗ fuera_de_radio (1135m > 700m)"
+    },
+    {
+      "id": "mad-ho-parking-moncloa",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento público. Marqués de Urquijo"
+    },
+    {
+      "id": "mad-ho-parking-residents",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Jacinto Benavente"
+    },
+    {
+      "id": "mad-ho-bike-castilla",
+      "intent": "nearest",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "mad-ho-bike-atocha",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · INFANTA ISABEL"
+    },
+    {
+      "id": "mad-ho-bike-retiro",
+      "intent": "nearest",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento mixto. Montalbán ✗ categoria_equivocada (parking)"
+    },
+    {
+      "id": "mad-ho-bike-moncloa",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · MINISTRO IBAÑEZ MARTIN"
+    },
+    {
+      "id": "mad-ho-multi-sol",
+      "intent": "multi_layer",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (parking)",
+      "detail": "top1=Aparcamiento público. Plaza del Carmen ✗ categoria_equivocada (parking)"
+    },
+    {
+      "id": "mad-ho-multi-atocha",
+      "intent": "multi_layer",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Aparcamiento mixto. Sánchez Bustillo ✗ nombre_o_lineas"
+    },
+    {
+      "id": "mad-ho-multi-retiro",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · ALFONSO XII"
+    },
+    {
+      "id": "mad-ho-unsupported-hotel",
+      "intent": "unsupported",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-ho-unsupported-charge",
+      "intent": "unsupported",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-ho-availability",
+      "intent": "unsupported",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aparcamiento público. Plaza del Carmen"
+    },
+    {
+      "id": "mad-ho-adversarial-font",
+      "intent": "adversarial",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    }
+  ],
+  "known_gaps": []
+}

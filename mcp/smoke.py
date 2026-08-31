@@ -202,12 +202,22 @@ def mcp_live_nearby(client: httpx.Client, mcp_url: str, sid: str) -> None:
         text_blob = json.dumps(result)
     if "error" in text_blob and "results" not in text_blob:
         _fail(f"nearby_pois error: {text_blob[:400]}")
+    try:
+        payload = json.loads(text_blob)
+    except json.JSONDecodeError:
+        payload = result.get("structuredContent") or result.get("structured_content") or {}
+    required = {"schema_version", "territory", "evidence", "freshness", "confidence"}
+    missing_contract = sorted(key for key in required if key not in payload)
+    if missing_contract:
+        _fail(f"nearby_pois contrato incompleto; faltan {missing_contract}: {text_blob[:400]}")
+    if payload.get("schema_version") != "intelligence.response.v1":
+        _fail(f"nearby_pois schema inesperado: {payload.get('schema_version')!r}")
     if "attribution" not in text_blob and "OpenStreetMap" not in text_blob:
         # intentar parsear structuredContent
         sc = result.get("structuredContent") or result.get("structured_content")
         if not (isinstance(sc, dict) and sc.get("attribution")):
             _fail(f"nearby_pois sin attribution: {text_blob[:400]}")
-    _ok("tools/call nearby_pois(bikepark, San Mamés) con atribución")
+    _ok("tools/call nearby_pois(bikepark, San Mamés) con contrato y atribución")
 
 
 def main() -> None:

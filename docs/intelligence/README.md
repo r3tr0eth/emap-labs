@@ -8,6 +8,16 @@ de EMAP Core sin crear un servicio nuevo ni duplicar el dominio de
 - [`territories.md`](territories.md): contrato del pack territorial y estado.
 - [`madrid-sources.md`](madrid-sources.md): shortlist oficial del primer pack
   Madrid y decisión por fuente.
+- [`response-contract.md`](response-contract.md): contrato versionado de
+  respuesta, evidencia, freshness y confidence.
+- [`telemetry.md`](telemetry.md): métricas agregadas privacy-first del servicio.
+- [`release-gate.md`](release-gate.md): estado verificable de promoción de la
+  release candidate.
+- [`cross-territory.md`](cross-territory.md): comparación medida y sus límites
+  estadísticos.
+- La demo verificable está disponible en `GET /nearby` y en
+  `GET /api/intelligence/nearby`; MCP la expone mediante `nearby_pois` cuando
+  se proporciona `territory`.
 - [`../../evals/README.md`](../../evals/README.md): retrieval, perfiles,
   métricas y política de held-out.
 - [`../../mcp/README.md`](../../mcp/README.md): interfaz MCP.

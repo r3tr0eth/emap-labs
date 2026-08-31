@@ -6,6 +6,7 @@ import importlib.util
 import sys
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 from starlette.requests import Request
 
@@ -55,12 +56,20 @@ class SearchContractTest(unittest.TestCase):
     def test_no_declara_reranking_cuando_no_existe(self) -> None:
         service = _load_service()
         retriever = _FakeRetriever()
-        service._retriever = retriever
+        service.app.state.runtime_registry = service.RuntimeRegistry(
+            {
+                "euskadi": SimpleNamespace(
+                    territory=service.load_territory("euskadi"),
+                    retriever=retriever,
+                    documents={},
+                )
+            }
+        )
         service._rate_window.clear()
         service._log_query = lambda *_args: None
-        service.explain_result = lambda *_args: {}
+        service.explain_result = lambda *_args, **_kwargs: {}
         service.explain_detection = lambda *_args: {}
-        service.poi_freshness = lambda *_args: {}
+        service.poi_freshness = lambda *_args, **_kwargs: {}
 
         request = Request(
             {
@@ -72,9 +81,12 @@ class SearchContractTest(unittest.TestCase):
                 "client": ("testclient", 123),
                 "server": ("testserver", 80),
                 "scheme": "http",
+                "app": service.app,
             }
         )
-        body = service.search(request, q="donde beber agua", k=2)
+        body = service.search(
+            request, q="donde beber agua", territory="euskadi", k=2
+        )
 
         self.assertEqual("hybrid-minilm", body["retriever"])
         self.assertFalse(body["reranked"])

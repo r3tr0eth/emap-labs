@@ -1,0 +1,18 @@
+{
+  "corpus": "evals/madrid-golden-v0.yaml",
+  "version": "0.2.0",
+  "territory": "madrid",
+  "split": "heldout",
+  "sealed_at": "2026-08-30",
+  "sha256": "191c274932734948a73fa05303228cd016bb2ec38fdbba455e4a1340d6911139",
+  "cases": 19,
+  "categories": {
+    "nearest": 4,
+    "semantic": 5,
+    "attribute": 3,
+    "multi_layer": 3,
+    "unsupported": 3,
+    "adversarial": 1
+  },
+  "calibration": "excluded"
+}

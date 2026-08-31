@@ -30,10 +30,11 @@ activar el modelo: `service/fetch-maider.sh` + `espeak-ng` +
   usa la URL real de Labs.
 - ✅ Frescura reconoce `source_updated`: QA local 22/22 capas, score 86,4
   (1 stale, 2 sin fecha).
-- 🟡 Madrid v0.1 ejecutable: fuentes municipales aceptadas (2.306 POIs),
-  manifest, freshness y 18 casos development sobre el mismo runner. Baseline
-  77%, semantic MiniLM 83% e hybrid MiniLM 88%; held-out sigue cerrado. Próximo
-  gate: segunda capa P0 y 30–50 casos sin ramas Madrid en Core.
+- ✅ Madrid v0.3 ejecutable: fuentes, parking y aparcabicis (9.767 POIs),
+  manifest, freshness, 60 casos development y 19 held-out sellados sobre el
+  mismo runner. Hybrid MiniLM alcanza 53/60 (88%) en dev y 14/19 (74%) en
+  held-out; las limitaciones están documentadas y no se afirma generalización
+  europea.
 
 Arquitectura y límites: `docs/intelligence/architecture.md`.
 
@@ -120,18 +121,17 @@ agentes**: búsqueda semántica local, explain-place, rutas con confort/señales
 y tiempo real multi-red, bilingüe. Ese es exactamente nuestro stack.
 
 1. **Servidor MCP open source** (`emap-mcp`) sobre los endpoints ya vivos —
-   ✅ v0.1.1 publicada históricamente; v0.1.2 corregida en código y pendiente de
-   deploy (mcp/): 5 herramientas (search_places, nearby_pois,
+   ✅ v0.1.2 desplegada el 2026-08-30 (mcp/): 5 herramientas (search_places, nearby_pois,
    explain_place, plan_route, plan_hike) con descripciones ES/EU/EN y
    atribución en cada respuesta; criterio de 'hecho' verificado por
    protocolo (bici cerca de San Mamés → 47 m). HTTP streamable en VPS ✅;
    `GET /health` + `mcp/smoke.py` ✅; allowlist multi-dominio (transición
-   a emapapp.com) ✅.
+   a emapapp.com) ✅; smoke público verificado.
 2. **llms.txt / docs agent-readable** del API público — ✅ HECHO
    (emap-next.vercel.app/llms.txt, 2026-07-10).
 3. Distribución — 🟡 registro oficial MCP ✅ (io.github.r3tr0eth/emap,
-   active); el remoto anterior devuelve 404 y `vps.emapapp.com/mcp` devuelve
-   421 hasta redeploy. **Pendiente** activar, pasar smoke y mover
+   active); `vps.emapapp.com/mcp` está operativo tras redeploy y smoke.
+   **Pendiente** mover
    la URL canónica a dominio de producto (`mcp.emapapp.com` o
    `emapapp.com/mcp` — decisión abierta), republicar registry, awesome-lists
    y post técnico (borrador en docs/estrategia). Es simultáneamente producto

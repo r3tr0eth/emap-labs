@@ -148,19 +148,103 @@ def quality_report(layers: list[str] | None = None) -> dict:
     }
 
 
-def poi_freshness(poi: dict) -> dict:
+def quality_report_from_documents(
+    documents: dict[str, dict],
+    sla_by_layer: dict[str, int] | None = None,
+    layers: list[str] | None = None,
+) -> dict:
+    """Informe de freshness para un pack territorial ya cargado en runtime.
+
+    No consulta globals ni rutas implícitas: permite auditar Madrid/Euskadi
+    desde la misma instancia que sirve las peticiones.
+    """
+    sla_by_layer = sla_by_layer or DEFAULT_SLA_DAYS
+    selected = layers or sorted(documents)
+    t0 = time.monotonic()
+    report = []
+    status_counts: dict[str, int] = {}
+    for layer in selected:
+        doc = documents.get(layer)
+        info = freshness_from_document(
+            layer,
+            doc or {},
+            sla_days=sla_by_layer.get(layer) or DEFAULT_SLA_DAYS.get(layer, 180),
+        ) if doc else {"layer": layer, "status": "unknown", "stale": None}
+        report.append(info)
+        status = info.get("status", "unknown")
+        status_counts[status] = status_counts.get(status, 0) + 1
+    fresh = status_counts.get("fresh", 0)
+    total = len(report)
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "score": round(fresh / total * 100, 1) if total else 0,
+        "total_layers": total,
+        "status_counts": status_counts,
+        "layers": report,
+        "stale_layers": [r["layer"] for r in report if r.get("stale")],
+        "took_ms": int((time.monotonic() - t0) * 1000),
+    }
+
+
+def poi_freshness(
+    poi: dict,
+    *,
+    document: dict | None = None,
+    sla_days: int | None = None,
+) -> dict:
     """Devuelve metadatos de frescura para un POI individual."""
     layer = poi.get("layer", poi.get("layer_id", ""))
-    info = check_layer_freshness(layer)
+    if document is None:
+        info = check_layer_freshness(layer)
+    else:
+        info = freshness_from_document(
+            layer,
+            document,
+            sla_days=sla_days if sla_days is not None else DEFAULT_SLA_DAYS.get(layer, 180),
+        )
 
     return {
         "layer": layer,
         "data_source": info.get("source"),
         "license": info.get("license"),
         "data_generated": info.get("generated"),
+        "retrieved_at": (document or {}).get("ingested_at"),
         "data_age_days": info.get("age_days"),
         "freshness": info.get("status"),
         "confidence": _confidence_label(info),
+    }
+
+
+def freshness_from_document(
+    layer: str,
+    document: dict,
+    *,
+    sla_days: int,
+) -> dict:
+    """Calcula freshness desde source_updated, sin estado territorial global."""
+    source_updated = document.get("source_updated")
+    age_days = None
+    stale = None
+    if source_updated:
+        try:
+            updated_date = datetime.fromisoformat(
+                str(source_updated).replace("Z", "+00:00")
+            ).date()
+            age_days = (date.today() - updated_date).days
+            stale = age_days > sla_days
+        except (TypeError, ValueError):
+            pass
+    status = "unknown" if age_days is None else ("stale" if stale else "fresh")
+    return {
+        "layer": layer,
+        "status": status,
+        "count": document.get("count") or len(document.get("pois", [])),
+        "source": document.get("source") or document.get("source_id", "unknown"),
+        "license": document.get("license", "unknown"),
+        "generated": source_updated,
+        "age_days": age_days,
+        "sla_days": sla_days,
+        "stale": stale,
     }
 
 

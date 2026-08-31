@@ -76,6 +76,12 @@ ATTRIBUTE_FILTERS: list[tuple[tuple[str, ...], tuple[str, object, bool]]] = [
      ("wheelchair", "yes", True)),
     (("gratis", "gratuito", "doako"), ("fee", "no", True)),
     (("cubierto", "estali", "toki estalia"), ("covered", "yes", True)),
+    # Tipología oficial de aparcamientos Madrid: no confundir entradas
+    # residentes/mixtas con plazas públicas.
+    (("publico", "publica", "público", "pública", "acceso publico"),
+     ("access_scope", "public", True)),
+    (("residentes", "residente", "resident"),
+     ("access_scope", "resident_or_mixed", True)),
     (("rapido", "azkar"), ("TipoCarga", "Lenta (3-7 kW)", False)),  # != lenta
     # movilidad del cuidado: cambiador de bebé (33 aseos en Euskadi, OSM)
     (("cambiador", "cambiar al bebe", "aldatzeko", "haurra aldatu", "aldalekua"),
@@ -94,10 +100,17 @@ class BaselineRetriever:
         q = norm(query)
         # frontera izquierda de palabra: "aseo" no debe casar dentro de "paseo";
         # la derecha queda libre para plurales/declinaciones (fuente→fuentes)
+        matched: list[str] = []
+        conjunction = bool(re.search(r"\s(?:y|o|e|u)\s|,", q))
         for keywords, layer_ids in KEYWORD_LAYERS:
             if any(re.search(rf"(?<![a-zà-ÿ]){re.escape(kw)}", q) for kw in keywords):
-                return [layer for layer in layer_ids if layer in self.datasets]
-        return []
+                available = [layer for layer in layer_ids if layer in self.datasets]
+                if not conjunction:
+                    return available
+                for layer in available:
+                    if layer not in matched:
+                        matched.append(layer)
+        return matched
 
     def retrieve(self, query: str, anchor: dict | None, k: int = 5) -> list[dict]:
         q = norm(query)

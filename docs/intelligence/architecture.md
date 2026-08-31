@@ -37,9 +37,10 @@ La integración se hará en contratos, no copiando lógica.
 | Retrieval baseline | `evals/baseline.py` | Keywords, atributos, nombre y orden geográfico | JSON por capa, `emap_geo` | evals, híbrido |
 | Retrieval semántico | `evals/semantic_local.py` | Clasificar categoría; delegar filtros/geo al baseline | FastEmbed, perfil calibrado | servicio, evals |
 | Perfiles reproducibles | `evals/retriever-config.json` + `retriever_config.py` | Unir modelo, threshold y tie-window | stdlib | CI, evals, producción |
-| Evidence | `service/explain.py` | Fuente, licencia, actualización y explicación de categoría | registro + JSON de capa | `/search` |
-| Freshness | `service/data_freshness.py` | Edad, SLA, estado y confidence cualitativa | registro + metadatos | `/search`, `/quality` |
-| Servicio Intelligence | `service/app.py` | Cargar un territorio, buscar, abstenerse y exponer HTTP | módulos anteriores | proxy API |
+| Runtime territorial | `service/runtime.py` | Resolver request, aislar datasets/retriever/metadata por territorio y compartir solo el encoder por perfil | registro + JSON de capa | servicio HTTP |
+| Evidence | `service/explain.py` | Fuente, licencia, actualización y explicación de categoría | documento del runtime resuelto | `/search` |
+| Freshness | `service/data_freshness.py` | Edad, SLA, estado y confidence cualitativa | documento del runtime resuelto | `/search`, `/quality` |
+| Servicio Intelligence | `service/app.py` | Servir varios runtimes, buscar, abstenerse y exponer HTTP | módulos anteriores | proxy API |
 | API compartida | `../emap-next/apps/api` | Proxy semántico y autoridad de rutas/datos | Labs + packages | web, móvil, MCP |
 | MCP | `mcp/server.py` | Adapter estrecho para agentes, sin lógica territorial propia | API + servicio Labs | clientes MCP |
 
@@ -47,14 +48,18 @@ La integración se hará en contratos, no copiando lógica.
 
 1. `load_territory(id) -> Territory` es el único punto de carga de un pack en
    Labs. Rechaza rutas absolutas, traversal y bbox mal ordenadas.
-2. `Territory.layers` es la autoridad runtime para localizar capas. Sustituye
+2. `RuntimeRegistry.resolve(territory_id, lat, lon) -> TerritoryRuntime` es el
+   seam servido. No aplica fallback: rechaza territorio desconocido,
+   coordenadas incompletas, mismatch y puntos fuera de cobertura.
+3. `Territory.layers` es la autoridad runtime para localizar capas. Sustituye
    cuatro mapas hardcoded que divergían en servicio, evals, evidence e
    isócronas.
-3. `retriever-config.json` versiona el par modelo/calibración. Producción elige
+4. `retriever-config.json` versiona el par modelo/calibración. Producción elige
    `e5large`; MiniLM permanece como referencia reproducible.
-4. `/search` declara el método real (`retriever`, `reranked`) y añade
-   `territory` + `territory_version`. Cada resultado conserva `why` y `data`.
-5. MCP conserva ese contexto y adapta rutas sin geometría pesada, manteniendo
+5. `/search` acepta `territory` explícito o lo resuelve por bbox; declara el
+   método real (`retriever`, `reranked`) y devuelve la versión del runtime
+   efectivamente usado. Cada resultado conserva `why` y `data` de ese pack.
+6. MCP conserva ese contexto y adapta rutas sin geometría pesada, manteniendo
    duración, distancia, evidence, confidence y limitations del API.
 
 El manifiesto Labs es configuración de ejecución, no un segundo schema de
@@ -64,8 +69,9 @@ Labs referencie esos contratos, no copiarlos.
 
 ## Deuda explícita
 
-- El proceso del servicio carga un territorio por `EMAP_TERRITORY`; todavía no
-  sirve Euskadi y Madrid simultáneamente.
+- `/explain`, isócronas y hiking conservan todavía código Euskadi-only; deben
+  declarar esa capacidad como unsupported fuera de Euskadi antes del contrato
+  v1, pero ya no condicionan el runtime de `/search`.
 - `confidence` es hoy una etiqueta de frescura o un score de categoría, no una
   probabilidad calibrada de respuesta completa.
 - `answerable` no existe como objeto formal; `/search` usa `abstained`.
@@ -75,6 +81,18 @@ Labs referencie esos contratos, no copiarlos.
   cross-territory.
 - `FastAPI.on_event` emite aviso de deprecación; no bloquea correctness y queda
   fuera de este cambio P0/P1.
+
+## Decisión de serving multi-territorio
+
+Se eligió resolver por request dentro del mismo proceso en lugar de desplegar
+una instancia y un puerto por territorio. El registro construye un
+`TerritoryRuntime` independiente para Euskadi y Madrid y comparte únicamente
+el encoder cuando ambos manifiestos declaran el mismo perfil. Esto evita
+duplicar E5, systemd y nginx sin mezclar datasets, caches ni versiones.
+
+La configuración de despliegue es `EMAP_TERRITORIES=euskadi,madrid`.
+`EMAP_TERRITORY` se conserva únicamente para herramientas CLI antiguas; no
+selecciona el territorio de las peticiones HTTP.
 
 ## Decisiones de no construcción
 

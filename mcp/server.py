@@ -147,17 +147,23 @@ async def health_check(_request: Request) -> JSONResponse:
 
 
 @mcp.tool()
-async def search_places(query: str, lat: float, lon: float, k: int = 5) -> dict:
+async def search_places(query: str, lat: float, lon: float, k: int = 5,
+                        territory: str | None = None) -> dict:
     """Búsqueda semántica local en español o euskera ("dónde beber agua",
     "haurra aldatzeko lekua"). · Bilaketa semantikoa gaztelaniaz edo euskaraz.
     · Semantic local search in Spanish or Basque. Devuelve POIs cercanos al
     punto (lat, lon) o abstención honesta si no entiende la consulta."""
-    d = await _get("/api/semantic-search", q=query, lat=lat, lon=lon, k=k)
+    params = {"q": query, "lat": lat, "lon": lon, "k": k}
+    if territory:
+        params["territory"] = territory
+    d = await _get("/api/semantic-search", **params)
     if d.get("unavailable"):
         return _out({"error": "servicio semántico no disponible ahora mismo"})
     fields = (
-        "query", "abstained", "results", "territory", "territory_version",
+        "schema_version", "query", "abstained", "answerable", "answer_status", "result",
+        "evidence", "freshness", "confidence", "results", "territory", "territory_version",
         "retriever", "reranked", "explanation", "limitations",
+        "retrieval_method",
         "attribution",
     )
     payload = {key: d[key] for key in fields if key in d}
@@ -168,7 +174,8 @@ async def search_places(query: str, lat: float, lon: float, k: int = 5) -> dict:
 
 
 @mcp.tool()
-async def nearby_pois(layer: str, lat: float, lon: float, limit: int = 5) -> dict:
+async def nearby_pois(layer: str, lat: float, lon: float, limit: int = 5,
+                      territory: str | None = None) -> dict:
     """POIs más cercanos de una capa concreta. Capas: fountains (fuentes),
     toilets (aseos), parking, bikepark (aparcabicis), defib (DEA), beaches
     (playas), ev (cargadores), cameras, fuel (gasolineras), peaks (cimas),
@@ -176,14 +183,13 @@ async def nearby_pois(layer: str, lat: float, lon: float, limit: int = 5) -> dic
     hurbilenak. · Nearest POIs of a given layer."""
     if layer not in POI_LAYERS:
         return _out({"error": f"capa desconocida; usa una de {POI_LAYERS}"})
-    d = 0.03  # ~3 km de bbox; suficiente para "cerca de mí"
-    doc = await _get(f"/api/pois/{layer}",
-                     bbox=f"{lon-d:.4f},{lat-d:.4f},{lon+d:.4f},{lat+d:.4f}")
-    pois = doc.get("pois", [])
-    for p in pois:
-        p["distance_m"] = int(_hav_m(lat, lon, p["lat"], p["lon"]))
-    pois.sort(key=lambda p: p["distance_m"])
-    return _out({"layer": layer, "results": pois[:max(1, min(limit, 20))]})
+    # Siempre pasa por el contrato Intelligence. La API puede resolver el
+    # territorio por las coordenadas, pero nunca se permite el fallback al
+    # endpoint legacy (que implicaba Euskadi implícitamente).
+    params = {"layer": layer, "lat": lat, "lon": lon, "k": limit}
+    if territory:
+        params["territory"] = territory
+    return _out(await _get("/api/intelligence/nearby", **params))
 
 
 @mcp.tool()

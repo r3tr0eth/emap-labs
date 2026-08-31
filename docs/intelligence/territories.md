@@ -27,30 +27,32 @@ El registro solo lo localiza y valida; no transforma datos ni oculta ausencias.
 | Territorio | Estado Labs | Evidencia | Siguiente condición |
 |---|---|---|---|
 | Euskadi | **IMPLEMENTADO** | 22 capas, 27.515 POIs, corpus dev/held-out/challenge, perfil e5large | Formalizar confidence y response contract |
-| Madrid | **PARCIAL / pack v0.1 ejecutable** | 1 capa oficial, 2.306 POIs, freshness y 18 casos dev; baseline 77%, semantic 83%, hybrid 88% | segunda capa P0 + 30–50 casos dev; held-out sigue cerrado |
+| Madrid | **PARCIAL / pack v0.3 ejecutable** | 3 capas oficiales, 9.767 POIs aceptados, 60 dev + 19 held-out sellados; dev hybrid 53/60 (88%), held-out hybrid 14/19 (74%) | evaluar cross-territory y cerrar MCP |
 | Tenerife | **PARCIAL / scaffold** | existe `region.yaml`, pero no pasa el contrato runtime por falta de capas y evaluación | decidir si se archiva o completa después de Madrid |
 
 Madrid funciona en el mapa porque el basemap es global, el geocoder tiene un
 pase nacional/Madrid y OTP contiene feeds de Madrid. Nada de eso creaba un
-índice Labs. Desde Madrid v0.1, `service/app.py`, evals y freshness pueden
-cargar el mismo pack territorial que Euskadi, hoy limitado a fuentes de beber.
+índice Labs. En el corte de código multi-territorio, `service/app.py` puede
+servir el pack de Madrid y el de Euskadi simultáneamente mediante
+`RuntimeRegistry`; el despliegue público sigue pendiente de promoción y el
+pack Madrid v0.3 ya incluye fuentes, parking y aparcabicis.
 
 La selección verificada de fuentes Madrid se mantiene en
 [`madrid-sources.md`](madrid-sources.md). Una fuente pasa de candidata a
 aceptada solo cuando tiene adapter reproducible, licencia/atribución, freshness
-y casos development. Fuentes de beber ya cumple ese gate; held-out se creará y
-sellará cuando el pack tenga varias capas y antes de calibrar con esos casos.
+y casos development. El pack v0.3 cumple ese gate para sus tres capas; el
+held-out está sellado y excluido de calibración.
 
 ## Medición de reutilización Madrid
 
-El sprint de ingesta debe reportar:
+Cada adapter Madrid reporta una métrica deliberadamente gruesa y auditable:
 
 ```text
-reutilización = líneas no territoriales reutilizadas /
-                líneas totales necesarias para activar Madrid
+territorial_reuse_ratio = etapas reutilizadas sin código territorial / 6
 ```
 
-Se cuentan por separado adapter/configuración, normalización común, retrieval,
-evidence y eval harness. El objetivo no es maximizar el porcentaje maquillando
-adapters inevitables: cualquier transformación específica debe permanecer en
-el borde Source → Adapter.
+Las seis etapas son adquisición, adapter de formato, geo-normalización, schema
+POI, pack territorial y Core/retrieval/evidence. La salida publica las etapas
+reutilizadas y específicas; cualquier transformación específica permanece en
+el borde Source → Adapter. Parking y aparcabicis registran 4/6 (0,667) con
+esta definición conservadora.

@@ -67,5 +67,5 @@ head -c 300 /tmp/emap-mcp-init.json; echo'
 echo "→ hecho. Público actual: https://vps.emapapp.com/mcp"
 echo "   Producto (pendiente DNS/nginx): mcp.emapapp.com o emapapp.com/mcp"
 echo "   Snippet nginx: mcp/nginx.example.conf"
-echo "   Smoke desde el portátil:"
+echo "   Smoke público obligatorio (desde el portátil):"
 echo "     .venv/bin/python mcp/smoke.py --base https://vps.emapapp.com --live"

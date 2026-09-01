@@ -11,8 +11,46 @@ on:
         required: false
         type: boolean
         default: false
+      run_heldout_madrid:
+        description: "Held-out de Madrid (medición única: solo con perfil e5large congelado)"
+        required: false
+        type: boolean
+        default: false
 
 jobs:
+  tests:
+    name: suite Labs (contratos y servicio)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: emap-labs
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: emap-labs
+      # Los tests de adapters de Madrid validan contra los schemas del catálogo
+      # de emap-next (data_catalog), que vive en el repo hermano (privado).
+      # Requiere el secret EMAP_NEXT_DEPLOY_KEY: clave privada cuya pareja
+      # pública está como deploy key DE SOLO LECTURA en r3tr0eth/emap-next
+      # (este repo es público — nunca un PAT de cuenta aquí).
+      - uses: actions/checkout@v4
+        with:
+          repository: r3tr0eth/emap-next
+          ssh-key: ${{ secrets.EMAP_NEXT_DEPLOY_KEY }}
+          path: emap-next
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: emap-labs/evals/requirements.txt
+      - name: Dependencias de tests
+        # Pinneadas a las versiones verificadas en local; scipy no se instala
+        # porque la suite no la usa (solo un import lazy en service/app.py).
+        run: |
+          pip install -r evals/requirements.txt "pytest==9.1.1" "fastapi==0.139.0" "httpx==0.28.1" "mcp==1.28.1" "jsonschema==4.26.0" "referencing==0.37.0"
+      - name: Suite completa de Labs
+        run: python -m pytest tests -q
+
   baseline:
     name: baseline dev (gate rápido, sin modelo)
     runs-on: ubuntu-latest
@@ -37,6 +75,11 @@ jobs:
   hybrid:
     name: hybrid dev (perfiles reproducibles)
     runs-on: ubuntu-latest
+    env:
+      # fastembed cachea en $TMPDIR/fastembed_cache por defecto: sin esto,
+      # actions/cache guardaba un directorio que nadie usaba y cada run
+      # re-descargaba el modelo (2,3 GB en el caso de e5-large).
+      FASTEMBED_CACHE_PATH: /home/runner/.cache/fastembed
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -53,22 +96,42 @@ jobs:
       - run: pip install -r evals/requirements.txt
       - name: MiniLM dev (referencia legacy)
         run: |
-          python evals/run.py --retriever hybrid --profile minilm --lang es --min-pass 73
-          python evals/run.py --retriever hybrid --profile minilm --lang eu --min-pass 68
-          python evals/run.py --retriever hybrid --profile minilm --territory madrid --lang es --min-pass 85
+          python evals/run.py --retriever hybrid --profile minilm --lang es --min-pass 73 --output-dir evals/results-ci
+          python evals/run.py --retriever hybrid --profile minilm --lang eu --min-pass 68 --output-dir evals/results-ci
+          python evals/run.py --retriever hybrid --profile minilm --territory madrid --lang es --min-pass 85 --output-dir evals/results-ci
       - name: e5-large dev (perfil de producción)
+        # Umbrales de la primera medición REAL del perfil (2026-09-01, VPS,
+        # tras arreglar que el harness cargaba MiniLM etiquetado como e5large):
+        # medidos 85 ES / 82 EU. Se fijan POR ENCIMA de lo que rinde MiniLM
+        # (78/73): si el harness volviera a degradar al modelo pequeño, el
+        # propio gate lo detecta.
         run: |
-          python evals/run.py --retriever hybrid --profile e5large --lang es --min-pass 73
-          python evals/run.py --retriever hybrid --profile e5large --lang eu --min-pass 68
+          python evals/run.py --retriever hybrid --profile e5large --lang es --min-pass 80 --output-dir evals/results-ci
+          python evals/run.py --retriever hybrid --profile e5large --lang eu --min-pass 78 --output-dir evals/results-ci
+      - name: e5-large Madrid dev (perfil de producción)
+        # Primera medición real del perfil (0.8/0.01): 53/60 = 88% el
+        # 2026-09-01 en el VPS; gate 85 con el mismo margen que MiniLM Madrid.
+        run: python evals/run.py --retriever hybrid --profile e5large --territory madrid --lang es --min-pass 85 --output-dir evals/results-ci
       - name: e5-large challenge (informativo)
         run: |
-          python evals/run.py --retriever hybrid --profile e5large --lang es --split challenge || true
-          python evals/run.py --retriever hybrid --profile e5large --lang eu --split challenge || true
+          python evals/run.py --retriever hybrid --profile e5large --lang es --split challenge --output-dir evals/results-ci || true
+          python evals/run.py --retriever hybrid --profile e5large --lang eu --split challenge --output-dir evals/results-ci || true
+      - name: Publica resultados dev
+        # results-ci separa lo generado en ESTE run de los JSON históricos
+        # commiteados en evals/results/ (si no, el guard nunca saltaría).
+        uses: actions/upload-artifact@v4
+        with:
+          name: evals-dev-results
+          path: evals/results-ci/*.json
+          if-no-files-found: error
+          overwrite: true
 
   heldout:
     name: held-out congelado (solo manual)
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_heldout }}
+    if: ${{ github.event_name == 'workflow_dispatch' && (inputs.run_heldout || inputs.run_heldout_madrid) }}
     runs-on: ubuntu-latest
+    env:
+      FASTEMBED_CACHE_PATH: /home/runner/.cache/fastembed
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -84,10 +147,26 @@ jobs:
           restore-keys: fastembed-
       - run: pip install -r evals/requirements.txt
       - name: Baseline held-out
+        if: ${{ inputs.run_heldout }}
         run: |
-          python evals/run.py --retriever baseline --lang es --split heldout --min-pass 55
-          python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 50
+          python evals/run.py --retriever baseline --lang es --split heldout --min-pass 55 --output-dir evals/results-ci
+          python evals/run.py --retriever baseline --lang eu --split heldout --min-pass 50 --output-dir evals/results-ci
       - name: e5-large held-out
+        if: ${{ inputs.run_heldout }}
         run: |
-          python evals/run.py --retriever hybrid --profile e5large --lang es --split heldout --min-pass 70
-          python evals/run.py --retriever hybrid --profile e5large --lang eu --split heldout --min-pass 68
+          python evals/run.py --retriever hybrid --profile e5large --lang es --split heldout --min-pass 70 --output-dir evals/results-ci
+          python evals/run.py --retriever hybrid --profile e5large --lang eu --split heldout --min-pass 68 --output-dir evals/results-ci
+      - name: Madrid held-out (medición única, sellada en evals/madrid-heldout-seal.json)
+        if: ${{ inputs.run_heldout_madrid }}
+        # Sin gate: es la medición final del perfil congelado (n=19, ±1 caso
+        # = 5,3 pp); el resultado se registra y se compara, no se recalibra.
+        run: |
+          python evals/run.py --retriever baseline --territory madrid --lang es --split heldout --output-dir evals/results-ci
+          python evals/run.py --retriever hybrid --profile e5large --territory madrid --lang es --split heldout --output-dir evals/results-ci
+      - name: Publica resultados held-out
+        uses: actions/upload-artifact@v4
+        with:
+          name: evals-heldout-results
+          path: evals/results-ci/*.json
+          if-no-files-found: error
+          overwrite: true

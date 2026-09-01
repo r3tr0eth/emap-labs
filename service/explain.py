@@ -8,39 +8,17 @@ Genera explicaciones de por qué se devolvió cada resultado:
 """
 from __future__ import annotations
 
-import json
-import os
-from pathlib import Path
-
-from regions import load_territory, resolve_layer_path
-
-DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
-TERRITORY = load_territory(os.environ.get("EMAP_TERRITORY", "euskadi"))
-
-# Cache de metadatos de fuente por capa
-_source_cache: dict[str, dict] = {}
+from typing import Mapping
 
 
-def _load_source(layer: str) -> dict:
-    """Carga metadatos de fuente desde el JSON de la capa."""
-    if layer in _source_cache:
-        return _source_cache[layer]
-
-    meta = {"source": "unknown", "license": "unknown", "last_updated": None}
-    path = resolve_layer_path(DATA_DIR, TERRITORY, layer)
-    if path and path.exists():
-        try:
-            doc = json.loads(path.read_text())
-            meta["source"] = doc.get("source", doc.get("source_id", "unknown"))
-            meta["license"] = doc.get("license", "unknown")
-            meta["last_updated"] = (
-                doc.get("generated") or doc.get("updated") or doc.get("source_updated")
-            )
-        except Exception:
-            pass
-
-    _source_cache[layer] = meta
-    return meta
+def source_metadata(document: Mapping | None) -> dict:
+    """Extrae evidencia de una capa ya perteneciente al runtime resuelto."""
+    document = document or {}
+    return {
+        "source": document.get("source", document.get("source_id", "unknown")),
+        "license": document.get("license", "unknown"),
+        "last_updated": document.get("source_updated"),
+    }
 
 
 def explain_result(
@@ -49,14 +27,16 @@ def explain_result(
     anchor: dict | None,
     category_scores: dict[str, float],
     threshold: float,
+    source_document: Mapping | None = None,
 ) -> dict:
     """Genera la explicación para un resultado individual."""
     layer = result["layer"]
-    source = _load_source(layer)
+    source = source_metadata(source_document)
 
     explanation = {
         "category": layer,
         "source": source["source"],
+        "source_url": source_document.get("source_url") if source_document else None,
         "license": source["license"],
     }
 

@@ -1,11 +1,11 @@
-version: 0.1.0
+version: 0.2.0
 territory: madrid
 created: 2026-08-28
 status: development
 notes: >-
-  Primer corpus de integración territorial. Solo mide fuentes de beber del
-  municipio de Madrid; no representa todavía la cobertura Madrid Labs final
-  ni contiene un split held-out.
+  Corpus Madrid Labs v0.2: 60 casos development y 19 casos held-out sellados
+  tras la calibración. Incluye fountains, parking y bikepark; no representa
+  cobertura completa del municipio.
 cases:
 - id: mad-fountain-sol
   split: dev
@@ -122,4 +122,408 @@ cases:
   split: dev
   q: {es: dónde está la fuente de la juventud}
   intent: semantic
+  answerable: false
+- id: mad-parking-sol
+  split: dev
+  q: {es: "¿Dónde puedo dejar el coche cerca de Sol?"}
+  intent: nearest
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [parking], within_m: 300}
+- id: mad-parking-plaza-mayor
+  split: dev
+  q: {es: "necesito aparcar cerca de la Plaza Mayor"}
+  intent: nearest
+  anchor: {landmark: plaza-mayor}
+  expected: {layers: [parking], within_m: 150}
+- id: mad-parking-cibeles
+  split: dev
+  q: {es: "busca un parking junto a Cibeles"}
+  intent: nearest
+  anchor: {landmark: cibeles}
+  expected: {layers: [parking], within_m: 350}
+- id: mad-parking-moncloa
+  split: dev
+  q: {es: "¿hay aparcamiento cerca de Moncloa?"}
+  intent: geographic
+  anchor: {landmark: moncloa}
+  expected: {layers: [parking], within_m: 750}
+- id: mad-parking-matadero
+  split: dev
+  q: {es: "dónde dejar el coche si voy al Matadero"}
+  intent: geographic
+  anchor: {landmark: matadero}
+  expected: {layers: [parking], within_m: 1100}
+- id: mad-parking-publico-plaza-mayor
+  split: dev
+  q: {es: "quiero un aparcamiento público cerca de la Plaza Mayor"}
+  intent: attribute
+  anchor: {landmark: plaza-mayor}
+  expected:
+    layers: [parking]
+    within_m: 450
+    tags: {access_scope: public}
+- id: mad-bikepark-sol
+  split: dev
+  q: {es: "¿dónde puedo atar la bici cerca de Sol?"}
+  intent: nearest
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [bikepark], within_m: 100}
+- id: mad-bikepark-mayor
+  split: dev
+  q: {es: "necesito dejar la bicicleta cerca de la Plaza Mayor"}
+  intent: nearest
+  anchor: {landmark: plaza-mayor}
+  expected: {layers: [bikepark], within_m: 150}
+- id: mad-bikepark-cibeles
+  split: dev
+  q: {es: "aparcabicis junto a Cibeles"}
+  intent: nearest
+  anchor: {landmark: cibeles}
+  expected: {layers: [bikepark], within_m: 120}
+- id: mad-bikepark-moncloa
+  split: dev
+  q: {es: "¿hay un sitio para candar la bici en Moncloa?"}
+  intent: geographic
+  anchor: {landmark: moncloa}
+  expected: {layers: [bikepark], within_m: 80}
+- id: mad-bikepark-ministerios-semantic
+  split: dev
+  q: {es: "busco un lugar seguro para dejar mi bicicleta en Nuevos Ministerios"}
+  intent: semantic
+  anchor: {landmark: nuevos-ministerios}
+  expected: {layers: [bikepark], within_m: 150}
+- id: mad-bikepark-operativo
+  split: dev
+  q: {es: "aparcabicis operativo cerca del Bernabéu"}
+  intent: attribute
+  anchor: {landmark: bernabeu}
+  expected:
+    layers: [bikepark]
+    within_m: 250
+    tags: {operational: true}
+- id: mad-fountain-castilla-sem
+  split: dev
+  q: {es: "se me ha acabado el agua por Plaza Castilla"}
+  intent: semantic
+  anchor: {landmark: plaza-castilla}
+  expected: {layers: [fountains], within_m: 250}
+- id: mad-fountain-cibeles-natural
+  split: dev
+  q: {es: "necesito beber algo junto a Cibeles"}
+  intent: semantic
+  anchor: {landmark: cibeles}
+  expected: {layers: [fountains], within_m: 150}
+- id: mad-fountain-atocha-operational
+  split: dev
+  q: {es: "fuente que esté funcionando cerca de Atocha"}
+  intent: attribute
+  anchor: {landmark: atocha}
+  expected:
+    layers: [fountains]
+    within_m: 350
+    tags: {operational: true}
+- id: mad-fountain-retiro-closed
+  split: dev
+  q: {es: "fuente cerrada temporalmente en el Retiro"}
+  intent: attribute
+  anchor: {landmark: retiro}
+  expected:
+    layers: [fountains]
+    within_m: 250
+    tags: {operational: false}
+- id: mad-fountain-moncloa-water
+  split: dev
+  q: {es: "¿dónde rellenar la botella en Moncloa?"}
+  intent: semantic
+  anchor: {landmark: moncloa}
+  expected: {layers: [fountains], within_m: 600}
+- id: mad-fountain-sol-bottle
+  split: dev
+  q: {es: "busco una fuente potable por Sol"}
+  intent: nearest
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [fountains], within_m: 200}
+- id: mad-parking-atocha
+  split: dev
+  q: {es: "parking municipal cerca de Atocha"}
+  intent: nearest
+  anchor: {landmark: atocha}
+  expected: {layers: [parking], within_m: 550}
+- id: mad-parking-retiro
+  split: dev
+  q: {es: "¿dónde aparco junto al Retiro?"}
+  intent: nearest
+  anchor: {landmark: retiro}
+  expected: {layers: [parking], within_m: 750}
+- id: mad-parking-castilla
+  split: dev
+  q: {es: "necesito dejar el coche por Plaza Castilla"}
+  intent: semantic
+  anchor: {landmark: plaza-castilla}
+  expected: {layers: [parking], within_m: 450}
+- id: mad-parking-sol-car
+  split: dev
+  q: {es: "voy en coche, ¿hay algún sitio para dejarlo cerca de Sol?"}
+  intent: semantic
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [parking], within_m: 350}
+- id: mad-parking-resident-plaza
+  split: dev
+  q: {es: "aparcamiento para residentes cerca de la Plaza Mayor"}
+  intent: attribute
+  anchor: {landmark: plaza-mayor}
+  expected:
+    layers: [parking]
+    within_m: 150
+    tags: {access_scope: resident_or_mixed}
+- id: mad-parking-public-matadero
+  split: dev
+  q: {es: "aparcamiento público si voy al Matadero"}
+  intent: attribute
+  anchor: {landmark: matadero}
+  expected:
+    layers: [parking]
+    within_m: 1100
+    tags: {access_scope: public}
+- id: mad-bikepark-retiro
+  split: dev
+  q: {es: "aparcabicis cerca del Retiro"}
+  intent: nearest
+  anchor: {landmark: retiro}
+  expected: {layers: [bikepark], within_m: 550}
+- id: mad-bikepark-atocha
+  split: dev
+  q: {es: "¿dónde candar la bicicleta en Atocha?"}
+  intent: nearest
+  anchor: {landmark: atocha}
+  expected: {layers: [bikepark], within_m: 150}
+- id: mad-bikepark-castilla
+  split: dev
+  q: {es: "un sitio para dejar la bici por Plaza Castilla"}
+  intent: semantic
+  anchor: {landmark: plaza-castilla}
+  expected: {layers: [bikepark], within_m: 220}
+- id: mad-bikepark-sol-semantic
+  split: dev
+  q: {es: "necesito aparcar mi bicicleta por Sol"}
+  intent: semantic
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [bikepark], within_m: 120}
+- id: mad-bikepark-cibeles-operativo
+  split: dev
+  q: {es: "aparcabicis operativo junto a Cibeles"}
+  intent: attribute
+  anchor: {landmark: cibeles}
+  expected:
+    layers: [bikepark]
+    within_m: 150
+    tags: {operational: true}
+- id: mad-bikepark-fuera-servicio
+  split: dev
+  q: {es: "aparcabicis fuera de servicio cerca de Sol"}
+  intent: attribute
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-multi-parking-bike-sol
+  split: dev
+  q: {es: "parking y aparcabicis cerca de Sol"}
+  intent: multi_layer
+  anchor: {landmark: puerta-del-sol}
+  expected:
+    layers: [parking, bikepark]
+    within_m: 350
+    min_results: 2
+- id: mad-multi-fountain-bike-cibeles
+  split: dev
+  q: {es: "una fuente y un aparcabicis junto a Cibeles"}
+  intent: multi_layer
+  anchor: {landmark: cibeles}
+  expected:
+    layers: [fountains, bikepark]
+    within_m: 180
+    min_results: 2
+- id: mad-multi-parking-fountain-mayor
+  split: dev
+  q: {es: "fuente y parking cerca de la Plaza Mayor"}
+  intent: multi_layer
+  anchor: {landmark: plaza-mayor}
+  expected:
+    layers: [fountains, parking]
+    within_m: 450
+    min_results: 2
+- id: mad-multi-parking-bike-moncloa
+  split: dev
+  q: {es: "parking o aparcabicis en Moncloa"}
+  intent: multi_layer
+  anchor: {landmark: moncloa}
+  expected:
+    layers: [parking, bikepark]
+    within_m: 800
+    min_results: 2
+- id: mad-multi-water-bike-matadero
+  split: dev
+  q: {es: "necesito beber agua y dejar la bici en el Matadero"}
+  intent: multi_layer
+  anchor: {landmark: matadero}
+  expected:
+    layers: [fountains, bikepark]
+    within_m: 300
+    min_results: 2
+- id: mad-multi-parking-bike-castilla
+  split: dev
+  q: {es: "quiero parking y un lugar para candar la bici por Plaza Castilla"}
+  intent: multi_layer
+  anchor: {landmark: plaza-castilla}
+  expected:
+    layers: [parking, bikepark]
+    within_m: 500
+    min_results: 2
+- id: mad-unsupported-ev
+  split: dev
+  q: {es: "cargador de coche eléctrico cerca de Sol"}
+  intent: unsupported
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-unsupported-hospital
+  split: dev
+  q: {es: "hospital público cerca de Atocha"}
+  intent: unsupported
+  anchor: {landmark: atocha}
+  answerable: false
+- id: mad-unsupported-transit
+  split: dev
+  q: {es: "parada de autobús cerca de Cibeles"}
+  intent: unsupported
+  anchor: {landmark: cibeles}
+  answerable: false
+- id: mad-static-parking-availability
+  split: dev
+  q: {es: "¿qué parking tiene plazas libres ahora cerca de Sol?"}
+  intent: unsupported
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-adversarial-bike-share
+  split: dev
+  q: {es: "bicicleta pública para alquilar cerca de Sol"}
+  intent: unsupported
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-adversarial-fuente-tipografia-2
+  split: dev
+  q: {es: "busco una fuente tipográfica para un cartel en Madrid"}
+  intent: adversarial
+  answerable: false
+- id: mad-ho-fountain-retiro
+  split: heldout
+  q: {es: "¿dónde hay agua potable cerca del parque del Retiro?"}
+  intent: nearest
+  anchor: {landmark: retiro}
+  expected: {layers: [fountains], within_m: 300}
+- id: mad-ho-fountain-bernabeu
+  split: heldout
+  q: {es: "necesito una fuente para beber por el Bernabéu"}
+  intent: semantic
+  anchor: {landmark: bernabeu}
+  expected: {layers: [fountains], within_m: 450}
+- id: mad-ho-fountain-castilla
+  split: heldout
+  q: {es: "fuente pública para rellenar agua en Castilla"}
+  intent: semantic
+  anchor: {landmark: plaza-castilla}
+  expected: {layers: [fountains], within_m: 350}
+- id: mad-ho-fountain-closed
+  split: heldout
+  q: {es: "fuente no operativa alrededor de Cibeles"}
+  intent: attribute
+  anchor: {landmark: cibeles}
+  expected: {layers: [fountains], within_m: 500, tags: {operational: false}}
+- id: mad-ho-parking-cibeles
+  split: heldout
+  q: {es: "¿qué aparcamiento municipal queda más cerca de Cibeles?"}
+  intent: nearest
+  anchor: {landmark: cibeles}
+  expected: {layers: [parking], within_m: 500}
+- id: mad-ho-parking-atocha-public
+  split: heldout
+  q: {es: "busco parking público cerca de la estación de Atocha"}
+  intent: attribute
+  anchor: {landmark: atocha}
+  expected: {layers: [parking], within_m: 700, tags: {access_scope: public}}
+- id: mad-ho-parking-moncloa
+  split: heldout
+  q: {es: "dónde dejar el coche junto a Moncloa"}
+  intent: semantic
+  anchor: {landmark: moncloa}
+  expected: {layers: [parking], within_m: 850}
+- id: mad-ho-parking-residents
+  split: heldout
+  q: {es: "aparcamiento de residentes por el centro, cerca de Sol"}
+  intent: attribute
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [parking], within_m: 500, tags: {access_scope: resident_or_mixed}}
+- id: mad-ho-bike-castilla
+  split: heldout
+  q: {es: "aparcabicis en las inmediaciones de Plaza Castilla"}
+  intent: nearest
+  anchor: {landmark: plaza-castilla}
+  expected: {layers: [bikepark], within_m: 300}
+- id: mad-ho-bike-atocha
+  split: heldout
+  q: {es: "sitio para candar la bici junto a Atocha"}
+  intent: semantic
+  anchor: {landmark: atocha}
+  expected: {layers: [bikepark], within_m: 200}
+- id: mad-ho-bike-retiro
+  split: heldout
+  q: {es: "¿hay aparcabicis cerca de la entrada del Retiro?"}
+  intent: nearest
+  anchor: {landmark: retiro}
+  expected: {layers: [bikepark], within_m: 650}
+- id: mad-ho-bike-moncloa
+  split: heldout
+  q: {es: "necesito aparcar una bicicleta en Moncloa"}
+  intent: semantic
+  anchor: {landmark: moncloa}
+  expected: {layers: [bikepark], within_m: 250}
+- id: mad-ho-multi-sol
+  split: heldout
+  q: {es: "fuente y aparcabicis que estén cerca de Sol"}
+  intent: multi_layer
+  anchor: {landmark: puerta-del-sol}
+  expected: {layers: [fountains, bikepark], within_m: 350, min_results: 2}
+- id: mad-ho-multi-atocha
+  split: heldout
+  q: {es: "parking o fuente en la zona de Atocha"}
+  intent: multi_layer
+  anchor: {landmark: atocha}
+  expected: {layers: [parking, fountains], within_m: 700, min_results: 2}
+- id: mad-ho-multi-retiro
+  split: heldout
+  q: {es: "quiero aparcar y dejar la bici cerca del Retiro"}
+  intent: multi_layer
+  anchor: {landmark: retiro}
+  expected: {layers: [parking, bikepark], within_m: 800, min_results: 2}
+- id: mad-ho-unsupported-hotel
+  split: heldout
+  q: {es: "hotel accesible cerca de Plaza Mayor"}
+  intent: unsupported
+  anchor: {landmark: plaza-mayor}
+  answerable: false
+- id: mad-ho-unsupported-charge
+  split: heldout
+  q: {es: "punto de recarga para coche eléctrico en Atocha"}
+  intent: unsupported
+  anchor: {landmark: atocha}
+  answerable: false
+- id: mad-ho-availability
+  split: heldout
+  q: {es: "¿cuántas plazas libres hay ahora en un parking de Sol?"}
+  intent: unsupported
+  anchor: {landmark: puerta-del-sol}
+  answerable: false
+- id: mad-ho-adversarial-font
+  split: heldout
+  q: {es: "fuente tipográfica sans serif cerca del Retiro"}
+  intent: adversarial
+  anchor: {landmark: retiro}
   answerable: false

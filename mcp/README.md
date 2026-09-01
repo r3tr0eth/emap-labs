@@ -13,7 +13,7 @@ y "el monte en transporte público".
 | Tool | Qué hace |
 |---|---|
 | `search_places` | búsqueda semántica local en español o euskera, con abstención honesta |
-| `nearby_pois` | POIs más cercanos por capa (fuentes, aseos, DEA, cimas, paradas…) |
+| `nearby_pois` | POIs más cercanos por capa; resuelve el territorio por `territory` o coordenadas y siempre devuelve el contrato Core con evidencia y freshness |
 | `explain_place` | barrio/municipio y servicios cercanos de un punto |
 | `plan_route` | ruta real transit/walk/bike/car (OSRM/OTP propios) |
 | `plan_hike` | cimas de Euskadi alcanzables en transporte público (2.825 × 9 redes) |
@@ -47,11 +47,11 @@ EMAP_MCP_TRANSPORT=streamable-http EMAP_MCP_PORT=8084 python mcp/server.py
 
 | Superficie | URL | Estado |
 |---|---|---|
-| Endpoint objetivo | `https://vps.emapapp.com/mcp` | ⏳ código listo; requiere redeploy (421 verificado el 2026-08-28) |
+| Endpoint objetivo | `https://vps.emapapp.com/mcp` | ✅ deploy 2026-08-30; initialize, tools/list y nearby contract verificados |
 | Dominio de producto | `mcp.emapapp.com` o `emapapp.com/mcp` | ⏳ DNS/nginx (decisión abierta) |
 | Health (local al proceso) | `GET http://127.0.0.1:8084/health` | ✅ desde 0.1.1 |
 
-Cliente remoto (después del redeploy y smoke verde):
+Cliente remoto (smoke verde):
 
 ```json
 {"mcpServers": {"emap": {"url": "https://vps.emapapp.com/mcp"}}}
@@ -84,21 +84,29 @@ Snippet nginx (path o subdominio): `nginx.example.conf`.
 EMAP_MCP_TRANSPORT=streamable-http .venv/bin/python mcp/server.py &
 .venv/bin/python mcp/smoke.py --base http://127.0.0.1:8084
 
-# endpoint objetivo (requiere redeploy y smoke verde)
+# endpoint objetivo
 .venv/bin/python mcp/smoke.py --base https://vps.emapapp.com --live
 
 # cuando exista el dominio de producto
 .venv/bin/python mcp/smoke.py --base https://mcp.emapapp.com --live
 ```
 
+### Rollback
+
+`mcp/deploy.sh` actualiza solo `/opt/emap-labs/mcp/server.py` y la unidad
+systemd. Antes de desplegar, conservar la copia anterior del fichero y de
+`/etc/systemd/system/emap-mcp.service`; si falla `health` o `initialize`,
+restaurarlas, ejecutar `systemctl daemon-reload && systemctl restart emap-mcp`
+y repetir el smoke. El rollback no toca datos ni el servicio semántico.
+
 ## Distribución (L5.3)
 
 - **Registro oficial MCP**: `io.github.r3tr0eth/emap`
   (registry.modelcontextprotocol.io, remote streamable-http, status
   active — 2026-07-10). `server.json` en este directorio.
-- `server.json` prepara `vps.emapapp.com/mcp`, pero no debe republicarse en el
-  registry hasta que el redeploy termine con smoke verde. El dominio anterior
-  continúa en la allowlist durante la transición.
+- `server.json` apunta a `vps.emapapp.com/mcp`; el redeploy y smoke público ya
+  están verificados. El dominio anterior continúa en la allowlist durante la
+  transición.
 - `llms.txt` del API: https://emap-next.vercel.app/llms.txt
 - Pendiente: PR a awesome-mcp-servers y post técnico (borradores listos);
   migrar URL pública a dominio `emapapp.com`.

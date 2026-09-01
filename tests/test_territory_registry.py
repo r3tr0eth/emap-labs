@@ -33,15 +33,22 @@ class TerritoryRegistryTest(unittest.TestCase):
         )
         self.assertEqual(["euskadi", "madrid"], list_territories(runnable_only=True))
 
-    def test_madrid_reutiliza_el_contrato_con_una_capa_oficial(self) -> None:
+    def test_madrid_reutiliza_el_contrato_con_dos_capas_oficiales(self) -> None:
         territory = load_territory("madrid")
 
         self.assertEqual("Municipio de Madrid", territory.territory)
+        self.assertEqual("0.3.0", territory.version)
         self.assertEqual(
-            {"fountains": "processed/madrid/pois/fountains.json"},
+            {
+                "fountains": "processed/madrid/pois/fountains.json",
+                "parking": "processed/madrid/pois/parking.json",
+                "bikepark": "processed/madrid/pois/bikepark.json",
+            },
             dict(territory.layers),
         )
         self.assertEqual(2, territory.freshness_sla_days["fountains"])
+        self.assertEqual(2, territory.freshness_sla_days["parking"])
+        self.assertEqual(2, territory.freshness_sla_days["bikepark"])
         self.assertEqual("e5large", territory.production_retriever_profile)
 
     def test_perfil_e5_incluye_modelo_y_calibracion(self) -> None:

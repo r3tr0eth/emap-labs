@@ -21,6 +21,8 @@ consultas de usuarios.
 from __future__ import annotations
 
 import os
+import threading
+from typing import Callable, Mapping
 
 import numpy as np
 from fastembed import TextEmbedding
@@ -154,17 +156,23 @@ def strip_location(query: str, anchor_names: list[str]) -> str:
 
 
 class SemanticRetriever(BaselineRetriever):
-    name = f"semantic-{MODEL_TAG}-2stage"
-
-    def __init__(self, datasets: dict[str, list[dict]]):
+    def __init__(
+        self,
+        datasets: Mapping[str, list[dict] | tuple[dict, ...]],
+        *,
+        encoder: "SemanticEncoder | None" = None,
+        profile_name: str | None = None,
+    ):
         super().__init__(datasets)
-        self.model = TextEmbedding(MODEL)
+        self.encoder = encoder or SemanticEncoder(profile_name)
+        self.name = f"semantic-{self.encoder.profile_name}-2stage"
         self.cats = [c for c in CATEGORY_TEXT if c in datasets]
-        docs = [DOC_PREFIX + CATEGORY_TEXT[c] for c in self.cats]
-        vecs = np.array(list(self.model.embed(docs)))
+        docs = [CATEGORY_TEXT[c] for c in self.cats]
+        vecs = np.array(self.encoder.embed_documents(docs))
         self.cat_vecs = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
         self._anchor_names: list[str] = []
-        self.sim_threshold = SIM_THRESHOLD
+        self.sim_threshold = self.encoder.sim_threshold
+        self.tie_window = self.encoder.tie_window
 
     def set_anchor_names(self, names: list[str]) -> None:
         """El runner informa del texto del anchor del caso (nunca del expected)."""
@@ -172,13 +180,72 @@ class SemanticRetriever(BaselineRetriever):
 
     def detect_layers(self, query: str) -> list[str]:
         q = strip_location(query, self._anchor_names)
-        v = np.array(list(self.model.embed([QUERY_PREFIX + q])))[0]
+        v = np.array(self.encoder.embed_query(q))
         v /= np.linalg.norm(v)
         sims = self.cat_vecs @ v
         best = float(sims.max())
-        if best < SIM_THRESHOLD:
+        if best < self.sim_threshold:
             return []  # nada se parece lo bastante: no sé
-        return [c for c, s in zip(self.cats, sims) if s >= best - TIE_WINDOW]
+        return [c for c, s in zip(self.cats, sims) if s >= best - self.tie_window]
+
+
+class SemanticEncoder:
+    """Modelo semántico compartible; no contiene estado territorial."""
+
+    def __init__(self, profile_name: str | None = None) -> None:
+        # Sin nombre explícito, honrar EMAP_RETRIEVER_PROFILE (el flujo de
+        # run.py --profile). Regresión real: al ignorar el env, todos los
+        # resultados "e5large" del harness ejecutaron MiniLM etiquetado como
+        # e5large (descubierto 2026-09-01; prod no se vio afectado porque el
+        # factory pasa el nombre explícito).
+        profile = resolve_profile(
+            profile_name=profile_name or os.environ.get("EMAP_RETRIEVER_PROFILE"),
+            model=os.environ.get("EMAP_EMBED_MODEL"),
+        )
+        self.profile_name = profile.name
+        self.model = profile.model
+        self.sim_threshold = float(
+            os.environ.get("EMAP_SIM_TAU", profile.sim_threshold)
+        )
+        self.tie_window = float(os.environ.get("EMAP_TIE_WIN", profile.tie_window))
+        self._is_e5 = "e5" in profile.model.lower()
+        self._model = TextEmbedding(profile.model)
+        self._lock = threading.RLock()
+
+    def embed_documents(self, texts: list[str]) -> list[np.ndarray]:
+        prefix = "passage: " if self._is_e5 else ""
+        with self._lock:
+            return list(self._model.embed([prefix + text for text in texts]))
+
+    def embed_query(self, text: str) -> np.ndarray:
+        prefix = "query: " if self._is_e5 else ""
+        with self._lock:
+            return list(self._model.embed([prefix + text]))[0]
+
+
+class HybridRetrieverFactory:
+    """Crea retrievers aislados compartiendo un encoder por perfil."""
+
+    def __init__(
+        self,
+        *,
+        encoder_factory: Callable[[str], SemanticEncoder] = SemanticEncoder,
+    ) -> None:
+        self._encoder_factory = encoder_factory
+        self._encoders: dict[str, SemanticEncoder] = {}
+        self._lock = threading.Lock()
+
+    def __call__(
+        self,
+        profile_name: str,
+        datasets: Mapping[str, list[dict] | tuple[dict, ...]],
+    ) -> "HybridRetriever":
+        with self._lock:
+            encoder = self._encoders.get(profile_name)
+            if encoder is None:
+                encoder = self._encoder_factory(profile_name)
+                self._encoders[profile_name] = encoder
+        return HybridRetriever(datasets, encoder=encoder)
 
 
 class HybridRetriever(SemanticRetriever):
@@ -187,7 +254,15 @@ class HybridRetriever(SemanticRetriever):
     composición natural: el baseline nunca inventa categoría (se abstiene)
     y ahí entra la semántica."""
 
-    name = f"hybrid-keywords-then-{MODEL_TAG}"
+    def __init__(
+        self,
+        datasets: Mapping[str, list[dict] | tuple[dict, ...]],
+        *,
+        encoder: SemanticEncoder | None = None,
+        profile_name: str | None = None,
+    ) -> None:
+        super().__init__(datasets, encoder=encoder, profile_name=profile_name)
+        self.name = f"hybrid-keywords-then-{self.encoder.profile_name}"
 
     def detect_layers(self, query: str) -> list[str]:
         layers = BaselineRetriever.detect_layers(self, query)
@@ -213,7 +288,7 @@ class HybridRetriever(SemanticRetriever):
 
         # Recuperar scores reales
         q = strip_location(query, self._anchor_names)
-        v = np.array(list(self.model.embed([QUERY_PREFIX + q])))[0]
+        v = np.array(self.encoder.embed_query(q))
         v /= np.linalg.norm(v)
         sims = self.cat_vecs @ v
         scores = {c: float(s) for c, s in zip(self.cats, sims)}

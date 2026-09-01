@@ -1,0 +1,1774 @@
+{
+  "accepted_records": 63,
+  "attribution": "Ayuntamiento de Madrid (CC BY 4.0)",
+  "coordinate_counts": {
+    "derived_etrs89_utm30n": 1,
+    "published_wgs84": 62
+  },
+  "count": 63,
+  "coverage": {
+    "bbox": [
+      -3.9,
+      40.3,
+      -3.5,
+      40.65
+    ],
+    "notes": "Inventario municipal oficial. La tipología distingue entradas públicas de residentes o mixtas; no contiene ocupación realtime.",
+    "territory": "Municipio de Madrid"
+  },
+  "discard_reasons": {},
+  "discarded_records": 0,
+  "dropped": 0,
+  "freshness_sla_days": 2,
+  "generated": "2026-08-28",
+  "ingested_at": "2026-08-28T23:34:56Z",
+  "layer_id": "parking",
+  "license": "CC-BY-4.0",
+  "pois": [
+    {
+      "address": "Avenida Arcentales 37",
+      "category": "parking",
+      "id": "parking:10489514",
+      "lat": 40.434154,
+      "layer_id": "parking",
+      "lon": -3.598831,
+      "name": {
+        "es": "Aparcamiento disuasorio Estadio Metropolitano Sur ES-02b"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas:  para automóviles: 3011 para motocicletas: 61",
+        "district": "San Blas-Canillejas",
+        "district_code": "20",
+        "neighborhood": "Rosas",
+        "neighborhood_code": "5",
+        "official_id": "10489514",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=975b89a80c49e510VgnVCM1000001d4a900aRCRD",
+        "opening_hours_text": "Horario de apertura de 6:00 h a 22:00 h los días laborables excepto los días de partido en el estadio Metropolitano",
+        "postal_code": "28022",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Amparo Usera 46",
+      "category": "parking",
+      "id": "parking:10737574",
+      "lat": 40.387286,
+      "layer_id": "parking",
+      "lon": -3.7063081,
+      "name": {
+        "es": "Aparcamiento público. Usera"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 36  Titularidad : Ayuntamiento de Madrid",
+        "district": "Usera",
+        "district_code": "12",
+        "neighborhood": "Moscardo",
+        "neighborhood_code": "5",
+        "official_id": "10737574",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=ce8907e1fd534610VgnVCM1000001d4a900aRCRD",
+        "postal_code": "28026",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Avenida Manoteras 1",
+      "category": "parking",
+      "id": "parking:11413444",
+      "lat": 40.4844429,
+      "layer_id": "parking",
+      "lon": -3.6645025,
+      "name": {
+        "es": "Aparcamiento disuasorio Fuente de la Mora"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas:  para automóviles: 368 (de las cuales, 10 para coche eléctrico y 12 para coches adaptados PMR) para motocicletas: 35   Código del aparcamiento: 1626",
+        "district": "Hortaleza",
+        "district_code": "16",
+        "neighborhood": "Valdefuentes",
+        "neighborhood_code": "6",
+        "official_id": "11413444",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=cbb3ed735e9f9710VgnVCM1000001d4a900aRCRD",
+        "opening_hours_text": "Abierto 24 horas",
+        "postal_code": "28050",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Gloria Fuertes",
+      "category": "parking",
+      "id": "parking:11413620",
+      "lat": 40.494193,
+      "layer_id": "parking",
+      "lon": -3.727236,
+      "name": {
+        "es": "Aparcamiento disuasorio Pitis"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas:  para automóviles: 402 (de las cuales, 10 para coche eléctrico y 12 para coches adaptados PMR) para motocicletas: 34   Código del aparcamiento: 828",
+        "district": "Fuencarral-El Pardo",
+        "district_code": "8",
+        "neighborhood": "Fuentelarreina",
+        "neighborhood_code": "2",
+        "official_id": "11413620",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=1642e9887f9f9710VgnVCM2000001f4a900aRCRD",
+        "opening_hours_text": "Abierto 24 horas",
+        "postal_code": "28049",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Fuente De Lima 5",
+      "category": "parking",
+      "id": "parking:11483771",
+      "lat": 40.3832379,
+      "layer_id": "parking",
+      "lon": -3.783621,
+      "name": {
+        "es": "Aparcamiento disuasorio Aviación Española"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas:  para automóviles: 344 (de las cuales, 10 para coche eléctrico) para motocicletas: 25 para bicicletas: 10   Código del aparcamiento: 1024",
+        "district": "Latina",
+        "district_code": "10",
+        "neighborhood": "Las Aguilas",
+        "neighborhood_code": "7",
+        "official_id": "11483771",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=1ec084bc6763c710VgnVCM1000001d4a900aRCRD",
+        "opening_hours_text": "Abierto 24 horas",
+        "postal_code": "28024",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Santo Domingo",
+      "category": "parking",
+      "id": "parking:11544439",
+      "lat": 40.4201332,
+      "layer_id": "parking",
+      "lon": -3.7082598,
+      "name": {
+        "es": "Aparcamiento mixto. Plaza de Santo Domingo"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas Totales: 320 plazas,  Plazas motos: 16.",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Palacio",
+        "neighborhood_code": "1",
+        "official_id": "11544439",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=58ec252aa267d710VgnVCM1000001d4a900aRCRD",
+        "postal_code": "28013",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Calderilla 1",
+      "category": "parking",
+      "id": "parking:11544464",
+      "lat": 40.3652167,
+      "layer_id": "parking",
+      "lon": -3.7379235,
+      "name": {
+        "es": "Aparcamiento disuasorio Islazul"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Número de plazas: 224 plazas  Código del aparcamiento: 1114",
+        "district": "Carabanchel",
+        "district_code": "11",
+        "neighborhood": "Buenavista",
+        "neighborhood_code": "6",
+        "official_id": "11544464",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=83bf252aa267d710VgnVCM1000001d4a900aRCRD",
+        "postal_code": "28054",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Alcantara 26",
+      "category": "parking",
+      "id": "parking:11544480",
+      "lat": 40.4281938,
+      "layer_id": "parking",
+      "lon": -3.6737781,
+      "name": {
+        "es": "Aparcamiento mixto. Alcántara"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 121 públicas y 254 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Goya",
+        "neighborhood_code": "2",
+        "official_id": "11544480",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=79df252aa267d710VgnVCM1000001d4a900aRCRD",
+        "postal_code": "28006",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle San Epifanio 9",
+      "category": "parking",
+      "id": "parking:11750494",
+      "lat": 40.4005782,
+      "layer_id": "parking",
+      "lon": -3.719338,
+      "name": {
+        "es": "Aparcamiento público. San Epifanio"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 501  Actualmente Cerrado     Titularidad: Ayuntamiento de Madrid",
+        "district": "Arganzuela",
+        "district_code": "2",
+        "neighborhood": "Imperial",
+        "neighborhood_code": "1",
+        "official_id": "11750494",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=dac3493077fc2810VgnVCM1000001d4a900aRCRD",
+        "postal_code": "28005",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Santa Maria Soledad Torres Acosta 2",
+      "category": "parking",
+      "id": "parking:13449",
+      "lat": 40.421685,
+      "layer_id": "parking",
+      "lon": -3.7056898,
+      "name": {
+        "es": "Aparcamiento público. Luna - Tudescos"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 481 Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Universidad",
+        "neighborhood_code": "5",
+        "official_id": "13449",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=54467339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28004",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Olavide 17",
+      "category": "parking",
+      "id": "parking:13450",
+      "lat": 40.4328785,
+      "layer_id": "parking",
+      "lon": -3.7010393,
+      "name": {
+        "es": "Aparcamiento público. Olavide"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 397   Información sobre accesibilidad:   Disponde de escaleras adaptadas 1 ascensor en la salida a la Plaza de Olavide 1 aseo accesible en la 1&amp;ordf;  planta Plaza para minusválidos residentes: 8  Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Chamberi",
+        "district_code": "7",
+        "neighborhood": "Trafalgar",
+        "neighborhood_code": "3",
+        "official_id": "13450",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=453881eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28010",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Garcia Molinas 4",
+      "category": "parking",
+      "id": "parking:13451",
+      "lat": 40.4227276,
+      "layer_id": "parking",
+      "lon": -3.7088346,
+      "name": {
+        "es": "Aparcamiento público. Mostenses"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 361  Información sobre accesibilidad:   No tiene escaleras adaptadas 1 ascensor 1 aseo accesible en 2&amp;ordf;  planta Plaza para minusválidos residentes: 16   Abierto 24 horas   Admite Tarjeta BonoRed    Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Universidad",
+        "neighborhood_code": "5",
+        "official_id": "13451",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=fe0881eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28015",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Almagro 24",
+      "category": "parking",
+      "id": "parking:13452",
+      "lat": 40.4298019,
+      "layer_id": "parking",
+      "lon": -3.6932381,
+      "name": {
+        "es": "Aparcamiento público. Almagro"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 463  Informacion sobre accesibilidad:   1 escalera adaptada No tiene ascensor de salida a calle 1 aseo accesible Plazas para minusválidos residentes: 17  Abierto 24 horas  Titularidad : Ayuntamiento de Madrid   Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Chamberi",
+        "district_code": "7",
+        "neighborhood": "Almagro",
+        "neighborhood_code": "4",
+        "official_id": "13452",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=0e167339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28010",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Villa De Paris 1",
+      "category": "parking",
+      "id": "parking:13453",
+      "lat": 40.4251486,
+      "layer_id": "parking",
+      "lon": -3.6923957,
+      "name": {
+        "es": "Aparcamiento público. Villa de París"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas rotación: 169  Plazas motos: 2   Información sobre accesibilidad:   No tiene escaleras adaptadas No disponde de ascensor 1 aseo accesible Plaza para minusválidos residentes: 13   Abierto 24 horas       Titularidad: Ayuntamiento de Madrid  Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Justicia",
+        "neighborhood_code": "4",
+        "official_id": "13453",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=38a881eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28004",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Goya 2",
+      "category": "parking",
+      "id": "parking:13454",
+      "lat": 40.4254346,
+      "layer_id": "parking",
+      "lon": -3.688468,
+      "name": {
+        "es": "Aparcamiento público. Plaza de Colón"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 611 Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "13454",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=a5777339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Santa Ana",
+      "category": "parking",
+      "id": "parking:13456",
+      "lat": 40.4145312,
+      "layer_id": "parking",
+      "lon": -3.7005601,
+      "name": {
+        "es": "Aparcamiento público. Santa Ana"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 325  Información sobre accesibilidad:   No tiene escaleras adaptadas 1 ascensor 1 aseo accesible en 1&amp;ordf; planta Plaza para minusválidos residentes: 6   Abierto 24 horas   Admite Tarjeta BonoRed   Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Cortes",
+        "neighborhood_code": "3",
+        "official_id": "13456",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=9b5881eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28012",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Velazquez 1",
+      "category": "parking",
+      "id": "parking:13457",
+      "lat": 40.4242992,
+      "layer_id": "parking",
+      "lon": -3.6843576,
+      "name": {
+        "es": "Aparcamiento mixto. Velázquez - Jorge Juan"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 548 públicas y 395 para residentes Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "13457",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=d11f15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Velazquez 47",
+      "category": "parking",
+      "id": "parking:13458",
+      "lat": 40.4272702,
+      "layer_id": "parking",
+      "lon": -3.6840889,
+      "name": {
+        "es": "Aparcamiento mixto. Velázquez - Ayala"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 443 públicas y 230 para residentes Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "13458",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=8bee15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Jacinto Benavente 6",
+      "category": "parking",
+      "id": "parking:13459",
+      "lat": 40.4144481,
+      "layer_id": "parking",
+      "lon": -3.7033212,
+      "name": {
+        "es": "Aparcamiento mixto. Jacinto Benavente"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 285 públicas y 110 para residentes.  Plazas motos: 7.  Información sobre accesibilidad:   No tiene escaleras adaptadas Ascensor con salida a la calle Jacinto benavente, s/n 1 aseo accesible Plaza para minusválidos residentes: 16  Abierto 24 horas  Titularidad:  Ayuntamiento de Madrid   Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Cortes",
+        "neighborhood_code": "3",
+        "official_id": "13459",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=c48f15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28012",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Alcala 15",
+      "category": "parking",
+      "id": "parking:13460",
+      "lat": 40.4177754,
+      "layer_id": "parking",
+      "lon": -3.70028,
+      "name": {
+        "es": "Aparcamiento mixto. Sevilla"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 649 públicas rotacionales y 74 para residentes Abierto 24 horas Admite Tarjeta BonoRed   Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Sol",
+        "neighborhood_code": "6",
+        "official_id": "13460",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=9dd67339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28014",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Fuencarral 121",
+      "category": "parking",
+      "id": "parking:13462",
+      "lat": 40.4296271,
+      "layer_id": "parking",
+      "lon": -3.702791,
+      "name": {
+        "es": "Aparcamiento mixto. Fuencarral"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 410 públicas y 111 para residentes  Información sobre accesibilidad:   No tiene escalera adaptada 1 ascensor con salida a la calle Fuencarral, 117 1 aseo accesible en la 1&amp;ordf; planta Plazas para minusválidos residentes: 7   Abierto 24 horas   Admite Tarjeta BonoRed   Titularidad: Ayuntamiento de Madrid",
+        "district": "Chamberi",
+        "district_code": "7",
+        "neighborhood": "Trafalgar",
+        "neighborhood_code": "3",
+        "official_id": "13462",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=987e15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28010",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza España 1",
+      "category": "parking",
+      "id": "parking:13463",
+      "lat": 40.4237812,
+      "layer_id": "parking",
+      "lon": -3.7115232,
+      "name": {
+        "es": "Aparcamiento público. Plaza de España"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 800 (hasta 535 abonados) Abierto 24 horas    Titularidad: Ayuntamiento de Madrid  Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Palacio",
+        "neighborhood_code": "1",
+        "official_id": "13463",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=fb977339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28008",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Goya 88",
+      "category": "parking",
+      "id": "parking:13464",
+      "lat": 40.4242208,
+      "layer_id": "parking",
+      "lon": -3.6734219,
+      "name": {
+        "es": "Aparcamiento mixto. Felipe II"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 1175 públicas rotacionales y 615 para residentes  Información sobre accesibilidad:   No tiene escaleras adaptadas Ascensor de salida a la plaza de Felipe II Aseo accesible (1&amp;ordf; planta) Plazas para minusválidos residentes:23   Abierto 24 horas   Admite tarjeta BonoRed   Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "13464",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=425e15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Montalban 4",
+      "category": "parking",
+      "id": "parking:13465",
+      "lat": 40.4181859,
+      "layer_id": "parking",
+      "lon": -3.6909581,
+      "name": {
+        "es": "Aparcamiento mixto. Montalbán"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas:   146 Residenciales 130 Rotacionales    Abierto 24 horas    Titularidad:  Ayuntamiento de Madrid   Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Retiro",
+        "district_code": "3",
+        "neighborhood": "Los Jeronimos",
+        "neighborhood_code": "5",
+        "official_id": "13465",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=f0967339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28014",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Mayor 1",
+      "category": "parking",
+      "id": "parking:13466",
+      "lat": 40.4158678,
+      "layer_id": "parking",
+      "lon": -3.7068956,
+      "name": {
+        "es": "Aparcamiento mixto. Plaza Mayor"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 694  279 Residenciales 415 Rotacionales  Abierto 24 horas  Titularidad : Ayuntamiento de Madrid    Gálibo: 1'85 m",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Sol",
+        "neighborhood_code": "6",
+        "official_id": "13466",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=2b1981eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28012",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Cortes 13",
+      "category": "parking",
+      "id": "parking:13467",
+      "lat": 40.4156721,
+      "layer_id": "parking",
+      "lon": -3.6953121,
+      "name": {
+        "es": "Aparcamiento público. Las Cortes"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 480 Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Cortes",
+        "neighborhood_code": "3",
+        "official_id": "13467",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=42c77339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28014",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Velazquez 88",
+      "category": "parking",
+      "id": "parking:13468",
+      "lat": 40.4317523,
+      "layer_id": "parking",
+      "lon": -3.6834534,
+      "name": {
+        "es": "Aparcamiento público. Velázquez - Juan Bravo"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 371 Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Castellana",
+        "neighborhood_code": "6",
+        "official_id": "13468",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e3077339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28006",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Marques De Urquijo",
+      "category": "parking",
+      "id": "parking:13469",
+      "lat": 40.429904,
+      "layer_id": "parking",
+      "lon": -3.718815,
+      "name": {
+        "es": "Aparcamiento público. Marqués de Urquijo"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 482 Abierto 24 horas Admite Tarjeta BonoRed Altura mínima de gálibo 1,95m",
+        "district": "Moncloa-Aravaca",
+        "district_code": "9",
+        "neighborhood": "Arguelles",
+        "neighborhood_code": "2",
+        "official_id": "13469",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=aa667339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28008",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Barcelo 2",
+      "category": "parking",
+      "id": "parking:13470",
+      "lat": 40.4262737,
+      "layer_id": "parking",
+      "lon": -3.7003742,
+      "name": {
+        "es": "Aparcamiento mixto. Arquitecto Ribera"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 318 públicas y 298 para residentes Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Justicia",
+        "neighborhood_code": "4",
+        "official_id": "13470",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=a50e15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28004",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Carmen 10",
+      "category": "parking",
+      "id": "parking:13472",
+      "lat": 40.4187228,
+      "layer_id": "parking",
+      "lon": -3.7030734,
+      "name": {
+        "es": "Aparcamiento público. Plaza del Carmen"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 450  Información sobre accesibilidad:   No tiene escaleras adaptadas 1 ascensor 1 aseo accesible en  1&amp;ordf;  planta Plaza para minusválidos residentes: 7   Abierto 24 horas   Admite Tarjeta BonoRed   Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Sol",
+        "neighborhood_code": "6",
+        "official_id": "13472",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=8ec881eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28013",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Descalzas 3",
+      "category": "parking",
+      "id": "parking:13473",
+      "lat": 40.4184576,
+      "layer_id": "parking",
+      "lon": -3.707046,
+      "name": {
+        "es": "Aparcamiento público. Descalzas"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 400  Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Sol",
+        "neighborhood_code": "6",
+        "official_id": "13473",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=98e77339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28013",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Rey 1",
+      "category": "parking",
+      "id": "parking:13474",
+      "lat": 40.4202104,
+      "layer_id": "parking",
+      "lon": -3.6958067,
+      "name": {
+        "es": "Aparcamiento público. Plaza del Rey"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 170  Información sobre accesibilidad:   Si tiene escaleras adaptadas 1 ascensor 3 aseos accesibles (uno por planta): 8 Plaza para minusválidos residentes: 16  Abierto 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Justicia",
+        "neighborhood_code": "4",
+        "official_id": "13474",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=d4f881eb5f51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28004",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle San German 7",
+      "category": "parking",
+      "id": "parking:13475",
+      "lat": 40.4560925,
+      "layer_id": "parking",
+      "lon": -3.6934969,
+      "name": {
+        "es": "Aparcamiento mixto. Brasil"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 226 públicas y 402 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Cuatro Caminos",
+        "neighborhood_code": "2",
+        "official_id": "13475",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=fb2e15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Paseo Recoletos 4",
+      "category": "parking",
+      "id": "parking:13476",
+      "lat": 40.4213975,
+      "layer_id": "parking",
+      "lon": -3.6918413,
+      "name": {
+        "es": "Aparcamiento mixto. Recoletos"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 102 públicas y 289 para residentes  Información sobre accesibilidad:   No tiene escaleras adaptadas 1 ascensor en la salida al Paseo de Recoletos 1 aseo accesible Plaza para minusválidos residentes: 10   Abierto 24 horas   Titularidad : Ayuntamiento de Madrid   Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "13476",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=283f15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Condesa De Gavia 2",
+      "category": "parking",
+      "id": "parking:13477",
+      "lat": 40.4490543,
+      "layer_id": "parking",
+      "lon": -3.7020861,
+      "name": {
+        "es": "Aparcamiento mixto. Condesa de Gavia"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 146 públicas y 79 para residentes  El horario de apertura para la parte del aparcamiento rotacional es de lunes a viernes de 9:00h a 20:40h. Sábados de 9:00 a 14:30h.  Titularidad: Ayuntamiento de Madrid",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Cuatro Caminos",
+        "neighborhood_code": "2",
+        "official_id": "13477",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=7e5f15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Glorieta Puerta De Toledo",
+      "category": "parking",
+      "id": "parking:13478",
+      "lat": 40.4073866,
+      "layer_id": "parking",
+      "lon": -3.7100152,
+      "name": {
+        "es": "Aparcamiento público. Glorieta Puerta de Toledo"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 240 Abierto 24 horas  Titularidad: Subdirección General de Patrimonio - Comunidad de Madrid  Teléfonos: Servicio de información de la Comunidad de Madrid:                    012                    91 580 42 60  (desde fuera de la Comunidad de Madrid)",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Embajadores",
+        "neighborhood_code": "2",
+        "official_id": "13478",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=5f477339ae51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28005",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Poeta Joan Maragall 57",
+      "category": "parking",
+      "id": "parking:13479",
+      "lat": 40.4645483,
+      "layer_id": "parking",
+      "lon": -3.691572,
+      "name": {
+        "es": "Aparcamiento mixto. José Castán Tobeñas"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 226 públicas y 43 para residentes  Información sobre accesibilidad:  No tiene escaleras adaptadas No disponde ascensor No disponde de aseos accesible Plazas para minusválidos residentes: 5    Abierto 24 horas   Titularidad: Ayuntamiento de Madrid",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Castillejos",
+        "neighborhood_code": "3",
+        "official_id": "13479",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=35ce15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Orense 48",
+      "category": "parking",
+      "id": "parking:13515",
+      "lat": 40.4564091,
+      "layer_id": "parking",
+      "lon": -3.6933334,
+      "name": {
+        "es": "Aparcamiento mixto. San Germán II (antes General Yagüe)"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 419 públicas y 713 residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Castillejos",
+        "neighborhood_code": "3",
+        "official_id": "13515",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=ee9e15cbed51c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza San Cayetano 1",
+      "category": "parking",
+      "id": "parking:167692",
+      "lat": 40.4344245,
+      "layer_id": "parking",
+      "lon": -3.6701288,
+      "name": {
+        "es": "Aparcamiento mixto. San Cayetano"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 222 públicas y 261 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Guindalera",
+        "neighborhood_code": "4",
+        "official_id": "167692",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=a284ff632081c010VgnVCM1000000b205a0aRCRD",
+        "postal_code": "28028",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Miguel Yuste 64",
+      "category": "parking",
+      "id": "parking:182188",
+      "lat": 40.4342957,
+      "layer_id": "parking",
+      "lon": -3.6225141,
+      "name": {
+        "es": "Aparcamiento mixto. Miguel Yuste"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 168  públicas y 68 para residentes Abierto: 24 horas Admite Tarjeta BonoRed  Titularidad: Ayuntamiento de Madrid",
+        "district": "San Blas-Canillejas",
+        "district_code": "20",
+        "neighborhood": "Simancas",
+        "neighborhood_code": "1",
+        "official_id": "182188",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=1c15bdc85c01c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28037",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Verdaguer Y Garcia 2",
+      "category": "parking",
+      "id": "parking:183607",
+      "lat": 40.4397163,
+      "layer_id": "parking",
+      "lon": -3.6566923,
+      "name": {
+        "es": "Aparcamiento mixto. Verdaguer y García"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 83 públicas y 91 para residentes  Información sobre accesibilidad:  No tiene escaleras adaptadas 1 ascensor en la salida a la Calle Verdaguer y garcía 1 aseo accesible en la planta -1 Plaza para minusválidos residentes: 4    Abierto 24 horas   Titularidad: Ayuntamiento de Madrid",
+        "district": "Ciudad Lineal",
+        "district_code": "15",
+        "neighborhood": "San Pascual",
+        "neighborhood_code": "5",
+        "official_id": "183607",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=6245bdc85c01c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28027",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Casino 3",
+      "category": "parking",
+      "id": "parking:183747",
+      "lat": 40.4070947,
+      "layer_id": "parking",
+      "lon": -3.7038875,
+      "name": {
+        "es": "Aparcamiento mixto. Casino de la Reina"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 135 públicas y 449 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Embajadores",
+        "neighborhood_code": "2",
+        "official_id": "183747",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=c5f4bdc85c01c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28005",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Avenida Ciudad De Barcelona 156",
+      "category": "parking",
+      "id": "parking:183748",
+      "lat": 40.4025534,
+      "layer_id": "parking",
+      "lon": -3.6776314,
+      "name": {
+        "es": "Aparcamiento mixto. Daoíz y Velarde"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 235 públicas y 253 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Retiro",
+        "district_code": "3",
+        "neighborhood": "Pacifico",
+        "neighborhood_code": "1",
+        "official_id": "183748",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=0f85bdc85c01c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28007",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Sanchez Bustillo",
+      "category": "parking",
+      "id": "parking:19053",
+      "lat": 40.4088588,
+      "layer_id": "parking",
+      "lon": -3.6938215,
+      "name": {
+        "es": "Aparcamiento mixto. Sánchez Bustillo"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 131 públicas y 408 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Embajadores",
+        "neighborhood_code": "2",
+        "official_id": "19053",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=27912c798651c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28012",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Republica Dominicana 6",
+      "category": "parking",
+      "id": "parking:24193",
+      "lat": 40.4588694,
+      "layer_id": "parking",
+      "lon": -3.6765158,
+      "name": {
+        "es": "Aparcamiento mixto. República Dominicana"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 209 públicas y 892 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Chamartin",
+        "district_code": "5",
+        "neighborhood": "Nueva España",
+        "neighborhood_code": "5",
+        "official_id": "24193",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=aabe6545f951c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28016",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Carlos Y Guillermo Fernandez Shaw 1",
+      "category": "parking",
+      "id": "parking:24809",
+      "lat": 40.4048998,
+      "layer_id": "parking",
+      "lon": -3.668851,
+      "name": {
+        "es": "Aparcamiento mixto. Fernández Shaw"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 245 públicas y 350 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Retiro",
+        "district_code": "3",
+        "neighborhood": "Adelfas",
+        "neighborhood_code": "2",
+        "official_id": "24809",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=0e6e6545f951c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28007",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Oriente 9",
+      "category": "parking",
+      "id": "parking:33440",
+      "lat": 40.418407,
+      "layer_id": "parking",
+      "lon": -3.7119904,
+      "name": {
+        "es": "Aparcamiento mixto. Plaza de Oriente"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 242 públicas rotacionales (30 plazas para autobuses) y 511 para residentes Abierto 24 horas Admite Tarjeta BonoRed Este PAR está adherido a la zona de APR  Titularidad: Ayuntamiento de Madrid",
+        "district": "Centro",
+        "district_code": "1",
+        "neighborhood": "Palacio",
+        "neighborhood_code": "1",
+        "official_id": "33440",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=7db12c798651c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28013",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Encuentro 5",
+      "category": "parking",
+      "id": "parking:36269",
+      "lat": 40.4058694,
+      "layer_id": "parking",
+      "lon": -3.6513894,
+      "name": {
+        "es": "Aparcamiento mixto. Encuentro"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "derived_etrs89_utm30n",
+        "description": "Plazas: 104 públicas y 550 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Moratalaz",
+        "district_code": "14",
+        "neighborhood": "Media Legua",
+        "neighborhood_code": "4",
+        "official_id": "36269",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=c3e12c798651c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28030",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Hernani 79",
+      "category": "parking",
+      "id": "parking:36270",
+      "lat": 40.4481762,
+      "layer_id": "parking",
+      "lon": -3.6976113,
+      "name": {
+        "es": "Aparcamiento mixto. Hernani"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 115 públicas y 380 residentes  Información sobre accesibilidad:  No tiene escaleras adptadas Ascensor de salida a la calle Hernai, 68 1 aseo accesible en 1&amp;ordf; planta Plazas para minusválidos residentes. 3    Abierto 24 horas   Titularidad: Ayuntamiento de Madrid",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Cuatro Caminos",
+        "neighborhood_code": "2",
+        "official_id": "36270",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=d0712c798651c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Avenida General Peron 21",
+      "category": "parking",
+      "id": "parking:36271",
+      "lat": 40.4525161,
+      "layer_id": "parking",
+      "lon": -3.6956838,
+      "name": {
+        "es": "Aparcamiento mixto. Presidente Carmona"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 127 públicas y 379 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid  Teléfono: 91 556 62 26",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Cuatro Caminos",
+        "neighborhood_code": "2",
+        "official_id": "36271",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=8a412c798651c010VgnVCM2000000c205a0aRCRD",
+        "opening_hours_text": "De lunes a domingo servicio ininterrumpido",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Diego De Leon 64",
+      "category": "parking",
+      "id": "parking:44724",
+      "lat": 40.4345102,
+      "layer_id": "parking",
+      "lon": -3.675484,
+      "name": {
+        "es": "Aparcamiento mixto. Díaz Porlier"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 203 públicas y 421 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Lista",
+        "neighborhood_code": "5",
+        "official_id": "44724",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=9e69946be351c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28006",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Pedro Zerolo 1",
+      "category": "parking",
+      "id": "parking:52114",
+      "lat": 40.4208059,
+      "layer_id": "parking",
+      "lon": -3.6993017,
+      "name": {
+        "es": "Aparcamiento mixto. Pedro Zerolo 'antes denominado Vázquez de Mella'"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 107 públicas y 261 para residentes.  Plazas motos: 6.  Información sobre accesibilidad:  No tiene escaleras adaptadas 1 ascensor con salida a la Plaza de Vazquez de Mella 1 aseo accesible Plaza para minusválidos residentes: 7    Abierto 24 horas   Titularidad: Ayuntamiento de Madrid  Gestión: Empresa Municipal de Transportes (EMT) (más información)  Teléfonos: Residentes - 91 522 50 29          Rotacional -  91 532 19 10",
+        "district": "Centro",
+        "district_code": "13",
+        "neighborhood": "Justicia",
+        "neighborhood_code": "4",
+        "official_id": "52114",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e499946be351c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28004",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Avenida Brasil 2",
+      "category": "parking",
+      "id": "parking:5517342",
+      "lat": 40.4530723,
+      "layer_id": "parking",
+      "lon": -3.6941385,
+      "name": {
+        "es": "Aparcamiento mixto. Orense"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 129 públicas y 663 para residentes  Información sobre accesibilidad:  1 escalera adaptada No dispone de ascensor 1 aseo accesible Plaza para minusválidos residentes: 5    Abierto 24 horas   Titularidad: Ayuntamiento de Madrid  Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Tetuan",
+        "district_code": "6",
+        "neighborhood": "Cuatro Caminos",
+        "neighborhood_code": "2",
+        "official_id": "5517342",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=eee35ed15bb95210VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28020",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Avenida Portugal 155",
+      "category": "parking",
+      "id": "parking:5898885",
+      "lat": 40.4112391,
+      "layer_id": "parking",
+      "lon": -3.7380879,
+      "name": {
+        "es": "Aparcamiento mixto. Avenida de Portugal"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 428 públicas y 445 para residentes  Informacion sobre accesibilidad:  No tiene escalera adaptada Tiene ascensor de salida a Avenida de Portugal, s/n 1 aseo accesible (nivel-3) Plazas para minusválidos residentes: 20   Abierto 24 horas  Titularidad: Ayuntamiento de Madrid  Gestión: Empresa Municipal de Transportes (EMT) (más información)",
+        "district": "Latina",
+        "district_code": "10",
+        "neighborhood": "Puerta Del Angel",
+        "neighborhood_code": "2",
+        "official_id": "5898885",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=c313e26f2b3fc210VgnVCM2000000c205a0aRCRD",
+        "opening_hours_text": "Horario de apertura de 6:00 h a 22:00 h los días laborables.",
+        "postal_code": "28011",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Avenida America 9",
+      "category": "parking",
+      "id": "parking:59060",
+      "lat": 40.438178,
+      "layer_id": "parking",
+      "lon": -3.6768341,
+      "name": {
+        "es": "Aparcamiento mixto. Avenida de América (intercambiador)"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Información sobre accesibilidad:  Tiene escaleras adaptadas Ascensor de salida a la calle Avenida de América, 9 Tiene aseos accesibles Plazas para minusválidos    Plazas: 261 públicas y 395 para residentes  Abierto 24 horas   Titularidad: Ayuntamiento de Madrid",
+        "district": "Chamartin",
+        "district_code": "5",
+        "neighborhood": "Prosperidad",
+        "neighborhood_code": "2",
+        "official_id": "59060",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=3f3bc2c6e051c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28002",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Marques De Salamanca",
+      "category": "parking",
+      "id": "parking:6143690",
+      "lat": 40.4304997,
+      "layer_id": "parking",
+      "lon": -3.6792937,
+      "name": {
+        "es": "Aparcamiento mixto. Marqués de Salamanca"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 356 públicas y 70 para residentes  Información sobre accesibilidad:   No tiene escaleras adaptadas 1 ascensor en la salida a la plaza del Marqués de Salamanca 1 aseo accesible en 2&amp;ordf;  planta Plaza para minusválidos residentes: 14   Abierto 24 horas   Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Castellana",
+        "neighborhood_code": "6",
+        "official_id": "6143690",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=cb5b1b2bb5b61310VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28006",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Cartagena 178",
+      "category": "parking",
+      "id": "parking:7393089",
+      "lat": 40.4442951,
+      "layer_id": "parking",
+      "lon": -3.6776975,
+      "name": {
+        "es": "Aparcamiento público. Auditorio Nacional de Música (Príncipe de Vergara)"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 376 Abierto 24 horas Admite la Tarjeta Bono Red  Titularidad: Ayuntamiento de Madrid",
+        "district": "Chamartin",
+        "district_code": "5",
+        "neighborhood": "Ciudad Jardin",
+        "neighborhood_code": "3",
+        "official_id": "7393089",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=ed88f25e040c4410VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28002",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Serrano 84",
+      "category": "parking",
+      "id": "parking:7416748",
+      "lat": 40.4329453,
+      "layer_id": "parking",
+      "lon": -3.6861134,
+      "name": {
+        "es": "Aparcamiento mixto. Serrano I"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 307 públicas y 833 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Castellana",
+        "neighborhood_code": "6",
+        "official_id": "7416748",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=bd61f94ae1d15410VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28006",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Serrano 44",
+      "category": "parking",
+      "id": "parking:7417028",
+      "lat": 40.4303442,
+      "layer_id": "parking",
+      "lon": -3.6885081,
+      "name": {
+        "es": "Aparcamiento mixto. Serrano II"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 379 públicas y 804 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "7417028",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=bc096f1c35d15410VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Serrano 2",
+      "category": "parking",
+      "id": "parking:7417052",
+      "lat": 40.4244268,
+      "layer_id": "parking",
+      "lon": -3.6896518,
+      "name": {
+        "es": "Aparcamiento mixto. Serrano III"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 261 públicas y 725 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Salamanca",
+        "district_code": "4",
+        "neighborhood": "Recoletos",
+        "neighborhood_code": "1",
+        "official_id": "7417052",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=9a1c6f1c35d15410VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28001",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Perez De Victoria 2",
+      "category": "parking",
+      "id": "parking:81736",
+      "lat": 40.4588138,
+      "layer_id": "parking",
+      "lon": -3.7841449,
+      "name": {
+        "es": "Aparcamiento mixto. Corona Boreal"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "1",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 125 públicas y 125 para residentes  Información sobre accesibilidad:  No tiene escaleras adaptadas Ascensor de salida a la calle Pérez de Victoria 2 aseos accesibles (1&amp;ordf; planta) Plazas para minusválidos residentes: 3    Abierto 24 horas   Titularidad: Ayuntamiento de Madrid",
+        "district": "Moncloa-Aravaca",
+        "district_code": "9",
+        "neighborhood": "Aravaca",
+        "neighborhood_code": "7",
+        "official_id": "81736",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=db8bc2c6e051c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28023",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Plaza Reyes Magos",
+      "category": "parking",
+      "id": "parking:81828",
+      "lat": 40.4087973,
+      "layer_id": "parking",
+      "lon": -3.6763216,
+      "name": {
+        "es": "Aparcamiento mixto. Reyes Magos"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "resident_or_mixed",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 335 públicas o de rotación y 359 para residentes Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Retiro",
+        "district_code": "3",
+        "neighborhood": "Niño Jesus",
+        "neighborhood_code": "6",
+        "official_id": "81828",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=0dfec2c6e051c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28007",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosResidentes"
+      },
+      "territory": "madrid"
+    },
+    {
+      "address": "Calle Principe De Vergara 134",
+      "category": "parking",
+      "id": "parking:88141",
+      "lat": 40.4442298,
+      "layer_id": "parking",
+      "lon": -3.6776554,
+      "name": {
+        "es": "Aparcamiento público. Museo de la Ciudad"
+      },
+      "source_id": "madrid_parking_official",
+      "tags": {
+        "access_scope": "public",
+        "accessibility_code": "0",
+        "coordinate_source": "published_wgs84",
+        "description": "Plazas: 147 Abierto 24 horas  Titularidad: Ayuntamiento de Madrid",
+        "district": "Chamartin",
+        "district_code": "5",
+        "neighborhood": "Ciudad Jardin",
+        "neighborhood_code": "3",
+        "official_id": "88141",
+        "official_url": "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=bdc7bdc85c01c010VgnVCM2000000c205a0aRCRD",
+        "postal_code": "28002",
+        "source_type": "/contenido/entidadesYorganismos/AparcamientosPublicos"
+      },
+      "territory": "madrid"
+    }
+  ],
+  "quality": {
+    "coordinate_counts": {
+      "derived_etrs89_utm30n": 1,
+      "published_wgs84": 62
+    },
+    "discard_reasons": {},
+    "dropped": 0,
+    "records": 63,
+    "source_records": 63,
+    "unique_ids": 63
+  },
+  "schema_id": "https://emap.eus/schemas/poi.schema.json",
+  "schema_reused": true,
+  "source": "Aparcamientos públicos municipales de Madrid",
+  "source_id": "madrid_parking_official",
+  "source_records": 63,
+  "source_sha256": "fa2a387387d4cb5a1f521f2ce22b186ef0d8898bfe7ea53e4cab3fee813cbcd4",
+  "source_updated": "2026-08-28",
+  "source_url": "https://datos.madrid.es/dataset/202625-0-aparcamientos-publicos/resource/202625-3-aparcamientos-publicos-csv/download/202625-0-aparcamientos-publicos.csv",
+  "territorial_reuse": {
+    "formula": "reused_stages / 6",
+    "reused_stages": [
+      "geo_normalization",
+      "common_poi_schema",
+      "territorial_pack",
+      "core_retrieval_evidence"
+    ],
+    "specific_stages": [
+      "source_acquisition",
+      "source_format_adapter"
+    ]
+  },
+  "territorial_reuse_ratio": 0.667,
+  "territorial_specific_code": [
+    "datasets/madrid-parking/build.py"
+  ],
+  "territory": "madrid",
+  "version": "1.0.0"
+}

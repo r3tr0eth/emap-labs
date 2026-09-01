@@ -19,8 +19,10 @@ from regions import load_territory, resolve_layer_path
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "/opt/emap-labs/data")).resolve()
 TERRITORY = load_territory(os.environ.get("EMAP_TERRITORY", "euskadi"))
 
-# SLA por tipo de dato (días antes de considerar obsoleto)
-DEFAULT_SLA_DAYS = {
+# SLA por tipo de dato (días antes de considerar obsoleto).
+# BASE_SLA_DAYS es neutro (sin territorio): es el fallback de las vías
+# por-territorio, para que el SLA de un territorio nunca contamine a otro.
+BASE_SLA_DAYS = {
     "fountains": 365,       # infraestructura estable
     "toilets": 365,
     "parking": 180,
@@ -44,6 +46,8 @@ DEFAULT_SLA_DAYS = {
     "bilbobus": 180,
     "bizkaibus": 180,
 }
+# Solo para los endpoints legacy que dependen de EMAP_TERRITORY.
+DEFAULT_SLA_DAYS = dict(BASE_SLA_DAYS)
 DEFAULT_SLA_DAYS.update(TERRITORY.freshness_sla_days)
 
 
@@ -158,7 +162,7 @@ def quality_report_from_documents(
     No consulta globals ni rutas implícitas: permite auditar Madrid/Euskadi
     desde la misma instancia que sirve las peticiones.
     """
-    sla_by_layer = sla_by_layer or DEFAULT_SLA_DAYS
+    sla_by_layer = sla_by_layer if sla_by_layer is not None else BASE_SLA_DAYS
     selected = layers or sorted(documents)
     t0 = time.monotonic()
     report = []
@@ -168,7 +172,7 @@ def quality_report_from_documents(
         info = freshness_from_document(
             layer,
             doc or {},
-            sla_days=sla_by_layer.get(layer) or DEFAULT_SLA_DAYS.get(layer, 180),
+            sla_days=sla_by_layer.get(layer) or BASE_SLA_DAYS.get(layer, 180),
         ) if doc else {"layer": layer, "status": "unknown", "stale": None}
         report.append(info)
         status = info.get("status", "unknown")
@@ -200,7 +204,7 @@ def poi_freshness(
         info = freshness_from_document(
             layer,
             document,
-            sla_days=sla_days if sla_days is not None else DEFAULT_SLA_DAYS.get(layer, 180),
+            sla_days=sla_days if sla_days is not None else BASE_SLA_DAYS.get(layer, 180),
         )
 
     return {

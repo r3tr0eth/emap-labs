@@ -36,17 +36,19 @@ from service.runtime import (  # noqa: E402
 
 from semantic_local import HybridRetriever, HybridRetrieverFactory  # noqa: E402
 
-from emap_geo.distance import haversine_m  # noqa: E402
+try:
+    from emap_geo.distance import haversine_m  # noqa: E402
+except ImportError:  # CI / entorno sin emap-next al lado: fallback vendorizado
+    from _geo import haversine_m  # noqa: E402
 from explain import explain_detection, explain_result  # noqa: E402
 from hike_planner import plan_hike  # noqa: E402
 from accessibility import plan_accessible_route, find_accessible_pois  # noqa: E402
 from isochrones import compute_isochrone, find_pois_in_isochrone  # noqa: E402
-from data_freshness import quality_report, quality_report_from_documents, poi_freshness, freshness_from_document  # noqa: E402
-from response_contract import build_response  # noqa: E402
+from data_freshness import BASE_SLA_DAYS, quality_report, quality_report_from_documents, poi_freshness, freshness_from_document  # noqa: E402
+from response_contract import SCHEMA_VERSION, build_response  # noqa: E402
 
 DATA_DIR = Path(os.environ.get("EMAP_DATA_DIR", "../emap-next/data")).resolve()
 TERRITORY = load_territory("euskadi")  # compatibilidad temporal de /explain
-LAYER_FILES = dict(TERRITORY.layers)
 
 app = FastAPI(title="emap-labs semantic", version="0.2")
 _retriever: HybridRetriever | None = None
@@ -186,17 +188,24 @@ def _log_query(
 
 
 def _metric(territory: str, retriever: str, latency_ms: int,
-            result_count: int, unsupported: bool, stale_count: int = 0) -> None:
+            answer_status: str, stale_count: int = 0,
+            source_failures: int = 0) -> None:
+    """Contadores por answer_status del contrato: no_result (corpus sin
+    match), abstained (detección bajo umbral) y unsupported (categoría no
+    soportada) son señales distintas. source_failures cuenta resultados
+    servidos sin documento de fuente (metadatos ausentes)."""
     with _METRICS_LOCK:
         _METRICS["request_count"] += 1
         _METRICS["success"] += 1
         _METRICS["latency_ms_total"] += latency_ms
         _METRICS["stale_source"] += stale_count
-        if not result_count:
+        _METRICS["source_failure"] += source_failures
+        if answer_status == "NO_RESULT":
             _METRICS["no_result"] += 1
+        elif answer_status == "ABSTAINED":
             _METRICS["abstained"] += 1
-            if unsupported:
-                _METRICS["unsupported"] += 1
+        elif answer_status == "UNSUPPORTED":
+            _METRICS["unsupported"] += 1
         for bucket, key in (("by_territory", territory), ("by_retriever", retriever)):
             values = _METRICS[bucket]
             values[key] = values.get(key, 0) + 1
@@ -235,6 +244,8 @@ def search(
         _metric_error()
         return JSONResponse(status_code=429, content={
             "error": "rate_limit_exceeded",
+            "schema_version": SCHEMA_VERSION,
+            "answerable": False,
             "retry_after_secs": _RATE_SECS,
             "limit": _RATE_MAX,
         })
@@ -244,7 +255,8 @@ def search(
         _metric_error()
         return JSONResponse(
             status_code=503,
-            content={"error": "runtime_uninitialized", "answerable": False},
+            content={"error": "runtime_uninitialized", "answerable": False,
+                     "schema_version": SCHEMA_VERSION},
         )
     try:
         runtime = registry.resolve(territory_id=territory, lat=lat, lon=lon)
@@ -253,7 +265,8 @@ def search(
         status_code = 404 if exc.code == "unknown_territory" else 422
         return JSONResponse(
             status_code=status_code,
-            content={"error": exc.code, "detail": exc.detail, "answerable": False},
+            content={"error": exc.code, "detail": exc.detail, "answerable": False,
+                     "schema_version": SCHEMA_VERSION},
         )
     anchor = {"lat": lat, "lon": lon} if lat is not None and lon is not None else None
     retriever = runtime.retriever
@@ -265,6 +278,7 @@ def search(
     results = retriever.retrieve(q, anchor, k=k)
 
     out = []
+    missing_docs = 0
     for r in results:
         item = {"id": r["id"], "name": r["name"], "lat": r["lat"], "lon": r["lon"],
                 "layer": r["layer"], "tags": r.get("tags") or {}}
@@ -272,6 +286,8 @@ def search(
             item["distance_m"] = round(haversine_m(lat, lon, r["lat"], r["lon"]))
         documents = runtime.documents or {}
         source_document = documents.get(r["layer"])
+        if source_document is None:
+            missing_docs += 1
         item["why"] = explain_result(
             r,
             q,
@@ -283,16 +299,14 @@ def search(
         item["data"] = poi_freshness(
             r,
             document=source_document,
+            # None → poi_freshness cae a BASE_SLA_DAYS por capa (nunca al SLA
+            # de otro territorio, nunca a un 180 plano).
             sla_days=runtime.territory.freshness_sla_days.get(r["layer"]),
         )
         out.append(item)
 
     _log_query(q, anchor, out, retriever.name)
-    _metric(runtime.territory.id, retriever.name,
-            round((time.monotonic() - t0) * 1000), len(out), not detected_layers,
-            sum((r.get("data") or {}).get("freshness") == "stale" for r in out))
-
-    return build_response(
+    response = build_response(
         query=q,
         runtime={"territory": runtime.territory.id, "territory_version": runtime.territory.version},
         results=out,
@@ -301,6 +315,11 @@ def search(
         took_ms=round((time.monotonic() - t0) * 1000),
         attribution=runtime.territory.attribution,
     )
+    _metric(runtime.territory.id, retriever.name, response["took_ms"],
+            response["answer_status"],
+            sum((r.get("data") or {}).get("freshness") == "stale" for r in out),
+            missing_docs)
+    return response
 
 
 @app.get("/nearby")
@@ -320,16 +339,19 @@ def nearby(
     registry = getattr(request.app.state, "runtime_registry", None)
     if registry is None:
         _metric_error()
-        return JSONResponse(status_code=503, content={"error": "runtime_uninitialized", "answerable": False})
+        return JSONResponse(status_code=503, content={"error": "runtime_uninitialized", "answerable": False,
+                     "schema_version": SCHEMA_VERSION})
     try:
         runtime = registry.resolve(territory_id=territory, lat=lat, lon=lon)
     except TerritoryResolutionError as exc:
         _metric_error()
         return JSONResponse(status_code=404 if exc.code == "unknown_territory" else 422,
-                            content={"error": exc.code, "detail": exc.detail, "answerable": False})
+                            content={"error": exc.code, "detail": exc.detail, "answerable": False,
+                     "schema_version": SCHEMA_VERSION})
     if layer not in runtime.datasets:
         _metric_error()
-        return JSONResponse(status_code=422, content={"error": "unsupported_layer", "layer": layer, "answerable": False})
+        return JSONResponse(status_code=422, content={"error": "unsupported_layer", "layer": layer, "answerable": False,
+                     "schema_version": SCHEMA_VERSION})
     t0 = time.monotonic()
     document = (runtime.documents or {}).get(layer)
     rows = sorted(runtime.datasets[layer], key=lambda p: haversine_m(lat, lon, p["lat"], p["lon"]))[:k]
@@ -341,12 +363,9 @@ def nearby(
         explain_row = {**row, "layer": layer}
         item["why"] = explain_result(explain_row, f"nearby {layer}", {"lat": lat, "lon": lon}, {layer: 1.0}, 0.0, source_document=document)
         item["data"] = poi_freshness(row, document=document,
-                                     sla_days=runtime.territory.freshness_sla_days.get(layer, 180))
+                                     sla_days=runtime.territory.freshness_sla_days.get(layer))
         results.append(item)
-    _metric(runtime.territory.id, "geo-nearest",
-            round((time.monotonic() - t0) * 1000), len(results), False,
-            sum((r.get("data") or {}).get("freshness") == "stale" for r in results))
-    return build_response(
+    response = build_response(
         query=f"nearby:{layer}",
         runtime={"territory": runtime.territory.id, "territory_version": runtime.territory.version},
         results=results,
@@ -355,6 +374,11 @@ def nearby(
         took_ms=round((time.monotonic() - t0) * 1000),
         attribution=runtime.territory.attribution,
     )
+    _metric(runtime.territory.id, "geo-nearest", response["took_ms"],
+            response["answer_status"],
+            sum((r.get("data") or {}).get("freshness") == "stale" for r in results),
+            len(results) if document is None else 0)
+    return response
 
 
 @app.get("/hike-plan")
@@ -396,7 +420,8 @@ def accessible_pois(lat: float, lon: float, radius: int = 1000,
     dlat = radius / 111000
     dlon = radius / (111000 * math.cos(math.radians(lat)))
     bbox = (lat - dlat, lon - dlon, lat + dlat, lon + dlon)
-    return {"pois": find_accessible_pois(bbox, poi_type), "count": 0}
+    pois = find_accessible_pois(bbox, poi_type)
+    return {"pois": pois, "count": len(pois)}
 
 
 @app.get("/isochrone")
@@ -448,9 +473,9 @@ def poi_freshness_endpoint(layer: str, territory: str | None = None):
     document = runtime.documents.get(layer)
     if document is None:
         return JSONResponse(status_code=404, content={"error": "unsupported_layer", "layer": layer})
-    sla_days = runtime.territory.freshness_sla_days.get(
-        layer, 180
-    )
+    sla_days = runtime.territory.freshness_sla_days.get(layer)
+    if sla_days is None:
+        sla_days = BASE_SLA_DAYS.get(layer, 180)
     return freshness_from_document(layer, document, sla_days=sla_days)
 
 
@@ -521,6 +546,8 @@ def explain(request: Request, lat: float, lon: float):
         _metric_error()
         return JSONResponse(status_code=429, content={
             "error": "rate_limit_exceeded",
+            "schema_version": SCHEMA_VERSION,
+            "answerable": False,
             "retry_after_secs": _RATE_SECS,
             "limit": _RATE_MAX,
         })

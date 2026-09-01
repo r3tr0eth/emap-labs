@@ -9,6 +9,46 @@ from collections import Counter
 from typing import Mapping, Sequence
 
 SCHEMA_VERSION = "intelligence.response.v1"
+ANSWER_STATUSES = ("ANSWERED", "NO_RESULT", "ABSTAINED", "UNSUPPORTED")
+FRESHNESS_STATUSES = ("fresh", "stale", "unknown")
+CONFIDENCE_LEVELS = ("low", "medium", "high")
+REQUIRED_FIELDS = (
+    "schema_version", "territory", "territory_version", "answerable",
+    "answer_status", "result", "evidence", "freshness", "confidence",
+    "limitations", "retrieval_method",
+)
+
+
+def validate_response(payload: Mapping) -> None:
+    """Valida el contrato v1; lanza ValueError con el primer incumplimiento.
+
+    Se ejecuta en cada build_response: si la composición deriva del contrato,
+    falla en el origen (tests y servicio), no en un consumidor aguas abajo.
+    """
+    missing = [field for field in REQUIRED_FIELDS if field not in payload]
+    if missing:
+        raise ValueError(f"contrato v1 incompleto: faltan {missing}")
+    if payload["schema_version"] != SCHEMA_VERSION:
+        raise ValueError(f"schema_version inesperado: {payload['schema_version']}")
+    if payload["answer_status"] not in ANSWER_STATUSES:
+        raise ValueError(f"answer_status fuera del enum: {payload['answer_status']}")
+    if bool(payload["answerable"]) != (payload["answer_status"] == "ANSWERED"):
+        raise ValueError("answerable no es coherente con answer_status")
+    result = payload["result"]
+    if not isinstance(result, Mapping) or "items" not in result or "count" not in result:
+        raise ValueError("result debe ser un mapping con items y count")
+    if result["count"] != len(result["items"]):
+        raise ValueError("result.count no coincide con len(result.items)")
+    freshness = payload["freshness"]
+    if not isinstance(freshness, Mapping) or freshness.get("status") not in FRESHNESS_STATUSES:
+        raise ValueError(f"freshness.status fuera del enum: {freshness!r}")
+    confidence = payload["confidence"]
+    if not isinstance(confidence, Mapping) or confidence.get("level") not in CONFIDENCE_LEVELS:
+        raise ValueError(f"confidence.level fuera del enum: {confidence!r}")
+    if not isinstance(payload["evidence"], Sequence) or isinstance(payload["evidence"], str):
+        raise ValueError("evidence debe ser una lista")
+    if not isinstance(payload["limitations"], Sequence) or isinstance(payload["limitations"], str):
+        raise ValueError("limitations debe ser una lista")
 
 
 def _confidence(detection: Mapping, results: Sequence[Mapping]) -> dict:
@@ -79,7 +119,11 @@ def build_response(*, query: str, runtime: Mapping, results: Sequence[Mapping],
         freshness_status = "fresh"
     else:
         freshness_status = "unknown"
-    return {
+    if answer_status == "ANSWERED" and freshness_status == "stale":
+        # Respuesta válida con limitación declarada: la evidencia supera el
+        # SLA de frescura de su fuente y el consumidor debe saberlo.
+        limitations.append("STALE_EVIDENCE")
+    payload = {
         "schema_version": SCHEMA_VERSION,
         "territory": runtime["territory"],
         "territory_version": runtime["territory_version"],
@@ -101,3 +145,5 @@ def build_response(*, query: str, runtime: Mapping, results: Sequence[Mapping],
         "took_ms": took_ms,
         "attribution": attribution,
     }
+    validate_response(payload)
+    return payload

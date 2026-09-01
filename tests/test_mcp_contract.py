@@ -1,5 +1,6 @@
 import asyncio
 import importlib.util
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -18,6 +19,10 @@ def _load_server():
         try:
             spec.loader.exec_module(module)
         except ModuleNotFoundError as exc:
+            # En CI el runtime MCP es dependencia obligatoria: un skip aquí
+            # dejaría la suite verde con los contratos MCP sin verificar.
+            if os.environ.get("CI"):
+                raise
             raise unittest.SkipTest(f"MCP runtime no instalado en este entorno: {exc}")
         return module
     finally:
@@ -61,6 +66,8 @@ class MCPContractTest(unittest.TestCase):
             "freshness": {"status": "fresh"},
             "confidence": {"level": "high", "score": 1.0},
             "retrieval_method": "hybrid",
+            "limitations": [],
+            "took_ms": 42,
         }
 
     original = server._get
@@ -73,3 +80,5 @@ class MCPContractTest(unittest.TestCase):
     self.assertEqual(seen["params"]["territory"], "madrid")
     self.assertEqual(response["territory_version"], "0.3.0")
     self.assertEqual(response["schema_version"], "intelligence.response.v1")
+    self.assertEqual(response["limitations"], [])
+    self.assertEqual(response["took_ms"], 42)

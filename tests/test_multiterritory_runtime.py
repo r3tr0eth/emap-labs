@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from dataclasses import dataclass
 from pathlib import Path
+from types import SimpleNamespace
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,6 +66,14 @@ class RuntimeRegistryResolutionTest(unittest.TestCase):
 
         with self.assertRaisesRegex(TerritoryResolutionError, "territory_unresolved"):
             self.registry.resolve(lat=41.3874, lon=2.1686)
+
+    def test_bbox_solapado_es_ambiguo_sin_fallback(self) -> None:
+        gemelo = _RuntimeStub(
+            SimpleNamespace(id="gemelo", bbox=self.euskadi.territory.bbox)
+        )
+        registry = RuntimeRegistry({"euskadi": self.euskadi, "gemelo": gemelo})
+        with self.assertRaisesRegex(TerritoryResolutionError, "territory_ambiguous"):
+            registry.resolve(lat=43.263, lon=-2.935)
 
     def test_rechaza_mismatch_y_coordenadas_incompletas(self) -> None:
         with self.assertRaisesRegex(TerritoryResolutionError, "territory_mismatch"):

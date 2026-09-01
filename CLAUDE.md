@@ -7,8 +7,9 @@ dinero que emap trae.
 
 ## Relación con otros repos
 
-- `../emap-next`: producto en producción (Vercel + VPS Hetzner). **Sin remoto
-  git** — solo commits locales; deploy con `vercel deploy --prod --yes`.
+- `../emap-next`: producto en producción (Vercel + VPS Hetzner). Repo en
+  GitHub (`r3tr0eth/emap-next`, privado) con CI propia; deploy con
+  `vercel deploy --prod --yes` (pendiente enlazar Vercel al repo).
 - Los pipelines de `datasets/` escriben en `emap-next/data/processed/` y se
   registran en su manifest (`python -m data_catalog validate|quality|check`
   con el venv de emap-next).

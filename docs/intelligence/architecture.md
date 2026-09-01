@@ -1,7 +1,8 @@
 # EMAP Core v0.1 — arquitectura efectiva
 
-**Estado:** 2026-08-27. Este documento describe código existente y el seam
-territorial mínimo introducido en el primer sprint Intelligence/Core.
+**Estado:** 2026-08-31. Este documento describe código existente: el
+`RuntimeRegistry` multi-territorio del corte v0.3.0-rc.1 y los endpoints
+legacy que siguen dependiendo del runtime Euskadi de compatibilidad.
 
 EMAP Core v0.1 no es un microservicio nuevo. Es la composición de módulos ya
 existentes detrás de interfaces comprobables:

@@ -164,7 +164,7 @@ async def search_places(query: str, lat: float, lon: float, k: int = 5,
         "evidence", "freshness", "confidence", "results", "territory", "territory_version",
         "retriever", "reranked", "explanation", "limitations",
         "retrieval_method",
-        "attribution",
+        "attribution", "took_ms",
     )
     payload = {key: d[key] for key in fields if key in d}
     payload.setdefault("query", query)

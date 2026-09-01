@@ -13,7 +13,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from emap_geo import utm30n_to_wgs84
+try:
+    from emap_geo import utm30n_to_wgs84
+except ImportError:  # CI / entorno sin emap-next al lado: fallback vendorizado
+    import pathlib
+    import sys
+
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "evals"))
+    from _geo import utm30n_to_wgs84
 
 
 SOURCE_ID = "madrid_bikepark_official"

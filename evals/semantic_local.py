@@ -193,8 +193,17 @@ class SemanticEncoder:
     """Modelo semántico compartible; no contiene estado territorial."""
 
     def __init__(self, profile_name: str | None = None) -> None:
-        profile = resolve_profile(profile_name=profile_name)
+        # Sin nombre explícito, honrar EMAP_RETRIEVER_PROFILE (el flujo de
+        # run.py --profile). Regresión real: al ignorar el env, todos los
+        # resultados "e5large" del harness ejecutaron MiniLM etiquetado como
+        # e5large (descubierto 2026-09-01; prod no se vio afectado porque el
+        # factory pasa el nombre explícito).
+        profile = resolve_profile(
+            profile_name=profile_name or os.environ.get("EMAP_RETRIEVER_PROFILE"),
+            model=os.environ.get("EMAP_EMBED_MODEL"),
+        )
         self.profile_name = profile.name
+        self.model = profile.model
         self.sim_threshold = float(
             os.environ.get("EMAP_SIM_TAU", profile.sim_threshold)
         )

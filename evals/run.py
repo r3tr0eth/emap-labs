@@ -14,9 +14,11 @@ tiempo (baseline hoy, pgvector en L1). El retriever nunca ve `expected`.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
+import time
 import unicodedata
 from datetime import date
 from pathlib import Path
@@ -191,31 +193,45 @@ def main() -> int:
     args = ap.parse_args()
 
     territory = load_territory(args.territory)
-    corpus = yaml.safe_load(territory.evaluation_path("corpus").read_text())
+    corpus_path = territory.evaluation_path("corpus")
+    corpus_sha256 = hashlib.sha256(corpus_path.read_bytes()).hexdigest()
+    corpus = yaml.safe_load(corpus_path.read_text())
     if args.split != "all":
         corpus["cases"] = [c for c in corpus["cases"]
                            if c.get("split", "dev") == args.split]
+    if not corpus["cases"]:
+        raise SystemExit(f"corpus {territory.id}: split '{args.split}' sin casos")
+    missing_lang = [c["id"] for c in corpus["cases"]
+                    if args.lang not in (c.get("q") or {})]
+    if missing_lang:
+        raise SystemExit(
+            f"corpus {territory.id} no soporta lang '{args.lang}': "
+            f"{len(missing_lang)} casos sin consulta (p.ej. {missing_lang[0]})"
+        )
     landmarks = yaml.safe_load(territory.evaluation_path("landmarks").read_text())
     datasets = load_datasets(territory)
     if args.profile:
         os.environ["EMAP_RETRIEVER_PROFILE"] = args.profile
     if args.retriever == "semantic":
         from semantic_local import SemanticRetriever  # requiere .venv de labs
-        retriever = SemanticRetriever(datasets)
+        retriever = SemanticRetriever(datasets, profile_name=args.profile)
     elif args.retriever == "hybrid":
         from semantic_local import HybridRetriever
-        retriever = HybridRetriever(datasets)
+        retriever = HybridRetriever(datasets, profile_name=args.profile)
     else:
         retriever = BaselineRetriever(datasets)
 
     rows, by_intent, gaps = [], {}, []
+    latencies_ms: list[float] = []
     for case in corpus["cases"]:
         anchor = resolve_anchor(case, datasets, landmarks)
         if hasattr(retriever, "set_anchor_names"):
             a = case.get("anchor") or {}
             retriever.set_anchor_names(
                 [a.get("name", ""), a.get("fallback_name", ""), a.get("landmark", "")])
+        t0 = time.perf_counter()
         results = retriever.retrieve(case["q"][args.lang], anchor, k=args.k)
+        latencies_ms.append((time.perf_counter() - t0) * 1000)
         s = score_case(case, results, anchor)
         row = {"id": case["id"], "intent": case["intent"], **s}
         if case.get("known_gap"):
@@ -247,11 +263,13 @@ def main() -> int:
     config = {}
     model_tag = ""  # sufijo de modelo para no pisar resultados entre modelos
     if args.retriever in ("semantic", "hybrid"):
-        import semantic_local as sl
-        config = {"profile": sl.PROFILE_NAME, "model": sl.MODEL,
-                  "sim_threshold": sl.SIM_THRESHOLD,
-                  "tie_window": sl.TIE_WINDOW}
-        model_tag = sl.MODEL_TAG
+        # La verdad sale del encoder que ejecutó, no de constantes de módulo:
+        # el artefacto no puede volver a declarar un modelo distinto del usado.
+        encoder = retriever.encoder
+        config = {"profile": encoder.profile_name, "model": encoder.model,
+                  "sim_threshold": encoder.sim_threshold,
+                  "tie_window": encoder.tie_window}
+        model_tag = encoder.profile_name
     out = out_dir / result_filename(
         args.retriever,
         model_tag,
@@ -265,6 +283,12 @@ def main() -> int:
         "lang": args.lang, "k": args.k,
         "config": config, "n_corpus_cases": len(corpus["cases"]),
         "date": date.today().isoformat(), "corpus": corpus["version"],
+        "corpus_sha256": corpus_sha256,
+        "latency_ms": {
+            "avg": round(sum(latencies_ms) / len(latencies_ms), 1),
+            "max": round(max(latencies_ms), 1),
+            "total": round(sum(latencies_ms)),
+        } if latencies_ms else None,
         "total": {"pass": total, "cases": len(rows)},
         "by_intent": {i: {"pass": p, "cases": n} for i, (p, n) in by_intent.items()},
         "cases": rows,

@@ -1,0 +1,422 @@
+{
+  "retriever": "hybrid-keywords-then-minilm",
+  "territory": "euskadi",
+  "lang": "eu",
+  "k": 5,
+  "config": {
+    "profile": "minilm",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
+  },
+  "n_corpus_cases": 48,
+  "date": "2026-09-01",
+  "corpus": 1,
+  "corpus_sha256": "d48dc464be26c48f22736023520e5460e6bdbd138b726a116c2cb4621b48f4d2",
+  "latency_ms": {
+    "avg": 14.5,
+    "max": 134.3,
+    "total": 698
+  },
+  "total": {
+    "pass": 28,
+    "cases": 47
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 4,
+      "cases": 4
+    },
+    "semantic": {
+      "pass": 18,
+      "cases": 34
+    },
+    "transit": {
+      "pass": 5,
+      "cases": 7
+    },
+    "attribute": {
+      "pass": 1,
+      "cases": 2
+    }
+  },
+  "cases": [
+    {
+      "id": "ho2-eu-ur-hotza",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho2-eu-komun-durango",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-eu-bizi-sestao",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho2-eu-dea-bermeo",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Eroski S.Coop. (Eroski Center)"
+    },
+    {
+      "id": "ho2-eu-kargatu-gauez",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Parking Indautxu( Plaza Indautxu, 2)"
+    },
+    {
+      "id": "ho2-eu-txakurra",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho2-eu-eguzkia",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (hostel)",
+      "detail": "top1=MOANA ECO SURF HOUSE ✗ categoria_equivocada (hostel)"
+    },
+    {
+      "id": "ho2-desmayo",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho2-correr-agua",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente"
+    },
+    {
+      "id": "ho2-crio-bano",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-bici-noche",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis"
+    },
+    {
+      "id": "ho2-mojarse",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (pharmacy)",
+      "detail": "top1=Farmacia (Erribera Kalea/Calle 20) ✗ categoria_equivocada (pharmacy)"
+    },
+    {
+      "id": "ho2-carga-trabajo",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho2-linea-algorta",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Algorta"
+    },
+    {
+      "id": "ho2-tren-durango",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Durango"
+    },
+    {
+      "id": "ho2-bus-gernika",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=GELTOKIA / ESTACIÓN  (METRO) (4322) ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-cercanias-portugalete",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Portugalete"
+    },
+    {
+      "id": "ho2-aseo-gratis-areeta",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-carga-rapida-sanmames",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "ho2-gasolinera-barata",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-veterinario",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-autocaravana",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-eu-igerilekua",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-taxi",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Eroski Ipurua goikoa"
+    },
+    {
+      "id": "ho2-farmacia-cerca-abando",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Farmacia (Berastegui Kalea/Calle 1)"
+    },
+    {
+      "id": "ho2-biblioteca-estudio",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Bilbao - Biblioteca Municipal de Deusto"
+    },
+    {
+      "id": "ho2-piscina-municipal",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=C.Pr. HIJAS DE LA CARIDAD-N. SRA DE BEGOÑA"
+    },
+    {
+      "id": "ho2-restaurante-menu",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Víctor"
+    },
+    {
+      "id": "ho2-hostel-barato",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=BARRIKA SURF CAMP ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-camping-naturaleza",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=ARRIEN ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-parque-natural",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Biotopo Protegido Complejo Lagunar de Laguardia ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-cima-subir",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "categoria_equivocada (hostel)",
+      "detail": "top1=BARRIKA SURF CAMP ✗ categoria_equivocada (hostel)"
+    },
+    {
+      "id": "ho2-monte-conocido",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Aketegi ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-bilbobus-parada",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=SAN MAMÉS"
+    },
+    {
+      "id": "ho2-bizkaibus-bermeo",
+      "intent": "transit",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=BIZKAI (4086) ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-eu-berrikuntza",
+      "intent": "transit",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Moyua"
+    },
+    {
+      "id": "ho2-fountain-mascota",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Fuente de la Mujer ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-aseo-cambiador",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aseo público"
+    },
+    {
+      "id": "ho2-parking-motos",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento"
+    },
+    {
+      "id": "ho2-defib-trabajo",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "nombre_o_lineas",
+      "detail": "top1=Desfibrilador ✗ nombre_o_lineas"
+    },
+    {
+      "id": "ho2-ev-enchufe-rapido",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Elkano"
+    },
+    {
+      "id": "ho2-playa-perro",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Playa"
+    },
+    {
+      "id": "ho2-guarderia",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BERNAOLA ASC TER-2"
+    },
+    {
+      "id": "ho2-cajero-cerca",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BERNAOLA ASC TER-2"
+    },
+    {
+      "id": "ho2-oficina-correos",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aseo Público Autolimpiable Parque de los Enamorados"
+    },
+    {
+      "id": "ho2-mercado-barrio",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "ho2-cine-cerca",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: BARRIKA SURF CAMP"
+    }
+  ],
+  "known_gaps": [
+    {
+      "id": "ho2-bikepark-cubierto-basauri",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (5405m > 1500m)",
+      "detail": "top1=Aparcabicis ✗ fuera_de_radio (5405m > 1500m)",
+      "known_gap": "No hay aparcabicis cubierto mapeado a <5 km de Basauri (el más cercano a 5.405 m); irresoluble para cualquier retriever. Mejorable mapeando en OSM."
+    }
+  ]
+}

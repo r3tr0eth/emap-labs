@@ -1,0 +1,527 @@
+{
+  "retriever": "hybrid-keywords-then-minilm",
+  "territory": "madrid",
+  "lang": "es",
+  "k": 5,
+  "config": {
+    "profile": "minilm",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "sim_threshold": 0.5,
+    "tie_window": 0.03
+  },
+  "n_corpus_cases": 60,
+  "date": "2026-08-31",
+  "corpus": "0.2.0",
+  "corpus_sha256": "191c274932734948a73fa05303228cd016bb2ec38fdbba455e4a1340d6911139",
+  "latency_ms": {
+    "avg": 19.8,
+    "max": 95.3,
+    "total": 1185
+  },
+  "total": {
+    "pass": 53,
+    "cases": 60
+  },
+  "by_intent": {
+    "nearest": {
+      "pass": 18,
+      "cases": 19
+    },
+    "semantic": {
+      "pass": 12,
+      "cases": 15
+    },
+    "attribute": {
+      "pass": 10,
+      "cases": 11
+    },
+    "geographic": {
+      "pass": 3,
+      "cases": 3
+    },
+    "multi_layer": {
+      "pass": 6,
+      "cases": 6
+    },
+    "unsupported": {
+      "pass": 4,
+      "cases": 5
+    },
+    "adversarial": {
+      "pass": 0,
+      "cases": 1
+    }
+  },
+  "cases": [
+    {
+      "id": "mad-fountain-sol",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-fountain-plaza-mayor",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · C/V BORDADORES · Calle Mayor 32"
+    },
+    {
+      "id": "mad-fountain-cibeles",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · c/v Pza. Cibeles en bulevar junto paradas de autobús · Paseo Recoletos 1"
+    },
+    {
+      "id": "mad-fountain-atocha",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · EN ZONA PEATONAL · Calle Murcia 26"
+    },
+    {
+      "id": "mad-fountain-retiro",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Plaza de Honduras · Plaza Plaza Independencia 7"
+    },
+    {
+      "id": "mad-fountain-moncloa",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · CV CALLE DE ALTAMIRANO · Calle Princesa 71"
+    },
+    {
+      "id": "mad-fountain-castilla",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Calle Bravo Murillo 379"
+    },
+    {
+      "id": "mad-fountain-matadero",
+      "intent": "nearest",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "mad-sem-botella",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Nuevas ministerios, estación metro · Paseo Castellana 65"
+    },
+    {
+      "id": "mad-sem-sed",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PSO. DE LA CASTELLANA Nº 146-148 · Paseo Castellana 148"
+    },
+    {
+      "id": "mad-sem-hidratarme",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-operational-retiro",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Plaza de Honduras · Plaza Plaza Independencia 7"
+    },
+    {
+      "id": "mad-operational-matadero",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Frente a la Junta municipal de Arganzuela"
+    },
+    {
+      "id": "mad-out-of-service-atocha",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · JUNTO FAROLA 4, EN ACERADO DE PASEO CENTRAL · Paseo Infanta Isabel 4"
+    },
+    {
+      "id": "mad-abstain-gasolinera",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-adversarial-fuente-tipografica",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-abstain-piscina",
+      "intent": "semantic",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-adversarial-fuente-juventud",
+      "intent": "semantic",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Fuente de agua · ZONA ESTANCIAL EN PLAZA DE MILMARCOS · Calle Muela De San Juan 5"
+    },
+    {
+      "id": "mad-parking-sol",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento público. Plaza del Carmen"
+    },
+    {
+      "id": "mad-parking-plaza-mayor",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Plaza Mayor"
+    },
+    {
+      "id": "mad-parking-cibeles",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Montalbán"
+    },
+    {
+      "id": "mad-parking-moncloa",
+      "intent": "geographic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento público. Marqués de Urquijo"
+    },
+    {
+      "id": "mad-parking-matadero",
+      "intent": "geographic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento público. Usera"
+    },
+    {
+      "id": "mad-parking-publico-plaza-mayor",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento público. Descalzas"
+    },
+    {
+      "id": "mad-bikepark-sol",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CARRETAS"
+    },
+    {
+      "id": "mad-bikepark-mayor",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · MAYOR"
+    },
+    {
+      "id": "mad-bikepark-cibeles",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CIBELES"
+    },
+    {
+      "id": "mad-bikepark-moncloa",
+      "intent": "geographic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · MINISTRO IBAÑEZ MARTIN"
+    },
+    {
+      "id": "mad-bikepark-ministerios-semantic",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CASTELLANA"
+    },
+    {
+      "id": "mad-bikepark-operativo",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CONCHA ESPINA"
+    },
+    {
+      "id": "mad-fountain-castilla-sem",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · Calle Bravo Murillo 379"
+    },
+    {
+      "id": "mad-fountain-cibeles-natural",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · c/v Pza. Cibeles en bulevar junto paradas de autobús · Paseo Recoletos 1"
+    },
+    {
+      "id": "mad-fountain-atocha-operational",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · EN ZONA PEATONAL · Calle Murcia 26"
+    },
+    {
+      "id": "mad-fountain-retiro-closed",
+      "intent": "attribute",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "fuera_de_radio (1024m > 250m)",
+      "detail": "top1=Fuente de agua · JUNTO FAROLA 4, EN ACERADO DE PASEO CENTRAL · Paseo Infanta Isabel 4 ✗ fuera_de_radio (1024m > 250m)"
+    },
+    {
+      "id": "mad-fountain-moncloa-water",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · CV CALLE DE ALTAMIRANO · Calle Princesa 71"
+    },
+    {
+      "id": "mad-fountain-sol-bottle",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · PUERTA DEL SOL · Calle Arenal 1"
+    },
+    {
+      "id": "mad-parking-atocha",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Sánchez Bustillo"
+    },
+    {
+      "id": "mad-parking-retiro",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Montalbán"
+    },
+    {
+      "id": "mad-parking-castilla",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. José Castán Tobeñas"
+    },
+    {
+      "id": "mad-parking-sol-car",
+      "intent": "semantic",
+      "pass": false,
+      "hit_at_k": false,
+      "reason": "abstencion_indebida",
+      "detail": "top1=∅ ✗ abstencion_indebida"
+    },
+    {
+      "id": "mad-parking-resident-plaza",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Plaza Mayor"
+    },
+    {
+      "id": "mad-parking-public-matadero",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento público. Usera"
+    },
+    {
+      "id": "mad-bikepark-retiro",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · ALFONSO XII"
+    },
+    {
+      "id": "mad-bikepark-atocha",
+      "intent": "nearest",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · INFANTA ISABEL"
+    },
+    {
+      "id": "mad-bikepark-castilla",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · SAN AQUILINO"
+    },
+    {
+      "id": "mad-bikepark-sol-semantic",
+      "intent": "semantic",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CARRETAS"
+    },
+    {
+      "id": "mad-bikepark-cibeles-operativo",
+      "intent": "attribute",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CIBELES"
+    },
+    {
+      "id": "mad-bikepark-fuera-servicio",
+      "intent": "attribute",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-multi-parking-bike-sol",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CARRETAS"
+    },
+    {
+      "id": "mad-multi-fountain-bike-cibeles",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Fuente de agua · c/v Pza. Cibeles en bulevar junto paradas de autobús · Paseo Recoletos 1"
+    },
+    {
+      "id": "mad-multi-parking-fountain-mayor",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcamiento mixto. Plaza Mayor"
+    },
+    {
+      "id": "mad-multi-parking-bike-moncloa",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · MINISTRO IBAÑEZ MARTIN"
+    },
+    {
+      "id": "mad-multi-water-bike-matadero",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · CHOPERA"
+    },
+    {
+      "id": "mad-multi-parking-bike-castilla",
+      "intent": "multi_layer",
+      "pass": true,
+      "hit_at_k": true,
+      "reason": null,
+      "detail": "top1=Aparcabicis · SAN AQUILINO"
+    },
+    {
+      "id": "mad-unsupported-ev",
+      "intent": "unsupported",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-unsupported-hospital",
+      "intent": "unsupported",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-unsupported-transit",
+      "intent": "unsupported",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-static-parking-availability",
+      "intent": "unsupported",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Aparcamiento público. Plaza del Carmen"
+    },
+    {
+      "id": "mad-adversarial-bike-share",
+      "intent": "unsupported",
+      "pass": true,
+      "reason": null,
+      "detail": "abstiene"
+    },
+    {
+      "id": "mad-adversarial-fuente-tipografia-2",
+      "intent": "adversarial",
+      "pass": false,
+      "reason": "inventa",
+      "detail": "inventa: Fuente de agua · ZONA ESTANCIAL EN PLAZA DE MILMARCOS · Calle Muela De San Juan 5"
+    }
+  ],
+  "known_gaps": []
+}
